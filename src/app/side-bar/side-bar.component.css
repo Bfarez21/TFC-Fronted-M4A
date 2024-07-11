@@ -41,7 +41,7 @@ body {
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
-    background-color: #0e2238;
+    background-color: #709CCC;
     display: flex;
     flex-direction: column;
 }
@@ -60,7 +60,7 @@ body {
 
 .toggle-btn i {
     font-size: 1.5rem;
-    color: #FFF;
+    color: #0E1319;
 }
 
 .sidebar-logo {
@@ -140,3 +140,29 @@ a.sidebar-link:hover {
     transform: rotate(45deg);
     transition: all .2s ease-out;
 }
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-item {
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: left;
+  }
+  
+  .sidebar-link i {
+    margin-right: 0.5rem;
+  }
+  
