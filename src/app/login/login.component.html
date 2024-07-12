@@ -1,11 +1,12 @@
-<div class="container">
-    <h1>Bienvenido Inicie sesión</h1>
-    <p>Esta es la página de inicio de sesion de nuestra aplicación.</p>
+<div class="wrapper">
+  <div class="login-container">
+    
+    <div class="input-container">
+      <input type="text" id="cedula" placeholder="Cédula">
+    </div>
+    <div class="input-container">
+      <input type="password" id="password" placeholder="Contraseña">
+    </div>
+    <button (click)="onLogin()">Iniciar Sesión</button>
   </div>
-  
-
-<div class="login-container">
-  <h2>Login</h2>
-
-  <button (click)="onLogin()">Iniciar sesión</button>
 </div>
