@@ -1,5 +1,52 @@
 <div class="container">
-    <h1>LISTADO DE REFERENCIAS MÉDICAS</h1>
-    <p>Esta es la página de referencias medicas de nuestra aplicación.</p>
-
+  <h2 class="text-center">LISTADO DE REFERENCIAS MÉDICAS</h2>
+  
+  <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-success">Nuevo Registro</button>
+      
+      <div>
+          <label for="cedula">CÉDULA:</label>
+          <input type="text" id="cedula" value="0150799187" readonly>
+          <button class="btn btn-primary">Consultar</button>
+          <button class="btn btn-secondary">Ver todos</button>
+      </div>
   </div>
+
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th>NOMBRE DE LA INSTITUCIÓN</th>
+              <th>CÉDULA</th>
+              <th>SERVICIO</th>
+              <th>ACCION</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Hospital general</td>
+              <td>0150799187</td>
+              <td>DEPARTAMENTO MÉDICO</td>
+              <td>
+                  <button class="btn btn-info">Ver</button>
+                  <button class="btn btn-warning">Editar</button>
+                  <button class="btn btn-danger">Eliminar</button>
+              </td>
+          </tr>
+          
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                  <button class="btn btn-info">Ver</button>
+                  <button class="btn btn-warning">Editar</button>
+                  <button class="btn btn-danger">Eliminar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+
+  <div class="text-right">
+      <p>N° TOTAL DE REGISTROS: <span>150</span></p>
+  </div>
+</div>
