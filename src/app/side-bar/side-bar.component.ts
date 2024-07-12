@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,7 +8,9 @@ import { AfterViewInit, Component } from '@angular/core';
 })
 export class SideBarComponent implements AfterViewInit {
 
-    constructor(){}
+    constructor(private authService: AuthService){}
+    
+
     ngAfterViewInit(): void {
       const hamBurger = document.querySelector(".toggle-btn");
   
@@ -19,6 +22,9 @@ export class SideBarComponent implements AfterViewInit {
           }
         });
       }
+    }
+    onLogout() {
+      this.authService.logout();
     }
 }
 

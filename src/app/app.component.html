@@ -1,13 +1,26 @@
 
+<!-- 
 <div class="wrapper">
     <div id="sidebar-logo">
-      <!-- Contenido del sidebar (app-side-bar) -->
+     
       <app-side-bar></app-side-bar>
     </div>
     
     <div class="main">
-      <!-- Área principal donde se cargarán los componentes/ventanas -->
       <router-outlet></router-outlet>
     </div>
-  </div>
+  </div> --> 
   
+
+<!-- src/app/app.component.html -->
+<div class="wrapper">
+  <div id="sidebar-logo" *ngIf="authService.isAuthenticated()">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="main" [class.expanded]="authService.isAuthenticated()">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+

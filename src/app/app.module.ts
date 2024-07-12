@@ -16,7 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes=[
-  {path:'',redirectTo:'',pathMatch:'full'},
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'login',component:LoginComponent},
   {path:'home',component: HomeComponent},
   {path:'atencion-medica',component: AtencionMedicaComponent},
   {path:'ficha-medica',component:FichaMedicaComponent},
@@ -24,8 +25,7 @@ const routes: Routes=[
   {path:'enfermedades',component:EnfermedadesComponent},
   {path:'doctor',component:DoctorComponent},
   {path:'reportes',component:ReportesComponent},
-  {path:'setting',component:SettingComponent},
-  {path:'login',component:LoginComponent}
+  {path:'setting',component:SettingComponent}
 ];
 
 @NgModule({
