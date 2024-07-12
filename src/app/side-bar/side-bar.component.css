@@ -27,15 +27,17 @@ body {
 .wrapper {
     display: flex;
 }
-
+/* Estilos para el área principal donde se cargarán los componentes */
 .main {
     min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    transition: all 0.35s ease-in-out;
-    background-color: #fafbfe;
+    overflow: hidden; /* Para manejar el contenido dentro de main */
+    flex: 1; /* Que tome todo el espacio restante */
+    min-height: 100vh; /* Ajusta la altura según tu diseño */
+    padding: 0; /* Eliminar cualquier relleno interno */
+    margin: 0; /* Eliminar cualquier margen */
+    transition: all 0.3s ease-in-out; /* Transición suave para cambios */
 }
-
+  
 #sidebar {
     width: 70px;
     min-width: 70px;
@@ -44,6 +46,8 @@ body {
     background-color: #709CCC;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease-in-out; /* Transición suave para cambios */
+ 
 }
 
 #sidebar.expand {
