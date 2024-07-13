@@ -1,0 +1,134 @@
+<div class="container">
+  <h2>Registrar referencia médica</h2>
+
+  <form>
+    <!-- Información de la Institución -->
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr><!-- encabezado 1 -->
+            <th colspan="3">NOMBRE DE LA INSTITUCIÓN</th>
+            <th>CÉDULA</th>
+            <th>SERVICIO</th>
+          </tr>
+
+        </thead>
+        <tbody>
+
+          <tr><!-- datos del encabezado 1 -->
+            <td colspan="3"><input type="text" id="nombreInstitucion" placeholder=""></td>
+            <td colspan="1"><input type="text" id="cedula" placeholder=""></td>
+            <td colspan="1"><input type="text" id="servicio" placeholder="Departamento médico"></td>
+          </tr>
+          <tr id="SeRefDer"><!-- texto -->
+            <th colspan="5">SE REFIERE O DERIVA A</th>
+          </tr>
+        </tbody>
+        <thead>
+          <tr><!-- encabezado 2 -->
+            <th>ENTIDAD DEL SISTEMA</th>
+            <th>ESTABLECIMIENTO DE SALUD</th>
+            <th>SERVICIO</th>
+            <th>ESPECIALIDAD</th>
+            <th>FECHA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><!-- datos del encabezado 2 -->
+            <td><input type="text" id="entidadSistema" placeholder=""></td>
+            <td><input type="text" id="establecimientoSalud" placeholder=""></td>
+            <td><input type="text" id="servicioSR" placeholder=""></td>
+            <td><input type="text" id="especialidad" placeholder=""></td>
+            <td><input type="date" class="form-control" id="fecha"></td>
+            
+          </tr>
+
+          <tr>
+            <th>MOTIVO DE REFERENCIA</th>
+            <td>
+              <div class="checkbox-container">
+                <label for="opcion1" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label>
+                <input type="checkbox" id="opcion1" name="motivoReferencia" value="opcion1">
+              </div>
+            </td>
+            <td>
+              <div class="checkbox-container">
+                <label for="opcion2" class="checkbox-label" >FALTA DE PROFESIONAL</label>
+              <input type="checkbox" id="opcion2" name="motivoReferencia" value="opcion2">
+              </div>
+            </td>
+            <td>
+              <div class="checkbox-container">
+                <label for="opcion3" class="checkbox-label">OTROS</label>
+                <input type="checkbox" id="opcion2" name="motivoReferencia" value="opcion2">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>RESUMEN DEL CUADRO CLÍNICO</th>
+          </tr>
+          <tr>
+            <td colspan="5">
+              <textarea class="form-control" id="cuadroResumen" rows="3"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>HALLAZGOS RELEVANTES</th>
+          </tr>        
+          <tr>
+            <td colspan="5">
+              <textarea class="form-control" id="cuadroHallazgos" rows="3"></textarea>
+            </td>
+          </tr>
+          
+          
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- Diagnóstico -->
+    <div class="form-group">
+      <label>Diagnóstico:</label>
+      <div class="diagnostico-row">
+        <div class="diagnostico-group">
+          <label for="diagnostico1">1:</label>
+          <input type="text" class="form-control" id="diagnostico1" placeholder="Diagnóstico 1">
+          <label for="cie1">CIE 10</label>
+          <select class="form-control" id="cie1">
+            <option value="presuntivo">Presuntivo</option>
+            <option value="definitivo">Definitivo</option>
+          </select>
+        </div>
+
+        <div class="diagnostico-group">
+          <label for="diagnostico2">2:</label>
+          <input type="text" class="form-control" id="diagnostico2" placeholder="Diagnóstico 2">
+          <label for="cie2">CIE 10</label>
+          <select class="form-control" id="cie2">
+            <option value="presuntivo">Presuntivo</option>
+            <option value="definitivo">Definitivo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información del Profesional -->
+    <div class="form-group">
+      <label for="profesional">Nombre del Profesional</label>
+      <input type="text" class="form-control" id="profesional" placeholder="Nombre del Profesional">
+    </div>
+
+    <div class="form-group">
+      <label for="codigo">Código MSP</label>
+      <input type="text" class="form-control" id="codigo" placeholder="Código MSP">
+    </div>
+
+    <!-- Botones -->
+    <div class="form-group btn-group">
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

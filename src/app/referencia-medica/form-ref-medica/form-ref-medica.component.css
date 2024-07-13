@@ -1,0 +1,88 @@
+.container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .diagnostico-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .diagnostico-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .diagnostico-group:last-child {
+    margin-right: 0;
+  }
+  
+  .btn-group {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn {
+    width: 100px;
+    margin-right: 10px;
+  }
+  #SeRefDer{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+  .table td {/*Borde de campos de la tabla*/
+    border: 5px solid #dfd8d8; 
+    background-color: #dfd8d8; 
+    border-radius: 10px; 
+    padding:5px; 
+}
+.table th {
+  border-radius: 10px; 
+  padding:5px; 
+}
+.table input {
+  width: 100%; /* Hace que el input ocupe todo el ancho de la celda */
+  border: none; /* Elimina el borde por defecto del input */
+  background: transparent; /* Hace el fondo del input transparente */
+  outline: none; /* Elimina el borde azul al hacer clic */
+}
+/* Estilos para la disposición de checkbox y texto */
+.checkbox-container {
+  display: flex;
+  align-items: center; 
+  width: 100%; 
+}
+
+.checkbox-label {
+  flex: 1; 
+  margin-right: -5px; 
+}
+
+
+
+
+  
