@@ -10,15 +10,15 @@
   }
   
   .wrapper {
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% de la altura de la pantalla */
-    background: url("imgLogin.png") no-repeat center center;
-    background-size: cover; /* Cubre todo el contenedor sin distorsionar */
-    background-position: center; /* Centrar la imagen de fondo */
+    height: 100vh;
+    background: url('imgLogin.png') no-repeat center center;
+    background-size: cover;
   }
-    
+  
   .login-container {
     background: rgba(192, 216, 219, 0.5);
     border: 1px solid rgba(0, 0, 0, 1);
@@ -51,7 +51,7 @@
   
   button {
     width: 195px;
-    height: 55px;
+    height: 65px;
     padding: 15px;
     background: rgba(34, 62, 158, 0.64);
     border: none;
