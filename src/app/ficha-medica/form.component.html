@@ -1,16 +1,156 @@
 <div class="container">
     <h1>Registrar Paciente</h1>
 </div>
-<form >
-<div class="input-container">
-    <input type="text" id="cedula"placeholder="Cedula">
-    <input type="text" id="nombre"placeholder="Nombre">
-    <input type="text" id="apellid o"placeholder="Apellido">
-    <input type="date" name="fechanacimiento" id="fechanacimiento" placeholder="Seleccioone">
-    <input type="text" id="lugar"placeholder="Lugar">
-    <div>
-        <button type="button" name="button" class="btn btn-success mx-2">Guardar</button>
-        <button type="button" name="button" class="btn btn-danger mx-2" (click)="cancelar()">Cancelar</button>
+<form>
+    <div class="input-container mx-4">
+        <div class="column">
+            <label for="profesion">Profesión</label>
+            <select name="profesion" id="profesion">
+                <option value="docente">Docente</option>
+                <option value="estudiante">Estudiante</option>
+            </select>
+            <label for="cedula">Cedula</label>
+            <input type="text" id="cedula" placeholder="Cedula">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" placeholder="Apellido">
+            <label for="fechanacimiento">Fecha Nacimiento</label>
+            <input type="date" name="fechanacimiento" id="fechanacimiento" placeholder="Seleccione">
+            <label for="lugar">Lugar</label>
+            <input type="text" id="lugar" placeholder="Lugar">
+        </div>
+        <div class="column">
+            <label for="pais">Pais</label>
+            <select name="pais" id="pais">
+                <option value="seleccione">Seleccione</option>
+                <option value="ecuador">Ecuador</option>
+                <option value="colombia">Colombia</option>
+                <option value="peru">Perú</option>
+                <option value="venezuela">Venezuela</option>
+                <option value="argentina">Argentina</option>
+                <option value="brasil">Brasil</option>
+                <option value="chile">Chile</option>
+                <option value="uruguay">Uruguay</option>
+                <option value="paraguay">Paraguay</option>
+                <option value="mexico">México</option>
+            </select>
+            <label for="direccion">Direción</label>
+            <input type="text" id="direccion" placeholder="Direccion">
+            <label for="barrio">Barrio</label>
+            <input type="text" id="barrio" placeholder="Barrio">
+            <label for="parroquia">Parroquia</label>
+            <input type="text" id="parroquia" placeholder="Parroquia">
+            <label for="canton">Cantón</label>
+            <input type="text" id="canton" placeholder="Cantón">
+            <label for="provincia">Provincia</label>
+            <select name="provincia" id="provincia">
+                <option value="seleccione">Seleccione</option>
+                <option value="azuay">Azuay</option>
+                <option value="bolivar">Bolívar</option>
+                <option value="canar">Cañar</option>
+                <option value="carchi">Carchi</option>
+                <option value="chimborazo">Chimborazo</option>
+                <option value="cotopaxi">Cotopaxi</option>
+                <option value="el-oro">El Oro</option>
+                <option value="esmeraldas">Esmeraldas</option>
+                <option value="galapagos">Galápagos</option>
+                <option value="guayas">Guayas</option>
+                <option value="imbabura">Imbabura</option>
+                <option value="loja">Loja</option>
+                <option value="los-rios">Los Ríos</option>
+                <option value="manabi">Manabí</option>
+                <option value="morona-santiago">Morona Santiago</option>
+                <option value="napo">Napo</option>
+                <option value="orellana">Orellana</option>
+                <option value="pastaza">Pastaza</option>
+                <option value="pichincha">Pichincha</option>
+                <option value="santa-elena">Santa Elena</option>
+                <option value="santo-domingo-de-los-tsachilas">Santo Domingo de los Tsáchilas</option>
+                <option value="sucumbios">Sucumbíos</option>
+                <option value="tungurahua">Tungurahua</option>
+                <option value="zamora-chinchipe">Zamora Chinchipe</option>
+            </select>
+        </div>
+        <div class="column"> 
+            <label for="telefono">Telefono</label>
+            <input type="text" id="telefono" placeholder="Telefono">
+            <label for="genero">Genero</label>
+            <select name="genero" id="genero">
+                <option value="seleccione">Seleccione</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+            </select>
+            <label for="estcivil">Estado Civil</label>
+            <select name="estcivil" id="estcivil">
+                <option value="seleccione">Seleccione</option>
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="viudo">Viudo</option>
+                <option value="divorciado">Divorciado</option>
+                <option value="unionlibre">Union Libre</option>
+            </select>
+            <label for="tiposangre">Tipo Sangre</label>
+            <select name="tiposangre" id="tiposangre">
+                <option value="seleccione">Seleccione</option>
+                <option value="o+">O+</option>
+                <option value="o-">O-</option>
+                <option value="a+">A+</option>
+                <option value="a-">A-</option>
+                <option value="b+">B+</option>
+                <option value="b-">B-</option>
+                <option value="ab+">AB+</option>
+                <option value="ab-">AB-</option>
+            </select>
+            <label for="carrera">Carrera</label>
+            <select name="carrera" id="carrera">
+                <option value="seleccione">Seleccione</option>
+                <option value="software">Desarrollo de software</option>
+                <option value="bigdata">Big Data</option>
+                <option value="ciberseguridad">Ciberseguridad</option>
+            </select>
+            <label for="ciclo">Ciclo</label>
+            <select name="ciclo" id="ciclo">
+                <option value="seleccione">Seleccione</option>
+                <option value="primero">Primero</option>
+                <option value="segundo">Segundo</option>
+                <option value="tercero">Tercero</option>
+                <option value="cuarto">Cuarto</option>
+                <option value="quinto">Quinto</option>
+            </select>
+        </div>
+        <div class="column mx-4">
+            <h3>Discapacidad</h3>
+            <label><input type="checkbox" name="discapacidad" value="fisica"> Fisica</label>
+            <label><input type="checkbox" name="discapacidad" value="intelectual">Intelectual</label>
+            <h3>Antecedentes:</h3>
+            <select name="opciones" id="opciones" multiple>
+                <option value="alergias">Alergias</option>
+                <option value="clinico">Clínico</option>
+                <option value="ginecologico">ginecologico</option>
+                <option value="traumatologico">traumatologico</option>
+                <option value="quirurgico">Quirúrgico</option>
+                <option value="farmacologico">Farmacológico</option>
+                <option value="no-aplica"> NO APLICA</option>
+            </select>
+        </div>
     </div>
-</div>
+
+    <div class="antecedentes-container mx-4">
+        <h3>Antecedentes:</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="antecedentes" value="alergias"> Alergias</label>
+            <label><input type="checkbox" name="antecedentes" value="clinico"> Clínico</label>
+            <label><input type="checkbox" name="antecedentes" value="ginecologico"> ginecologico</label>
+            <label><input type="checkbox" name="antecedentes" value="traumatologico"> traumatologico</label>
+            <label><input type="checkbox" name="antecedentes" value="quirurgico"> Quirúrgico</label>
+            <label><input type="checkbox" name="antecedentes" value="farmacologico"> Farmacológico</label>
+            <label><input type="checkbox" name="antecedentes" value="no-aplica"> NO APLICA</label>
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <button type="button" name="button" class="btn btn-success ">Guardar</button>
+        <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
+    </div>
 </form>
