@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -20,19 +20,28 @@
   }
   
   .login-container {
-    background: rgba(192, 216, 219, 0.5);
+    background: rgba(192, 216, 219, 0.50);
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 20px;
     width: 400px;
+    height: auto;
     padding: 20px;
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los elementos hijos horizontalmente */
   }
   
-  .login-container img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+  .logo {
+    width: 350px; /* Ajusta el tamaño según sea necesario */
+    height: 175px; /* Ajusta el tamaño según sea necesario */
+    background-image: url('logoIsta.png'); /* logo ista*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    margin-bottom: 20px; /* Añade margen inferior para separar del input */
   }
   
   .input-container {
@@ -40,18 +49,19 @@
   }
   
   input[type="text"], input[type="password"] {
-    width: 100%;
+    width: 325px;
+    height: 40px;
     padding: 15px;
     margin: 5px 0 10px;
     border: 1px solid #ccc;
-    border-radius: 24px;
-    font-size: 18px;
+    border-radius: 10px;
+    font-size: 20px;
     background: rgba(217, 217, 217, 1);
   }
   
   button {
-    width: 195px;
-    height: 65px;
+    width: 185px;
+    height: 50px; /*alto btn*/
     padding: 15px;
     background: rgba(34, 62, 158, 0.64);
     border: none;
@@ -59,6 +69,10 @@
     color: #f9f6f6;
     font-size: 20px;
     cursor: pointer;
+    margin-bottom: 20px;
+    display: flex; 
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
   }
   
   button:hover {
