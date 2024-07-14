@@ -1,5 +1,37 @@
 <div class="container">
-    <h1>Lista de Doctores</h1>
-    <p>Esta es la página de listado de doctores de nuestra aplicación.</p>
-
+  <h1>Lista de Doctores</h1>
+  <div>
+    <button class="btn btn-rounded btn-success mx-2" type="button"[routerLink]="['/doctor/formDoc']">Registrar doctor</button>
+    <div class="input-container">
+      <input type="text" id="cedula"placeholder="Cedula">
+      <button class="btn btn-primary mx-4" type="button">Buscar</button>
+      <div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>CI</th>
+              <th>Cod MSP</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Especialidad</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9874563210</td>
+              <td>MSP-2024</td>
+              <td>Maria</td>
+              <td>Crespo</td>
+              <td>Medicina General</td>
+              <td>
+                <button type="button" name="button" class="btn btn-warning mx-4">Editar</button>
+                <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+</div>

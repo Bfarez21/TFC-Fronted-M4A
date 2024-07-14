@@ -18,6 +18,7 @@ import { RouterModule, Routes } from '@angular/router';
 // ventana de registro paciente
 import { FormComponent } from './ficha-medica/form.component';
 import { FormRefMedicaComponent } from './referencia-medica/form-ref-medica/form-ref-medica.component';
+import { FormDocComponent } from './doctor/formdoc.component';
 
 
 const routes: Routes=[
@@ -33,8 +34,8 @@ const routes: Routes=[
   {path:'setting',component:SettingComponent},
   // creo ruta para llamar al formulario registro paciente
   {path:'ficha-medica/form',component:FormComponent},
-  {path:'form-ref-medica',component:FormRefMedicaComponent}
-  
+  {path:'form-ref-medica',component:FormRefMedicaComponent},
+  {path:'doctor/formDoc',component:FormDocComponent}
 ];
 
 @NgModule({
@@ -51,7 +52,8 @@ const routes: Routes=[
     SettingComponent,
     LoginComponent,
     FormComponent,
-    FormRefMedicaComponent
+    FormRefMedicaComponent,
+    FormDocComponent
   ],
   imports: [
     BrowserModule,
