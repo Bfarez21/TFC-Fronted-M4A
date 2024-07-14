@@ -1,88 +1,128 @@
-.container {
-    max-width: 100%;
-    padding: 20px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .diagnostico-row {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .diagnostico-group {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .diagnostico-group:last-child {
-    margin-right: 0;
-  }
-  
-  .btn-group {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .btn {
-    width: 100px;
-    margin-right: 10px;
-  }
-  #SeRefDer{
-    text-align: center;
-    margin-top: 10px;
-  }
-  .table {
-    border-collapse: separate;
-    border-spacing: 10px;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Ajuste para alinear el formulario en la parte superior */
+  height: 100vh;
+  margin: 0;
 }
 
-  .table td {/*Borde de campos de la tabla*/
-    border: 5px solid #dfd8d8; 
-    background-color: #dfd8d8; 
-    border-radius: 10px; 
-    padding:5px; 
+.container {
+  width: calc(100%);
+  padding: 0px;
+  box-sizing: border-box;
 }
-.table th {
-  border-radius: 10px; 
-  padding:5px; 
+
+.medical-form {
+  background-color: #f8f9fa;
+  padding: 0px;
+  border-radius: 5px;
+  width: 100%;
+  
 }
-.table input {
-  width: 100%; /* Hace que el input ocupe todo el ancho de la celda */
-  border: none; /* Elimina el borde por defecto del input */
-  background: transparent; /* Hace el fondo del input transparente */
-  outline: none; /* Elimina el borde azul al hacer clic */
+
+.medical-form h1 {
+  font-size: 20px;
+  color: #0056b3;
+  margin-bottom: 0px;
 }
-/* Estilos para la disposición de checkbox y texto */
-.checkbox-container {
+
+.medical-form h2 {
+  font-size: 18px;
+  color: #333;
+  margin-top: 0px;
+}
+
+.form-row {
   display: flex;
-  align-items: center; 
-  width: 100%; 
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1 1 10%; /* Ajusta el ancho de los grupos de formulario a aproximadamente 30% */
+  margin-bottom: 10px;
+  padding: 0 10px; /* Espaciado entre los grupos de formulario */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+}
+
+.form-group textarea {
+  height: 60px;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 40px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 20px; /* Opcional: espacio entre los botones */
+}
+
+.form-group button {
+  padding: 10px 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.form-group .save {
+  background-color: #28a745;
+  color: white;
+}
+
+.form-group .cancel {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse; /* Asegura que las celdas se unan sin espacio entre ellas */
+}
+th, td {
+ 
+  padding: 10px; /* Espaciado interno en las celdas */
+  text-align: left; /* Alineación del texto */
+  background-color: #f8f9fa; /* Color de fondo similar al de los campos del formulario */
+}
+
+
+
+input[type="text"], select, textarea {
+  width: 100%; /* Asegura que los campos ocupen todo el ancho de la celda */
+  
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Radio de borde consistente con otros campos */
+  background-color: #f8f9fa; /* Color de fondo consistente */
+}
+
+input[type="radio"] {
+  margin-right: 5px; /* Espacio a la derecha de los botones de radio */
+  transform: scale(1.5); /* Aumenta el tamaño del botón de radio */
 }
 
 .checkbox-label {
-  flex: 1; 
-  margin-right: -5px; 
+  margin-right: 40px; /* Espacio entre las etiquetas de los checkboxes */
 }
-
-
-
-
-  
