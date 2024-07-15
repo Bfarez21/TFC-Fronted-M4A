@@ -1,9 +1,9 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #E6E6E6;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Ajuste para alinear el formulario en la parte superior */
+  align-items: flex-start;
   height: 100vh;
   margin: 0;
 }
@@ -41,9 +41,9 @@ body {
 }
 
 .form-group {
-  flex: 1 1 10%; /* Ajusta el ancho de los grupos de formulario a aproximadamente 30% */
+  flex: 1 1 10%; /* Ajusta el ancho de los grupos de formulario*/
   margin-bottom: 10px;
-  padding: 0 10px; /* Espaciado entre los grupos de formulario */
+  padding: 0 5px; /* Espaciado entre los grupos de formulario */
 }
 
 .form-group label {
@@ -61,15 +61,15 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 14px;
-  background-color: #f8f9fa;
+  background-color: #E6E6E6;
 }
 
 .form-group textarea {
-  height: 60px;
+  height: 50px;
 }
 
 .form-group input[type="checkbox"] {
-  margin-right: 40px;
+  margin-right: 30px;
 }
 
 .button-container {
@@ -103,7 +103,7 @@ table {
 }
 th, td {
  
-  padding: 10px; /* Espaciado interno en las celdas */
+  padding: 5px; /* Espaciado interno en las celdas */
   text-align: left; /* Alineación del texto */
   background-color: #f8f9fa; /* Color de fondo similar al de los campos del formulario */
 }
