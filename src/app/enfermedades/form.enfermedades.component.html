@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Registro de acuerdo a la Clasificación Internacional de Enfermedades</h1>
+    <div class="form-container">
+        <div class="left-side">
+            <div class="form-group">
+                <label for="codigoEnf">Código enfermedad</label>
+                <input type="text" id="codigoEnf" placeholder="Ingrese el código de enfermedad"> 
+            </div>
+            <div class="form-group">
+                <label for="nombreEnf">Nombre enfermedad</label>
+                <input type="text" id="nombreEnf" placeholder="Ingrese el nombre de la enfermedad"> 
+            </div>
+            <div class="form-group">
+                <label for="tipoEnf">Tipo de enfermedad</label>
+                <select id="tipoEnf">
+                    <option value="psicologica">Psicológica</option>
+                    <option value="fisica">Física</option>
+                </select>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="form-group">
+                <label for="sintomaEnf">Síntomas</label>
+                <textarea id="sintomaEnf" class="large-input" placeholder="Síntomas"> </textarea> 
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" class="large-input" placeholder="Ingrese la descripción de la enfermedad"></textarea>
+            </div>
+        </div>
+    </div>
+
+    
+</div><div class="form-footer">
+    <button type="button" name="button" class="btn btn-success ">Guardar</button>
+    <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Regresar</button>
+</div>

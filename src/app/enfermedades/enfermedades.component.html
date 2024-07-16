@@ -1,6 +1,48 @@
 <div class="container">
-    <h1>Registro de acuerdo Clasificación Internacional
-        de Enfermedades</h1>
-    <p>Esta es la página de enfermedades de nuestra aplicación.</p>
+    <h2 class="text-center mb-4">Lista de Enfermedades CIE-10</h2>
+    <div>
+        <button class="btn btn-rounded btn-success mx-2" type="button"[routerLink]="['/enfermedades/form.enfermedades']">Registrar Enfermedades</button>        
+        <div class="row justify-content-center mb-3">
 
-  </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-center"> <!-- col-md-6 para ocupar 6 columnas en pantallas medianas y grandes -->
+                <input type="text" id="cedula" class="form-control text-center" style="width: 500px;" value="" readonly>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center justify-content-start"> <!-- col-md-3 para ocupar 3 columnas en pantallas medianas y grandes -->
+                <div class="btn-group" role="group" aria-label="Botones de acción">
+                    <button class="btn btn-primary">Buscar</button>
+                    <button class="btn btn-secondary">Ver todos</button>
+                </div>
+            </div>
+
+        </div>
+    
+        <table class="table table-bordered table-striped">
+            <thead class="thead-blue">
+                <tr>
+                    <th>Código Enfermedad</th>
+                    <th>Nombre enf</th>
+                    <th>Tipo enf</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hospital general</td>
+                    <td>0150799187</td>
+                    <td>DEPARTAMENTO MÉDICO</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button class="btn btn-info">Ver</button>
+                            <button class="btn btn-warning">Editar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>        
+            </tbody>
+        </table>
+        <div class="text-right">
+            <p>Total registros:<span>150</span></p>
+        </div>
+    </div>
+</div>

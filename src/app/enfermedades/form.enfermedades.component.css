@@ -1,0 +1,72 @@
+.text-center {
+    color: #04346C; /* Cambia el color a rojo (#FF0000) */
+}
+select{
+    border: 1px solid #ccc;
+    background: rgba(217, 217, 217, 1);
+}
+
+
+input{
+    width: 225px;
+    height: 40px;
+    padding: 15px;
+    margin: 8px 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    background: rgba(217, 217, 217, 1);
+  }
+
+  textarea{
+    border: 1px solid #ccc;
+    background: rgba(217, 217, 217, 1);
+}
+  
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Separación del título */
+}
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+.form-group label {
+    margin-bottom: 5px;
+    display: block;
+}
+.form-group input, .form-group select, .form-group textarea {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.large-input {
+    height: 160px;
+    width: 500; /* Altura ajustada para síntomas y descripción */
+}
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px; /* Separación entre las columnas */
+}
+.left-side, .right-side {
+    width: 48%;
+}
+.form-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Margen superior para separación del formulario */
+}
+.form-footer button {
+    margin: 0 10px; /* Margen horizontal entre los botones */
+    padding: 10px 20px; /* Ajuste del padding de los botones */
+    font-size: 16px;
+}
