@@ -1,7 +1,8 @@
-.container {
-    margin: 20px;
+/* Margen general para el contenido dentro del contenedor */
+.container > * {
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
 .text-center {
     text-align: center;
 }
@@ -35,11 +36,11 @@
 .table-bordered td {
     border: 1px solid #dee2e6;
     padding: 0.75rem;
-    vertical-align: top;
+    vertical-align: auto;
 }
 
 .btn {
-    margin-right: 5px;
+    margin-right: 10px;
     border: none;
     color: white;
     padding: 10px 15px;
@@ -56,6 +57,8 @@
 
 .btn-primary {
     background-color: #223E9E;
+    max-width: min-content;
+    margin-right: auto;
 }
 
 .btn-info {
@@ -73,13 +76,14 @@
 
 .text-right {
     text-align: right;
+    margin-right: 10px;
 }
 
 input[type="text"] {
     border: none;
     background-color: #f1f1f1;
     padding: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-right: 10px;
-    width: 150px;
+    width: 100px;
 }
