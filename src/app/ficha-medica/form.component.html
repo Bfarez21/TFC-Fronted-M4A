@@ -1,28 +1,30 @@
 <div class="container">
     <h1>Registrar Paciente</h1>
 </div>
-<form>
+
+
+<form ngNativeValidate (ngSubmit)="create()">
     <div class="input-container mx-4">
         <div class="column">
             <label for="profesion">Profesión</label>
-            <select name="profesion" id="profesion">
+            <select name="profesion" id="profesion" placeholder="Seleccione" [(ngModel)]="paciente.profesion_pac" name="profesion" required>
                 <option value="docente">Docente</option>
                 <option value="estudiante">Estudiante</option>
             </select>
             <label for="cedula">Cedula</label>
-            <input type="text" id="cedula" placeholder="Cedula">
+            <input type="text" id="cedula" placeholder="Cedula" class="form-control" [(ngModel)]="paciente.cedula_pac" name="cedula" required>
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="paciente.nombre_pac" name="nombre" required>
             <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" placeholder="Apellido">
+            <input type="text" id="apellido" placeholder="Apellido"[(ngModel)]="paciente.apellido_pac" name="apellido" required>
             <label for="fechanacimiento">Fecha Nacimiento</label>
-            <input type="date" name="fechanacimiento" id="fechanacimiento" placeholder="Seleccione">
+            <input type="date" name="fechanacimiento" id="fechanacimiento" placeholder="Seleccione" [(ngModel)]="paciente.fecha_nacimiento_pac" name="fechanacimiento"required>
             <label for="lugar">Lugar</label>
-            <input type="text" id="lugar" placeholder="Lugar">
+            <input type="text" id="lugar" placeholder="Lugar" [(ngModel)]="paciente.lugar_pac" name="Lugar" required>
         </div>
         <div class="column">
             <label for="pais">Pais</label>
-            <select name="pais" id="pais">
+            <select name="pais" id="pais" [(ngModel)]="paciente.pais_pac" name="pais" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="ecuador">Ecuador</option>
                 <option value="colombia">Colombia</option>
@@ -36,15 +38,15 @@
                 <option value="mexico">México</option>
             </select>
             <label for="direccion">Direción</label>
-            <input type="text" id="direccion" placeholder="Direccion">
+            <input type="text" id="direccion" placeholder="Direccion" [(ngModel)]="paciente.direccion_pac" name="direccion" required>
             <label for="barrio">Barrio</label>
-            <input type="text" id="barrio" placeholder="Barrio">
+            <input type="text" id="barrio" placeholder="Barrio" [(ngModel)]="paciente.barrio_pac" name="barrio" required>
             <label for="parroquia">Parroquia</label>
-            <input type="text" id="parroquia" placeholder="Parroquia">
+            <input type="text" id="parroquia" placeholder="Parroquia" [(ngModel)]="paciente.parroquia_pac" name="parroquia" required>
             <label for="canton">Cantón</label>
-            <input type="text" id="canton" placeholder="Cantón">
+            <input type="text" id="canton" placeholder="Cantón" [(ngModel)]="paciente.canton_pac" name="canton" required>
             <label for="provincia">Provincia</label>
-            <select name="provincia" id="provincia">
+            <select name="provincia" id="provincia" [(ngModel)]="paciente.provincia_pac" name="provincia" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="azuay">Azuay</option>
                 <option value="bolivar">Bolívar</option>
@@ -74,15 +76,15 @@
         </div>
         <div class="column"> 
             <label for="telefono">Telefono</label>
-            <input type="text" id="telefono" placeholder="Telefono">
+            <input type="text" id="telefono" placeholder="Telefono" [(ngModel)]="paciente.telefono_pac" name="telefono" required>
             <label for="genero">Genero</label>
-            <select name="genero" id="genero">
+            <select name="genero" id="genero" [(ngModel)]="paciente.genero_pac" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
             </select>
             <label for="estcivil">Estado Civil</label>
-            <select name="estcivil" id="estcivil">
+            <select name="estcivil" id="estcivil" [(ngModel)]="paciente.estado_civil_pac" name="estcivil" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="soltero">Soltero</option>
                 <option value="casado">Casado</option>
@@ -91,7 +93,7 @@
                 <option value="unionlibre">Union Libre</option>
             </select>
             <label for="tiposangre">Tipo Sangre</label>
-            <select name="tiposangre" id="tiposangre">
+            <select name="tiposangre" id="tiposangre" [(ngModel)]="paciente.tipo_sangre_pac" name="tiposangre" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="o+">O+</option>
                 <option value="o-">O-</option>
@@ -103,14 +105,14 @@
                 <option value="ab-">AB-</option>
             </select>
             <label for="carrera">Carrera</label>
-            <select name="carrera" id="carrera">
+            <select name="carrera" id="carrera" [(ngModel)]="paciente.carrera_pac" name="carrera" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="software">Desarrollo de software</option>
                 <option value="bigdata">Big Data</option>
                 <option value="ciberseguridad">Ciberseguridad</option>
             </select>
             <label for="ciclo">Ciclo</label>
-            <select name="ciclo" id="ciclo">
+            <select name="ciclo" id="ciclo" [(ngModel)]="paciente.ciclo_pac" name="ciclo" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="primero">Primero</option>
                 <option value="segundo">Segundo</option>
@@ -119,12 +121,13 @@
                 <option value="quinto">Quinto</option>
             </select>
         </div>
+        
         <div class="column mx-4">
             <h3>Discapacidad</h3>
-            <label><input type="checkbox" name="discapacidad" value="fisica"> Fisica</label>
-            <label><input type="checkbox" name="discapacidad" value="intelectual">Intelectual</label>
+            <label><input type="checkbox" name="discapacidad" value="fisica"[(ngModel)]="fichaMedica.discapacidad_fic" name="antecedentes" required> Fisica</label>
+            <label><input type="checkbox" name="discapacidad" value="intelectual"[(ngModel)]="fichaMedica.discapacidad_fic" name="antecedentes" required>Intelectual</label>
             <h3>Antecedentes:</h3>
-            <select name="opciones" id="opciones" multiple>
+            <select name="opciones" id="opciones" multiple  name="opciones" required>
                 <option value="alergias">Alergias</option>
                 <option value="clinico">Clínico</option>
                 <option value="ginecologico">ginecologico</option>
@@ -150,7 +153,7 @@
     </div>
 
     <div class="form-footer">
-        <button type="button" name="button" class="btn btn-success ">Guardar</button>
+        <button class="btn btn-success " role="button">Guardar</button>
         <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
     </div>
 </form>

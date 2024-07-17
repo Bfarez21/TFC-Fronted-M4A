@@ -8,9 +8,12 @@
         <input type="text" id="carrera"placeholder="Carrera">
        <button class="btn btn-rounded btn-primary mx-4"type="button">Buscar</button>
        <div>
+
+        <div class="table-responsive">
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
+              <th>Id</th>
               <th>CI</th>
               <th>Nombres</th>
               <th>Apellidos</th>
@@ -19,11 +22,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>012365478</td>
-              <td>Bryan</td>
-              <td>Farez</td>
-              <td>Estudiante</td>
+            <tr *ngFor="let paciente of pacientes">
+              <td>{{paciente.id_pac}}</td>
+              <td>{{paciente.cedula_pac}}</td>
+              <td>{{paciente.nombre_pac}}</td>
+              <td>{{paciente.apellido_pac}}</td>
+              <td>{{paciente.profesion_pac}}</td>
               <td>
                 <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
                 <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>
@@ -32,6 +36,7 @@
             </tr>
           </tbody>
         </table>
+      </div>
        </div>
       </div>
     </div>

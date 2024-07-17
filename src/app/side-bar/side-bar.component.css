@@ -30,12 +30,12 @@ body {
 /* Estilos para el área principal donde se cargarán los componentes */
 .main {
     min-height: 100vh;
-    overflow: hidden; /* Para manejar el contenido dentro de main */
     flex: 1; /* Que tome todo el espacio restante */
     min-height: 100vh; /* Ajusta la altura según tu diseño */
     padding: 0; /* Eliminar cualquier relleno interno */
     margin: 0; /* Eliminar cualquier margen */
-    transition: all 0.3s ease-in-out; /* Transición suave para cambios */
+    transition: all 0.3s ease-in-out;  /*Transición suave para cambios */
+    
 }
   
 #sidebar {
@@ -44,15 +44,17 @@ body {
     z-index: 1000;
     transition: all .25s ease-in-out;
     background-color: #709CCC;
-    display: flex;
     flex-direction: column;
     transition: all 0.3s ease-in-out; /* Transición suave para cambios */
- 
+    /* hace que el menu se mantenga fijo*/
+    /*position: fixed;*/
 }
 
 #sidebar.expand {
     width: 260px;
     min-width: 260px;
+    /*position: fixed;*/
+    
 }
 
 .toggle-btn {
@@ -170,5 +172,3 @@ a.sidebar-link:hover {
   .sidebar-link i {
     margin-right: 0.5rem;
   }
-
-  

@@ -17,3 +17,8 @@
     background-color: #28a745;
     border-radius: 10px;
 }
+.table-responsive {
+  max-height: 400px; /* Ajusta esta altura según tus necesidades */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+}

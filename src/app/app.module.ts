@@ -14,6 +14,14 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { SettingComponent } from './setting/setting.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+// http
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
+  // importamos el service
+  import { PacienteService } from './ficha-medica/paciente.service';
+  import { FichaMedicaService } from './ficha-medica/ficha-medica.service';
 
 // ventana de registro paciente
 import { FormComponent } from './ficha-medica/form.component';
@@ -39,7 +47,6 @@ const routes: Routes=[
 
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent}
-
 ];
 
 @NgModule({
@@ -64,9 +71,11 @@ const routes: Routes=[
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [PacienteService,FichaMedicaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
