@@ -23,50 +23,77 @@ input{
     background: rgba(217, 217, 217, 1);
 }
   
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
 }
 h1 {
     text-align: center;
-    margin-bottom: 20px; /* Separación del título */
-}
-.form-group {
-    margin-bottom: 15px;
-    width: 100%;
-}
-.form-group label {
-    margin-bottom: 5px;
-    display: block;
-}
-.form-group input, .form-group select, .form-group textarea {
-    padding: 8px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.large-input {
-    height: 160px;
-    width: 500; /* Altura ajustada para síntomas y descripción */
+    margin-bottom: 20px;
+    color: #04346C;
 }
 .form-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px; /* Separación entre las columnas */
+    flex-wrap: wrap;
+    gap: 20px;
 }
-.left-side, .right-side {
-    width: 48%;
+.form-group {
+    flex: 1;
+    min-width: 100%;
+}
+.form-group.half-width {
+    min-width: calc(50% - 10px);
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.form-group textarea {
+    height: 80px;
 }
 .form-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Margen superior para separación del formulario */
+    text-align: center;
+    margin-top: 20px;
 }
-.form-footer button {
-    margin: 0 10px; /* Margen horizontal entre los botones */
-    padding: 10px 20px; /* Ajuste del padding de los botones */
-    font-size: 16px;
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+.btn-danger {
+    background-color: #f44336;
+    color: white;
 }
