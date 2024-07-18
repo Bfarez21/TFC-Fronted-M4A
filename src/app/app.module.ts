@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { BaseChartDirective } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 
 // http
@@ -94,7 +94,7 @@ const routes: Routes=[
     MatProgressBarModule,
     BaseChartDirective
   ],
-  providers: [PacienteService,FichaMedicaService, provideAnimationsAsync()],
+  providers: [PacienteService,FichaMedicaService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
