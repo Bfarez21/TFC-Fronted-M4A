@@ -1,37 +1,37 @@
 <div class="container">
     <h1>Registrar Doctor</h1>
 </div>
-<form>
+<form ngNativeValidate (ngSubmit)="create()">
     <div class="input-container mx-4">
         <div class="column">
             <label for="cedula">Cedula</label>
-            <input type="text" id="cedula" placeholder="Cedula">
+            <input type="text" id="cedula" placeholder="Cedula"[(ngModel)]="doctor.cedula_doc" name="doctor" required>
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="doctor.nombre_doc" name="nombre" required>
             <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" placeholder="Apellido">
+            <input type="text" id="apellido" placeholder="Apellido"[(ngModel)]="doctor.apellido_doc" name="apellido" required>
             <label for="telefono">Telefono</label>
-            <input type="text" id="telefono" placeholder="Telefono">
+            <input type="text" id="telefono" placeholder="Telefono"[(ngModel)]="doctor.telefono_doc"name="telefono"required>
             <label for="contraseña">Contraseña</label>
-            <input type="password" id="contraseña" placeholder="Contraseña">
+            <input type="password" id="contraseña" placeholder="Contraseña"[(ngModel)]="doctor.password_doc" name="contraseña"required>
         </div>
         <div class="column">
             <label for="direccion">Direccion</label>
-            <input type="text" id="direccion"placeholder="Direccion">
+            <input type="text" id="direccion"placeholder="Direccion"[(ngModel)]="doctor.direccion_doc"name="direccion"required>
             <label for="genero">Genero</label>
-            <select name="genero" id="genero">
+            <select name="genero" id="genero"[(ngModel)]="doctor.genero_doc" name="genero" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
             </select>
             <label for="especialidad">Especialidad</label>
-            <input type="text" id="especialidad" placeholder="Especialidad">
+            <input type="text" id="especialidad" placeholder="Especialidad" [(ngModel)]="doctor.especialidad_doc" name="especialidad" required>
             <label for="codiMSP">Codigo MSP</label>
-            <input type="text" id="codiMSP" placeholder="Codigo MSP">
+            <input type="text" id="codiMSP" placeholder="Codigo MSP" [(ngModel)]="doctor.codigo_msp" name="codiMSP" required>
         </div>
     </div>
     <div class="form-footer">
-        <button type="button" name="button" class="btn btn-success ">Guardar</button>
+        <button role="button" class="btn btn-success ">Guardar</button>
         <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
     </div>
 </form>

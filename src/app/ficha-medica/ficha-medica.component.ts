@@ -5,7 +5,7 @@ import { PacienteService } from './paciente.service';
 import { FichaMedicaService } from './ficha-medica.service';
 @Component({
   selector: 'app-ficha-medica',
-  templateUrl: './ficha-medica.component.html',
+  templateUrl: './index-ficha-medica.component.html',
   styleUrl: './ficha-medica.component.css'
 })
 export class FichaMedicaComponent /*implements OnInit */{
@@ -15,7 +15,7 @@ export class FichaMedicaComponent /*implements OnInit */{
   constructor(private pacienteService: PacienteService) {}
 
   ngOnInit(): void {
-    this.cargarPacientes(); // Llama a cargarPacientes() en ngOnInit para obtener los datos
+    this.cargarPacientes(); // Llama a cargarPacientes()
   }
 
   cargarPacientes(): void {
