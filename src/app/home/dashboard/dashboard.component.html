@@ -1,0 +1,60 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="350px">
+    <ng-container *ngFor="let card of cards | async">
+      <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{card.title}}
+              
+              
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <ng-container [ngSwitch]="card.type">
+              <ng-template ngSwitchCase="visits">
+                <div class="container">
+                  <h1>Pacientes Totales: 104</h1>
+                  <div class="card-container">
+                    <div class="card">
+                      <p>Pacientes Alumnos:</p>
+                      <p>64</p>
+                      <div class="percentage up">51% &#8593;</div>
+                    </div>
+                    <div class="card">
+                      <p>Pacientes Profesores:</p>
+                      <p>40</p>
+                      <div class="percentage down">20% &#8595;</div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template ngSwitchCase="diseases">
+                <div class="container">
+                  <h1 style="font-size: 24px;">Distribución de Enfermedades</h1>
+                  <canvas baseChart
+                          [data]="pieChartData"
+                          [type]="pieChartType"
+                          [options]="pieChartOptions"
+                          style="max-height: 480px;">
+                  </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngSwitchCase="lineChart">
+                <div class="container">
+                  <h1 tyle="font-size: 24px;">Cantidad de Pacientes</h1>
+                  <canvas #lineChart 
+                  style="max-height: 500px;">
+                </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngSwitchDefault>
+                <div>No content available</div>
+              </ng-template>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</div>

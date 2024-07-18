@@ -1,5 +1,60 @@
 <div class="container">
-    <h1>Reportes</h1>
-    <p>Esta es la página de reportes medicos de nuestra aplicación.</p>
-
-  </div>
+  <select class="op01" name="carrera" id="carrera" name="carrera">
+    <option value="seleccione">Carrera</option>
+    <option value="software">Desarrollo de software</option>
+    <option value="bigdata">Big Data</option>
+    <option value="ciberseguridad">Ciberseguridad</option>
+  </select>
+  <select class="op01" name="paciente" id="paciente" name="paciente">
+    <option value="seleccione">Paciente</option>
+    <option value="estudiante">Estudiante</option>
+    <option value="Profesor">Profesor</option>
+  </select>
+  <select class="op01" name="genero" id="genero" name="genero">
+    <option value="seleccione">Genero</option>
+    <option value="masculino">Masculino</option>
+    <option value="femenino">Femenino</option>
+  </select>
+  <input class="op01" type="date" name="fecha" id="fecha" placeholder="Seleccione" name="fecha">
+  <select class="op01" name="año" id="año" name="año">
+    <option value="seleccione">Año</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+  </select>
+  <input type="text" id="cedula"placeholder="Cedula">
+            
+  <table>
+    <thead class="thead">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Cédula</th>
+        <th>Razón</th>
+        <th>Edad</th>
+        <th>Carrera</th>
+        <th>Fecha de visita</th>
+        <th>Receta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td class="nombre-col">{{ patient.nombre }}</td>
+        <td>{{ patient.cedula }}</td>
+        <td>{{ patient.razon }}</td>
+        <td>{{ patient.edad }}</td>
+        <td>{{ patient.carrera }}</td>
+        <td>{{ patient.fechaVisita }}</td>
+        <td>{{ patient.receta }}</td>
+        <td>
+          <button class="btn btn-ver" (click)="viewPatient(patient)">Ver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <p>N° TOTAL: <span>2</span></p>
+</div>
+</div>

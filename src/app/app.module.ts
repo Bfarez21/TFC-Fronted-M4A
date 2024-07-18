@@ -15,6 +15,10 @@ import { SettingComponent } from './setting/setting.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
+
 // http
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -28,11 +32,18 @@ import { FormComponent } from './ficha-medica/form.component';
 import { FormRefMedicaComponent } from './referencia-medica/form-ref-medica/form-ref-medica.component';
 import { FormDocComponent } from './doctor/formdoc.component';
 import { FormEnfermedadesComponent } from './enfermedades/form.enfermedades.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes=[
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
-  {path:'home',component: HomeComponent},
+  {path:'home',component: DashboardComponent},
   {path:'atencion-medica',component: AtencionMedicaComponent},
   {path:'ficha-medica',component:FichaMedicaComponent},
   {path:'referencia-medica',component:ReferenciaMedicaComponent},
@@ -65,7 +76,8 @@ const routes: Routes=[
     FormComponent,
     FormRefMedicaComponent,
     FormDocComponent,
-    FormEnfermedadesComponent
+    FormEnfermedadesComponent,
+    DashboardComponent
     
   ],
   imports: [
@@ -73,9 +85,16 @@ const routes: Routes=[
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    BaseChartDirective
   ],
-  providers: [PacienteService,FichaMedicaService],
+  providers: [PacienteService,FichaMedicaService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
