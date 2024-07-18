@@ -37,12 +37,28 @@
               </ng-template>
               <ng-template ngSwitchCase="diseases">
                 <div class="container">
-                  <h1>Distribución de Enfermedades</h1>
+                  <h1 style="font-size: 24px;">Distribución de Enfermedades</h1>
                   <canvas baseChart
                           [data]="pieChartData"
                           [type]="pieChartType"
-                          [options]="pieChartOptions">
+                          [options]="pieChartOptions"
+                          style="max-height: 480px;">
                   </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngSwitchCase="patients">
+                <div class="container">
+                  <h1>Cantidad de Pacientes</h1>
+                  <table class="patients-table">
+                    <tr>
+                      <th>Año</th>
+                      <th>Pacientes</th>
+                    </tr>
+                    <tr *ngFor="let patient of patientData">
+                      <td>{{patient.year}}</td>
+                      <td>{{patient.count}}</td>
+                    </tr>
+                  </table>
                 </div>
               </ng-template>
               <ng-template ngSwitchDefault>

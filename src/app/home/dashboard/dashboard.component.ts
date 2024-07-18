@@ -18,15 +18,13 @@ export class DashboardComponent {
           { title: 'Visitas Del Mes', cols: 1, rows: 1, type: 'visits' },
           { title: 'Enfermedades', cols: 1, rows: 1, type: 'diseases' },
           { title: 'Cantidad De Pacientes', cols: 1, rows: 1, type: 'patients' },
-          { title: 'Card 4', cols: 1, rows: 1, type: 'default' }
         ];
       }
 
       return [
         { title: 'Visitas Del Mes', cols: 2, rows: 1, type: 'visits' },
-        { title: 'Enfermedades', cols: 1, rows: 1, type: 'diseases' },
+        { title: 'Enfermedades', cols: 1, rows: 2, type: 'diseases' },
         { title: 'Cantidad De Pacientes', cols: 1, rows: 2, type: 'patients' },
-        { title: 'Card 4', cols: 1, rows: 1, type: 'default' }
       ];
     })
   );
@@ -37,14 +35,26 @@ export class DashboardComponent {
   };
 
   public pieChartData: ChartData<'pie'> = {
-    labels: ['Enfermedad A', 'Enfermedad B', 'Enfermedad C'],
+    labels: ['Gripe', 'Dolor De Cabeza', 'Dolor De Estomago'],
     datasets: [
       {
         data: [120, 150, 180],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        backgroundColor: ['#162778', '#4958A9', '#BAC3FF'],
       }
     ]
   };
 
   public pieChartType: 'pie' = 'pie';
+
+  // Datos de pacientes por año
+  public patientData = [
+    { year: 2017, count: 100 },
+    { year: 2018, count: 200 },
+    { year: 2019, count: 300 },
+    { year: 2020, count: 400 },
+    { year: 2021, count: 500 },
+    { year: 2022, count: 600 },
+    { year: 2023, count: 700 },
+    { year: 2024, count: 800 }
+  ];
 }

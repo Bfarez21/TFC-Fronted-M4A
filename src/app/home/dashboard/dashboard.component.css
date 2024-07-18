@@ -71,3 +71,23 @@
 .disease {
   margin-bottom: 10px;
 }
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.patients-table th, .patients-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.patients-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.patients-table td {
+  text-align: center;
+}
