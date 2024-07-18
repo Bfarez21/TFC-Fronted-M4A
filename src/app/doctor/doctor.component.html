@@ -30,7 +30,7 @@
               <td>{{doctor.especialidad_doc}}</td>
               <td>
                 <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4">Editar</button>
+                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/doctor/formDoc',doctor.id_doctor]">Editar</button>
                 <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
               </td>
             </tr>

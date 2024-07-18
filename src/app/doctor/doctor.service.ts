@@ -21,4 +21,9 @@ export class DoctorService {
   create(doctor:Doctor):Observable<Doctor>{
     return this.http.post<Doctor>(this.urlEndPoint, doctor,{headers:this.httpHeaders})
   }
+
+  // metodo para obtener por id
+  getDoctor(id_doctor=0):Observable<Doctor>{
+    return this.http.get<Doctor>(`${this.urlEndPoint}/${id_doctor}`);
+  }
 }

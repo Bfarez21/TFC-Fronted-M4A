@@ -26,6 +26,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   // importamos el service
   import { PacienteService } from './ficha-medica/paciente.service';
   import { FichaMedicaService } from './ficha-medica/ficha-medica.service';
+  import { DoctorService } from './doctor/doctor.service';
 
 // ventana de registro paciente
 import { FormComponent } from './ficha-medica/form.component';
@@ -55,6 +56,8 @@ const routes: Routes=[
   {path:'ficha-medica/form',component:FormComponent},
   {path:'form-ref-medica',component:FormRefMedicaComponent},
   {path:'doctor/formDoc',component:FormDocComponent},
+  // creo ruta para llamar al form pero con id, para editar
+  {path:'doctor/formDoc/:id',component:FormDocComponent},
 
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent}
@@ -94,7 +97,7 @@ const routes: Routes=[
     MatProgressBarModule,
     BaseChartDirective
   ],
-  providers: [PacienteService,FichaMedicaService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
+  providers: [PacienteService,FichaMedicaService,DoctorService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

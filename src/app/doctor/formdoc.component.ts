@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Doctor } from "./doctor";
 import { DoctorService } from "./doctor.service";
 import Swal from "sweetalert2";
@@ -13,7 +13,9 @@ import Swal from "sweetalert2";
 export class FormDocComponent implements OnInit{
 
     public doctor:Doctor = new Doctor()
-    constructor(private doctorService:DoctorService, private router:Router){}
+
+    constructor(private doctorService:DoctorService, private router:Router,
+        private activateRouter:ActivatedRoute){}
 
     // metodo regresar ventana anterior
     cancelar(){
@@ -28,7 +30,19 @@ export class FormDocComponent implements OnInit{
            }
           )
       }
+
+      // metodo cargar pacientes en el form
+      cargarDoctor():void{
+        this.activateRouter.params.subscribe(params=>{
+            let id=params['id']
+            if(id){
+                this.doctorService.getDoctor(id).subscribe((doctor)=>this.doctor=doctor)
+            }
+        })
+      }
+
+        // llamo al metodo cargarDoctor cuando inicializo el form para editar
     ngOnInit(): void {
-        
+        this.cargarDoctor()
     }
 }
