@@ -11,6 +11,12 @@
   bottom: 15px;
 }
 
+canvas {
+  max-width: 100%; /* Asegurarse de que el gráfico no se extienda más allá del contenedor */
+  max-height: 200; /* Ajustar el tamaño máximo del gráfico */
+}
+
+
 .more-button {
   position: absolute;
   top: 5px;
@@ -24,7 +30,7 @@
 .container {
   text-align: center;
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -44,7 +50,7 @@
 
 .card p {
   margin: 0;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .percentage {
@@ -65,29 +71,9 @@
 }
 
 .disease-container {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .disease {
-  margin-bottom: 10px;
-}
-
-.patients-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.patients-table th, .patients-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.patients-table th {
-  background-color: #f2f2f2;
-  text-align: center;
-}
-
-.patients-table td {
-  text-align: center;
+  margin-bottom: 15px;
 }

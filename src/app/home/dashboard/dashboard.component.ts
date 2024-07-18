@@ -1,14 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { ChartData, ChartOptions } from 'chart.js';
+import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
+  @ViewChild('lineChart') lineChart!: ElementRef<HTMLCanvasElement>;
+
   private breakpointObserver = inject(BreakpointObserver);
 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -17,14 +19,14 @@ export class DashboardComponent {
         return [
           { title: 'Visitas Del Mes', cols: 1, rows: 1, type: 'visits' },
           { title: 'Enfermedades', cols: 1, rows: 1, type: 'diseases' },
-          { title: 'Cantidad De Pacientes', cols: 1, rows: 1, type: 'patients' },
+          { title: 'Gráfico de Líneas', cols: 1, rows: 1, type: 'lineChart' }
         ];
       }
 
       return [
-        { title: 'Visitas Del Mes', cols: 2, rows: 1, type: 'visits' },
+        { title: 'Visitas Del Mes' , cols: 2, rows: 1, type: 'visits' },
         { title: 'Enfermedades', cols: 1, rows: 2, type: 'diseases' },
-        { title: 'Cantidad De Pacientes', cols: 1, rows: 2, type: 'patients' },
+        { title: 'Gráfico de Líneas', cols: 1, rows: 2, type: 'lineChart' }
       ];
     })
   );
@@ -49,12 +51,49 @@ export class DashboardComponent {
   // Datos de pacientes por año
   public patientData = [
     { year: 2017, count: 100 },
-    { year: 2018, count: 200 },
-    { year: 2019, count: 300 },
-    { year: 2020, count: 400 },
-    { year: 2021, count: 500 },
-    { year: 2022, count: 600 },
-    { year: 2023, count: 700 },
-    { year: 2024, count: 800 }
+    { year: 2018, count: 190 },
+    { year: 2019, count: 302 },
+    { year: 2020, count: 360 },
+    { year: 2021, count: 470 },
+    { year: 2022, count: 530 },
+    { year: 2023, count: 500 },
+    { year: 2024, count: 130 }
   ];
+
+  ngAfterViewInit() {
+    this.renderLineChart();
+  }
+
+  renderLineChart() {
+    new Chart(this.lineChart.nativeElement, {
+      type: 'line',
+      data: {
+        labels: this.patientData.map(d => d.year.toString()),
+        datasets: [
+          {
+            data: this.patientData.map(d => d.count),
+            label: 'Cantidad de Pacientes',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo del área bajo la línea
+          borderColor: 'rgba(75, 192, 192, 1)', // Color de la línea
+          pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Color de fondo de los puntos
+          pointBorderColor: '#fff', // Color del borde de los puntos
+          pointHoverBackgroundColor: '#fff', // Color de fondo de los puntos al pasar el cursor
+          pointHoverBorderColor: 'rgba(75, 192, 192, 1)', // Color del borde de los puntos al pasar el cursor
+          fill: 'origin', // Relleno del área bajo la línea
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
 }
