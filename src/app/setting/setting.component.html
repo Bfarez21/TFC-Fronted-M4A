@@ -1,5 +1,51 @@
-<div class="container">
-    <h1>Configuración</h1>
-    <p>Esta es la página de setting del Sistema de nuestra aplicación.</p>
+<div class="Container">
+  
+  <form class="formulario-blanco">
+    <h1 class="input-container mx-4">Ajustes</h1>
+    <div class="input-container mx-4">
+      <div class="input-edit-container">
+        <label for="contenido">Contenido</label>
+        <div class="input-edit-group">
+          <input type="text" id="contenido" placeholder="Ingrese el contenido">
+          <button type="button" class="btn btn-edit"></button>
+        </div>
+      </div>
 
-  </div>
+      <div class="input-edit-container">
+        <label for="leyenda">Leyenda</label>
+        <div class="input-edit-group">
+          <input type="text" id="leyenda" placeholder="Ingrese la Leyenda">
+          <button type="button" class="btn btn-edit"></button>
+        </div>
+      </div>
+
+      <div class="input-edit-container">
+        <label for="logo">Logo</label>
+        <div class="input-edit-group">
+          <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*">
+          <button type="button" class="btn btn-edit"></button>
+        </div>
+      </div>
+
+      <div class="input-edit-container">
+        <label for="dir">Direccion</label>
+        <div class="input-edit-group">
+          <input type="text" id="dir" placeholder="Ingrese la direccion del instituto">
+          <button type="button" class="btn btn-edit"></button>
+        </div>
+      </div>
+
+      <div class="input-edit-container">
+        <label for="rec">Rector</label>
+        <div class="input-edit-group">
+          <input type="text" id="rec" placeholder="Ingrese el nombre de Rector de la institución">
+          <button type="button" class="btn btn-edit"></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button type="button" name="button" class="btn btn-success">Crear nueva configuracion</button>
+      <button type="button" name="button" class="btn btn-danger">Ver anteriores configuraciones</button>
+    </div>
+  </form>
+</div>
