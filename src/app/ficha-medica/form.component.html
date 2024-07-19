@@ -122,33 +122,27 @@
             </select>
         </div>
         
-        <div class="column mx-4">
-            <h3>Discapacidad</h3>
-            <label><input type="checkbox" name="discapacidad" value="fisica"[(ngModel)]="fichaMedica.discapacidad_fic" name="antecedentes" > Fisica</label>
-            <label><input type="checkbox" name="discapacidad" value="intelectual"[(ngModel)]="fichaMedica.discapacidad_fic" name="antecedentes">Intelectual</label>
-            <h3>Antecedentes:</h3>
-            <select name="opciones" id="opciones" multiple  name="opciones" required>
-                <option value="alergias">Alergias</option>
-                <option value="clinico">Clínico</option>
-                <option value="ginecologico">ginecologico</option>
-                <option value="traumatologico">traumatologico</option>
-                <option value="quirurgico">Quirúrgico</option>
-                <option value="farmacologico">Farmacológico</option>
-                <option value="no-aplica"> NO APLICA</option>
-            </select>
-        </div>
-    </div>
+        <div class="antecedentes-container mx-4">
+            <div>
+                <h3>Discapacidad</h3>
+                <label><input type="checkbox" name="discapacidad" value="fisica"> Fisica</label>
+                <input type="number" id="fisica" placeholder="%">
+                <label><input type="checkbox" name="discapacidad" value="intelectual"> Intelectual</label>
+                <input type="text" id="intelectual" placeholder="Tipo">
+            </div>
 
-    <div class="antecedentes-container mx-4">
-        <h3>Antecedentes:</h3>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="antecedentes" value="alergias"> Alergias</label>
-            <label><input type="checkbox" name="antecedentes" value="clinico"> Clínico</label>
-            <label><input type="checkbox" name="antecedentes" value="ginecologico"> ginecologico</label>
-            <label><input type="checkbox" name="antecedentes" value="traumatologico"> traumatologico</label>
-            <label><input type="checkbox" name="antecedentes" value="quirurgico"> Quirúrgico</label>
-            <label><input type="checkbox" name="antecedentes" value="farmacologico"> Farmacológico</label>
-            <label><input type="checkbox" name="antecedentes" value="no-aplica"> NO APLICA</label>
+            <div >
+                <h3>Antecedentes:</h3>
+                <div class="checkbox-group" name="antecedentes"required>
+                    <label><input type="checkbox" name="antecedentes" value="alergias"> Alergias</label>
+                    <label><input type="checkbox" name="antecedentes" value="clinico"> Clínico</label>
+                    <label><input type="checkbox" name="antecedentes" value="ginecologico"> Ginecologico</label>
+                    <label><input type="checkbox" name="antecedentes" value="traumatologico"> Traumatologico</label>
+                    <label><input type="checkbox" name="antecedentes" value="quirurgico"> Quirúrgico</label>
+                    <label><input type="checkbox" name="antecedentes" value="farmacologico"> Farmacológico</label>
+                    <label><input type="checkbox" name="antecedentes" value="no-aplica"> NO APLICA</label>
+                </div>
+            </div>
         </div>
     </div>
 
