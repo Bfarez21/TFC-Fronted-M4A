@@ -1,0 +1,24 @@
+
+input{
+    width: 225px;
+    height: 40px;
+    padding: 15px;
+    margin: 8px 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    background: rgba(217, 217, 217, 1);
+  }
+  .input-container {
+    margin-bottom: 20px;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    border-radius: 10px;
+}
+.table-responsive {
+  max-height: 400px; /* Ajusta esta altura según tus necesidades */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+}

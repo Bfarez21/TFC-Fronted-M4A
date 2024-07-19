@@ -1,0 +1,246 @@
+<div class="container">
+    <h2>Ingreso de Atención Medica</h2>
+</div>
+<div class="mx-4">
+    <label for="motivo">Datos de Filiación</label>
+</div>
+
+<div class="container-datos mx-4">
+    <form class="form-grid mx-4">
+        <div class="input-group">
+            <input type="text" id="cedula" name="cedula" placeholder="Cédula" class="small-input">
+            <button type="button" class="btn btn-primary">Search</button>
+        </div>
+        <div class="input-container">
+            <input type="text" id="profesion" name="profesion" placeholder="profesion" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="carrera" name="carrera" placeholder="Carrera" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="barrio" name="barrio" placeholder="Barrio" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="parroquia" name="parroquia" placeholder="Parroquia" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="canton" name="canton" placeholder="Cantón" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="provincia" name="provincia" placeholder="Provincia" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono" disabled>
+        </div>
+        <div class="input-container">
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="lugar" name="lugar" placeholder="Lugar" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="pais" name="pais" placeholder="País" disabled>
+        </div>
+        <div class="input-container">
+            <input type="number" id="edad" name="edad" placeholder="Edad" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="genero" name="genero" placeholder="Género" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="estado_civil" name="estado_civil" placeholder="Estado Civil" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="tipo_sangre" name="tipo_sangre" placeholder="Tipo de Sangre" disabled>
+        </div>
+        <div class="input-container">
+            <input type="text" id="ciclo" name="ciclo" placeholder="Ciclo" disabled>
+        </div>
+    </form>
+</div>
+
+<div class="textarea-container mx-4">
+    <label for="motivo">Motivo Consulta:</label>
+    <textarea id="motivo" name="observaciones" placeholder="Escribe tus observaciones aquí..." rows="4"
+        cols="50"></textarea>
+</div>
+
+<div class="textarea-container mx-4">
+    <div class="table-responsive">
+        <label for="antecedentes">Antecedentes familiares y personales</label>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Alergias</th>
+                    <th>Clinica</th>
+                    <th>Ginecólogico</th>
+                    <th>Traumatológico</th>
+                    <th>Quirúcgico</th>
+                    <th>Farmacológico</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>
+                        <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="textarea-container mx-4">
+    <label for="enfermedad">Enfermedad Actual</label>
+    <textarea id="enfermedad" name="enfermedad" placeholder="Escribe tus observaciones aquí..." rows="4"
+        cols="50"></textarea>
+</div>
+<div class="mx-4">
+    <label for="signos">Signos Vitales</label>
+</div>
+<div class="container-signos mx-4">
+    <form class="form-grid-signos mx-4">
+        <div class="input-container">
+            <label for="pa">PA</label>
+            <input type="text" id="pa" placeholder="PA:">
+        </div>
+        <div class="input-container">
+            <label for="peso">PESO</label>
+            <input type="text" id="peso" placeholder="PESO:">
+        </div>
+        <div class="input-container">
+            <label for="talla">TALLA</label>
+            <input type="text" id="talla" placeholder="TALLA:">
+        </div>
+        <div class="input-container">
+            <label for="imc">IMC</label>
+            <input type="text" id="imc" placeholder="IMC:">
+        </div>
+        <div class="input-container">
+            <label for="fc">FC</label>
+            <input type="text" id="fc" placeholder="FC:">
+        </div>
+        <div class="input-container">
+            <label for="fr">FR</label>
+            <input type="text" id="fr" placeholder="FR:">
+        </div>
+        <div class="input-container">
+            <label for="t">T°</label>
+            <input type="text" id="t" placeholder="T°:">
+        </div>
+        <div class="input-container">
+            <label for="sat">Sat.O2</label>
+            <input type="text" id="sat" placeholder="SAT.O2°:">
+        </div>
+        <div class="input-container">
+            <label for="glasgow">GLASGOW</label>
+            <!-- <input type="text" id="glasgow" placeholder="GLASGOW:"> -->
+        </div>
+        <div class="input-container">
+            <label for="ocular">OCULAR</label>
+            <input type="text" id="ocular" placeholder="OCULAR:">
+        </div>
+        <div class="input-container">
+            <label for="verbal">VERBAL</label>
+            <input type="text" id="verbal" placeholder="VERBAL:">
+        </div>
+        <div class="input-container">
+            <label for="motora">MOTORA</label>
+            <input type="text" id="motora" placeholder="MOTORA:">
+        </div>
+        <div class="input-container">
+            <label for="total">TOTAL</label>
+            <input type="text" id="total" placeholder="TOTAL:">
+        </div>
+        <div class="input-container">
+            <label for="capilar">LLEN.CAPILAR</label>
+            <input type="text" id="capilar" placeholder="LLEN. CAPILAR:">
+        </div>
+        <div class="input-container">
+            <label for="pupilar">R.PUPILAR</label>
+            <input type="text" id="pupilar" placeholder="R.PUPILAR:">
+        </div>
+    </form>
+</div>
+
+<div class="mx-4">
+    <label for="examenfisico">Exámen Físico</label>
+</div>
+
+<div class="container-fisico mx-4">
+    <form class="form-grid-fisico mx-4">
+        <div class="form-row">
+            <label for="piel">PIEL Y FANERAS</label>
+            <input type="text" id="piel" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="cabeza">CABEZA</label>
+            <input type="text" id="cabeza" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="cuello">CUELLO</label>
+            <input type="text" id="cuello" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="torax">TÓRAX</label>
+            <input type="text" id="torax" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="corazon">CORAZÓN</label>
+            <input type="text" id="corazon" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="abdomen">ABDOMEN</label>
+            <input type="text" id="abdomen" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="inguinal">R. INGUINAL</label>
+            <input type="text" id="inguinal" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="superiores">M.SUPERIORES</label>
+            <input type="text" id="superiores" placeholder="Escribe aquí...">
+        </div>
+        <div class="form-row">
+            <label for="inferiores">M.INFERIORES</label>
+            <input type="text" id="inferiores" placeholder="Escribe aquí...">
+        </div>
+    </form>
+</div>
+<div class="textarea-container mx-4">
+    <label for="examenes">Exámenes Complemetarios</label>
+    <textarea id="enfermedad" name="enfermedad" placeholder="Escribe tus observaciones aquí..." rows="4"
+        cols="50"></textarea>
+        <label for="fileUpload">Subir PDF:</label>
+    <input type="file" id="fileUpload" name="fileUpload" accept=".pdf">
+</div>
+
+<div class="mx-4">
+    <label for="diagnostico">Diagnóstico</label>
+</div>
+
+<div class="textarea-container mx-4">
+    <label for="tratamiento">Tratamiento</label>
+    <textarea id="tratamiento" name="tratamiento" placeholder="Escribe tus observaciones aquí..." rows="4"
+        cols="50"></textarea>
+</div>
+
+<div class="form-footer">
+    <button class="btn btn-success " role="button">Guardar</button>
+    <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
+</div>

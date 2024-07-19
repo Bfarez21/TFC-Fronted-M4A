@@ -1,0 +1,183 @@
+.container-datos {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .container-signos {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  .container-fisico {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  h2 {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .form-grid-signos {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 0.9rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  button {
+    padding: 5px 15px;
+    margin-top: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+ 
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .small-input {
+    width: 150px; /* Ajusta el tamaño del input según tus necesidades */
+    margin-right: 10px; /* Espacio entre el input y el botón */
+  }
+  
+ /* Estilo para el contenedor del textarea */
+.textarea-container {
+  margin-bottom: 20px; /* Separación inferior entre textarea-container y otros elementos */
+}
+
+/* Estilo para el textarea */
+.textarea-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Permite cambiar el tamaño verticalmente */
+}
+
+.form-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* Alineación a la derecha */
+}
+
+.form-footer button {
+  margin-left: 10px; /* Espacio entre los botones */
+}
+
+.table-responsive {
+  max-height: 400px; /* Ajusta esta altura según tus necesidades */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+}
+
+
+
+.form-flex-fisico {
+  display: flex;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre las filas de labels */
+  flex: 1; /* Toma el espacio necesario */
+}
+
+.form-grid-fisico {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* La columna de labels y la de inputs */
+  gap: 10px;
+}
+
+.form-row {
+  display: contents; /* Hace que los elementos internos se alineen en la cuadrícula sin agregar un nuevo contenedor de fila */
+}
+
+label {
+  justify-self: start; /* Alinea el label a la izquierda */
+}
+/* Estilo del botón de búsqueda */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Estilo del botón de guardar */
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Estilo del botón de cancelar */
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+}
+/* Estilo del botón de cancelar */
+.btn-warning {
+  background-color: #EDBA0A;
+  color: rgb(5, 5, 5);
+  border-radius: 5px;
+}
+
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+input[type="file"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+  

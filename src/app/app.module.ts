@@ -40,6 +40,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FormAtencionMedicaComponent } from './atencion-medica/form-atencion-medica.component';
 
 const routes: Routes=[
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -56,6 +57,8 @@ const routes: Routes=[
   {path:'ficha-medica/form',component:FormComponent},
   {path:'form-ref-medica',component:FormRefMedicaComponent},
   {path:'doctor/formDoc',component:FormDocComponent},
+  {path:'atencion-medica/form-atencion-medica',component:FormAtencionMedicaComponent},
+  
   // creo ruta para llamar al form pero con id, para editar
   {path:'doctor/formDoc/:id',component:FormDocComponent},
 
@@ -80,7 +83,9 @@ const routes: Routes=[
     FormRefMedicaComponent,
     FormDocComponent,
     FormEnfermedadesComponent,
-    DashboardComponent
+    DashboardComponent,
+    FormAtencionMedicaComponent
+    
     
   ],
   imports: [

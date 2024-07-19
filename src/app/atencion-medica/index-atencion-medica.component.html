@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Atenciones Medicas</h1>
+  <div>
+    <button class="btn btn-rounded btn-success mx-2"type="button"[routerLink]="['/atencion-medica/form-atencion-medica']">Agregar</button>
+    <div class="input-container">
+      <input type="text" id="cedula"placeholder="Cedula">
+      <input type="date" id="fecha"placeholder="Fecha de la atención">
+     <button class="btn btn-rounded btn-primary mx-4"type="button">Buscar</button>
+     <div>
+
+      <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>CI</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Carrera</th>
+            <th>Fecha Atención</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <!-- <td>{{paciente.id_pac}}</td>   *ngFor="let paciente of pacientes"
+            <td>{{paciente.cedula_pac}}</td>
+            <td>{{paciente.nombre_pac}}</td>
+            <td>{{paciente.apellido_pac}}</td>
+            <td>{{paciente.profesion_pac}}</td> -->
+            <td>1</td>
+            <td>0123654789</td>
+            <td>Carme</td>
+            <td>Tacuri</td>
+            <td>Software</td>
+            <td>12/05/2024</td>
+            <td>
+              <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
+              <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>
+              <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+     </div>
+    </div>
+  </div>
+</div>
