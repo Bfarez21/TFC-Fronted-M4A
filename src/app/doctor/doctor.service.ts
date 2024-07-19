@@ -13,7 +13,7 @@ export class DoctorService {
 
   constructor(private http:HttpClient) { }
 
-   // metodo obtener doctor
+   // metodo obtener todos doctor
    getDoctores(): Observable<Doctor[]>{
     return this.http.get<Doctor[]>(this.urlEndPoint);
   }
@@ -23,7 +23,17 @@ export class DoctorService {
   }
 
   // metodo para obtener por id
-  getDoctor(id_doctor=0):Observable<Doctor>{
-    return this.http.get<Doctor>(`${this.urlEndPoint}/${id_doctor}`);
+  getDoctor(id=0):Observable<Doctor>{
+    return this.http.get<Doctor>(`${this.urlEndPoint}/${id}`);
+  }
+  // metodo para eliminar doctor
+  deleteDoctor(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders });
+  }
+
+  // metodo buscar por cedula
+  buscarPorCedula(cedula: string): Observable<Doctor> {
+    const url = `${this.urlEndPoint}/cedula/${cedula}`;
+    return this.http.get<Doctor>(url);
   }
 }

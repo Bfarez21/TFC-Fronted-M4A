@@ -5,7 +5,7 @@
     <div class="input-container mx-4">
         <div class="column">
             <label for="cedula">Cedula</label>
-            <input type="text" id="cedula" placeholder="Cedula"[(ngModel)]="doctor.cedula_doc" name="doctor" required>
+            <input type="text" id="cedula" placeholder="Cedula"[(ngModel)]="doctor.cedula_doc" name="doctor" [disabled]="editMode" required>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="doctor.nombre_doc" name="nombre" required>
             <label for="apellido">Apellido</label>
