@@ -1,51 +1,41 @@
 <div class="container">
-  <h2 class="text-center">LISTADO DE REFERENCIAS MÉDICAS</h2>
-  
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <button class="btn btn-rounded btn-success" type="button" (click)="navegarAFormulario()">Nuevo Registro</button>
+    <h2 class="text-center">LISTADO DE REFERENCIAS MÉDICAS</h2>
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/form-ref-medica']">Nuevo Registro</button>
       
       <div>
-          <label for="cedula">CÉDULA:</label>
-          <input type="text" id="cedula" value="0150799187" readonly>
-          <button class="btn btn-primary">Consultar</button>
+        <label for="cedula">CÉDULA:</label>
+        <input type="text" id="cedula" value="0150799187" readonly>
+        <button class="btn btn-primary">Consultar</button>
       </div>
-  </div>
-
-  <table class="table table-bordered">
+    </div>
+  
+    <table class="table table-bordered">
       <thead>
-          <tr>
-              <th>NOMBRE DE LA INSTITUCIÓN</th>
-              <th>CÉDULA</th>
-              <th>SERVICIO</th>
-              <th>ACCION</th>
-          </tr>
+        <tr>
+          <th>NOMBRE DE LA INSTITUCIÓN</th>
+          <th>CÉDULA</th>
+          <th>SERVICIO</th>
+          <th>ACCIÓN</th>
+        </tr>
       </thead>
       <tbody>
-          <tr>
-              <td>Hospital general</td>
-              <td>0150799187</td>
-              <td>DEPARTAMENTO MÉDICO</td>
-              <td>
-                  <button class="btn btn-info">Ver</button>
-                  <button class="btn btn-warning">Editar</button>
-                  <button class="btn btn-danger">Eliminar</button>
-              </td>
-          </tr>
-          
-          <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                  <button class="btn btn-info">Ver</button>
-                  <button class="btn btn-warning">Editar</button>
-                  <button class="btn btn-danger">Eliminar</button>
-              </td>
-          </tr>
+        <tr *ngFor="let referencia of referencias">
+          <td>{{ referencia.institucion_ref }}</td>
+          <td>0150799187</td>
+          <td>{{ referencia.servicio_ref }}</td>
+          <td>
+            <button class="btn btn-info">Ver</button>
+            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
       </tbody>
-  </table>
-
-  <div class="text-right">
-      <p>N° TOTAL DE REGISTROS: <span>150</span></p>
+    </table>
+  
+    <div class="text-right">
+      <p>N° TOTAL DE REGISTROS: <span>{{ referencias.length }}</span></p>
+    </div>
   </div>
-</div>
+  

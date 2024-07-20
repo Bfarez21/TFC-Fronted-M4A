@@ -1,151 +1,120 @@
 <div class="container">
   <div class="medical-form">
-      <h1>Registrar referencia médica</h1>
-      <form>
-          <div class="form-row">
+    <h1>Registrar referencia médica</h1>
+    <form ngNativeValidate (ngSubmit)="create()" #referenciaForm="ngForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="institucion_ref">NOMBRE DE LA INSTITUCIÓN</label>
+          <input type="text" id="institucion_ref" name="institucion_ref" [(ngModel)]="referencia.institucion_ref" required>
+        </div>
+        <div class="form-group">
+          <label for="cedula_ref">CÉDULA</label>
+          <input type="text" id="cedula_ref" name="cedula_ref">
+        </div>
+        <div class="form-group">
+          <label for="servicio_ref">SERVICIO</label>
+          <input type="text" id="servicio_ref" name="servicio_ref" [(ngModel)]="referencia.servicio_ref" required>
+        </div>
+      </div>
+      
+      <h2>SE REFIERE O DERIVA A:</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td>
               <div class="form-group">
-                  <label for="nombre_institucion">NOMBRE DE LA INSTITUCIÓN</label>
-                  <input type="text" id="nombre_institucion" name="nombre_institucion">
+                <label for="entidad_sistema_ref">ENTIDAD DEL SISTEMA</label>
+                <input type="text" id="entidad_sistema_ref" name="entidad_sistema_ref" [(ngModel)]="referencia.entidad_sistema_ref" required>
               </div>
+            </td>
+            <td>
               <div class="form-group">
-                  <label for="cedula">CÉDULA</label>
-                  <input type="text" id="cedula" name="cedula">
+                <label for="establecimiento_ref">ESTABLECIMIENTO DE SALUD</label>
+                <input type="text" id="establecimiento_ref" name="establecimiento_ref" [(ngModel)]="referencia.establecimiento_ref" required>
               </div>
+            </td>
+            <td>
               <div class="form-group">
-                  <label for="servicio">SERVICIO</label>
-                  <input type="text" id="servicio" name="servicio">
+                <label for="servicio_ref_deriva">SERVICIO</label>
+                <input type="text" id="servicio_ref_deriva" name="servicio_ref_deriva" [(ngModel)]="referencia.servicio_ref" required>
               </div>
-          </div>
-          <h2>SE REFIERE O DERIVA A:</h2>
-          <table>
-            <tbody>
-              <tr>
-                <div class="form-row">
-                  <td>
-                    <div class="form-group">
-                      <label for="entidad_sistema">ENTIDAD DEL SISTEMA</label>
-                      <input type="text" id="entidad_sistema" name="entidad_sistema">
-                  </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <label for="establecimiento_salud">ESTABLECIMIENTO DE SALUD</label>
-                      <input type="text" id="establecimiento_salud" name="establecimiento_salud">
-                  </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <label for="servicio_deriva">SERVICIO</label>
-                      <input type="text" id="servicio_deriva" name="servicio_deriva">
-                  </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <label for="especialidad">ESPECIALIDAD</label>
-                      <input type="text" id="especialidad" name="especialidad">
-                  </div>
-                  </td>
-                  
-                  <td>
-                    <div class="form-group">
-                      <label for="fecha">FECHA</label>
-                      <input type="date" id="fecha" name="fecha">
-                  </div>
-                  </td>
+            </td>
+            <td>
+              <div class="form-group">
+                <label for="especialidad_ref">ESPECIALIDAD</label>
+                <input type="text" id="especialidad_ref" name="especialidad_ref" [(ngModel)]="referencia.especialidad_ref" required>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label for="fecha_ref">FECHA</label>
+                <input type="date" id="fecha_ref" name="fecha_ref" [(ngModel)]="referencia.fecha_ref" required>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h2>MOTIVO DE REFERENCIA:</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="motivo_referencia_ref_limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label></td>
+            <td><input type="checkbox" id="motivo_referencia_ref_limitada" name="motivo_referencia_ref_limitada" [(ngModel)]="referencia.motivo_referencia_ref" [value]="'LIMITADA CAPACIDAD RESOLUTIVA'"></td>
+            <td><label for="motivo_referencia_ref_falta" class="checkbox-label">FALTA DE PROFESIONAL</label></td>
+            <td><input type="checkbox" id="motivo_referencia_ref_falta" name="motivo_referencia_ref_falta" [(ngModel)]="referencia.motivo_referencia_ref" [value]="'FALTA DE PROFESIONAL'"></td>
+            <td><label for="motivo_referencia_ref_otros" class="checkbox-label">OTROS</label></td>
+            <td><input type="checkbox" id="motivo_referencia_ref_otros" name="motivo_referencia_ref_otros" [(ngModel)]="referencia.motivo_referencia_ref" [value]="'OTROS'"></td>
+          </tr>
+        </tbody>
+      </table>
 
-              </div>
-              </tr>
-            </tbody>
-          </table>
-          
-          
-          <table>
-            <tbody>
-              <tr>
-                <div class="form-group">
-                  <td><h2>MOTIVO DE REFERENCIA: </h2></td>
-                  <td><label for="limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label></td>
-                  <td><input type="checkbox" id="limitada" name="limitada"></td>
-                  <td><label for="falta" class="checkbox-label">FALTA DE PROFESIONAL</label></td>
-                  <td><input type="checkbox" id="falta" name="falta"></td>
-                  <td><label for="otros" class="checkbox-label">OTROS</label></td>
-                  <td><input type="checkbox" id="otros" name="otros"></td>
-              </div>
-              </tr>
-            </tbody>
-          </table>
-          
-          <div class="form-group">
-            <h2><label for="resumen">RESUMEN DEL CUADRO CLÍNICO</label></h2>
-              <textarea id="resumen" name="resumen"></textarea>
-          </div>
-          <div class="form-group">
-            <h2><label for="hallazgos">HALLAZGOS RELEVANTES</label></h2>
-           
-              <textarea id="hallazgos" name="hallazgos"></textarea>
-          </div>
-          
+      <div class="form-group">
+        <h2><label for="resumen_ref">RESUMEN DEL CUADRO CLÍNICO</label></h2>
+        <textarea id="resumen_ref" name="resumen_ref" [(ngModel)]="referencia.resumen_ref" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <h2><label for="hallazgos_ref">HALLAZGOS RELEVANTES</label></h2>
+        <textarea id="hallazgos_ref" name="hallazgos_ref" [(ngModel)]="referencia.hallazgos_ref" rows="3" required></textarea>
+      </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th colspan="2"><h2>DIAGNÓSTICO</h2></th>
-                <th><h2>C10</h2></th>
-                <th><h2>PRESUNTIVO</h2></th>
-                <th><h2>DEFINITIVO</h2></th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><label for="diagnostico_1">1:</label></td>
-                <td><input type="text" id="diagnostico_1" name="diagnostico_1"></td>
-                
-                <td>
-                  <select id="cie_10_1" name="cie_10_1">
-                    <!-- Opciones aquí -->
-                  </select>
-                </td>
-                
-                <td><input type="radio" id="presuntivo_1" name="diagnostico_tipo_1" value="presuntivo"></td>
-                
-                <td><input type="radio" id="definitivo_1" name="diagnostico_tipo_1" value="definitivo"></td>
-              </tr>
-              <tr>
-                <td><label for="diagnostico_2">2:</label></td>
-                <td><input type="text" id="diagnostico_2" name="diagnostico_2"></td>
-                
-                <td>
-                  <select id="cie_10_2" name="cie_10_2">
-                    <!-- Opciones aquí -->
-                  </select>
-                </td>
-                
-                <td><input type="radio" id="presuntivo_2" name="diagnostico_tipo_2" value="presuntivo"></td>
-                
-                <td><input type="radio" id="definitivo_2" name="diagnostico_tipo_2" value="definitivo"></td>
-              </tr>
-            </tbody>  
-          </table>
-          
+      <table>
+        <thead>
+          <tr>
+            <h2>DIAGNÓSTICO</h2>
+            <th>Diagnóstico</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let diag of referencia.diagnosticos; let i = index">
+            <td>
+              <input type="text" [(ngModel)]="diag.nombre_dia" name="nombre_dia_{{i}}" required>
+            </td>
+            <td>
+              <button type="button" (click)="eliminarDiagnostico(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
 
-          <div class="form-row">
-              <div class="form-group">
-                  <label for="nombre_profesional">NOMBRE DEL PROFESIONAL</label>
-                  <input type="text" id="nombre_profesional" name="nombre_profesional">
-              </div>
-              <div class="form-group">
-                  <label for="codigo_msp">CÓDIGO MSP</label>
-                  <input type="text" id="codigo_msp" name="codigo_msp">
-              </div>
-          </div>
-          <div class="form-group">
-            <div class="button-container">
-              <button type="submit" class="save">Guardar</button>
-              <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
-            </div>
-              
-          </div>
-      </form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre_profesional">NOMBRE DEL PROFESIONAL</label>
+          <input type="text" id="nombre_profesional" name="nombre_profesional">
+        </div>
+        <div class="form-group">
+          <label for="codigo_msp">CÓDIGO MSP</label>
+          <input type="text" id="codigo_msp" name="codigo_msp">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="button-container">
+          <button class="btn btn-success " role="button">Guardar</button>
+          <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

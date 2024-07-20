@@ -5,11 +5,11 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  margin: 10px;
+  margin: 4px;
 }
 
 .container {
-  width: calc(100% - 60px);
+  width: calc(100% - 40px);
   padding: 0px;
   box-sizing: border-box;
 }
@@ -31,7 +31,6 @@ body {
 .medical-form h2 {
   font-size: 14px;
   color: #333;
-  margin-top: 0px;
 }
 
 .form-row {
@@ -41,14 +40,14 @@ body {
 }
 
 .form-group {
-  flex: 1 1 calc(33.333% - 10px);
+  flex: 1 1 calc(33.333% - 5px);
   margin-bottom: 10px;
   padding: 0 5px; 
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   color: #333;
 }
 
@@ -57,7 +56,7 @@ body {
 .form-group textarea,
 .form-group select {
   width: 100%;
-  padding: 9px;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 14px;
@@ -76,7 +75,7 @@ body {
 .button-container {
   display: flex;
   justify-content: center; 
-  gap: 20px; 
+  gap: 10px; 
 }
 
 .form-group button {
@@ -104,11 +103,10 @@ table {
 }
 th, td {
  
-  padding: 2px; 
+  padding: 1px; 
   text-align: left; 
   background-color: #f8f9fa; 
 }
-
 
 
 input[type="text"], select, textarea {
@@ -120,9 +118,9 @@ input[type="text"], select, textarea {
 
 input[type="radio"] {
   margin-right: 5px; 
-  transform: scale(1.5);
+  transform: scale(1.4);
 }
 
 .checkbox-label {
-  margin-right: 40px; 
+  margin-right: 10px; 
 }
