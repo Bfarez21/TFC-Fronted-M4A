@@ -23,6 +23,7 @@
     <option value="2024">2024</option>
   </select>
   <input type="text" id="cedula"placeholder="Cedula">
+  <button class="btn btn-ver">Buscar</button>
             
   <table>
     <thead class="thead">
@@ -30,8 +31,8 @@
         <th>#</th>
         <th>Nombre</th>
         <th>Cédula</th>
-        <th>Razón</th>
-        <th>Edad</th>
+        <th>Motivo</th>
+        <th>Fecha De Nacimiento</th>
         <th>Carrera</th>
         <th>Fecha de visita</th>
         <th>Receta</th>
@@ -41,15 +42,15 @@
     <tbody>
       <tr *ngFor="let patient of patients; let i = index">
         <td>{{ i + 1 }}</td>
-        <td class="nombre-col">{{ patient.nombre }}</td>
-        <td>{{ patient.cedula }}</td>
-        <td>{{ patient.razon }}</td>
-        <td>{{ patient.edad }}</td>
-        <td>{{ patient.carrera }}</td>
-        <td>{{ patient.fechaVisita }}</td>
-        <td>{{ patient.receta }}</td>
+        <td class="nombre-col">{{ patient.nombre_pac}}</td>
+        <td>{{ patient.cedula_pac }}</td>
+        <td>{{ "........" }}</td>   <!--     <td>{{ patient.razon }}</td>     -->
+        <td>{{ patient.fecha_nacimiento_pac }}</td>
+        <td>{{ patient.carrera_pac }}</td>
+        <td>{{ "..........." }}</td>   <!--          <td>{{ patient.fechaVisita }}</td>           -->
+        <td>{{".........."}}</td>  <!--          <td>{{ patient.receta }}</td>           -->
         <td>
-          <button class="btn btn-ver" (click)="viewPatient(patient)">Ver</button>
+          <button class="btn btn-ver">Ver</button>
         </td>
       </tr>
     </tbody>

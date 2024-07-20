@@ -19,14 +19,14 @@ export class DashboardComponent implements AfterViewInit {
         return [
           { title: 'Visitas Del Mes', cols: 1, rows: 1, type: 'visits' },
           { title: 'Enfermedades', cols: 1, rows: 1, type: 'diseases' },
-          { title: 'Gráfico de Líneas', cols: 1, rows: 1, type: 'lineChart' }
+          { title: 'Gráfico', cols: 1, rows: 1, type: 'lineChart' }
         ];
       }
 
       return [
         { title: 'Visitas Del Mes' , cols: 2, rows: 1, type: 'visits' },
         { title: 'Enfermedades', cols: 1, rows: 2, type: 'diseases' },
-        { title: 'Gráfico de Líneas', cols: 1, rows: 2, type: 'lineChart' }
+        { title: 'Gráfico', cols: 1, rows: 2, type: 'lineChart' }
       ];
     })
   );

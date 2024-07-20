@@ -11,7 +11,6 @@
   bottom: 15px;
 }
 
-
 canvas {
   max-width: 100%; /* Asegurarse de que el gráfico no se extienda más allá del contenedor */
   max-height: 200; /* Ajustar el tamaño máximo del gráfico */
