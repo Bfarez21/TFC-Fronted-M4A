@@ -55,10 +55,11 @@
         </tbody>
       </table>
       
-      <h2>MOTIVO DE REFERENCIA:</h2>
+      
       <table>
         <tbody>
           <tr>
+            <h2>MOTIVO DE REFERENCIA:</h2>
             <td><label for="motivo_referencia_ref_limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label></td>
             <td><input type="checkbox" id="motivo_referencia_ref_limitada" name="motivo_referencia_ref_limitada" [(ngModel)]="referencia.motivo_referencia_ref" [value]="'LIMITADA CAPACIDAD RESOLUTIVA'"></td>
             <td><label for="motivo_referencia_ref_falta" class="checkbox-label">FALTA DE PROFESIONAL</label></td>
@@ -81,8 +82,10 @@
       <table>
         <thead>
           <tr>
-            <h2>DIAGNÓSTICO</h2>
-            <th>Diagnóstico</th>
+            <th>DIAGNÓSTICO</th>
+            <th>CIE 10</th>
+            <th>PRESUNTIVO</th>
+            <th>DEFINITIVO</th>
             <th>Eliminar</th>
           </tr>
         </thead>
@@ -92,12 +95,26 @@
               <input type="text" [(ngModel)]="diag.nombre_dia" name="nombre_dia_{{i}}" required>
             </td>
             <td>
+              <select [(ngModel)]="diag.nombre_dia" name="cie10_{{i}}">
+                <option value="I20">I20</option>
+                <option value="I21">I21</option>
+                <!-- Add other options as needed -->
+              </select>
+            </td>
+            <td>
+              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'presuntivo'" name="tipo_{{i}}"> <!-- Presuntivo -->
+            </td>
+            <td>
+              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'definitivo'" name="tipo_{{i}}"> <!-- Definitivo -->
+            </td>
+            <td>
               <button type="button" (click)="eliminarDiagnostico(i)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
       <button type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
+      
 
       <div class="form-row">
         <div class="form-group">

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReferenciaMedica } from './referencia-medica';
-import { Doctor } from '../doctor/doctor';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,6 @@ export class ReferenciaMedicaService {
   getReferencias(): Observable<ReferenciaMedica[]> {
     return this.http.get<ReferenciaMedica[]>(this.urlEndPoint);
   }
-
-  // Método para obtener una referencia médica por ID
-  //getReferencia(id_ref: number): Observable<ReferenciaMedica> {
-    //return this.http.get<ReferenciaMedica>(`${this.urlEndPoint}/${id_ref}`);
-  //}
-
 
   // Método para crear una nueva referencia médica
   create(referencia:ReferenciaMedica):Observable<ReferenciaMedica> {

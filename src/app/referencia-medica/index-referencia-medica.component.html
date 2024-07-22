@@ -1,0 +1,39 @@
+<div class="container">
+    <h2 class="text-center">LISTADO DE REFERENCIAS MÉDICAS</h2>
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/form-ref-medica']">Nuevo Registro</button>
+      
+      <div>
+        <label for="fecha_ref">Fecha:</label>
+        <input type="date" id="fecha_ref" readonly>
+        <button class="btn btn-primary">Consultar</button>
+      </div>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ENTIDAD DEL SISTEMA</th>
+          <th>FECHA</th>
+          <th>ACCIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let referencia of referencias">
+          <td>{{ referencia.entidad_sistema_ref }}</td>
+          <td>{{ referencia.fecha_ref }}</td>
+          <td>
+            <button class="btn btn-info">Ver</button>
+            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="text-right">
+      <p>N° TOTAL DE REGISTROS: <span>{{ referencias.length }}</span></p>
+    </div>
+  </div>
+  

@@ -13,7 +13,7 @@ import { ReferenciaMedica } from '../referencia-medica';
 })
 export class FormRefMedicaComponent implements OnInit {
 
-  public referencia: ReferenciaMedica = new ReferenciaMedica();
+  public referencia: ReferenciaMedica = new ReferenciaMedica()
 
 
   //Datos de diagnostico

@@ -4,10 +4,10 @@ import { ReferenciaMedica } from './referencia-medica';
 
 @Component({
   selector: 'app-referencia-medica',
-  templateUrl: './referencia-medica.component.html',
+  templateUrl: './index-referencia-medica.component.html',
   styleUrls: ['./referencia-medica.component.css']
 })
-export class ReferenciaMedicaComponent implements OnInit {
+export class ReferenciaMedicaComponent {
 
   referencias: ReferenciaMedica[] = [];
 
@@ -19,7 +19,7 @@ export class ReferenciaMedicaComponent implements OnInit {
 
   cargarReferencias(): void {
     this.referenciaService.getReferencias().subscribe(referencias => {
-      referencias = referencias;
+      referencias = this.referencias = referencias;
     });
   }
 }
