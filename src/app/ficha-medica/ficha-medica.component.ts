@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Paciente } from './paciente';
-import { FichaMedica } from './ficha-medica';
+import { Paciente } from './modelo/paciente';
+import { FichaMedica } from './modelo/ficha-medica';
 import { PacienteService } from './paciente.service';
 import { FichaMedicaService } from './ficha-medica.service';
 @Component({

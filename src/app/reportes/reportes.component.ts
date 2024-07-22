@@ -19,7 +19,7 @@ export class ReportesComponent {
 
   viewPatient(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
-      pacientes = this.patients=pacientes; // Asigna los pacientes obtenidos del servicio a la propiedad del componente
+      // pacientes = this.patients=pacientes; // Asigna los pacientes obtenidos del servicio a la propiedad del componente
     });
   }
 

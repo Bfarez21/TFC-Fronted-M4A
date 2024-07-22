@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { FichaMedica } from './ficha-medica';
+import { FichaMedica } from './modelo/ficha-medica';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable({

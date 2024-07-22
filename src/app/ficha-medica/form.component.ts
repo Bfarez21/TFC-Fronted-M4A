@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FichaMedicaComponent } from "./ficha-medica.component";
 import { Router } from '@angular/router';
-import { Paciente } from "./paciente";
+import { Paciente } from "./modelo/paciente";
 import { PacienteService } from "./paciente.service";
 import Swal from "sweetalert2";
-import { FichaMedica } from "./ficha-medica";
+import { FichaMedica } from "./modelo/ficha-medica";
 import { FichaMedicaService } from "./ficha-medica.service";
 @Component({
     selector: 'app-form',
@@ -37,7 +37,7 @@ export class FormComponent implements OnInit{
       this.pacienteService.create(this.paciente)
       .subscribe(
          paciente=> {this.router.navigate(['/ficha-medica'])
-         Swal.fire('Paciente guardado',  `Paciente ${this.paciente.nombre_pac} guardado con exito`,'success')
+         Swal.fire('Paciente guardado',  `Paciente ${this.paciente.nombrePac} guardado con exito`,'success')
          }
         )
     }
