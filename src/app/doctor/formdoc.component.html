@@ -5,29 +5,29 @@
     <div class="input-container mx-4">
         <div class="column">
             <label for="cedula">Cedula</label>
-            <input type="text" id="cedula" placeholder="Cedula"[(ngModel)]="doctor.cedula_doc" name="doctor" [disabled]="editMode" required>
+            <input type="text" id="cedula" placeholder="Cedula"[(ngModel)]="doctor.cedulaDoc" name="doctor" [disabled]="editMode" required>
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="doctor.nombre_doc" name="nombre" required>
+            <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="doctor.nombreDoc" name="nombre" required>
             <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" placeholder="Apellido"[(ngModel)]="doctor.apellido_doc" name="apellido" required>
+            <input type="text" id="apellido" placeholder="Apellido"[(ngModel)]="doctor.apellidoDoc" name="apellido" required>
             <label for="telefono">Telefono</label>
-            <input type="text" id="telefono" placeholder="Telefono"[(ngModel)]="doctor.telefono_doc"name="telefono"required>
+            <input type="text" id="telefono" placeholder="Telefono"[(ngModel)]="doctor.telefonoDoc"name="telefono"required>
             <label for="contraseña">Contraseña</label>
-            <input type="password" id="contraseña" placeholder="Contraseña"[(ngModel)]="doctor.password_doc" name="contraseña"required>
+            <input type="password" id="contraseña" placeholder="Contraseña"[(ngModel)]="doctor.passwordDoc" name="contraseña"required>
         </div>
         <div class="column">
             <label for="direccion">Direccion</label>
-            <input type="text" id="direccion"placeholder="Direccion"[(ngModel)]="doctor.direccion_doc"name="direccion"required>
+            <input type="text" id="direccion"placeholder="Direccion"[(ngModel)]="doctor.direccionDoc"name="direccion"required>
             <label for="genero">Genero</label>
-            <select name="genero" id="genero"[(ngModel)]="doctor.genero_doc" name="genero" required>
+            <select name="genero" id="genero"[(ngModel)]="doctor.generoDoc" name="genero" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
             </select>
             <label for="especialidad">Especialidad</label>
-            <input type="text" id="especialidad" placeholder="Especialidad" [(ngModel)]="doctor.especialidad_doc" name="especialidad" required>
+            <input type="text" id="especialidad" placeholder="Especialidad" [(ngModel)]="doctor.especialidadDoc" name="especialidad" required>
             <label for="codiMSP">Codigo MSP</label>
-            <input type="text" id="codiMSP" placeholder="Codigo MSP" [(ngModel)]="doctor.codigo_msp" name="codiMSP" required>
+            <input type="text" id="codiMSP" placeholder="Codigo MSP" [(ngModel)]="doctor.codigoMspDoc" name="codiMSP" required>
         </div>
     </div>
     <div class="form-footer">

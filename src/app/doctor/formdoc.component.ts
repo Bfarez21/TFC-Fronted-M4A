@@ -27,7 +27,7 @@ export class FormDocComponent implements OnInit{
         this.doctorService.create(this.doctor)
         .subscribe(
            doctor=> {this.router.navigate(['/doctor'])
-           Swal.fire('Doctor guardado',  `Doctor ${this.doctor.nombre_doc} guardado con exito`,'success')
+           Swal.fire('Doctor guardado',  `Doctor ${this.doctor.nombreDoc} guardado con exito`,'success')
            this.editMode = false; // Deshabilitar el modo de edición después de guardar los cambios
            }
           )
