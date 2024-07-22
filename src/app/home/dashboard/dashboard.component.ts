@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ElementRef, ViewChild, inject } from '@angula
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
+import { ReportesComponent } from '../../reportes/reportes.component';
+import { PacienteService } from '../../ficha-medica/paciente.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +11,23 @@ import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit {
+  totalPac: number = 0;
+
+  constructor(private pacienteService: PacienteService) {}
+
+  ngOnInit(): void {
+    this.contPaci(); // Llama
+  }
+
   @ViewChild('lineChart') lineChart!: ElementRef<HTMLCanvasElement>;
 
   private breakpointObserver = inject(BreakpointObserver);
+
+  contPaci(): void {
+    this.pacienteService.getPacientes().subscribe(pacientes => {
+      this.totalPac = pacientes.length; // Cuenta el número de pacientes
+    });
+  }
 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {

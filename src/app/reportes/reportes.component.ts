@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PacienteService } from '../ficha-medica/paciente.service';
-import { Paciente } from './paciente';
+import { Paciente } from '../ficha-medica/modelo/paciente';
+import { AtenMedService } from './atenmed.service';
+import { AtencMed } from './atenmed';
 
 
 @Component({
@@ -10,8 +12,9 @@ import { Paciente } from './paciente';
 })
 export class ReportesComponent {
   patients: Paciente[] = [];
+  atenciones: AtencMed[] = [];
 
-  constructor(private pacienteService: PacienteService) {}
+  constructor(private pacienteService: PacienteService, private atenmedservice: AtenMedService) {}
 
   ngOnInit(): void {
     this.viewPatient(); // Llama a cargarPacientes()
@@ -19,8 +22,14 @@ export class ReportesComponent {
 
   viewPatient(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
-      // pacientes = this.patients=pacientes; // Asigna los pacientes obtenidos del servicio a la propiedad del componente
+       pacientes = this.patients=pacientes; // Asigna los pacientes obtenidos del servicio a la propiedad del componente
     });
+  }
+
+  viewAte(): void {
+    this.atenmedservice.getAten().subscribe(atencion => {
+      atencion = this.atenciones=atencion;
+    })
   }
 
   /*patients = [
