@@ -24,8 +24,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
   // importamos el service
-  import { PacienteService } from './ficha-medica/paciente.service';
-  import { FichaMedicaService } from './ficha-medica/ficha-medica.service';
+  import { PacienteService } from './ficha-medica/servicio/paciente.service';
+  import { FichaMedicaService } from './ficha-medica/servicio/ficha-medica.service';
   import { DoctorService } from './doctor/doctor.service';
   import { ReferenciaMedicaService } from './referencia-medica/referencia-medica.service';
 

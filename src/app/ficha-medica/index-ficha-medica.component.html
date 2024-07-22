@@ -22,12 +22,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let paciente of pacientes">
-              <td>{{paciente.idPac}}</td>
-              <td>{{paciente.cedulaPac}}</td>
-              <td>{{paciente.nombrePac}}</td>
-              <td>{{paciente.apellidoPac}}</td>
-              <td>{{paciente.profesionPac}}</td>
+            <tr *ngFor="let fichaMedica of fichaMedica">
+              <td>{{fichaMedica.paciente.idPac}}</td>
+              <td>{{fichaMedica.paciente.cedulaPac}}</td>
+              <td>{{fichaMedica.paciente.nombrePac}}</td>
+              <td>{{fichaMedica.paciente.apellidoPac}}</td>
+              <td>{{fichaMedica.paciente.profesionPac}}</td>
               <td>
                 <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
                 <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>

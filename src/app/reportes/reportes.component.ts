@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PacienteService } from '../ficha-medica/paciente.service';
+import { PacienteService } from '../ficha-medica/servicio/paciente.service';
 import { Paciente } from '../ficha-medica/modelo/paciente';
 import { AtenMedService } from './atenmed.service';
 import { AtencMed } from './atenmed';

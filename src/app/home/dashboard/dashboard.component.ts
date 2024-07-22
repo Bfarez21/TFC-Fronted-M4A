@@ -3,7 +3,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
 import { ReportesComponent } from '../../reportes/reportes.component';
-import { PacienteService } from '../../ficha-medica/paciente.service';
+import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
 
 @Component({
   selector: 'app-dashboard',

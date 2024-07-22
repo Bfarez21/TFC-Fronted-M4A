@@ -1,5 +1,12 @@
+import { AntecedenteFamiliar } from "./antecedente-familiar";
+import { Discapacidad } from "./discapacidad";
+import { Paciente } from "./paciente";
+
 export class FichaMedica {
-    id_fic:number=0;
-    fk_id_pac:number=0
-    fecha_elaboracion_fic:string="";
+    idFic:number=0;
+    paciente: Paciente = new Paciente();
+    discapacidad: Discapacidad = new Discapacidad();
+    antecedenteFamiliar: AntecedenteFamiliar = new AntecedenteFamiliar();
+    fechaElaboracionFic: Date = new Date();
+    
 }
