@@ -1,13 +1,41 @@
 <div class="container">
   <h1>Lista de Doctores</h1>
   <div>
-    <button class="btn btn-rounded btn-success mx-2" type="button"[routerLink]="['/doctor/formDoc']">Registrar doctor</button>
+    <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/doctor/formDoc']">Registrar doctor</button>
     <div class="input-container">
-      <input type="text" id="cedula"placeholder="Cedula">
+      <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
       <button type="button" name="button" class="btn btn-primary mx-4" (click)="buscar()">Buscar</button>
-      <div>
-
-        <div class="table-responsive"> 
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" *ngIf="doctorEncontrado; else listaDoctores">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>CI</th>
+            <th>Cod MSP</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Especialidad</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{doctorEncontrado.idDoctor}}</td>
+            <td>{{doctorEncontrado.cedulaDoc}}</td>
+            <td>{{doctorEncontrado.codigoMspDoc}}</td>
+            <td>{{doctorEncontrado.nombreDoc}}</td>
+            <td>{{doctorEncontrado.apellidoDoc}}</td>
+            <td>{{doctorEncontrado.especialidadDoc}}</td>
+            <td>
+              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(doctorEncontrado)">Ver</button>
+              <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/doctor/formDoc', doctorEncontrado.idDoctor]">Editar</button>
+              <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteDoctor(doctorEncontrado.idDoctor)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #listaDoctores>
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
@@ -29,15 +57,14 @@
               <td>{{doctor.apellidoDoc}}</td>
               <td>{{doctor.especialidadDoc}}</td>
               <td>
-                <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(doctor)">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/doctor/formDoc',doctor.id_doctor]">Editar</button>
-                <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteDoctor(doctor.id_doctor)">Eliminar</button>
+                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(doctor)">Ver</button>
+                <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/doctor/formDoc', doctor.idDoctor]">Editar</button>
+                <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteDoctor(doctor.idDoctor)">Eliminar</button>
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-      </div>
+      </ng-template>
     </div>
   </div>
 </div>
