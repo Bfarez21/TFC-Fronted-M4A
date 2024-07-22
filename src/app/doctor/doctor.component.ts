@@ -39,7 +39,7 @@ export class DoctorComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.doctorService.deleteDoctor(id).subscribe(response => {
-          this.doctores=this.doctores.filter(Doctor=>Doctor.id_doctor !==id);
+          this.doctores=this.doctores.filter(Doctor=>Doctor.idDoctor !==id);
           Swal.fire({
             title: 'Deleted!',
             text: 'Your file has been deleted.',
@@ -53,14 +53,14 @@ export class DoctorComponent {
   // uso Sweetalert para mostrar datos de un registro y asigno en el boton ver
   verDetalles(doctor: Doctor): void {
     Swal.fire({
-      title: `${doctor.nombre_doc} ${doctor.apellido_doc}`,
+      title: `${doctor.nombreDoc} ${doctor.apellidoDoc}`,
       html: `
-        <p><strong>Cédula:</strong> ${doctor.cedula_doc}</p>
-        <p><strong>Teléfono:</strong> ${doctor.telefono_doc}</p>
-        <p><strong>Dirección:</strong> ${doctor.direccion_doc}</p>
-        <p><strong>Especialidad:</strong> ${doctor.especialidad_doc}</p>
-        <p><strong>Código MSP:</strong> ${doctor.codigo_msp}</p>
-        <p><strong>Género:</strong> ${doctor.genero_doc}</p>
+        <p><strong>Cédula:</strong> ${doctor.cedulaDoc}</p>
+        <p><strong>Teléfono:</strong> ${doctor.telefonoDoc}</p>
+        <p><strong>Dirección:</strong> ${doctor.direccionDoc}</p>
+        <p><strong>Especialidad:</strong> ${doctor.especialidadDoc}</p>
+        <p><strong>Código MSP:</strong> ${doctor.codigoMspDoc}</p>
+        <p><strong>Género:</strong> ${doctor.generoDoc}</p>
       `,
     });
   }

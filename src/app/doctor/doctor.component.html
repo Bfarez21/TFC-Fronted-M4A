@@ -22,12 +22,12 @@
           </thead>
           <tbody>
             <tr *ngFor="let doctor of doctores">
-              <td>{{doctor.id_doctor}}</td>
-              <td>{{doctor.cedula_doc}}</td>
-              <td>{{doctor.codigo_msp}}</td>
-              <td>{{doctor.nombre_doc}}</td>
-              <td>{{doctor.apellido_doc}}</td>
-              <td>{{doctor.especialidad_doc}}</td>
+              <td>{{doctor.idDoctor}}</td>
+              <td>{{doctor.cedulaDoc}}</td>
+              <td>{{doctor.codigoMspDoc}}</td>
+              <td>{{doctor.nombreDoc}}</td>
+              <td>{{doctor.apellidoDoc}}</td>
+              <td>{{doctor.especialidadDoc}}</td>
               <td>
                 <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(doctor)">Ver</button>
                 <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/doctor/formDoc',doctor.id_doctor]">Editar</button>
