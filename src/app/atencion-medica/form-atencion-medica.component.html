@@ -231,8 +231,47 @@
 </div>
 
 <div class="mx-4">
-    <label for="diagnostico">Diagnóstico</label>
+    <label for="diagnostico">Diagnóstico:</label>
 </div>
+<div class="diagnostico-container">
+    <table class="diagnostico-table">
+      <thead>
+        <tr>
+          <th>DIAGNÓSTICO INICIAL</th>
+          <th>CIE-10</th>
+          <th>Presuntivo</th>
+          <th>Definitivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <textarea id="diagnostico" name="diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
+          </td>
+          <td>
+            <label for="cie10" class="visually-hidden">CIE-10:</label>
+            <select id="cie10" name="cie10">
+              <option value="">Seleccione CIE-10</option>
+              <option value="A00">A00 - Cólera</option>
+              <option value="A01">A01 - Fiebre tifoidea</option>
+              <option value="A02">A02 - Salmonelosis</option>
+              <!-- se carga desde enfermedades -->
+            </select>
+          </td>
+          <td>
+            <label for="presuntivo" class="visually-hidden">Presuntivo:</label>
+            <input type="checkbox" id="presuntivo" name="presuntivo">
+          </td>
+          <td>
+            <label for="definitivo" class="visually-hidden">Definitivo:</label>
+            <input type="checkbox" id="definitivo" name="definitivo">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
 
 <div class="textarea-container mx-4">
     <label for="tratamiento">Tratamiento</label>

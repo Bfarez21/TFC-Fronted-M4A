@@ -132,7 +132,7 @@
 
 .form-grid-fisico {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* La columna de labels y la de inputs */
+  grid-template-columns: 1fr 3fr; /* La columna de labels y la de inputs */
   gap: 10px;
 }
 
@@ -180,4 +180,55 @@ input[type="file"] {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+/* estilos diagnostico */
+.diagnostico-container {
+  margin: 20px;
+}
+
+.diagnostico-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.diagnostico-table th {
+  background-color: #FFD700; /* Color de fondo amarillo */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #000; /* Borde negro */
+}
+
+.diagnostico-table td {
+  border: 1px solid #000; /* Borde negro */
+  padding: 10px;
+  vertical-align: top;
+}
+
+.diagnostico-table textarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical; /* Permite cambiar el tamaño verticalmente */
+}
+
+.diagnostico-table select {
+  width: 100%;
+}
+
+.diagnostico-table input[type="checkbox"] {
+  display: block;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
   
