@@ -11,16 +11,42 @@
 
             <div class="col-md-3 d-flex align-items-center justify-content-start"> <!-- col-md-3 para ocupar 3 columnas en pantallas medianas y grandes -->
                 <div class="btn-group" role="group" aria-label="Botones de acción">
-                    <button class="btn btn-primary">Buscar</button>
+                    <button class="btn btn-primary"(click)="buscar()">Buscar</button>
                     <button class="btn btn-secondary">Ver por tipo</button>
                 </div>
             </div>
-
         </div>
-    
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped" *ngIf="codigoEncontrado; else listaEnfermedades">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Código Enfermedad</th>
+                <th>Nombre enf</th>
+                <th>Tipo enf</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{codigoEncontrado.idEnf}}</td>
+                    <td>{{codigoEncontrado.codigoEnf}}</td>
+                    <td>{{codigoEncontrado.nombreEnf}}</td>
+                    <td>{{codigoEncontrado.tipoEnf}}</td>
+                <td>
+                  <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(codigoEncontrado)">Ver</button>
+                  <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/doctor/form.enfermedades', codigoEncontrado.idEnf]">Editar</button>
+                  <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(codigoEncontrado.idEnf)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+     <ng-template #listaEnfermedades>
         <table class="table table-bordered table-striped">
             <thead class="thead-blue">
                 <tr>
+                    <th>id</th>
                     <th>Código Enfermedad</th>
                     <th>Nombre enf</th>
                     <th>Tipo enf</th>
@@ -28,20 +54,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>ENF1</td>
-                    <td>Dolor de brazo</td>
-                    <td>Fisica</td>
+                <tr *ngFor="let enfermedad of enfermedades">
+
+                    <td>{{enfermedad.idEnf}}</td>
+                    <td>{{enfermedad.codigoEnf}}</td>
+                    <td>{{enfermedad.nombreEnf}}</td>
+                    <td>{{enfermedad.tipoEnf}}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button class="btn btn-info">Ver</button>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(enfermedad)">Ver</button>
+                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/doctor/form.enfermedades',enfermedad.idEnf]">Editar</button>
+                <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(enfermedad.idEnf)">Eliminar</button>
                         </div>
                     </td>
                 </tr>        
             </tbody>
         </table>
+     </ng-template>
+     </div>
         <div class="text-right">
             <p>Total registros:<span>150</span></p>
         </div>

@@ -1,36 +1,33 @@
-
-    <div class="container">
-            <h1>Registro de acuerdo a la Clasificación Internacional de Enfermedades</h1>
-     </div>
-            <form>
-                <div class="input-container mx-4">
-                    <div class="column">
-                        <label for="codigo">Codigo enfermedad</label>
-                        <input type="text" id="codigo" placeholder="Ingrese el codigo de enfermedad">
-                        <label for="tipo">Tipo enfermedad</label>
-                        <select name="tipo" id="tipo">
-                            <option value="seleccione">Seleccione</option>
-                            <option value="Piscologica">Psicologica</option>
-                            <option value="Fisisica">Fisica</option>
-                        </select>
-                    </div>
-                    <div class="column">
-                        <label for="nombre">Nombre enfermedad</label>
-                        <input type="text" id="nombre"placeholder=" Ingrese el nombre de enfermedad">
-                   
-                    </div>
-                    <div class="form-group">
-                        <label for="Sintomas">Sintomas</label>
-                          <textarea id="Sintomas" name="Sintomas"></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="descripcion">Descripciòn</label>                    
-                          <textarea id="descripcion" name="descripcion"></textarea>
-                      </div>
-                </div>
-                <div class="form-footer">
-                    <button type="button" name="button" class="btn btn-success ">Guardar</button>
-                    <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Regresar</button>
-                </div>
-            </form>
-    
+<div class="container">
+    <h1>Registro de acuerdo a la Clasificación Internacional de Enfermedades</h1>
+</div>
+<form ngNativeValidate (ngSubmit)="create()">
+    <div class="input-container mx-4">
+        <div class="column">
+            <label for="codigo">Codigo enfermedad</label>
+            <input type="text" id="codigo" placeholder="codigo" [(ngModel)]="enfermedades.codigoEnf" name="codigo_enf" [disabled]="editMode" required>
+            
+            <label for="tipo">Tipo enfermedad</label>
+            <select name="tipo_enf" id="tipo_enf" [(ngModel)]="enfermedades.tipoEnf" required>
+                <option value="Psicologica">Psicologica</option>
+                <option value="Fisica">Fisica</option>
+            </select>
+        </div>
+        <div class="column">
+            <label for="nombre">Nombre enfermedad</label>
+            <input type="text" id="nombre" placeholder="nombre" [(ngModel)]="enfermedades.nombreEnf" name="nombre_enf" [disabled]="editMode" required>
+        </div>
+        <div class="form-group">
+            <label for="sintomas">Sintomas</label>
+            <textarea type="text" id="sintomas" placeholder="Sintomas" [(ngModel)]="enfermedades.sintomasEnf" name="sintomas" [disabled]="editMode" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea type="text" id="descripcion" placeholder="Descripción" [(ngModel)]="enfermedades.descripcionEnf" name="descripcion" [disabled]="editMode" required></textarea>
+        </div>
+    </div>
+    <div class="form-footer">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="cancelar()">Regresar</button>
+    </div>
+</form>

@@ -28,6 +28,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   import { FichaMedicaService } from './ficha-medica/servicio/ficha-medica.service';
   import { DoctorService } from './doctor/doctor.service';
   import { ReferenciaMedicaService } from './referencia-medica/referencia-medica.service';
+  import { EnfermedadesService } from './enfermedades/enfermedades.service';
 
 // ventana de registro paciente
 import { FormComponent } from './ficha-medica/form.component';
@@ -64,7 +65,8 @@ const routes: Routes=[
   {path:'doctor/formDoc/:id',component:FormDocComponent},
 
   //sintaxis para ingresar a las enfermedades
-  {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent}
+  {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
+  {path:'enfermedades/form.enfermedades/:id', component: FormEnfermedadesComponent}
 ];
 
 @NgModule({
@@ -103,7 +105,7 @@ const routes: Routes=[
     MatProgressBarModule,
     BaseChartDirective
   ],
-  providers: [PacienteService,FichaMedicaService,DoctorService, ReferenciaMedicaService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
+  providers: [PacienteService,FichaMedicaService,DoctorService, ReferenciaMedicaService,EnfermedadesService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
 
   bootstrap: [AppComponent]
 })
