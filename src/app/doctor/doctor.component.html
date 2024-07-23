@@ -3,6 +3,7 @@
   <div>
     <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/doctor/formDoc']">Registrar doctor</button>
     <div class="input-container">
+      
       <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
       <button type="button" name="button" class="btn btn-primary mx-4" (click)="buscar()">Buscar</button>
     </div>

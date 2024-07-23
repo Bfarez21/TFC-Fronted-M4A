@@ -5,14 +5,15 @@
         <div class="row justify-content-center mb-3">
 
             <div class="col-md-3 d-flex align-items-center justify-content-center"> <!-- col-md-6 para ocupar 6 columnas en pantallas medianas y grandes -->
-                <input type="text" id="cedula" class="form-control text-center" 
-                style="width: 500px;" value="" placeholder="Buscar por codigo" >
+                <input type="text" id="codigo" class="form-control text-center" 
+                style="width: 500px;" value="" [(ngModel)]="codigoBuscar" placeholder="Buscar por codigo">
             </div>
 
             <div class="col-md-3 d-flex align-items-center justify-content-start"> <!-- col-md-3 para ocupar 3 columnas en pantallas medianas y grandes -->
                 <div class="btn-group" role="group" aria-label="Botones de acción">
+                    
                     <button class="btn btn-primary"(click)="buscar()">Buscar</button>
-                    <button class="btn btn-secondary">Ver por tipo</button>
+                    <button class="btn btn-secondary"(click)="cargarEnfermedad()">Ver todo</button>
                 </div>
             </div>
         </div>
@@ -35,7 +36,7 @@
                     <td>{{codigoEncontrado.tipoEnf}}</td>
                 <td>
                   <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(codigoEncontrado)">Ver</button>
-                  <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/doctor/form.enfermedades', codigoEncontrado.idEnf]">Editar</button>
+                  <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/enfermedades/form.enfermedades', codigoEncontrado.idEnf]">Editar</button>
                   <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(codigoEncontrado.idEnf)">Eliminar</button>
                 </td>
               </tr>
@@ -63,7 +64,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(enfermedad)">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/doctor/form.enfermedades',enfermedad.idEnf]">Editar</button>
+                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/enfermedades/form.enfermedades',enfermedad.idEnf]">Editar</button>
                 <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(enfermedad.idEnf)">Eliminar</button>
                         </div>
                     </td>
@@ -73,7 +74,7 @@
      </ng-template>
      </div>
         <div class="text-right">
-            <p>Total registros:<span>150</span></p>
+            <p>Total registros:  <span>{{ enfermedades.length }}</span></p>
         </div>
     </div>
 </div>

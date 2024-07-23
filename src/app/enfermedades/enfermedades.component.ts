@@ -30,20 +30,20 @@ export class EnfermedadesComponent {
   //boton eliminar
   deleteEnfermedades(id: number):void{
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      title: 'Estas segur@?',
+      text: '¡No podrás revertir esto!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.enfermedadesService.deleteEnfermedad(id).subscribe(response => {
           this.enfermedades=this.enfermedades.filter(Enfermedades=>Enfermedades.idEnf !==id);
           Swal.fire({
-            title: 'Deleted!',
-            text: 'Your file has been deleted.',
+            title: ' Eliminado!',
+            text: 'Tu registro ha sido eliminado.',
             icon: 'success'
           });
         });
@@ -51,7 +51,6 @@ export class EnfermedadesComponent {
     });
   }
 
- 
 
   verDetalles(enfermedades: Enfermedades): void {
     Swal.fire({
@@ -68,17 +67,54 @@ export class EnfermedadesComponent {
   }
 
   // BOTON BUSCAR 
+  // Botón buscar
   buscar(): void {
-    if (this.codigoBuscar) {
-      this.enfermedadesService.buscarPorCodigo(this.codigoBuscar).subscribe(
-        enfermedades => {
-          this.codigoEncontrado = enfermedades;
-        },
-        error => {
-          console.error('Error al buscar la enfermedad:', error);
-          this.codigoEncontrado = null;
-        }
-      );
+    if (!this.codigoBuscar.trim()) {
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'Por favor, ingrese el código de enfermedad a buscar.',
+        icon: 'info',
+        confirmButtonText: 'Aceptar',
+        position: 'center'
+      }).then(() => {
+        setTimeout(() => {
+          const inputElement = document.getElementById('cedula') as HTMLInputElement;
+          if (inputElement) {
+            inputElement.focus();
+          }
+        }, 100);
+      });
+      return;
     }
+
+    this.enfermedadesService.buscarPorCodigo(this.codigoBuscar).subscribe(
+      (result: Enfermedades | null) => {
+        if (result === null) {
+          Swal.fire({
+            title: 'No Encontrado',
+            text: 'No existe el registro en la base de datos.',
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            position: 'center'
+          });
+        } else {
+          this.codigoEncontrado = result;
+        }
+      },
+      error => {
+        console.error('Error al buscar la enfermedad:', error);
+        this.codigoEncontrado = null;
+        Swal.fire({
+          title: 'Error',
+          text: 'Ocurrió un error al buscar la enfermedad.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          position: 'center'
+        });
+      }
+    );
   }
 }
+
+
+
