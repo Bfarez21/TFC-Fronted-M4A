@@ -78,7 +78,7 @@ export class EnfermedadesComponent {
         position: 'center'
       }).then(() => {
         setTimeout(() => {
-          const inputElement = document.getElementById('cedula') as HTMLInputElement;
+          const inputElement = document.getElementById('codigo') as HTMLInputElement;
           if (inputElement) {
             inputElement.focus();
           }

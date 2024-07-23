@@ -16,4 +16,8 @@ input{
     font-size: 18px;
     background: rgba(217, 217, 217, 1);
   }
-  
+  .table-responsive {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+  }

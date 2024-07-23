@@ -67,7 +67,8 @@ const routes: Routes=[
 
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
-  {path:'form-ref-medica/:id', component: FormRefMedicaComponent}
+  {path:'form-ref-medica/:id', component: FormRefMedicaComponent},
+  {path:'enfermedades/form.enfermedades/:id',component: FormEnfermedadesComponent, }
 ];
 
 @NgModule({
