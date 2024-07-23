@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReferenciaMedicaService } from '../referencia-medica.service';
 import Swal from 'sweetalert2';
 import { Diagnostico } from '../diagnostico';
@@ -14,7 +14,7 @@ import { ReferenciaMedica } from '../referencia-medica';
 export class FormRefMedicaComponent implements OnInit {
 
   public referencia: ReferenciaMedica = new ReferenciaMedica()
-
+  editMode: boolean = false; 
 
   //Datos de diagnostico
 
@@ -22,11 +22,9 @@ export class FormRefMedicaComponent implements OnInit {
 
   constructor(
     private referenciaService: ReferenciaMedicaService,
-    private router: Router) { }
+    private router: Router, 
+    private activateRouter:ActivatedRoute) { }
 
-  ngOnInit(): void {
-    
-  }
 
   cancelar() {
     this.router.navigate(['/referencia-medica']);
@@ -39,6 +37,7 @@ export class FormRefMedicaComponent implements OnInit {
         next: referencia => {
           this.router.navigate(['/referencia-medica']);
           Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamento_ref} guardada con éxito`, 'success');
+          this.editMode = false;
         },
         error: error => {
           console.error('Error al guardar la referencia médica:', error);
@@ -54,5 +53,17 @@ export class FormRefMedicaComponent implements OnInit {
     this.referencia.diagnosticos.splice(index, 1);
   }
   
-
+// metodo cargar pacientes en el form para editar
+cargarReferencia():void{
+  this.activateRouter.params.subscribe(params=>{
+      let id=params['id']
+      if(id){
+          this.referenciaService.getReferencia(id).subscribe((referencia)=>this.referencia=referencia)
+          this.editMode = true; // Deshabilitar el modo de edición
+      }
+  })
+}
+ngOnInit(): void {
+  this.cargarReferencia()
+}
 }

@@ -63,10 +63,11 @@ const routes: Routes=[
   
   // creo ruta para llamar al form pero con id, para editar
   {path:'doctor/formDoc/:id',component:FormDocComponent},
+  {path:'doctor/formDoc/:id',component:FormDocComponent},
 
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
-  {path:'enfermedades/form.enfermedades/:id', component: FormEnfermedadesComponent}
+  {path:'form-ref-medica/:id', component: FormRefMedicaComponent}
 ];
 
 @NgModule({

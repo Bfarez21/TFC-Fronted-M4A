@@ -22,4 +22,12 @@ export class ReferenciaMedicaService {
   create(referencia:ReferenciaMedica):Observable<ReferenciaMedica> {
     return this.http.post<ReferenciaMedica>(this.urlEndPoint, referencia,{headers:this.httpHeaders})
   }
+  // metodo para obtener por id
+  getReferencia(id=0):Observable<ReferenciaMedica>{
+    return this.http.get<ReferenciaMedica>(`${this.urlEndPoint}/${id}`);
+  }
+  // metodo para eliminar doctor
+  deleteReferencia(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders });
+  }
 }
