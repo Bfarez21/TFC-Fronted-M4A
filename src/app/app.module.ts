@@ -64,6 +64,7 @@ const routes: Routes=[
   // creo ruta para llamar al form pero con id, para editar
   {path:'doctor/formDoc/:id',component:FormDocComponent},
   {path:'doctor/formDoc/:id',component:FormDocComponent},
+  {path:'ficha-medica/form/:id',component:FormComponent},
 
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},

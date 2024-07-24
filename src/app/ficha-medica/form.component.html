@@ -12,7 +12,7 @@
                 <option value="estudiante">Estudiante</option>
             </select>
             <label for="cedula">Cedula</label>
-            <input type="text" id="cedula" placeholder="Cedula" class="form-control" [(ngModel)]="fichaMedica.paciente.cedulaPac" name="cedula" required>
+            <input type="text" id="cedula" placeholder="Cedula" class="form-control" [(ngModel)]="fichaMedica.paciente.cedulaPac" name="cedula" [disabled]="editMode" required>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" placeholder="Nombre"[(ngModel)]="fichaMedica.paciente.nombrePac" name="nombre" required>
             <label for="apellido">Apellido</label>

@@ -10,7 +10,8 @@ import { FichaMedica } from './modelo/ficha-medica';
 })
 export class FichaMedicaComponent /*implements OnInit */{
   fichaMedica:FichaMedica[] = []; // Asegúrate de inicializar pacientes como un arreglo vacío
-
+  cedulaBusqueda: string = '';
+  fichaEncontrado: FichaMedica | null = null;
 
   constructor(private fichaMedicaService: FichaMedicaService) {}
 
