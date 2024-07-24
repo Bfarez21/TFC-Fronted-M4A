@@ -1,5 +1,6 @@
 import { Doctor } from "../doctor/doctor";
-import { Diagnostico } from "./diagnostico";
+import { Diagnostico } from "./diagnostico/diagnostico";
+
 
 export class ReferenciaMedica {
     id_ref: number = 0;
@@ -13,7 +14,5 @@ export class ReferenciaMedica {
     motivo_referencia_ref: string = "";
     resumen_ref: string = "";
     hallazgos_ref: string = "";
-    fk_diagnostico_ref:number=0;
-    fk_id_atencion_medica:number=0;
     diagnosticos: Diagnostico[] = [];
 }

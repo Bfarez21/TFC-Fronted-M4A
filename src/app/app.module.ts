@@ -43,6 +43,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormAtencionMedicaComponent } from './atencion-medica/form-atencion-medica.component';
+import { DiagnosticoComponent } from './referencia-medica/diagnostico/diagnostico.component';
 
 const routes: Routes=[
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -90,7 +91,8 @@ const routes: Routes=[
     FormDocComponent,
     FormEnfermedadesComponent,
     DashboardComponent,
-    FormAtencionMedicaComponent    
+    FormAtencionMedicaComponent,
+    DiagnosticoComponent    
   ],
   imports: [
     BrowserModule,

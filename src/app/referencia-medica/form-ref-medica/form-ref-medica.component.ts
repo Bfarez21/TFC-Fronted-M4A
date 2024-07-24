@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReferenciaMedicaService } from '../referencia-medica.service';
 import Swal from 'sweetalert2';
-import { Diagnostico } from '../diagnostico';
+
 import { Doctor } from '../../doctor/doctor';
 import { ReferenciaMedica } from '../referencia-medica';
+import { Diagnostico } from '../diagnostico/diagnostico';
+import { Enfermedades } from '../../enfermedades/Enfermedades';
+import { EnfermedadesService } from '../../enfermedades/enfermedades.service';
 
 @Component({
   selector: 'app-form-ref-medica',
@@ -14,16 +17,14 @@ import { ReferenciaMedica } from '../referencia-medica';
 export class FormRefMedicaComponent implements OnInit {
 
   public referencia: ReferenciaMedica = new ReferenciaMedica()
-  editMode: boolean = false; 
-
-  //Datos de diagnostico
-
-  diagnostico: Diagnostico = new Diagnostico();
+  public enfermedades: Enfermedades[] = [];
+  editMode: boolean = false;
 
   constructor(
     private referenciaService: ReferenciaMedicaService,
-    private router: Router, 
-    private activateRouter:ActivatedRoute) { }
+    private enfermedadesService: EnfermedadesService,
+    private router: Router,
+    private activateRouter: ActivatedRoute) { }
 
 
   cancelar() {
@@ -52,18 +53,24 @@ export class FormRefMedicaComponent implements OnInit {
   eliminarDiagnostico(index: number) {
     this.referencia.diagnosticos.splice(index, 1);
   }
-  
-// metodo cargar pacientes en el form para editar
-cargarReferencia():void{
-  this.activateRouter.params.subscribe(params=>{
-      let id=params['id']
-      if(id){
-          this.referenciaService.getReferencia(id).subscribe((referencia)=>this.referencia=referencia)
-          this.editMode = true; // Deshabilitar el modo de edición
+
+  // metodo cargar pacientes en el form para editar
+  cargarReferencia(): void {
+    this.activateRouter.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.referenciaService.getReferencia(id).subscribe((referencia) => this.referencia = referencia)
+        this.editMode = true; // Deshabilitar el modo de edición
       }
-  })
-}
-ngOnInit(): void {
-  this.cargarReferencia()
-}
+    })
+  }
+  cargarEnfermedades(): void {
+    this.enfermedadesService.getEnfermedades().subscribe(enfermedades => this.enfermedades = enfermedades);
+  }
+
+  ngOnInit(): void {
+    this.cargarReferencia();
+    this.cargarEnfermedades();
+  }
+  
 }
