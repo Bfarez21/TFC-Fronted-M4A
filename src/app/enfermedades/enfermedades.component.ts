@@ -66,7 +66,6 @@ export class EnfermedadesComponent {
     });
   }
 
-  // BOTON BUSCAR 
   // Botón buscar
   buscar(): void {
     if (!this.codigoBuscar.trim()) {

@@ -1,51 +1,88 @@
-<div class="Container">
-  
-  <form class="formulario-blanco">
-    <h1 class="input-container mx-4">Ajustes</h1>
-    <div class="input-container mx-4">
-      <div class="input-edit-container">
-        <label for="contenido">Contenido</label>
-        <div class="input-edit-group">
-          <input type="text" id="contenido" placeholder="Ingrese el contenido">
-          <button type="button" class="btn btn-edit"></button>
-        </div>
-      </div>
+<body>
+  <div class="Container">
+    <div class="scroll-container">
+      <div class="form-container">
+        <form class="formulario-blanco" (ngSubmit)="createInstituto()" #institutoForm="ngForm">
+          <h1 class="input-container mx-4">Ajustes</h1>
+        
+          <div class="input-edit-container">
+            <label for="nombre">Nombre Instituto</label>
+            <div class="input-edit-group">
+              <input type="text" id="nombre" placeholder="Ingrese el Instituto" [(ngModel)]="institutos.nombreIns" name="nombreIns" required #nombreIns="ngModel">
+              <button type="button" class="btn btn-edit"></button>
+            </div>
+            <div *ngIf="!nombreIns.valid && nombreIns.touched" class="error-message">Nombre es requerido</div>
+          </div>
+        
+          <div class="input-edit-container">
+            <label for="dir">Dirección</label>
+            <div class="input-edit-group">
+              <input type="text" id="dir" placeholder="Ingrese la dirección del instituto" [(ngModel)]="institutos.direccionIns" name="direccionIns" required #direccionIns="ngModel">
+              <button type="button" class="btn btn-edit"></button>
+            </div>
+            <div *ngIf="!direccionIns.valid && direccionIns.touched" class="error-message">Dirección es requerida</div>
+          </div>
+        
+          <div class="input-edit-container">
+            <label for="rec">Rector</label>
+            <div class="input-edit-group">
+              <input type="text" id="rec" placeholder="Ingrese el nombre de Rector de la institución" [(ngModel)]="institutos.rectorIns" name="rectorIns" required #rectorIns="ngModel">
+              <button type="button" class="btn btn-edit"></button>
+            </div>
+            <div *ngIf="!rectorIns.valid && rectorIns.touched" class="error-message">Rector es requerido</div>
+          </div>
+        
+          <div class="input-edit-container">
+            <label for="logo">Logo</label>
+            <div class="input-edit-group">
+              <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*" >
+              <button type="button" class="btn btn-edit"></button>
+            </div>
+            
+          </div>
+        
+          <div class="form-footer">
+            <button type="submit" class="btn btn-success" [disabled]="!institutoForm.form.valid">Guardar</button>
+            <button type="button" class="btn btn-danger">Ver anteriores configuraciones</button>
+          </div>
+        </form>
 
-      <div class="input-edit-container">
-        <label for="leyenda">Leyenda</label>
-        <div class="input-edit-group">
-          <input type="text" id="leyenda" placeholder="Ingrese la Leyenda">
-          <button type="button" class="btn btn-edit"></button>
-        </div>
-      </div>
+        <form class="formulario-blanco">
+        <h1 class="institutoDetalle mx-4">Titulo</h1>
+          <div class="input-container mx-4">
+            <div class="input-edit-container">
+              <label for="contenido">Contenido</label>
+              <div class="input-edit-group">
+                <input type="text" id="contenido" placeholder="Ingrese el contenido del titulo">
+                <button type="button" class="btn btn-edit"></button>
+              </div>
+            </div>
+            <div class="input-edit-container">
+              <label for="leyenda">Leyenda</label>
+              <div class="input-edit-group">
+                <input type="text" id="leyenda" placeholder="Ingrese la Leyenda del titulo">
+                <button type="button" class="btn btn-edit"></button>
+              </div>
+            </div>
+            <div class="input-edit-container">
+            <label for="instituto">Instituto</label>
+            <div class="input-edit-group">
+              <select name="Instituto" id="Instituto" required>
+                <option value="Psicologica">Psicologica</option>
+                <option value="Fisica">Fisica</option>
+            </select>
+            <button type="button" class="btn btn-edit"></button>
+            </div>
+          </div>
+          </div>
+        
+          <div class="form-footer">
+            <button type="button" name="button" class="btn btn-success">Guardar</button>
+            <button type="button" name="button" class="btn btn-danger" [routerLink]="['/setting/instituto']">Ver anteriores configuraciones</button>
+          </div>
+        </form>
 
-      <div class="input-edit-container">
-        <label for="logo">Logo</label>
-        <div class="input-edit-group">
-          <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*">
-          <button type="button" class="btn btn-edit"></button>
-        </div>
-      </div>
-
-      <div class="input-edit-container">
-        <label for="dir">Direccion</label>
-        <div class="input-edit-group">
-          <input type="text" id="dir" placeholder="Ingrese la direccion del instituto">
-          <button type="button" class="btn btn-edit"></button>
-        </div>
-      </div>
-
-      <div class="input-edit-container">
-        <label for="rec">Rector</label>
-        <div class="input-edit-group">
-          <input type="text" id="rec" placeholder="Ingrese el nombre de Rector de la institución">
-          <button type="button" class="btn btn-edit"></button>
-        </div>
       </div>
     </div>
-    <div class="form-footer">
-      <button type="button" name="button" class="btn btn-success">Crear nueva configuracion</button>
-      <button type="button" name="button" class="btn btn-danger">Ver anteriores configuraciones</button>
-    </div>
-  </form>
-</div>
+  </div>
+</body>

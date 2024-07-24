@@ -40,7 +40,6 @@ export class FormEnfermedadesComponent implements OnInit {
       }
     })
   }
-
   ngOnInit(): void {
     this.cargarEnfermedad()
   }

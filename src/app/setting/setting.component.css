@@ -1,77 +1,132 @@
 .Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('fond4.jpg') no-repeat center center;
-    background-size: cover;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('fond4.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.scroll-container {
+  height: 90vh; /* Ajusta la altura del scroll-container para que sea más alto */
+  overflow-y: auto;
+  padding: 2rem; /* Aumenta el padding para agrandar el fondo del contenedor */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  display: flex;
+  justify-content: center; /* Centra los formularios dentro del contenedor */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px; /* Ajusta el ancho máximo del contenedor del formulario para que sea más grande */
+}
+
+.formulario-blanco {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem; /* Aumenta el padding para agrandar el área del fondo del formulario */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Asegura que el formulario ocupe todo el ancho del contenedor */
+}
+
+.input-container {
+  margin-bottom: 15px;
   
-  .formulario-blanco {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-  }
+  width: 100%; /* Asegura que el contenedor de entrada ocupe todo el ancho del formulario */
+}
+h1.input-container.instituto {
   
-  .input-container {
-    margin-bottom: 15px;
-  }
+  text-align: center; /* Centra el texto horizontalmente */
+  font-size: 1rem; /* Ajusta el tamaño del texto (puedes cambiar el valor según tu preferencia) */
+}
+h1.input-container {
+  margin: 0; /* Elimina el margen por defecto para alinear el texto correctamente */
+  padding: 0; /* Elimina el padding para una alineación precisa */
+  text-align: center;
+}
+
+.input-edit-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%; /* Asegura que el contenedor de entrada ocupe todo el ancho del formulario */
+}
+
+.input-edit-container label {
+  margin-bottom: 5px;
+}
+
+.input-edit-group  {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Asegura que el grupo de entrada ocupe todo el ancho del contenedor */
+}
+
+.input-edit-container input[type="text"],
+.input-edit-container input[type="file"] {
+  flex: 1; /* Hace que el campo de entrada ocupe todo el ancho disponible */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem; /* Mantiene el tamaño de la fuente dentro del campo */
+}
+
+.input-edit-container .btn-edit {
+  width: 40px; /* Mantiene el tamaño del botón */
+  height: 40px; /* Mantiene el tamaño del botón */
+  background: url('editar.png') no-repeat center center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 8px 12px; /* Mantiene el tamaño de los botones */
+  font-size: 1rem; /* Mantiene el tamaño del texto en los botones */
+}
+
+.btn-success {
+  background-color: rgb(7, 155, 7);
+  color: white;
+}
+
+.btn-danger {
+  background-color: rgb(207, 7, 7);
+  color: white;
+}
+.institutoDetalle{
+
+  text-align: center;
+  font-size: 30px;
   
-  .input-edit-container {
-    display: flex;
-    flex-direction: column; /* Alinea el label encima del input */
-    margin-bottom: 15px;
-  }
+}
+.input-edit-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
   
-  .input-edit-container label {
-    margin-bottom: 5px; /* Espacio entre el label y el input */
-  }
-  
-  .input-edit-group {
-    display: flex;
-    align-items: center; /* Alinea el input y el botón horizontalmente */
-  }
-  
-  .input-edit-container input[type="text"],
-  .input-edit-container input[type="file"] {
-    flex: 1; /* Ocupa el espacio disponible */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .input-edit-container .btn-edit {
-    width: 40px; /* Ajusta el tamaño del botón si es necesario */
-    height: 40px; /* Ajusta el tamaño del botón si es necesario */
-    background: url('editar.png') no-repeat center center; /* Cambia 'icon-edit.png' al nombre de tu imagen */
-    background-size: contain; /* Ajusta el tamaño del ícono */
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .form-footer {
-    display: flex;
-    justify-content: center; /* Centra los botones en el contenedor */
-    gap: 10px; /* Ajusta el espacio entre los botones */
-    margin-top: 20px;
-  }
-  .btn {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  
-  .btn-edit {
-    background-color: blue;
-    color: white;
-  }
-  
+
+}
+.error-message {
+  color: red;              /* Color del texto de error */
+  font-size: 0.875em;      /* Tamaño de fuente ligeramente más pequeño */
+  margin-top: 0.25em;      /* Espacio superior para separar del campo de entrada */
+  display: block;          /* Asegura que el mensaje se muestre en una línea separada */
+}

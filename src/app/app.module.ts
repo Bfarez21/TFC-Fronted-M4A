@@ -40,10 +40,13 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { SettingService } from './setting/setting.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormAtencionMedicaComponent } from './atencion-medica/form-atencion-medica.component';
 import { DiagnosticoComponent } from './referencia-medica/diagnostico/diagnostico.component';
+import { InstitutoComponent } from './setting/instituto.component';
+
 
 const routes: Routes=[
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -62,11 +65,13 @@ const routes: Routes=[
   {path:'doctor/formDoc',component:FormDocComponent},
   {path:'atencion-medica/form-atencion-medica',component:FormAtencionMedicaComponent},
   
+  
   // creo ruta para llamar al form pero con id, para editar
   {path:'doctor/formDoc/:id',component:FormDocComponent},
   {path:'doctor/formDoc/:id',component:FormDocComponent},
   {path:'ficha-medica/form/:id',component:FormComponent},
 
+  {path:'setting/instituto',component: InstitutoComponent},
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
   {path:'form-ref-medica/:id', component: FormRefMedicaComponent},
@@ -108,7 +113,7 @@ const routes: Routes=[
     MatProgressBarModule,
     BaseChartDirective
   ],
-  providers: [PacienteService,FichaMedicaService,DoctorService, ReferenciaMedicaService,EnfermedadesService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
+  providers: [SettingService, PacienteService,FichaMedicaService,DoctorService, ReferenciaMedicaService,EnfermedadesService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
 
   bootstrap: [AppComponent]
 })
