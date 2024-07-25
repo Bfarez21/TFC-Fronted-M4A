@@ -17,13 +17,13 @@
                   <div class="card-container">
                     <div class="card">
                       <p>Pacientes Alumnos:</p>
-                      <p>64</p>
-                      <div class="percentage up">51% &#8593;</div>
+                      <p>{{ totalEst }}</p>
+                      <div class="percentage up">{{ (totalEst/totalPac)*100 | number:'1.2-2' }} &#8593;</div>
                     </div>
                     <div class="card">
                       <p>Pacientes Profesores:</p>
-                      <p>40</p>
-                      <div class="percentage down">20% &#8595;</div>
+                      <p>{{ totalProf }}</p>
+                      <div class="percentage down">{{ (totalProf/totalPac)*100 | number:'1.2-2' }} &#8595;</div>
                     </div>
                   </div>
                 </div>

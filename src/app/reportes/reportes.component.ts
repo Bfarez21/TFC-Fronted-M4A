@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { PacienteService } from '../ficha-medica/servicio/paciente.service';
+import { PacienteService } from './paciente.service';
 import { Paciente } from '../ficha-medica/modelo/paciente';
 import { AtenMedService } from './atenmed.service';
 import { AtencMed } from './atenmed';
-
 
 @Component({
   selector: 'app-reportes',
@@ -13,12 +12,14 @@ import { AtencMed } from './atenmed';
 export class ReportesComponent {
   patients: Paciente[] = [];
   atenciones: AtencMed[] = [];
+  cedulaBusqueda: string = '';
+  pacEncontrado: Paciente | null = null;
 
   constructor(private pacienteService: PacienteService, private atenmedservice: AtenMedService) {}
 
   ngOnInit(): void {
     this.viewPatient(); // Llama a cargarPacientes()
-  }
+  } 
 
   viewPatient(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
@@ -31,6 +32,22 @@ export class ReportesComponent {
       atencion = this.atenciones=atencion;
     })
   }
+  // BOTON BUSCAR 
+  buscar(): void {
+    if (this.cedulaBusqueda) {
+      this.pacienteService.buscarPorCedula(this.cedulaBusqueda).subscribe(
+        paciente => {
+          this.pacEncontrado = paciente;
+        },
+        error => {
+          console.error('Error al buscar el paciente:', error);
+          this.pacEncontrado = null;
+        }
+      );
+    }
+  }
+  
+
 
   /*patients = [
     { nombre: 'Juan', cedula: '0106104971', razon: 'Gripe leve', edad: 22, carrera: 'Desarrollo de Software', fechaVisita: '21-03-2022', receta: 'Paracetamol al fallo' },

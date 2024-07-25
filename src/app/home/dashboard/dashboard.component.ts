@@ -12,11 +12,14 @@ import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
 })
 export class DashboardComponent implements AfterViewInit {
   totalPac: number = 0;
+  totalProf: number = 0;
+  totalEst: number = 0;
 
   constructor(private pacienteService: PacienteService) {}
 
   ngOnInit(): void {
     this.contPaci(); // Llama
+    this.ContPacProf();
   }
 
   @ViewChild('lineChart') lineChart!: ElementRef<HTMLCanvasElement>;
@@ -26,6 +29,13 @@ export class DashboardComponent implements AfterViewInit {
   contPaci(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
       this.totalPac = pacientes.length; // Cuenta el número de pacientes
+    });
+  }
+
+  ContPacProf(): void {
+    this.pacienteService.getPacientes().subscribe(pacientes => {
+      this.totalProf = pacientes.filter(p => p.profesionPac === 'Profesor').length; // Cuenta los profesores
+      this.totalEst = pacientes.filter(p => p.profesionPac === 'Estudiante').length; // Cuenta los alumnos
     });
   }
 
