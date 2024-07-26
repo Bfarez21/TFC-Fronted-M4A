@@ -24,6 +24,7 @@
   </select>
   <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
   <button class="btn btn-ver" (click)="buscar()">Buscar</button>
+  <button class="btn btn-ver" (click)="Imprimir()">Imprimir</button>
            
   <div class="table-responsive"> 
 
@@ -52,7 +53,7 @@
           <td>{{ "..........." }}</td>   <!--          <td>{{ patient.fechaVisita }}</td>           -->
           <td>{{".........."}}</td>  <!--          <td>{{ patient.receta }}</td>           -->
           <td>
-            <button class="btn btn-ver">Ver</button>
+            <button class="btn btn-ver" (click)="Imprimir()">Ver</button>
           </td>
         </tr>
       </tbody>
@@ -61,34 +62,35 @@
     <ng-template #listaPacientes>
       <table>
         <thead class="thead">
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Cédula</th>
-            <th>Motivo</th>
-            <th>Fecha De Nacimiento</th>
-            <th>Carrera</th>
-            <th>Fecha de visita</th>
-            <th>Receta</th>
-            <th>Acciones</th>
-          </tr>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <th>Motivo</th>
+                <th>Fecha De Nacimiento</th>
+                <th>Carrera</th>
+                <th>Fecha de visita</th>
+                <th>Receta</th>
+                <th>Acciones</th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let patient of patients; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td class="nombre-col">{{ patient.nombrePac}}</td>
-            <td>{{ patient.cedulaPac }}</td>
-            <td>{{ "........" }}</td>   <!--     <td>{{ patient.razon }}</td>     -->
-            <td>{{ patient.fechaNacimientoPac }}</td>
-            <td>{{ patient.carreraPac }}</td>
-            <td>{{ "..........." }}</td>   <!--          <td>{{ patient.fechaVisita }}</td>           -->
-            <td>{{".........."}}</td>  <!--          <td>{{ patient.receta }}</td>           -->
-            <td>
-              <button class="btn btn-ver">Ver</button>
-            </td>
-          </tr>
+            <tr *ngFor="let patient of patients; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td class="nombre-col">{{ patient.nombrePac }}</td>
+                <td>{{ patient.cedulaPac }}</td>
+                <td>{{ "........" }}</td> <!-- <td>{{ patient.razon }}</td> -->
+                <td>{{ patient.fechaNacimientoPac }}</td>
+                <td>{{ patient.carreraPac }}</td>
+                <td>{{ "..........." }}</td> <!-- <td>{{ patient.fechaVisita }}</td> -->
+                <td>{{ ".........." }}</td> <!-- <td>{{ patient.receta }}</td> -->
+                <td>
+                    <button class="btn btn-ver" (click)="ImprimirPac(patient)">Imprimir</button>
+                </td>
+            </tr>
         </tbody>
-      </table>  
+    </table>
+    
     </ng-template>
 
 
@@ -96,5 +98,5 @@
 
   <div class="text-right">
     <p>N° TOTAL: {{ patients.length }} </p>
-</div>
+  </div>
 </div>

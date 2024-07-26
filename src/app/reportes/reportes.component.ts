@@ -3,6 +3,7 @@ import { PacienteService } from './paciente.service';
 import { Paciente } from '../ficha-medica/modelo/paciente';
 import { AtenMedService } from './atenmed.service';
 import { AtencMed } from './atenmed';
+import { ImpresionService } from './impresion.service';
 
 @Component({
   selector: 'app-reportes',
@@ -15,7 +16,11 @@ export class ReportesComponent {
   cedulaBusqueda: string = '';
   pacEncontrado: Paciente | null = null;
 
-  constructor(private pacienteService: PacienteService, private atenmedservice: AtenMedService) {}
+  constructor(
+    private pacienteService: PacienteService, 
+    private atenmedservice: AtenMedService,
+    private impresionservice: ImpresionService
+  ) {}
 
   ngOnInit(): void {
     this.viewPatient(); // Llama a cargarPacientes()
@@ -46,6 +51,39 @@ export class ReportesComponent {
       );
     }
   }
+
+  Imprimir(): void {
+    const encabezado = ["ID","Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
+    const cuerpo = this.patients.map(paciente => [
+      paciente.idPac,
+      paciente.nombrePac + ' '+ paciente.apellidoPac,
+      paciente.cedulaPac,
+      "MOTIVO",
+      paciente.fechaNacimientoPac,
+      paciente.carreraPac,
+      "FECHA",
+      "RECETA"
+    ]);
+    this.impresionservice.imprimir(encabezado, cuerpo, "Listado De Pacientes", true);
+  }
+
+  ImprimirPac(paciente: any): void {
+    const encabezado = ["ID", "Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
+    
+    const cuerpo = [[
+        paciente.idPac,
+        paciente.nombrePac + ' ' + paciente.apellidoPac,
+        paciente.cedulaPac,
+        "MOTIVO",
+        paciente.fechaNacimientoPac,
+        paciente.carreraPac,
+        "FECHA",
+        "RECETA"
+    ]];
+    
+    this.impresionservice.imprimir(encabezado, cuerpo, "Información del Paciente", true);
+  }
+
   
 
 
