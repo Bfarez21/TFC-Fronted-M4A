@@ -2,7 +2,7 @@
   <div class="Container">
     <div class="scroll-container">
       <div class="form-container">
-        <form class="formulario-blanco" (ngSubmit)="createInstituto()" #institutoForm="ngForm">
+        <form class="formulario-blanco" (ngSubmit)="onSubmit()" #institutoForm="ngForm">
           <h1 class="input-container mx-4">Ajustes</h1>
         
           <div class="input-edit-container">
@@ -42,8 +42,8 @@
           </div>
         
           <div class="form-footer">
-            <button type="submit" class="btn btn-success" [disabled]="!institutoForm.form.valid">Guardar</button>
-            <button type="button" class="btn btn-danger">Ver anteriores configuraciones</button>
+            <button type="submit" class="btn btn-success" [disabled]="!institutoForm.form.valid">{{buttonLabel }}</button>
+            <button type="button" class="btn btn-danger"[routerLink]="['/setting/instituto']">Ver anteriores configuraciones</button>
           </div>
         </form>
 
@@ -68,20 +68,18 @@
             <label for="instituto">Instituto</label>
             <div class="input-edit-group">
               <select name="Instituto" id="Instituto" required>
-                <option value="Psicologica">Psicologica</option>
-                <option value="Fisica">Fisica</option>
+                <option value="Psicologica">1</option>
+                <option value="Fisica">2</option>
             </select>
             <button type="button" class="btn btn-edit"></button>
             </div>
           </div>
-          </div>
-        
+          </div>      
           <div class="form-footer">
             <button type="button" name="button" class="btn btn-success">Guardar</button>
             <button type="button" name="button" class="btn btn-danger" [routerLink]="['/setting/instituto']">Ver anteriores configuraciones</button>
           </div>
         </form>
-
       </div>
     </div>
   </div>

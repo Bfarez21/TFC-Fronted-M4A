@@ -1,0 +1,36 @@
+.text-center {
+    color: #04346C; /* Cambia el color a rojo (#FF0000) */
+}
+
+.thead-blue {
+    background-color: #CEDCE7; /* Color azul primario de Bootstrap, puedes ajustarlo según tu preferencia */
+    color: white; /* Color de texto blanco para mejor contraste */
+}
+input{
+    width: 225px;
+    height: 40px;
+    padding: 15px;
+    margin: 8px 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    background: rgba(217, 217, 217, 1);
+  }
+  .table-responsive {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+  }
+  /* Estilos generales para la alerta de SweetAlert */
+.swal2-popup {
+  font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+}
+
+/* Estilos específicos para la imagen dentro de la alerta */
+.swal2-html-container img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  max-width: 400px; /* Limita el ancho máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Evita que la imagen tenga márgenes o espacios no deseados */
+  margin: 10px 0; /* Espacio arriba y abajo de la imagen */
+}

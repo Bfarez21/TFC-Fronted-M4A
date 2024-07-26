@@ -13,6 +13,8 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { SettingComponent } from './setting/setting.component';
 import { LoginComponent } from './login/login.component';
+
+import { TituloComponent } from './setting/titulo.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -72,6 +74,7 @@ const routes: Routes=[
   {path:'doctor/formDoc/:id',component:FormDocComponent},
   {path:'ficha-medica/form/:id',component:FormComponent},
 
+  {path:'setting/titulo', component: TituloComponent},
   {path:'setting/instituto',component: InstitutoComponent},
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
@@ -88,10 +91,12 @@ const routes: Routes=[
     AtencionMedicaComponent,
     FichaMedicaComponent,
     ReferenciaMedicaComponent,
+    TituloComponent,
     EnfermedadesComponent,
     DoctorComponent,
     ReportesComponent,
     SettingComponent,
+    InstitutoComponent,
     LoginComponent,
     FormComponent,
     FormRefMedicaComponent,

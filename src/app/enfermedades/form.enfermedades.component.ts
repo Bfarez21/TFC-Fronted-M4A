@@ -17,10 +17,10 @@ export class FormEnfermedadesComponent implements OnInit {
     
     constructor(private enfermedadesService:EnfermedadesService, private router:Router,
       private activateRouter:ActivatedRoute){}
-
-    cancelar(){
+  cancelar(){
       this.router.navigate(['/enfermedades'])
   }
+
   //crear enfermedades
   public create(): void{
     this.enfermedadesService.create(this.enfermedades).
@@ -30,6 +30,7 @@ export class FormEnfermedadesComponent implements OnInit {
       this.editMode= false;
     }) 
   }
+
   //cargar enfermedades
   cargarEnfermedad(): void{
     this.activateRouter.params.subscribe(params=>{
@@ -40,6 +41,7 @@ export class FormEnfermedadesComponent implements OnInit {
       }
     })
   }
+
   ngOnInit(): void {
     this.cargarEnfermedad()
   }

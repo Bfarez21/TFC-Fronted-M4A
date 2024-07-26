@@ -13,59 +13,63 @@
                 <div class="btn-group" role="group" aria-label="Botones de acción">
                     
                     <button class="btn btn-primary"(click)="buscar()">Buscar</button>
-                    <button class="btn btn-secondary"(click)="cargarInstituto()">Ver todo</button>
+                    <button class="btn btn-secondary"(click)="cargarTitulos()">Ver todo</button>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
-        <table class="table table-bordered table-striped" *ngIf="institutoEncontrado; else listaInstitutos">
+        <table class="table table-bordered table-striped" *ngIf="tituloEncontrado; else listaTitulos">
             <thead>
               <tr>
                 <th>id</th>
-                <th>Nombre</th>
-                <th>Rector</th>
-                <th>Dirección</th>
+                <th>Contenido</th>
+                <th>Leyenda</th>
+                <th>Instituto</th>
+                <th>Creacion</th>
+
                 <th>Acción</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{{institutoEncontrado.idIns}}</td>
-                    <td>{{institutoEncontrado.nombreIns}}</td>
-                    <td>{{institutoEncontrado.rectorIns}}</td>
-                    <td>{{institutoEncontrado.direccionIns}}</td>
+                <td>{{tituloEncontrado.idTit}}</td>
+                    <td>{{tituloEncontrado.contenidoTit}}</td>
+                    <td>{{tituloEncontrado.leyendaTit}}</td>
+                    <td>{{tituloEncontrado.instituto}}</td>
+                    <td>{{tituloEncontrado.fechaCreacion}}</td>
                 <td>
-                  <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(institutoEncontrado.idIns)">Ver</button>
-                  <button type="button" name="button" class="btn btn-warning mx-4">Aplicar</button>
-                  <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteInstitutos(institutoEncontrado.idIns)">Eliminar</button>
+
+                  <button type="button" name="button" class="btn btn-warning mx-4" >Aplicar</button>
+                  <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tituloEncontrado.idTit)">Eliminar</button>
                 </td>
               </tr>
             </tbody>
           </table>
 
-     <ng-template #listaInstitutos>
+     <ng-template #listaTitulos>
         <table class="table table-bordered table-striped">
             <thead class="thead-blue">
                 <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Rector</th>
-                    <th>Dirección</th>
-                    <th>Acción</th>
+                <th>id</th>
+                <th>Contenido</th>
+                <th>Leyenda</th>
+                <th>Instituto</th>
+                <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let inst of instituto">
+                <tr *ngFor="let tit of titulo">
 
-                    <td>{{inst.idIns}}</td>
-                    <td>{{inst.nombreIns}}</td>
-                    <td>{{inst.rectorIns}}</td>
-                    <td>{{inst.direccionIns}}</td>
+                    <td>{{tit.idTit}}</td>
+                    <td>{{tit.contenidoTit}}</td>
+                    <td>{{tit.leyendaTit}}</td>
+                    <td>{{tit.instituto}}</td>
+                    <td>{{tit.fechaCreacion}}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(inst.idIns)">Detalles</button>
+                            
                             <button type="button" name="button" class="btn btn-warning mx-4">Aplicar</button>
-                            <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteInstitutos(inst.idIns)">Eliminar</button>
+                            <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tit.idTit)">Eliminar</button>
                         </div>
                     </td>
 
@@ -76,7 +80,7 @@
      </div>
         <div class="text-right">
             <p> </p>
-            <p>Total registros:  <span>{{ instituto.length }}</span></p>
+            <p>Total registros:  <span>{{titulo.length}}</span></p>
         </div>
     </div>
 </div>

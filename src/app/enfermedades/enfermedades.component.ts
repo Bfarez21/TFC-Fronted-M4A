@@ -20,7 +20,9 @@ export class EnfermedadesComponent {
   ngOnInit(): void{
     this.cargarEnfermedad();
   }
-
+   ver():void{
+    this.cargarEnfermedad();
+   }
   cargarEnfermedad(): void {
     this.enfermedadesService.getEnfermedades().subscribe(enfermedades => {
       enfermedades = this.enfermedades=enfermedades; // Asigna los doctores obtenidos del servicio a la propiedad del componente

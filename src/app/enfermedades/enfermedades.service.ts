@@ -17,6 +17,7 @@ export class EnfermedadesService {
    getEnfermedades(): Observable<Enfermedades[]>{
     return this.http.get<Enfermedades[]>(this.urlEndPoint);
   }
+  
 // metodo crear doctor
   create(enfermedades:Enfermedades):Observable<Enfermedades>{
     return this.http.post<Enfermedades>(this.urlEndPoint, enfermedades,{headers:this.httpHeaders})
