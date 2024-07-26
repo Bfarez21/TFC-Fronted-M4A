@@ -17,12 +17,20 @@ export class ReferenciaMedicaComponent {
   ngOnInit(): void {
     this.cargarReferencias();
   }
-
   cargarReferencias(): void {
     this.referenciaService.getReferencias().subscribe(referencias => {
-      referencias = this.referencias = referencias;
+      console.log('Datos recibidos:', referencias); // Agrega esta línea para depuración
+      this.referencias = referencias;
+    }, error => {
+      console.error('Error al cargar referencias:', error);
     });
   }
+  
+  // cargarReferencias(): void {
+  //   this.referenciaService.getReferencias().subscribe(referencias => {
+  //     referencias = this.referencias = referencias;
+  //   });
+  // }
   //Eliminar referencias
   deleteReferencia(id:number):void{
     Swal.fire({
@@ -36,7 +44,7 @@ export class ReferenciaMedicaComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.referenciaService.deleteReferencia(id).subscribe(response => {
-          this.referencias=this.referencias.filter(ReferenciaMedica=>ReferenciaMedica.idRef !==id);
+          this.referencias=this.referencias.filter(ReferenciaMedica=>ReferenciaMedica.id_ref !==id);
           Swal.fire({
             title: 'Eliminado!',
             text: 'Su registro ha sido eliminado.',
@@ -50,18 +58,19 @@ export class ReferenciaMedicaComponent {
   // uso Sweetalert para mostrar datos de un registro y asigno en el boton ver
   verDetalles(referencia: ReferenciaMedica): void {
     Swal.fire({
-      title: `${referencia.entidadSistemaRef}`,
+      title: `${referencia.entidad_sistema_ref}`,
       html: `
-        <p><strong>Fecha:</strong> ${referencia.fechaRef}</p>
-        <p><strong>Entidad del sistema:</strong> ${referencia.departamentoRef}</p>
-        <p><strong>Especialidad:</strong> ${referencia.especialidadRef}</p>
-        <p><strong>Establecimiento:</strong> ${referencia.establecimientoRef}</p>
-        <p><strong>Hallazgos MSP:</strong> ${referencia.hallazgosRef}</p>
-        <p><strong>Institución:</strong> ${referencia.institucionRef}</p>
-        <p><strong>Motivo:</strong> ${referencia.motivoRef}</p>
-        <p><strong>Resumen:</strong> ${referencia.resumenRef}</p>
-        <p><strong>Servicio:</strong> ${referencia.servicioRef}</p>
+        <p><strong>Fecha:</strong> ${referencia.fecha_ref}</p>
+        <p><strong>Entidad del sistema:</strong> ${referencia.departamento_ref}</p>
+        <p><strong>Especialidad:</strong> ${referencia.especialidad_ref}</p>
+        <p><strong>Establecimiento:</strong> ${referencia.establecimiento_ref}</p>
+        <p><strong>Hallazgos MSP:</strong> ${referencia.hallazgos_ref}</p>
+        <p><strong>Institución:</strong> ${referencia.institucion_ref}</p>
+        <p><strong>Motivo:</strong> ${referencia.motivo_referencia_ref}</p>
+        <p><strong>Resumen:</strong> ${referencia.resumen_ref}</p>
+        <p><strong>Servicio:</strong> ${referencia.servicio_ref}</p>
       `,
     });
   }
+  
 }

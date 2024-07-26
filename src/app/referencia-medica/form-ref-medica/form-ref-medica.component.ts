@@ -11,6 +11,7 @@ import { EnfermedadesService } from '../../enfermedades/enfermedades.service';
 import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
 import { FichaMedica } from '../../ficha-medica/modelo/ficha-medica';
 import { FichaMedicaService } from '../../ficha-medica/servicio/ficha-medica.service';
+import { DoctorService } from '../../doctor/doctor.service';
 
 @Component({
   selector: 'app-form-ref-medica',
@@ -21,6 +22,7 @@ export class FormRefMedicaComponent implements OnInit {
 
   public referencia: ReferenciaMedica = new ReferenciaMedica()
   public enfermedades: Enfermedades[] = [];
+  public doctores: Doctor[] = []
   editMode: boolean = false;
 
   constructor(
@@ -28,6 +30,7 @@ export class FormRefMedicaComponent implements OnInit {
     private enfermedadesService: EnfermedadesService,
     private router: Router,
     private activateRouter: ActivatedRoute,
+    private doctorService: DoctorService,
     private pacienteService: PacienteService,
     private fichaService: FichaMedicaService
   ) {}
@@ -43,7 +46,7 @@ export class FormRefMedicaComponent implements OnInit {
       .subscribe({
         next: referencia => {
           this.router.navigate(['/referencia-medica']);
-          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamentoRef} guardada con éxito`, 'success');
+          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamento_ref} guardada con éxito`, 'success');
           this.editMode = false;
         },
         error: error => {
@@ -73,12 +76,26 @@ export class FormRefMedicaComponent implements OnInit {
   cargarEnfermedades(): void {
     this.enfermedadesService.getEnfermedades().subscribe(enfermedades => this.enfermedades = enfermedades);
   }
-
+  cargarDoctores(): void {
+    this.doctorService.getDoctores().subscribe(doctores => this.doctores = doctores);
+  }
   ngOnInit(): void {
     this.cargarReferencia();
     this.cargarEnfermedades();
+    this.cargarDoctores();
   }
   
+  referenciaL = {
+     motivoRef: [] as string[]
+   };
 
+  // Método para manejar la selección de casillas
+  onMotivoRefChange(event: any, value: string) {
+    if (event.target.checked) {
+      this.referenciaL.motivoRef.push(value);
+    } else {
+      this.referenciaL.motivoRef = this.referenciaL.motivoRef.filter(item => item !== value);
+    }
+  }
   
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { ReferenciaMedica } from './referencia-medica';
 
 @Injectable({
@@ -23,9 +23,16 @@ export class ReferenciaMedicaService {
     return this.http.post<ReferenciaMedica>(this.urlEndPoint, referencia,{headers:this.httpHeaders})
   }
   // metodo para obtener por id
-  getReferencia(id=0):Observable<ReferenciaMedica>{
-    return this.http.get<ReferenciaMedica>(`${this.urlEndPoint}/${id}`);
+  getReferencia(id: number): Observable<ReferenciaMedica> {
+    return this.http.get<ReferenciaMedica>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error al obtener referencia:', error);
+        return throwError(error);
+      })
+    );
   }
+  
+ 
   // metodo para eliminar doctor
   deleteReferencia(id:number):Observable<void>{
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders });

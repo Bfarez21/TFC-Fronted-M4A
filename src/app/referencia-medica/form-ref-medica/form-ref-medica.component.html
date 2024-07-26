@@ -5,18 +5,23 @@
       <div class="form-row">
         <div class="form-group">
           <label for="institucion_ref">NOMBRE DE LA INSTITUCIÓN</label>
-          <input type="text" id="institucion_ref" name="institucion_ref" [(ngModel)]="referencia.institucionRef" required>
+          <input type="text" id="institucion_ref" name="institucion_ref" [(ngModel)]="referencia.institucion_ref"
+            required>
         </div>
         <div class="form-group">
           <label for="cedula_ref">CÉDULA</label>
-          <input type="text" id="cedula_ref" name="cedula_ref" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+          <select id="cedula_ref" name="cedula_ref" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+            <option *ngFor="let doctor of doctores" [value]="doctor.cedulaDoc">
+              {{ doctor.cedulaDoc }}
+            </option>
+          </select>
         </div>
         <div class="form-group">
           <label for="servicio_ref">SERVICIO</label>
-          <input type="text" id="servicio_ref" name="servicio_ref" [(ngModel)]="referencia.servicioRef" required>
+          <input type="text" id="servicio_ref" name="servicio_ref" [(ngModel)]="referencia.servicio_ref" required>
         </div>
       </div>
-      
+
       <h2>SE REFIERE O DERIVA A:</h2>
       <table>
         <tbody>
@@ -24,47 +29,55 @@
             <td>
               <div class="form-group">
                 <label for="entidad_sistema_ref">ENTIDAD DEL SISTEMA</label>
-                <input type="text" id="entidad_sistema_ref" name="entidad_sistema_ref" [(ngModel)]="referencia.entidadSistemaRef" required>
+                <input type="text" id="entidad_sistema_ref" name="entidad_sistema_ref"
+                  [(ngModel)]="referencia.entidad_sistema_ref" required>
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label for="establecimiento_ref">ESTABLECIMIENTO DE SALUD</label>
-                <input type="text" id="establecimiento_ref" name="establecimiento_ref" [(ngModel)]="referencia.establecimientoRef" required>
+                <input type="text" id="establecimiento_ref" name="establecimiento_ref"
+                  [(ngModel)]="referencia.establecimiento_ref" required>
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label for="servicio_ref_deriva">SERVICIO</label>
-                <input type="text" id="servicio_ref_deriva" name="servicio_ref_deriva" [(ngModel)]="referencia.servicioRef" required>
+                <input type="text" id="servicio_ref_deriva" name="servicio_ref_deriva"
+                  [(ngModel)]="referencia.servicio_ref" required>
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label for="especialidad_ref">ESPECIALIDAD</label>
-                <input type="text" id="especialidad_ref" name="especialidad_ref" [(ngModel)]="referencia.especialidadRef" required>
+                <input type="text" id="especialidad_ref" name="especialidad_ref"
+                  [(ngModel)]="referencia.especialidad_ref" required>
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label for="fecha_ref">FECHA</label>
-                <input type="date" id="fecha_ref" name="fecha_ref" [(ngModel)]="referencia.fechaRef" required>
+                <input type="date" id="fecha_ref" name="fecha_ref" [(ngModel)]="referencia.fecha_ref" required>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-      
-      
+
+
       <table>
         <tbody>
           <tr>
             <h2>MOTIVO DE REFERENCIA:</h2>
-            <td><input type="checkbox" id="motivo_referencia_ref_limitada" name="motivo_referencia_ref_limitada" [(ngModel)]="referencia.motivoRef" [value]="'LIMITADA CAPACIDAD RESOLUTIVA'"></td>
-            <td><label for="motivo_referencia_ref_limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label></td>
-            <td><input type="checkbox" id="motivo_referencia_ref_falta" name="motivo_referencia_ref_falta" [(ngModel)]="referencia.motivoRef" [value]="'FALTA DE PROFESIONAL'"></td>
+            <td><input type="checkbox" id="motivo_referencia_ref_limitada" [value]="'LIMITADA CAPACIDAD RESOLUTIVA'"
+                (change)="onMotivoRefChange($event, 'LIMITADA CAPACIDAD RESOLUTIVA')"></td>
+            <td><label for="motivo_referencia_ref_limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label>
+            </td>
+            <td><input type="checkbox" id="motivo_referencia_ref_falta" [value]="'FALTA DE PROFESIONAL'"
+                (change)="onMotivoRefChange($event, 'FALTA DE PROFESIONAL')"></td>
             <td><label for="motivo_referencia_ref_falta" class="checkbox-label">FALTA DE PROFESIONAL</label></td>
-            <td><input type="checkbox" id="motivo_referencia_ref_otros" name="motivo_referencia_ref_otros" [(ngModel)]="referencia.motivoRef" [value]="'OTROS'"></td>
+            <td><input type="checkbox" id="motivo_referencia_ref_otros" [value]="'OTROS'"
+                (change)="onMotivoRefChange($event, 'OTROS')"></td>
             <td><label for="motivo_referencia_ref_otros" class="checkbox-label">OTROS</label></td>
           </tr>
         </tbody>
@@ -72,11 +85,12 @@
 
       <div class="form-group">
         <h2><label for="resumen_ref">RESUMEN DEL CUADRO CLÍNICO</label></h2>
-        <textarea id="resumen_ref" name="resumen_ref" [(ngModel)]="referencia.resumenRef" rows="3" required></textarea>
+        <textarea id="resumen_ref" name="resumen_ref" [(ngModel)]="referencia.resumen_ref" rows="3" required></textarea>
       </div>
       <div class="form-group">
         <h2><label for="hallazgos_ref">HALLAZGOS RELEVANTES</label></h2>
-        <textarea id="hallazgos_ref" name="hallazgos_ref" [(ngModel)]="referencia.hallazgosRef" rows="3" required></textarea>
+        <textarea id="hallazgos_ref" name="hallazgos_ref" [(ngModel)]="referencia.hallazgos_ref" rows="3"
+          required></textarea>
       </div>
 
       <table>
@@ -112,16 +126,24 @@
         </tbody>
       </table>
       <button type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
-      
+
 
       <div class="form-row">
         <div class="form-group">
           <label for="nombre_profesional">NOMBRE DEL PROFESIONAL</label>
-          <input type="text" id="nombre_profesional" name="nombre_profesional">
+          <select id="nombre_doc" name="nombre_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+            <option *ngFor="let doctor of doctores" [value]="doctor.nombreDoc">
+            {{ doctor.nombreDoc }} {{doctor.apellidoDoc}}
+            </option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="codigo_msp">CÓDIGO MSP</label>
-          <input type="text" id="codigo_msp" name="codigo_msp">
+          <label for="codigo_msp_doc">CÓDIGO MSP</label>
+          <select id="codigo_msp_doc" name="codigo_msp_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+            <option *ngFor="let doctor of doctores" [value]="doctor.codigoMspDoc">
+            {{ doctor.codigoMspDoc }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="form-group">
