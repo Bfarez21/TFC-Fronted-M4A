@@ -1,5 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '@auth0/auth0-angular';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-side-bar',
@@ -8,7 +10,7 @@ import { AuthService } from '../login/auth.service';
 })
 export class SideBarComponent implements AfterViewInit {
 
-    constructor(private authService: AuthService){}
+    constructor(public auth: AuthService){}
     
 
     ngAfterViewInit(): void {
@@ -24,7 +26,18 @@ export class SideBarComponent implements AfterViewInit {
       }
     }
     onLogout() {
-      this.authService.logout();
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Quieres cerrar sesión?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, cerrar sesión',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.auth.logout();
+        }
+      });
     }
 }
 

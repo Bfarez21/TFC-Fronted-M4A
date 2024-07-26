@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { Component, Inject } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,19 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService) { }
+ 
+  constructor(public auth: AuthService, private router: Router){ }
 
-  onLogin() {
-    this.authService.login();
+  ngOnInit(): void{ 
+    this.auth.isAuthenticated$.subscribe(isAuthenticaed =>{
+      if(isAuthenticaed){
+          this.router.navigate(['/side-bar'])
+      }
+    })
+  }
+
+  login(){
+    this.auth.loginWithRedirect()
   }
 
 }

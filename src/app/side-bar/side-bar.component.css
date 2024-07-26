@@ -172,3 +172,31 @@ a.sidebar-link:hover {
   .sidebar-link i {
     margin-right: 0.5rem;
   }
+  .user-info {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .user-info li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+  }
+  .hidden {
+    display: none;
+}
+
+#sidebar.expand .hidder {
+    display: block;
+}
+.user-info img {
+    display: block;
+    margin: 0 auto; 
+    border-radius: 50%; 
+    width: 50px; 
+    height: 50px; 
+  }
+  .user-info li {
+    color:  #FFF;
+    text-align: center; 
+}

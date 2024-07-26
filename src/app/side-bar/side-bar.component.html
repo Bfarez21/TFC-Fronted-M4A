@@ -68,6 +68,18 @@
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
             </a>
+            
+        </div>
+        <div class=" hidder hidden">
+          <ul class="user-info" *ngIf="auth.user$ | async as user">
+            <li>
+              <img src="{{ user.picture }}">
+            </li>
+            <li>{{ user.name }}</li>
+            <li>{{ user.email }}</li>
+          </ul>
+          
+
         </div>
     </aside>
     <div class="main p-0">

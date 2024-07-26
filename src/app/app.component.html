@@ -1,12 +1,10 @@
-
 <div class="wrapper">
-  <div id="sidebar-logo" *ngIf="authService.isAuthenticated()">
+  <div id="sidebar-logo" *ngIf="auth.isAuthenticated$ | async">
     <app-side-bar></app-side-bar>
   </div>
-  <div class="main" [class.expanded]="authService.isAuthenticated()">
+
+  
+  <div class="main" [class.expanded]="(auth.isAuthenticated$ | async)">
     <router-outlet></router-outlet>
   </div>
 </div>
-
-
-

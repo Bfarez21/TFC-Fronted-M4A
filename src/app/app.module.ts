@@ -17,6 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 // http
@@ -75,7 +76,8 @@ const routes: Routes=[
   //sintaxis para ingresar a las enfermedades
   {path:'enfermedades/form.enfermedades', component:FormEnfermedadesComponent},
   {path:'form-ref-medica/:id', component: FormRefMedicaComponent},
-  {path:'enfermedades/form.enfermedades/:id',component: FormEnfermedadesComponent, }
+  {path:'enfermedades/form.enfermedades/:id',component: FormEnfermedadesComponent, },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
@@ -111,7 +113,14 @@ const routes: Routes=[
     MatIconModule,
     MatButtonModule,
     MatProgressBarModule,
-    BaseChartDirective
+    BaseChartDirective,
+    AuthModule.forRoot({
+      domain:'dev-g16jfi1gl7jaa11x.us.auth0.com',
+      clientId:'a0t4pHtgoFQOTXQRKBxbnT2xl2NgdG4k',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
   providers: [SettingService, PacienteService,FichaMedicaService,DoctorService, ReferenciaMedicaService,EnfermedadesService, provideAnimationsAsync(), provideCharts(withDefaultRegisterables())],
 
