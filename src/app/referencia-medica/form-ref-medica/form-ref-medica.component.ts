@@ -8,6 +8,9 @@ import { ReferenciaMedica } from '../referencia-medica';
 import { Diagnostico } from '../diagnostico/diagnostico';
 import { Enfermedades } from '../../enfermedades/Enfermedades';
 import { EnfermedadesService } from '../../enfermedades/enfermedades.service';
+import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
+import { FichaMedica } from '../../ficha-medica/modelo/ficha-medica';
+import { FichaMedicaService } from '../../ficha-medica/servicio/ficha-medica.service';
 
 @Component({
   selector: 'app-form-ref-medica',
@@ -24,7 +27,10 @@ export class FormRefMedicaComponent implements OnInit {
     private referenciaService: ReferenciaMedicaService,
     private enfermedadesService: EnfermedadesService,
     private router: Router,
-    private activateRouter: ActivatedRoute) { }
+    private activateRouter: ActivatedRoute,
+    private pacienteService: PacienteService,
+    private fichaService: FichaMedicaService
+  ) {}
 
 
   cancelar() {
@@ -37,7 +43,7 @@ export class FormRefMedicaComponent implements OnInit {
       .subscribe({
         next: referencia => {
           this.router.navigate(['/referencia-medica']);
-          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamento_ref} guardada con éxito`, 'success');
+          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamentoRef} guardada con éxito`, 'success');
           this.editMode = false;
         },
         error: error => {
@@ -72,5 +78,7 @@ export class FormRefMedicaComponent implements OnInit {
     this.cargarReferencia();
     this.cargarEnfermedades();
   }
+  
+
   
 }
