@@ -14,28 +14,24 @@
           <tr>
             <th>Id</th>
             <th>CI</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
             <th>Carrera</th>
             <th>Fecha Atención</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <!-- <td>{{paciente.id_pac}}</td>   *ngFor="let paciente of pacientes"
-            <td>{{paciente.cedula_pac}}</td>
-            <td>{{paciente.nombre_pac}}</td>
-            <td>{{paciente.apellido_pac}}</td>
-            <td>{{paciente.profesion_pac}}</td> -->
-            <td>1</td>
-            <td>0123654789</td>
-            <td>Carme</td>
-            <td>Tacuri</td>
-            <td>Software</td>
-            <td>12/05/2024</td>
+          <tr *ngFor="let atencionMedica of atencionesMedicas">
+            <td>{{atencionMedica.idAte}}</td>  
+            <td>{{atencionMedica.fichaMedica.paciente.cedulaPac}}</td> 
+            <td>{{atencionMedica.fichaMedica.paciente.nombrePac}}</td>
+            <td>{{atencionMedica.fichaMedica.paciente.apellidoPac}}</td>
+            <td>{{atencionMedica.fichaMedica.paciente.carreraPac}}</td>
+            <td>{{atencionMedica.fechaAtencionAte}}</td>
+
             <td>
-              <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
+              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(atencionMedica)">Ver</button>
               <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>
               <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
             </td>

@@ -106,18 +106,18 @@
         <tbody>
           <tr *ngFor="let diag of referencia.diagnosticos; let i = index">
             <td>
-              <input type="text" [(ngModel)]="diag.inicial_dia" name="nombre_dia_{{i}}" required>
+              <input type="text" [(ngModel)]="diag.inicialDia" name="nombre_dia_{{i}}" required>
             </td>
             <td>
-              <select [(ngModel)]="diag.inicial_dia" name="cie10_{{i}}">
+              <select [(ngModel)]="diag.inicialDia" name="cie10_{{i}}">
                 <option *ngFor="let enf of enfermedades" [value]="enf.codigoEnf">{{ enf.codigoEnf }}</option>
               </select>
             </td>
             <td>
-              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'presuntivo'" name="tipo_{{i}}">
+              <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'presuntivo'" name="tipo_{{i}}">
             </td>
             <td>
-              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'definitivo'" name="tipo_{{i}}">
+              <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'definitivo'" name="tipo_{{i}}">
             </td>
             <td>
               <button type="button" (click)="eliminarDiagnostico(i)">Eliminar</button>

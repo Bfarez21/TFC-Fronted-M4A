@@ -1,77 +1,78 @@
+
 <div class="container">
     <h2>Ingreso de Atención Medica</h2>
 </div>
 <div class="mx-4">
     <label for="motivo">Datos de Filiación</label>
 </div>
-
+<form ngNativeValidate (ngSubmit)="create()">
 <div class="container-datos mx-4">
-    <form class="form-grid mx-4">
+    <div class="form-grid mx-4">
         <div class="input-group">
-            <input type="text" id="cedula" name="cedula" placeholder="Cédula" class="small-input">
-            <button type="button" class="btn btn-primary">Search</button>
+            <input type="text" id="cedula" name="cedula" placeholder="Cédula" class="small-input" [(ngModel)]="cedulaBusqueda">
+            <button type="button" class="btn btn-primary" (click)="buscar()">Search</button>
         </div>
         <div class="input-container">
-            <input type="text" id="profesion" name="profesion" placeholder="profesion" disabled>
+            <input type="text" id="profesion" name="profesion" placeholder="profesion" disabled [value]="pacienteEncontrado?.profesionPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" disabled>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" disabled [value]="pacienteEncontrado?.nombrePac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="apellido" name="apellido" placeholder="Apellido" disabled>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" disabled [value]="pacienteEncontrado?.apellidoPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="carrera" name="carrera" placeholder="Carrera" disabled>
+            <input type="text" id="carrera" name="carrera" placeholder="Carrera" disabled [value]="pacienteEncontrado?.carreraPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="direccion" name="direccion" placeholder="Dirección" disabled>
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección" disabled [value]="pacienteEncontrado?.direccionPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="barrio" name="barrio" placeholder="Barrio" disabled>
+            <input type="text" id="barrio" name="barrio" placeholder="Barrio" disabled [value]="pacienteEncontrado?.barrioPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="parroquia" name="parroquia" placeholder="Parroquia" disabled>
+            <input type="text" id="parroquia" name="parroquia" placeholder="Parroquia" disabled [value]="pacienteEncontrado?.parroquiaPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="canton" name="canton" placeholder="Cantón" disabled>
+            <input type="text" id="canton" name="canton" placeholder="Cantón" disabled [value]="pacienteEncontrado?.cantonPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="provincia" name="provincia" placeholder="Provincia" disabled>
+            <input type="text" id="provincia" name="provincia" placeholder="Provincia" disabled [value]="pacienteEncontrado?.provinciaPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="telefono" name="telefono" placeholder="Teléfono" disabled>
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono" disabled [value]="pacienteEncontrado?.telefonoPac || ''">
         </div>
         <div class="input-container">
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" disabled>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" disabled [value]="pacienteEncontrado?.fechaNacimientoPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="lugar" name="lugar" placeholder="Lugar" disabled>
+            <input type="text" id="lugar" name="lugar" placeholder="Lugar" disabled [value]="pacienteEncontrado?.lugarPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="pais" name="pais" placeholder="País" disabled>
+            <input type="text" id="pais" name="pais" placeholder="País" disabled [value]="pacienteEncontrado?.paisPac || ''">
         </div>
         <div class="input-container">
             <input type="number" id="edad" name="edad" placeholder="Edad" disabled>
         </div>
         <div class="input-container">
-            <input type="text" id="genero" name="genero" placeholder="Género" disabled>
+            <input type="text" id="genero" name="genero" placeholder="Género" disabled [value]="pacienteEncontrado?.generoPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="estado_civil" name="estado_civil" placeholder="Estado Civil" disabled>
+            <input type="text" id="estado_civil" name="estado_civil" placeholder="Estado Civil" disabled [value]="pacienteEncontrado?.estadoCivilPac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="tipo_sangre" name="tipo_sangre" placeholder="Tipo de Sangre" disabled>
+            <input type="text" id="tipo_sangre" name="tipo_sangre" placeholder="Tipo de Sangre" disabled [value]="pacienteEncontrado?.tipoSangrePac || ''">
         </div>
         <div class="input-container">
-            <input type="text" id="ciclo" name="ciclo" placeholder="Ciclo" disabled>
+            <input type="text" id="ciclo" name="ciclo" placeholder="Ciclo" disabled [value]="pacienteEncontrado?.cicloPac || ''">
         </div>
-    </form>
+    </div>
 </div>
 
 <div class="textarea-container mx-4">
     <label for="motivo">Motivo Consulta:</label>
     <textarea id="motivo" name="observaciones" placeholder="Escribe tus observaciones aquí..." rows="4"
-        cols="50"></textarea>
+        cols="50" [(ngModel)]="atencionMedica.motivoAte"></textarea>
 </div>
 
 <div class="textarea-container mx-4">
@@ -86,20 +87,18 @@
                     <th>Traumatológico</th>
                     <th>Quirúcgico</th>
                     <th>Farmacológico</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>
-                        <button type="button" name="button" class="btn btn-warning mx-2">Editar</button>
-                    </td>
+                    
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.alergiaAnt ? 'Sí' : 'No' }}</td>
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.clinicoAnt ? 'Sí' : 'No' }}</td>
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.ginecologoAnt ? 'Sí' : 'No' }}</td>
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.traumatologicoAnt ? 'Sí' : 'No' }}</td>
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.quirurgicoAnt ? 'Sí' : 'No' }}</td>
+                    <td>{{ fichaMedica?.antecedenteFamiliar?.farmacologicoAnt ? 'Sí' : 'No' }}</td>
+                    
                 </tr>
             </tbody>
         </table>
@@ -108,7 +107,7 @@
 <div class="textarea-container mx-4">
     <label for="enfermedad">Enfermedad Actual</label>
     <textarea id="enfermedad" name="enfermedad" placeholder="Escribe tus observaciones aquí..." rows="4"
-        cols="50"></textarea>
+        cols="50" [(ngModel)]="atencionMedica.enfermedadActualAte"></textarea>
 </div>
 <div class="mx-4">
     <label for="signos">Signos Vitales</label>
@@ -116,64 +115,64 @@
 <div class="container-signos mx-4">
     <form class="form-grid-signos mx-4">
         <div class="input-container">
-            <label for="pa">PA</label>
-            <input type="text" id="pa" placeholder="PA:">
+            <label for="pa" >PA</label>
+            <input type="text" id="pa" placeholder="PA:" [(ngModel)]="signoPA.valorAts">
         </div>
         <div class="input-container">
             <label for="peso">PESO</label>
-            <input type="text" id="peso" placeholder="PESO:">
+            <input type="text" id="peso" placeholder="PESO:" [(ngModel)]="signoPeso.valorAts">
         </div>
         <div class="input-container">
             <label for="talla">TALLA</label>
-            <input type="text" id="talla" placeholder="TALLA:">
+            <input type="text" id="talla" placeholder="TALLA:" [(ngModel)]="signoTalla.valorAts">
         </div>
         <div class="input-container">
             <label for="imc">IMC</label>
-            <input type="text" id="imc" placeholder="IMC:">
+            <input type="text" id="imc" placeholder="IMC:" [(ngModel)]="signoIMC.valorAts">
         </div>
         <div class="input-container">
             <label for="fc">FC</label>
-            <input type="text" id="fc" placeholder="FC:">
+            <input type="text" id="fc" placeholder="FC:" [(ngModel)]="signoFC.valorAts">
         </div>
         <div class="input-container">
             <label for="fr">FR</label>
-            <input type="text" id="fr" placeholder="FR:">
+            <input type="text" id="fr" placeholder="FR:" [(ngModel)]="signoFR.valorAts">
         </div>
         <div class="input-container">
             <label for="t">T°</label>
-            <input type="text" id="t" placeholder="T°:">
+            <input type="text" id="t" placeholder="T°:" [(ngModel)]="signoT.valorAts">
         </div>
         <div class="input-container">
             <label for="sat">Sat.O2</label>
-            <input type="text" id="sat" placeholder="SAT.O2°:">
+            <input type="text" id="sat" placeholder="SAT.O2°:" [(ngModel)]="signoSat.valorAts">
         </div>
         <div class="input-container">
             <label for="glasgow">GLASGOW</label>
-            <!-- <input type="text" id="glasgow" placeholder="GLASGOW:"> -->
+            <input type="text" id="glasgow" placeholder="GLASGOW:" [(ngModel)]="signoGlasgow.valorAts">
         </div>
         <div class="input-container">
             <label for="ocular">OCULAR</label>
-            <input type="text" id="ocular" placeholder="OCULAR:">
+            <input type="text" id="ocular" placeholder="OCULAR:" [(ngModel)]="signoOcular.valorAts">
         </div>
         <div class="input-container">
             <label for="verbal">VERBAL</label>
-            <input type="text" id="verbal" placeholder="VERBAL:">
+            <input type="text" id="verbal" placeholder="VERBAL:" [(ngModel)]="signoVerbal.valorAts">
         </div>
         <div class="input-container">
             <label for="motora">MOTORA</label>
-            <input type="text" id="motora" placeholder="MOTORA:">
+            <input type="text" id="motora" placeholder="MOTORA:" [(ngModel)]="signoMotora.valorAts">
         </div>
         <div class="input-container">
             <label for="total">TOTAL</label>
-            <input type="text" id="total" placeholder="TOTAL:">
+            <input type="text" id="total" placeholder="TOTAL:" [(ngModel)]="signoTotal.valorAts">
         </div>
         <div class="input-container">
             <label for="capilar">LLEN.CAPILAR</label>
-            <input type="text" id="capilar" placeholder="LLEN. CAPILAR:">
+            <input type="text" id="capilar" placeholder="LLEN. CAPILAR:" [(ngModel)]="signollenado.valorAts">
         </div>
         <div class="input-container">
             <label for="pupilar">R.PUPILAR</label>
-            <input type="text" id="pupilar" placeholder="R.PUPILAR:">
+            <input type="text" id="pupilar" placeholder="R.PUPILAR:" [(ngModel)]="signoRPupilar.valorAts">
         </div>
     </form>
 </div>
@@ -186,48 +185,48 @@
     <form class="form-grid-fisico mx-4">
         <div class="form-row">
             <label for="piel">PIEL Y FANERAS</label>
-            <input type="text" id="piel" placeholder="Escribe aquí...">
+            <input type="text" id="piel" placeholder="Escribe aquí..." [(ngModel)]="examenPiel.descripcionExa">
         </div>
         <div class="form-row">
             <label for="cabeza">CABEZA</label>
-            <input type="text" id="cabeza" placeholder="Escribe aquí...">
+            <input type="text" id="cabeza" placeholder="Escribe aquí..." [(ngModel)]="examenCabeza.descripcionExa">
         </div>
         <div class="form-row">
             <label for="cuello">CUELLO</label>
-            <input type="text" id="cuello" placeholder="Escribe aquí...">
+            <input type="text" id="cuello" placeholder="Escribe aquí..." [(ngModel)]="examenCuello.descripcionExa">
         </div>
         <div class="form-row">
             <label for="torax">TÓRAX</label>
-            <input type="text" id="torax" placeholder="Escribe aquí...">
+            <input type="text" id="torax" placeholder="Escribe aquí..." [(ngModel)]="examenTorax.descripcionExa">
         </div>
         <div class="form-row">
             <label for="corazon">CORAZÓN</label>
-            <input type="text" id="corazon" placeholder="Escribe aquí...">
+            <input type="text" id="corazon" placeholder="Escribe aquí..." [(ngModel)]="examenCorazon.descripcionExa">
         </div>
         <div class="form-row">
             <label for="abdomen">ABDOMEN</label>
-            <input type="text" id="abdomen" placeholder="Escribe aquí...">
+            <input type="text" id="abdomen" placeholder="Escribe aquí..." [(ngModel)]="examenAbdomen.descripcionExa">
         </div>
         <div class="form-row">
             <label for="inguinal">R. INGUINAL</label>
-            <input type="text" id="inguinal" placeholder="Escribe aquí...">
+            <input type="text" id="inguinal" placeholder="Escribe aquí..." [(ngModel)]="examenInguinal.descripcionExa">
         </div>
         <div class="form-row">
             <label for="superiores">M.SUPERIORES</label>
-            <input type="text" id="superiores" placeholder="Escribe aquí...">
+            <input type="text" id="superiores" placeholder="Escribe aquí..." [(ngModel)]="examenSuperior.descripcionExa">
         </div>
         <div class="form-row">
             <label for="inferiores">M.INFERIORES</label>
-            <input type="text" id="inferiores" placeholder="Escribe aquí...">
+            <input type="text" id="inferiores" placeholder="Escribe aquí..." [(ngModel)]="examenInferior.descripcionExa">
         </div>
     </form>
 </div>
 <div class="textarea-container mx-4">
-    <label for="examenes">Exámenes Complemetarios</label>
+    <label for="examenes">Exámenes Complementarios</label>
     <textarea id="enfermedad" name="enfermedad" placeholder="Escribe tus observaciones aquí..." rows="4"
-        cols="50"></textarea>
-        <label for="fileUpload">Subir PDF:</label>
-    <input type="file" id="fileUpload" name="fileUpload" accept=".pdf">
+        cols="50" [(ngModel)]="examenComplementario.tituloExa"></textarea>
+    <!-- <label for="fileUpload">Subir PDF:</label> -->
+    <!-- <input type="file" id="fileUpload" name="fileUpload" accept=".pdf"> -->
 </div>
 
 <div class="mx-4">
@@ -246,7 +245,7 @@
       <tbody>
         <tr>
           <td>
-            <textarea id="diagnostico" name="diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
+            <textarea id="diagnostico" name="diagnostico" placeholder="Ingrese el diagnóstico" rows="2" readonly style="resize: none;" [(ngModel)]="diagnostico1.inicialDia"></textarea>
           </td>
           <td>
             <label for="cie10" class="visually-hidden">CIE-10:</label>
@@ -259,14 +258,62 @@
             </select>
           </td>
           <td>
-            <label for="presuntivo" class="visually-hidden">Presuntivo:</label>
-            <input type="checkbox" id="presuntivo" name="presuntivo">
-          </td>
-          <td>
-            <label for="definitivo" class="visually-hidden">Definitivo:</label>
-            <input type="checkbox" id="definitivo" name="definitivo">
-          </td>
+                <label for="presuntivo" class="visually-hidden">Presuntivo:</label>
+                <input type="radio" id="presuntivo" name="diagnostico" [(ngModel)]="diagnostico1.estadoDia" [value]="false">
+              </td>
+              <td>
+                <label for="definitivo" class="visually-hidden">Definitivo:</label>
+                <input type="radio" id="definitivo" name="diagnostico" [(ngModel)]="diagnostico1.estadoDia" [value]="true">
+              </td>
         </tr>
+
+        <tr>
+            <td>
+              <textarea id="diagnostico" name="diagnostico" placeholder="Ingrese el diagnóstico" rows="2" readonly style="resize: none;" [(ngModel)]="diagnostico2.inicialDia"></textarea>
+            </td>
+            <td>
+              <label for="cie10" class="visually-hidden">CIE-10:</label>
+              <select id="cie10" name="cie10">
+                <option value="">Seleccione CIE-10</option>
+                <option value="A00">A00 - Cólera</option>
+                <option value="A01">A01 - Fiebre tifoidea</option>
+                <option value="A02">A02 - Salmonelosis</option>
+                <!-- se carga desde enfermedades -->
+              </select>
+            </td>
+            <td>
+                <label for="presuntivo" class="visually-hidden">Presuntivo:</label>
+                <input type="radio" id="presuntivo" name="diagnostico" [(ngModel)]="diagnostico2.estadoDia" [value]="false">
+              </td>
+              <td>
+                <label for="definitivo" class="visually-hidden">Definitivo:</label>
+                <input type="radio" id="definitivo" name="diagnostico" [(ngModel)]="diagnostico2.estadoDia" [value]="true">
+              </td>
+          </tr>
+
+          <tr>
+            <td>
+              <textarea id="diagnostico" name="diagnostico" placeholder="Ingrese el diagnóstico" rows="2" readonly style="resize: none;" [(ngModel)]="diagnostico3.inicialDia"></textarea>
+            </td>
+            <td>
+              <label for="cie10" class="visually-hidden">CIE-10:</label>
+              <select id="cie10" name="cie10">
+                <option value="">Seleccione CIE-10</option>
+                <option value="A00">A00 - Cólera</option>
+                <option value="A01">A01 - Fiebre tifoidea</option>
+                <option value="A02">A02 - Salmonelosis</option>
+                <!-- se carga desde enfermedades -->
+              </select>
+            </td>
+            <td>
+                <label for="presuntivo" class="visually-hidden">Presuntivo:</label>
+                <input type="radio" id="presuntivo" name="diagnostico" [(ngModel)]="diagnostico3.estadoDia" [value]="false">
+              </td>
+              <td>
+                <label for="definitivo" class="visually-hidden">Definitivo:</label>
+                <input type="radio" id="definitivo" name="diagnostico" [(ngModel)]="diagnostico3.estadoDia" [value]="true">
+              </td>
+          </tr>
       </tbody>
     </table>
   </div>
@@ -276,10 +323,11 @@
 <div class="textarea-container mx-4">
     <label for="tratamiento">Tratamiento</label>
     <textarea id="tratamiento" name="tratamiento" placeholder="Escribe tus observaciones aquí..." rows="4"
-        cols="50"></textarea>
+        cols="50" [(ngModel)]="atencionMedica.tratamientoAte"></textarea>
 </div>
 
 <div class="form-footer">
     <button class="btn btn-success " role="button">Guardar</button>
     <button type="button" name="button" class="btn btn-danger " (click)="cancelar()">Cancelar</button>
 </div>
+</form>
