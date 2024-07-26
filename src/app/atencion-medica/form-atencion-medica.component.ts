@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { DiagnosticoService } from '../referencia-medica/diagnostico/diagnostico.service';
 import { SignoVital } from './modelo/signo-vital';
 import { SignoVitalService } from './service/signo-vital.service';
+
 @Component({
   selector: 'app-form-atencion-medica',
   templateUrl: './form-atencion-medica.component.html',
