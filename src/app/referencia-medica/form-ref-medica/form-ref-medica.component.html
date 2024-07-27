@@ -93,7 +93,7 @@
           required></textarea>
       </div>
 
-      <table>
+      <table class="diagnosticos-table">
         <thead>
           <tr>
             <th>DIAGNÓSTICO</th>
@@ -105,27 +105,38 @@
         </thead>
         <tbody>
           <tr *ngFor="let diag of referencia.diagnosticos; let i = index">
-            <td>
-              <input type="text" [(ngModel)]="diag.inicialDia" name="nombre_dia_{{i}}" required>
+            <td class="diagnostico-cell">
+              <div class="autocomplete-container">
+                <input type="text" [(ngModel)]="diag.searchTerm" (input)="onSearch(i)" (focus)="onFocus(i)"
+                  (blur)="onBlur(i)" class="form-control diagnostico-input"
+                  placeholder="Ingrese el nombre de la enfermedad" name="searchTerm_{{i}}" />
+                <ul class="autocomplete-list" *ngIf="showSuggestions[i] && filteredEnfermedades[i].length > 0">
+                  <li *ngFor="let enfermedad of filteredEnfermedades[i]" (click)="selectEnfermedad(enfermedad, i)"
+                    (mouseover)="onMouseOver(enfermedad)">
+                    {{ enfermedad.nombreEnf }}
+                  </li>
+                </ul>
+              </div>
             </td>
-            <td>
-              <select [(ngModel)]="diag.inicialDia" name="cie10_{{i}}">
+
+            <td class="cie10-cell">
+              <select [(ngModel)]="diag.codigoEnfermedad" name="cie10_{{i}}" class="cie10-select">
                 <option *ngFor="let enf of enfermedades" [value]="enf.codigoEnf">{{ enf.codigoEnf }}</option>
               </select>
             </td>
-            <td>
+            <td class="radio-cell">
               <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'presuntivo'" name="tipo_{{i}}">
             </td>
-            <td>
+            <td class="radio-cell">
               <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'definitivo'" name="tipo_{{i}}">
             </td>
             <td>
-              <button type="button" (click)="eliminarDiagnostico(i)">Eliminar</button>
+              <button type="button" class="btn btn-danger" (click)="eliminarDiagnostico(i)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
-      <button type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
+      <button type="button" class="btn btn-success" (click)="addDiagnostico()">Agregar</button>
 
 
       <div class="form-row">
@@ -133,7 +144,7 @@
           <label for="nombre_profesional">NOMBRE DEL PROFESIONAL</label>
           <select id="nombre_doc" name="nombre_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
             <option *ngFor="let doctor of doctores" [value]="doctor.nombreDoc">
-            {{ doctor.nombreDoc }} {{doctor.apellidoDoc}}
+              {{ doctor.nombreDoc }} {{doctor.apellidoDoc}}
             </option>
           </select>
         </div>
@@ -141,7 +152,7 @@
           <label for="codigo_msp_doc">CÓDIGO MSP</label>
           <select id="codigo_msp_doc" name="codigo_msp_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
             <option *ngFor="let doctor of doctores" [value]="doctor.codigoMspDoc">
-            {{ doctor.codigoMspDoc }}
+              {{ doctor.codigoMspDoc }}
             </option>
           </select>
         </div>

@@ -3,6 +3,7 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
 .text-center {
     text-align: center;
 }
@@ -20,7 +21,7 @@
 }
 
 .mb-3 {
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 }
 
 .table {
@@ -36,7 +37,7 @@
 .table-bordered td {
     border: 1px solid #dee2e6;
     padding: 0.75rem;
-    vertical-align: auto;
+    vertical-align: middle;
 }
 
 .btn {
@@ -52,14 +53,9 @@
 }
 
 .btn-success {
-    background-color: 038C7F;
-}
-
-.btn-primary {
-    background-color: #223E9E;
-    max-width: min-content;
-    margin-right: auto;
-}
+    background-color: #28a745;
+    border-radius: 10px;
+  }
 
 .btn-info {
     background-color: #223E9E;
@@ -79,11 +75,20 @@
     margin-right: 10px;
 }
 
-input[type="text"] {
+.input-date {
     border: none;
     background-color: #f1f1f1;
     padding: 5px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 100px;
+    width: 150px; /* Ajusta el ancho según sea necesario */
 }
+
+
+.table-responsive {
+    max-height: calc(100vh - 160px); 
+    overflow-y: auto; 
+    overflow-x: auto; 
+}
+
+

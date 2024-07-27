@@ -61,7 +61,7 @@ export class ReferenciaMedicaComponent {
       title: `${referencia.entidad_sistema_ref}`,
       html: `
         <p><strong>Fecha:</strong> ${referencia.fecha_ref}</p>
-        <p><strong>Entidad del sistema:</strong> ${referencia.departamento_ref}</p>
+        <p><strong>Departamento:</strong> ${referencia.departamento_ref}</p>
         <p><strong>Especialidad:</strong> ${referencia.especialidad_ref}</p>
         <p><strong>Establecimiento:</strong> ${referencia.establecimiento_ref}</p>
         <p><strong>Hallazgos MSP:</strong> ${referencia.hallazgos_ref}</p>

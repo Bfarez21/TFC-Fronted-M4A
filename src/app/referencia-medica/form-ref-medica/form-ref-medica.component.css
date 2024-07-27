@@ -19,7 +19,6 @@ body {
   padding: 0px;
   border-radius: 5px;
   width: 100%;
-  
 }
 
 .medical-form h1 {
@@ -42,7 +41,7 @@ body {
 .form-group {
   flex: 1 1 calc(33.333% - 5px);
   margin-bottom: 10px;
-  padding: 0 5px; 
+  padding: 0 5px;
 }
 
 .form-group label {
@@ -74,8 +73,8 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center; 
-  gap: 10px; 
+  justify-content: center;
+  gap: 10px;
 }
 
 .form-group button {
@@ -85,7 +84,6 @@ body {
   font-size: 14px;
   cursor: pointer;
 }
-
 
 .form-group .save {
   background-color: #28a745;
@@ -97,30 +95,147 @@ body {
   color: white;
   margin-left: 10px;
 }
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+}
+
 table {
   width: 100%;
-  border-collapse: collapse; 
-}
-th, td {
- 
-  padding: 1px; 
-  text-align: left; 
-  background-color: #f8f9fa; 
+  border-collapse: collapse;
 }
 
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  background-color: #f8f9fa;
+  white-space: nowrap;
+}
 
-input[type="text"], select, textarea {
+input[type="text"],
+select,
+textarea {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
+  /* padding: 8px;
+    box-sizing: border-box; */
 }
 
 input[type="radio"] {
-  margin-right: 5px; 
+  margin-right: 5px;
   transform: scale(1.4);
 }
 
 .checkbox-label {
-  margin-right: 10px; 
+  margin-right: 10px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container table {
+  min-width: 600px;
+  table-layout: fixed;
+}
+
+.table-container th,
+.table-container td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-radius: 10px;
+}
+
+/* agregar diagnostico */
+.autocomplete-container {
+  position: relative;
+  display: flex;
+}
+
+.autocomplete-list {
+  position: absolute;
+  border: 1px solid #ddd;
+  background-color: white;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.autocomplete-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f1f1f1;
+}
+
+/* Ajuste del campo de nombre de la enfermedad */
+
+.diagnosticos-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  /* Cambiar a auto para permitir que las celdas ajusten su tamaño automáticamente */
+
+}
+
+.diagnosticos-table th {
+
+  text-align: center;
+
+}
+
+.diagnostico-cell {
+  width: 80%;
+  /* Ajusta el valor según el espacio que desees ocupar */
+}
+
+.diagnostico-input {
+  width: 100%;
+  /* Ocupa todo el ancho de la celda */
+  height: 30px;
+  /* Ajusta la altura según tus necesidades */
+  box-sizing: border-box;
+  /* Asegura que el padding no aumente el tamaño total */
+  padding: 10px;
+  /* Ajusta el padding para mayor comodidad */
+}
+
+.cie10-cell {
+  text-align: center;
+  width: 100%;
+  /* Ajusta el valor para que sea más pequeño */
+}
+
+/* Ajuste del campo CIE 10 */
+.cie10-select {
+  width: 100%;
+}
+
+.radio-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.autocomplete-container {
+
+  position: relative;
+
 }
