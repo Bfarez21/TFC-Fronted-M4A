@@ -6,7 +6,7 @@
 <form ngNativeValidate (ngSubmit)="create()">
     <div class="input-container mx-4">
         <div class="column">
-            <label for="profesion">Profesión</label>
+            <label for="profesion">Rol</label>
             <select name="profesion" id="profesion" placeholder="Seleccione" [(ngModel)]="fichaMedica.paciente.profesionPac" name="profesion" required>
                 <option value="docente">Docente</option>
                 <option value="estudiante">Estudiante</option>
@@ -125,10 +125,11 @@
         <div class="antecedentes-container mx-4">
             <div>
                 <h3>Discapacidad</h3>
-                <label><input type="checkbox" name="fisicaDis" value="fisica" [(ngModel)]="fichaMedica.discapacidad.fisicaDis"> Fisica</label>
-                <input type="number" name="porcentajeDis"  id="fisica" placeholder="%" [(ngModel)]="fichaMedica.discapacidad.porcentajeDis">
-                <label><input type="checkbox" name="intelectualDis" value="intelectual" [(ngModel)]="fichaMedica.discapacidad.intelectualDis"> Intelectual</label>
+                <label><input type="checkbox" name="discapacidadG"  [(ngModel)]="fichaMedica.discapacidad.discapacidadG"> Marque</label>
                 <input type="text" name="subtipoDis" placeholder="Tipo" [(ngModel)]="fichaMedica.discapacidad.subtipoDis">
+                <input type="number" name="porcentajeDis"  id="fisica" placeholder="%" [(ngModel)]="fichaMedica.discapacidad.porcentajeDis">
+                <label><input type="checkbox" name="carnetCon" [(ngModel)]="fichaMedica.discapacidad.carnetCon"> Carnet CONADIS</label>
+
             </div>
 
             <div >
