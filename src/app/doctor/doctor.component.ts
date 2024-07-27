@@ -80,4 +80,11 @@ export class DoctorComponent {
     }
   }
 
+  // BOTÓN ACTUALIZAR TABLA
+  refrescar(): void {
+    this.cargarDoctores(); // Llama a cargarDoctores para recargar registros
+    this.cedulaBusqueda = ''; // Limpia el campo 
+    this.doctorEncontrado = null; // Reinicia la variable del doctor encontrado
+  }
+
 }

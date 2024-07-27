@@ -7,6 +7,8 @@
         <input type="text" id="apellido"placeholder="Apellido">
         <input type="text" id="carrera"placeholder="Carrera">
        <button class="btn btn-rounded btn-primary mx-4"type="button">Buscar</button>
+       <button type="button" name="button" class="btn btn-secondary" >Ver todo</button>
+
        <div>
 
         <div class="table-responsive">
@@ -29,7 +31,7 @@
               <td>{{fichaMedica.paciente.apellidoPac}}</td>
               <td>{{fichaMedica.paciente.profesionPac}}</td>
               <td>
-                <button type="button" name="button" class="btn btn-primary mx-4">Ver</button>
+                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedica)" >Ver</button>
                 <button type="button" name="button" class="btn btn-warning mx-2"[routerLink]="['/ficha-medica/form',fichaMedica.idFic]">Editar</button>
                 <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
               </td>

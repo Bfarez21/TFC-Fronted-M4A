@@ -6,6 +6,7 @@
       
       <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
       <button type="button" name="button" class="btn btn-primary mx-4" (click)="buscar()">Buscar</button>
+      <button type="button" name="button" class="btn btn-secondary"(click)="refrescar()">Ver todo</button>
     </div>
     <div class="table-responsive">
       <table class="table table-bordered table-striped" *ngIf="doctorEncontrado; else listaDoctores">
