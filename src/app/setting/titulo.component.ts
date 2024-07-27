@@ -77,7 +77,6 @@ export class TituloComponent implements OnInit{
     }
   );
 }
-
   //boton eliminar
   deleteTitulos(id: number):void{
     Swal.fire({
