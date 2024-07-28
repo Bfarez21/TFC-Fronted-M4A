@@ -4,4 +4,5 @@ export class Discapacidad {
     porcentajeDis: number = 0.0;
     subtipoDis: String = "";
     carnetCon:Boolean = false;
+    numeroConadis:number=0;
 }

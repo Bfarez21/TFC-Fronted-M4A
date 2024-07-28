@@ -48,17 +48,18 @@ export class FichaMedicaComponent /*implements OnInit */ {
           <p><strong>Cantón:</strong>${fichaMedica.paciente.cantonPac} </p>
           <p><strong>Provincia:</strong>${fichaMedica.paciente.provinciaPac} </p>
           <p><strong>Teléfono:</strong>${fichaMedica.paciente.telefonoPac} </p>
-        </div>
-        <div style="flex: 1; min-width: 200px;">
           <p><strong>Género:</strong>${fichaMedica.paciente.generoPac} </p>
           <p><strong>Estado Civil:</strong>${fichaMedica.paciente.estadoCivilPac} </p>
+        </div>
+        <div style="flex: 1; min-width: 200px;">
           <p><strong>Tipo Sangre:</strong>${fichaMedica.paciente.tipoSangrePac} </p>
           <p><strong>Carrera:</strong>${fichaMedica.paciente.carreraPac} </p>
           <p><strong>Ciclo:</strong>${fichaMedica.paciente.cicloPac} </p>
           <p><strong>Discapacidad:</strong>${fichaMedica.discapacidad.discapacidadG} </p>
           <p><strong>Tipo:</strong>${fichaMedica.discapacidad.subtipoDis} </p>
           <p><strong>Porcentaje:</strong>${fichaMedica.discapacidad.porcentajeDis} </p>
-          <p><strong>Carnet CONADIS:</strong>${fichaMedica.discapacidad.carnetCon} </p>    
+          <p><strong>Carnet CONADIS:</strong>${fichaMedica.discapacidad.carnetCon} </p> 
+          <p><strong>Numero CONADIS:</strong>${fichaMedica.discapacidad.numeroConadis} </p>   
           <p><strong>Antecedentes:</strong> </p>
           <p><strong>Alérgia:</strong>${fichaMedica.antecedenteFamiliar.alergiaAnt} </p>
           <p><strong>Clínico:</strong>${fichaMedica.antecedenteFamiliar.clinicoAnt} </p>
