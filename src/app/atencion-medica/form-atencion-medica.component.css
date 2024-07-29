@@ -1,6 +1,4 @@
 .container-datos {
-    width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -9,8 +7,6 @@
   }
 
   .container-signos {
-    width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -18,8 +14,7 @@
     background-color: #f9f9f9;
   }
   .container-fisico {
-    width: 100%;
-    max-width: 1200px;
+
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -201,18 +196,19 @@ input[type="file"] {
 
 .diagnostico-table td {
   border: 1px solid #000; /* Borde negro */
-  padding: 10px;
-  vertical-align: top;
+  padding: 0;
+  margin: 0;
+  vertical-align:auto;
 }
 
 .diagnostico-table textarea {
+  padding: 0;
+  margin: 0;
   width: 100%;
-  height: 100px;
-  resize: vertical; /* Permite cambiar el tamaño verticalmente */
-}
-
-.diagnostico-table select {
-  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  background-color: #fcfcfc;
 }
 
 .diagnostico-table input[type="checkbox"] {
@@ -222,13 +218,29 @@ input[type="file"] {
 
 .visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
+
+.large {
+  flex: 2; /* Más grande */
+}
+
+.small {
+  flex: 1; /* Más pequeño */
+}
+
+.botonCrearFila {
+  width: 100%;
+}
   
+.input-search {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  border: 1px solid #ccc; /* Solo para visualizar el contenedor */  
+}

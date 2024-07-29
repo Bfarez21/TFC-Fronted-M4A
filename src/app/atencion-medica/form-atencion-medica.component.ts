@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { DiagnosticoService } from '../referencia-medica/diagnostico/diagnostico.service';
 import { SignoVital } from './modelo/signo-vital';
 import { SignoVitalService } from './service/signo-vital.service';
+import { Enfermedades } from '../enfermedades/Enfermedades';
 
 @Component({
   selector: 'app-form-atencion-medica',
@@ -28,40 +29,22 @@ export class FormAtencionMedicaComponent implements OnInit{
   fichaMedica: FichaMedica | null = null;
   atencionMedica: AtencionMedica = new AtencionMedica();
 
-  examenPiel: ExamenFisico = new ExamenFisico();
-  examenCabeza: ExamenFisico = new ExamenFisico();
-  examenCuello: ExamenFisico = new ExamenFisico();
-  examenTorax: ExamenFisico = new ExamenFisico();
-  examenCorazon: ExamenFisico = new ExamenFisico();
-  examenAbdomen: ExamenFisico = new ExamenFisico();
-  examenInguinal: ExamenFisico = new ExamenFisico();
-  examenSuperior: ExamenFisico = new ExamenFisico();
-  examenInferior: ExamenFisico = new ExamenFisico();
-  
-  signoPA: AtencionSigno = new AtencionSigno();
-  signoPeso: AtencionSigno = new AtencionSigno();
-  signoTalla: AtencionSigno = new AtencionSigno();
-  signoIMC: AtencionSigno = new AtencionSigno();
-  signoFC: AtencionSigno = new AtencionSigno();
-  signoFR: AtencionSigno = new AtencionSigno();
-  signoT: AtencionSigno = new AtencionSigno();
-  signoSat: AtencionSigno = new AtencionSigno();
-  signoGlasgow: AtencionSigno = new AtencionSigno();
-  signoOcular: AtencionSigno = new AtencionSigno();
-  signoVerbal: AtencionSigno = new AtencionSigno();
-  signoMotora: AtencionSigno = new AtencionSigno();
-  signoTotal: AtencionSigno = new AtencionSigno();
-  signollenado: AtencionSigno = new AtencionSigno();
-  signoRPupilar: AtencionSigno = new AtencionSigno();
+  diagnosticos: Diagnostico[] = [];
+  addDiagnostico() {
+    this.atencionMedica.diagnosticos.push(new Diagnostico());
+  }
 
-  examenComplementario: ExamenComplementario = new ExamenComplementario();
+  eliminarDiagnostico(index: number) {
+    this.atencionMedica.diagnosticos.splice(index, 1);
+  }
 
-  diagnostico1: Diagnostico = new Diagnostico();
-  diagnostico2: Diagnostico = new Diagnostico();
-  diagnostico3: Diagnostico = new Diagnostico();
+  addExamenComplementario() {
+    this.atencionMedica.examenescomplementarios.push(new ExamenComplementario());
+  }
 
-  signosVitales: SignoVital[] = []
-
+  eliminarExamenComplementario(index: number) {
+    this.atencionMedica.examenescomplementarios.splice(index, 1);
+  }
 
   constructor(
     private router:Router,
@@ -80,8 +63,6 @@ export class FormAtencionMedicaComponent implements OnInit{
 }
 
   ngOnInit(): void {
-    this.cargarSignosVitales();
-    console.log(this.signosVitales.length)
   }
 
   cargarFichaMedica():void{
@@ -135,45 +116,6 @@ export class FormAtencionMedicaComponent implements OnInit{
 
   public create(): void {
 
-    this.examenPiel.nombreExa = "PIEL Y FANERAS"
-    this.examenCabeza.nombreExa = "CABEZA";
-    this.examenCuello.nombreExa = "CUELLO";
-    this.examenTorax.nombreExa = "TÓRAX";
-    this.examenCorazon.nombreExa = "CORAZÓN";
-    this.examenAbdomen.nombreExa = "ABDOMEN";
-    this.examenInguinal.nombreExa = "R. INGUINAL";
-    this.examenSuperior.nombreExa = "M. SUPERIORES";
-    this.examenInferior.nombreExa = "M. INFERIORES";
-
-    this.signoPA.signosVitales = this.signosVitales[0];
-    this.signoPeso.signosVitales = this.signosVitales[1] ;
-    this.signoTalla.signosVitales = this.signosVitales[2];
-    this.signoIMC.signosVitales = this.signosVitales[3]
-    this.signoFC.signosVitales = this.signosVitales[4]
-    this.signoFR.signosVitales = this.signosVitales[5];
-    this.signoT.signosVitales = this.signosVitales[6];
-    this.signoSat.signosVitales = this.signosVitales[7];
-    this.signoGlasgow.signosVitales = this.signosVitales[8];
-    this.signoOcular.signosVitales = this.signosVitales[9];
-    this.signoVerbal.signosVitales = this.signosVitales[10];
-    this.signoMotora.signosVitales = this.signosVitales[11];
-    this.signoTotal.signosVitales = this.signosVitales[12];
-    this.signollenado.signosVitales = this.signosVitales[13];
-    this.signoRPupilar.signosVitales = this.signosVitales[14];
-
-  }
-  
-
-
-  cargarSignosVitales(): void {
-    this.signoVitalService.getSignosVitales().subscribe(
-      (data: SignoVital[]) => {
-        this.signosVitales = data;  // Asignar los datos recibidos a la propiedad
-      },
-      error => {
-        console.error('Error al cargar los signos vitales', error);
-      }
-    );
   }
 
 
