@@ -18,10 +18,20 @@ export class ReferenciaMedicaService {
     return this.http.get<ReferenciaMedica[]>(this.urlEndPoint);
   }
 
-  // Método para crear una nueva referencia médica
-  create(referencia:ReferenciaMedica):Observable<ReferenciaMedica> {
-    return this.http.post<ReferenciaMedica>(this.urlEndPoint, referencia,{headers:this.httpHeaders})
+   // Método para crear una nueva referencia médica
+  //  create(referencia: ReferenciaMedica): Observable<ReferenciaMedica> {
+  //   return this.http.post<ReferenciaMedica>(this.urlEndPoint, referencia, { headers: this.httpHeaders }).pipe(
+  //     catchError(error => {
+  //       console.error('Error al crear referencia:', error);
+  //       return throwError(error);
+  //     })
+  //   );
+  // }
+  create(referencia: ReferenciaMedica): Observable<ReferenciaMedica> {
+    return this.http.post<ReferenciaMedica>(this.urlEndPoint, referencia);
   }
+
+  
   // metodo para obtener por id
   getReferencia(id: number): Observable<ReferenciaMedica> {
     return this.http.get<ReferenciaMedica>(`${this.urlEndPoint}/${id}`).pipe(

@@ -5,32 +5,27 @@ import { Diagnostico } from "./diagnostico/diagnostico";
 
 
 export class ReferenciaMedica {
-    id_ref: number = 0;
-    institucion_ref: string = "";
-    departamento_ref: string = "";
-    entidad_sistema_ref: string = "";
-    establecimiento_ref: string = "";
-    servicio_ref: string = "";
-    especialidad_ref: string = "";
-    fecha_ref:string="";
-    motivo_referencia_ref: string = "";
-    resumen_ref: string = "";
-    hallazgos_ref: string = "";
+    id_ref?: number;
+    institucion_ref?: string;
+    cedula_doc_ref?: string;
+    servicio_ref?: string;
+    entidad_sistema_ref?: string;
+    establecimiento_ref?: string;
+    servicio_refe_ref?: string;
+    especialidad_ref?: string;
+    fecha_ref?: string; 
+    motivo_limitada_ref?: boolean;
+    motivo_falta_ref?: boolean;
+    motivo_otros_ref?: boolean;
+    resumen_ref?: string;
+    hallazgos_ref?: string;
+    nombre_doc_ref?: string;
+    codigo_msp_ref?: string;
+    fk_id_atencion_medica?: number; 
+    atencionMedica?: AtencionMedica; // Referencia a la entidad AtencionMedica
+
+    //Variables adicionales utiles
     diagnosticos: Diagnostico[] = [];
-    atencionMedica: AtencionMedica = new AtencionMedica();
-    fichaMedica: FichaMedica = new FichaMedica();
-    // idRef: number = 0;
-    // institucionRef: string = "";
-    // departamentoRef: string = "";
-    // entidadSistemaRef: string = "";
-    // establecimientoRef: string = "";
-    // servicioRef: string = "";
-    // especialidadRef: string = "";
-    // fechaRef:string="";
-    // motivoRef: string = "";
-    // resumenRef: string = "";
-    // hallazgosRef: string = "";
-    // diagnosticos: Diagnostico[] = [];
-    // atencionMedica: AtencionMedica = new AtencionMedica();
     // fichaMedica: FichaMedica = new FichaMedica();
+
 }

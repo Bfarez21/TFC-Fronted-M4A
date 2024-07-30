@@ -2,6 +2,18 @@
   <div class="medical-form">
     <h1>Registrar referencia médica</h1>
     <form ngNativeValidate (ngSubmit)="create()" #referenciaForm="ngForm">
+
+
+
+      <select id="atencionMedica" (change)="onAtencionMedicaChange($event)" name="atencionMedica">
+        <option value="" disabled>Seleccione una atención médica</option>
+        <option *ngFor="let atencion of atencionesMedicas" [value]="atencion.idAte">
+          {{ atencion.idAte }} - {{ atencion.motivoAte }}
+        </option>
+      </select>
+
+
+
       <div class="form-row">
         <div class="form-group">
           <label for="institucion_ref">NOMBRE DE LA INSTITUCIÓN</label>
@@ -9,8 +21,8 @@
             required>
         </div>
         <div class="form-group">
-          <label for="cedula_ref">CÉDULA</label>
-          <select id="cedula_ref" name="cedula_ref" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+          <label for="cedula__doc_ref">CÉDULA</label>
+          <select id="cedula_doc_ref" name="cedula_doc_ref" [(ngModel)]="referencia.cedula_doc_ref">
             <option *ngFor="let doctor of doctores" [value]="doctor.cedulaDoc">
               {{ doctor.cedulaDoc }}
             </option>
@@ -42,9 +54,9 @@
             </td>
             <td>
               <div class="form-group">
-                <label for="servicio_ref_deriva">SERVICIO</label>
-                <input type="text" id="servicio_ref_deriva" name="servicio_ref_deriva"
-                  [(ngModel)]="referencia.servicio_ref" required>
+                <label for="servicio_refe_ref">SERVICIO</label>
+                <input type="text" id="servicio_refe_ref" name="servicio_refe_ref"
+                  [(ngModel)]="referencia.servicio_refe_ref" required>
               </div>
             </td>
             <td>
@@ -65,23 +77,31 @@
       </table>
 
 
+
+
       <table>
         <tbody>
           <tr>
-            <h2>MOTIVO DE REFERENCIA:</h2>
-            <td><input type="checkbox" id="motivo_referencia_ref_limitada" [value]="'LIMITADA CAPACIDAD RESOLUTIVA'"
-                (change)="onMotivoRefChange($event, 'LIMITADA CAPACIDAD RESOLUTIVA')"></td>
-            <td><label for="motivo_referencia_ref_limitada" class="checkbox-label">LIMITADA CAPACIDAD RESOLUTIVA</label>
+            <td colspan="3">
+              <h2>MOTIVO DE REFERENCIA:</h2>
             </td>
-            <td><input type="checkbox" id="motivo_referencia_ref_falta" [value]="'FALTA DE PROFESIONAL'"
-                (change)="onMotivoRefChange($event, 'FALTA DE PROFESIONAL')"></td>
-            <td><label for="motivo_referencia_ref_falta" class="checkbox-label">FALTA DE PROFESIONAL</label></td>
-            <td><input type="checkbox" id="motivo_referencia_ref_otros" [value]="'OTROS'"
-                (change)="onMotivoRefChange($event, 'OTROS')"></td>
-            <td><label for="motivo_referencia_ref_otros" class="checkbox-label">OTROS</label></td>
+            <td>
+              <input type="checkbox" [(ngModel)]="referencia.motivo_limitada_ref" name="motivo_limitada_ref"> LIMITADA
+              CAPACIDAD RESOLUTIVA
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="referencia.motivo_falta_ref" name="motivo_falta_ref"> FALTA DE
+              PROFESIONAL
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="referencia.motivo_otros_ref" name="motivo_otros_ref"> Otros
+            </td>
           </tr>
         </tbody>
       </table>
+
+
+
 
       <div class="form-group">
         <h2><label for="resumen_ref">RESUMEN DEL CUADRO CLÍNICO</label></h2>
@@ -142,15 +162,15 @@
       <div class="form-row">
         <div class="form-group">
           <label for="nombre_profesional">NOMBRE DEL PROFESIONAL</label>
-          <select id="nombre_doc" name="nombre_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+          <select id="nombre_doc_ref" name="nombre_doc_ref" [(ngModel)]="referencia.nombre_doc_ref">
             <option *ngFor="let doctor of doctores" [value]="doctor.nombreDoc">
               {{ doctor.nombreDoc }} {{doctor.apellidoDoc}}
             </option>
           </select>
         </div>
         <div class="form-group">
-          <label for="codigo_msp_doc">CÓDIGO MSP</label>
-          <select id="codigo_msp_doc" name="codigo_msp_doc" [(ngModel)]="referencia.fichaMedica.paciente.cedulaPac">
+          <label for="codigo_msp_ref">CÓDIGO MSP</label>
+          <select id="codigo_msp_ref" name="codigo_msp_ref" [(ngModel)]="referencia.codigo_msp_ref">
             <option *ngFor="let doctor of doctores" [value]="doctor.codigoMspDoc">
               {{ doctor.codigoMspDoc }}
             </option>

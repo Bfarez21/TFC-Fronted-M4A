@@ -12,6 +12,8 @@ import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
 import { FichaMedica } from '../../ficha-medica/modelo/ficha-medica';
 import { FichaMedicaService } from '../../ficha-medica/servicio/ficha-medica.service';
 import { DoctorService } from '../../doctor/doctor.service';
+import { AtenMedService } from '../../reportes/atenmed.service';
+import { AtencionMedicaService } from '../../atencion-medica/service/atencion-medica.service';
 
 @Component({
   selector: 'app-form-ref-medica',
@@ -27,6 +29,7 @@ export class FormRefMedicaComponent implements OnInit {
   public filteredEnfermedades: { [key: number]: Enfermedades[] } = {};
   public showSuggestions: { [key: number]: boolean } = {};
   public activeEnfermedad: Enfermedades | null = null;
+  public atencionesMedicas: any[] = [];
   editMode: boolean = false;
 
   constructor(
@@ -35,32 +38,57 @@ export class FormRefMedicaComponent implements OnInit {
     private router: Router,
     private activateRouter: ActivatedRoute,
     private doctorService: DoctorService,
+    private atencionMedicaService: AtencionMedicaService,
     private pacienteService: PacienteService,
     private fichaService: FichaMedicaService
+    
   ) {
     this.referencia.diagnosticos = []; // diagnósticos siempre esté inicializado
   }
-
-
+  // Método para manejar la selección de Atención Médica
+  onAtencionMedicaChange(event: any): void {
+    const selectedValue = Number(event.target.value); // Convierte el valor a número
+    this.referencia.atencionMedica = this.atencionesMedicas.find(atencion => atencion.idAte === selectedValue) || null;
+  }
+  
   cancelar() {
     this.router.navigate(['/referencia-medica']);
   }
 
-  public create(): void {
+  create(): void {
+    if (!this.referencia.atencionMedica) {  // Verifica si no se ha seleccionado una atención médica
+      Swal.fire('Error', 'Por favor seleccione una atención médica.', 'error');
+      return;
+    }
+  
     console.log('Referencia a enviar:', this.referencia);
     this.referenciaService.create(this.referencia)
       .subscribe({
         next: referencia => {
           this.router.navigate(['/referencia-medica']);
-          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.departamento_ref} guardada con éxito`, 'success');
+          Swal.fire('Referencia Médica guardada', `Referencia Médica ${this.referencia.establecimiento_ref} guardada con éxito`, 'success');
           this.editMode = false;
         },
         error: error => {
           console.error('Error al guardar la referencia médica:', error);
-          Swal.fire('Error', 'Hubo un problema al guardar la referencia médica.', 'error');
+  
+          let errorMessage = 'Hubo un problema al guardar la referencia médica.';
+  
+          // Verifica si el error tiene un mensaje específico del backend
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          } else if (error.status === 400) {
+            errorMessage = 'La atención médica ya está asociada a otra referencia médica.';
+          }
+  
+          Swal.fire('Error', errorMessage, 'error');
         }
       });
   }
+  
+ 
+  
+  
   addDiagnostico() {
     const newDiagnostico = new Diagnostico();
     this.referencia.diagnosticos.push(newDiagnostico);
@@ -96,24 +124,20 @@ export class FormRefMedicaComponent implements OnInit {
   cargarDoctores(): void {
     this.doctorService.getDoctores().subscribe(doctores => this.doctores = doctores);
   }
+  cargarAtencionesMedicas(): void {
+    this.atencionMedicaService.getAtencionesMedicas().subscribe(atenciones => this.atencionesMedicas = atenciones);
+  }
+ 
+  
   ngOnInit(): void {
     this.cargarReferencia();
     this.cargarEnfermedades();
     this.cargarDoctores();
+    this.cargarAtencionesMedicas();
   }
 
-  referenciaL = {
-    motivoRef: [] as string[]
-  };
-
-  // Método para manejar la selección de casillas
-  onMotivoRefChange(event: any, value: string) {
-    if (event.target.checked) {
-      this.referenciaL.motivoRef.push(value);
-    } else {
-      this.referenciaL.motivoRef = this.referenciaL.motivoRef.filter(item => item !== value);
-    }
-  }
+  
+  
   //logica para agregar el nombre de las endermedades
 
   onSearch(index: number) {
