@@ -3,7 +3,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
 import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
-import { DataService } from './data.service';  // Asegúrate de que la ruta es correcta
+import { DataService } from './data.service';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(ChartDataLabels);
@@ -131,7 +131,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    // Ya no es necesario llamar a renderLineChart aquí, ya que se llama en loadPatientData
   }
 
   renderLineChart() {
@@ -169,7 +168,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
                   if (Number.isInteger(numericValue)) {
                     return numericValue;
                   }
-                  return null; // Oculta los valores decimales
+                  return null;
                 }
               }
             }
