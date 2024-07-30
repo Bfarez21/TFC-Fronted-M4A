@@ -71,7 +71,6 @@
                 <th>Carrera</th>
                 <th>Fecha de visita</th>
                 <th>Receta</th>
-                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -84,9 +83,6 @@
                 <td>{{ patient.carreraPac }}</td>
                 <td>{{ "..........." }}</td> <!-- <td>{{ patient.fechaVisita }}</td> -->
                 <td>{{ ".........." }}</td> <!-- <td>{{ patient.receta }}</td> -->
-                <td>
-                    <button class="btn btn-ver" (click)="ImprimirPac(patient)">Imprimir</button>
-                </td>
             </tr>
         </tbody>
     </table>

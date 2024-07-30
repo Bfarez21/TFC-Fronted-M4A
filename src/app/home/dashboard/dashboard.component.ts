@@ -1,25 +1,30 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnInit, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
-import { ReportesComponent } from '../../reportes/reportes.component';
 import { PacienteService } from '../../ficha-medica/servicio/paciente.service';
+import { DataService } from './data.service';  // Asegúrate de que la ruta es correcta
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+Chart.register(ChartDataLabels);
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit, OnInit {
   totalPac: number = 0;
   totalProf: number = 0;
   totalEst: number = 0;
 
-  constructor(private pacienteService: PacienteService) {}
+  constructor(private pacienteService: PacienteService, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.contPaci(); // Llama
+    this.contPaci();
     this.ContPacProf();
+    this.loadPieChartData();
+    this.loadPatientData();
   }
 
   @ViewChild('lineChart') lineChart!: ElementRef<HTMLCanvasElement>;
@@ -28,14 +33,14 @@ export class DashboardComponent implements AfterViewInit {
 
   contPaci(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
-      this.totalPac = pacientes.length; // Cuenta el número de pacientes
+      this.totalPac = pacientes.length;
     });
   }
 
   ContPacProf(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
-      this.totalProf = pacientes.filter(p => p.profesionPac === 'Profesor').length; // Cuenta los profesores
-      this.totalEst = pacientes.filter(p => p.profesionPac === 'Estudiante').length; // Cuenta los alumnos
+      this.totalProf = pacientes.filter(p => p.profesionPac === 'Profesor').length;
+      this.totalEst = pacientes.filter(p => p.profesionPac === 'Estudiante').length;
     });
   }
 
@@ -60,13 +65,27 @@ export class DashboardComponent implements AfterViewInit {
   // Datos y opciones para el gráfico de pastel
   public pieChartOptions: ChartOptions<'pie'> = {
     responsive: true,
+    plugins: {
+      datalabels: {
+        formatter: (value, context) => {
+          const data = context.chart.data.datasets[0].data as number[];
+          const total = data.reduce((a, b) => a + b, 0);
+          const percentage = (value / total * 100).toFixed(0) + '%';
+          return percentage;
+        },
+        color: '#fff',
+        font: {
+          weight: 'bold'
+        }
+      }
+    }
   };
 
   public pieChartData: ChartData<'pie'> = {
-    labels: ['Gripe', 'Dolor De Cabeza', 'Dolor De Estomago'],
+    labels: [],
     datasets: [
       {
-        data: [120, 150, 180],
+        data: [],
         backgroundColor: ['#162778', '#4958A9', '#BAC3FF'],
       }
     ]
@@ -74,52 +93,90 @@ export class DashboardComponent implements AfterViewInit {
 
   public pieChartType: 'pie' = 'pie';
 
+  // Función para generar colores aleatorios
+  /*generateRandomColor(): string {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  } */
+
+  loadPieChartData(): void {
+    this.dataService.getEnfermedadesActuales().subscribe(data => {
+      const labels = Object.keys(data);
+      const values = Object.values(data);
+
+      // Genera colores aleatorios para cada etiqueta
+      ///const backgroundColors = labels.map(() => this.generateRandomColor());
+
+      this.pieChartData.labels = labels;
+      this.pieChartData.datasets[0].data = values;
+      //this.pieChartData.datasets[0].backgroundColor = backgroundColors;  // Asigna los colores generados
+
+    });
+  }
+
   // Datos de pacientes por año
-  public patientData = [
-    { year: 2017, count: 100 },
-    { year: 2018, count: 190 },
-    { year: 2019, count: 302 },
-    { year: 2020, count: 360 },
-    { year: 2021, count: 470 },
-    { year: 2022, count: 530 },
-    { year: 2023, count: 500 },
-    { year: 2024, count: 130 }
-  ];
+  public patientData: { year: number, count: number }[] = [];
+
+  loadPatientData(): void {
+    this.dataService.getAtencionesPorAno().subscribe(data => {
+      const years = Object.keys(data).map(year => parseInt(year, 10));
+      const counts = Object.values(data);
+      this.patientData = years.map((year, index) => ({ year, count: counts[index] }));
+      this.renderLineChart();
+    });
+  }
 
   ngAfterViewInit() {
-    this.renderLineChart();
+    // Ya no es necesario llamar a renderLineChart aquí, ya que se llama en loadPatientData
   }
 
   renderLineChart() {
-    new Chart(this.lineChart.nativeElement, {
-      type: 'line',
-      data: {
-        labels: this.patientData.map(d => d.year.toString()),
-        datasets: [
-          {
-            data: this.patientData.map(d => d.count),
-            label: 'Cantidad de Pacientes',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo del área bajo la línea
-          borderColor: 'rgba(75, 192, 192, 1)', // Color de la línea
-          pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Color de fondo de los puntos
-          pointBorderColor: '#fff', // Color del borde de los puntos
-          pointHoverBackgroundColor: '#fff', // Color de fondo de los puntos al pasar el cursor
-          pointHoverBorderColor: 'rgba(75, 192, 192, 1)', // Color del borde de los puntos al pasar el cursor
-          fill: 'origin', // Relleno del área bajo la línea
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true
+    if (this.lineChart) {
+      new Chart(this.lineChart.nativeElement, {
+        type: 'line',
+        data: {
+          labels: this.patientData.map(d => d.year.toString()),
+          datasets: [
+            {
+              data: this.patientData.map(d => d.count),
+              label: 'Cantidad de Pacientes',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(75, 192, 192, 1)',
+              fill: 'origin',
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              beginAtZero: true
+            },
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value: number | string) {
+                  // Convertir el valor a número si es un string
+                  const numericValue = typeof value === 'string' ? parseFloat(value) : value;
+                  if (Number.isInteger(numericValue)) {
+                    return numericValue;
+                  }
+                  return null; // Oculta los valores decimales
+                }
+              }
+            }
           }
         }
-      }
-    });
+      });
+    }
   }
+  
 }
