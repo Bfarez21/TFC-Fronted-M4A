@@ -8,12 +8,12 @@ import { FichaMedica } from '../ficha-medica/modelo/ficha-medica';
 import { ExamenFisico } from './modelo/examen-fisico';
 import { AtencionSigno } from './modelo/atencion-signo';
 import { ExamenComplementario } from './modelo/examen-complementario';
-import { Diagnostico } from '../referencia-medica/diagnostico/diagnostico';
 import Swal from 'sweetalert2';
-import { DiagnosticoService } from '../referencia-medica/diagnostico/diagnostico.service';
 import { SignoVital } from './modelo/signo-vital';
 import { SignoVitalService } from './service/signo-vital.service';
 import { Enfermedades } from '../enfermedades/Enfermedades';
+import { Diagnostico } from './modelo/diagnostico';
+import { DiagnosticoService } from './service/diagnostico.service';
 
 @Component({
   selector: 'app-form-atencion-medica',

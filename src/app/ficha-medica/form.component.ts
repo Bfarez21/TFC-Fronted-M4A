@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
 
   fichaMedica: FichaMedica = new FichaMedica();
   editMode: boolean = false;
+  showTextarea = false;
 
   constructor(
     private fichaMedicaService: FichaMedicaService,
@@ -76,6 +77,10 @@ export class FormComponent implements OnInit {
     }, error => {
       Swal.fire('Error', 'Hubo un problema al guardar el paciente', 'error');
     });
+  }
+
+  toggleTextarea(state: boolean) {
+    this.showTextarea = state;
   }
 
  

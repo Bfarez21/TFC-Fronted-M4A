@@ -31,7 +31,8 @@ export class AtencionMedicaComponent {
   // metodo carga los datos en la tabla
   cargarAtencionesMedicas(): void {
     this.atencionMedicaService.getAtencionesMedicas().subscribe(atencionesMedicas => {
-      atencionesMedicas = this.atencionesMedicas = atencionesMedicas; // Asigna los doctores obtenidos del servicio a la propiedad del componente
+      atencionesMedicas = this.atencionesMedicas = atencionesMedicas; 
+      
     });
   }
 

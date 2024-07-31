@@ -137,11 +137,17 @@
                 <h3>Antecedentes:</h3>
                 <div class="checkbox-group" name="antecedentes"required>
                     <label><input type="checkbox" name="antecedentes" value="alergias" [(ngModel)]="fichaMedica.antecedenteFamiliar.alergiaAnt"> Alergias</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.alergiaAnt" required></textarea>
                     <label><input type="checkbox" name="antecedentes" value="clinico" [(ngModel)]="fichaMedica.antecedenteFamiliar.clinicoAnt"> Clínico</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.clinicoAnt" required></textarea>
                     <label><input type="checkbox" name="antecedentes" value="ginecologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.ginecologoAnt"> Ginecologico</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.ginecologoAnt" required></textarea>
                     <label><input type="checkbox" name="antecedentes" value="traumatologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.traumatologicoAnt"> Traumatologico</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.traumatologicoAnt" required></textarea>
                     <label><input type="checkbox" name="antecedentes" value="quirurgico" [(ngModel)]="fichaMedica.antecedenteFamiliar.quirurgicoAnt"> Quirúrgico</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.quirurgicoAnt" required></textarea>
                     <label><input type="checkbox" name="antecedentes" value="farmacologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.farmacologicoAnt"> Farmacológico</label>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.farmacologicoAnt" required></textarea>
                 </div>
             </div>
         </div>

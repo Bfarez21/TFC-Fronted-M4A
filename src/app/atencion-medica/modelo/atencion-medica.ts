@@ -1,7 +1,7 @@
 import { Doctor } from "../../doctor/doctor";
 import { FichaMedica } from "../../ficha-medica/modelo/ficha-medica";
-import { Diagnostico } from "../../referencia-medica/diagnostico/diagnostico";
-import { Instituto } from "../../setting/Instituto";
+import { AtencionSigno } from "./atencion-signo";
+import { Diagnostico } from "./diagnostico";
 import { ExamenComplementario } from "./examen-complementario";
 
 export class AtencionMedica {
@@ -11,9 +11,8 @@ export class AtencionMedica {
     tratamientoAte: string = "";
     fichaMedica: FichaMedica = new FichaMedica();
     doctor: Doctor = new Doctor();
-    instituto: Instituto = new Instituto();
     diagnosticos: Diagnostico[] = [];
     examenescomplementarios: ExamenComplementario[] = [];
     fechaAtencionAte: Date = new Date();
-
+    atencionesSignos: AtencionSigno[] = [];
 }

@@ -13,11 +13,10 @@ export class AtencionMedicaService {
 
   constructor(private http:HttpClient) { }
 
-   // metodo obtener todos doctor
    getAtencionesMedicas(): Observable<AtencionMedica[]>{
     return this.http.get<AtencionMedica[]>(this.urlEndPoint);
   }
-// metodo crear doctor
+
   create(atencionMedica:AtencionMedica):Observable<AtencionMedica>{
     return this.http.post<AtencionMedica>(this.urlEndPoint, atencionMedica,{headers:this.httpHeaders})
   }
