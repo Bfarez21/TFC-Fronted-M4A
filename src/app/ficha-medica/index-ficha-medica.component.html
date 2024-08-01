@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>Ficha Medica de Pacientes</h1>
+  <h1>Ficha Médica de Pacientes</h1>
   <div>
     <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/ficha-medica/form']">Registrar Paciente</button>
     <div class="input-container">
       <input type="text" id="cedula" placeholder="Cédula" [(ngModel)]="cedulaBusqueda">
       <input type="text" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoBusqueda">
-      <input type="text" id="carrera" placeholder="Carrera" [(ngModel)]="profesionBusqueda">
+      <input type="text" id="rol" placeholder="rol" [(ngModel)]="profesionBusqueda">
       <button class="btn btn-rounded btn-primary mx-4" type="button" (click)="buscar()">Buscar</button>
       <button type="button" name="button" class="btn btn-secondary" (click)="recargarTabla()">Ver todo</button>
     </div>
