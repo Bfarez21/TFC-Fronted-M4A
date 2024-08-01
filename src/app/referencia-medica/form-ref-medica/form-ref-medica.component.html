@@ -5,12 +5,15 @@
 
 
 
-      <select id="atencionMedica" (change)="onAtencionMedicaChange($event)" name="atencionMedica">
-        <option value="" disabled>Seleccione una atención médica</option>
-        <option *ngFor="let atencion of atencionesMedicas" [value]="atencion.idAte">
-          {{ atencion.idAte }} - {{ atencion.motivoAte }}
-        </option>
-      </select>
+      <div class="atencion-medica-container">
+        <label for="atencionMedica">Selecciona una atención médica:</label>
+        <select id="atencionMedica" (change)="onAtencionMedicaChange($event)" name="atencionMedica">
+          <option *ngFor="let atencion of atencionesMedicas" [value]="atencion.idAte">
+            {{ atencion.idAte }} - Cedula: {{ atencion.fichaMedica.paciente.cedulaPac}} - Nombre: {{ atencion.fichaMedica.paciente.nombrePac}} - Apellido: {{ atencion.fichaMedica.paciente.apellidoPac}}
+          </option>
+        </select>
+      </div>
+      
 
 
 
@@ -127,9 +130,9 @@
           <tr *ngFor="let diag of referencia.diagnosticos; let i = index">
             <td class="diagnostico-cell">
               <div class="autocomplete-container">
-                <input type="text" [(ngModel)]="diag.searchTerm" (input)="onSearch(i)" (focus)="onFocus(i)"
+                <input type="text"  [(ngModel)]="diag.diagnostico_dia" (input)="onSearch(i)" (focus)="onFocus(i)"
                   (blur)="onBlur(i)" class="form-control diagnostico-input"
-                  placeholder="Ingrese el nombre de la enfermedad" name="searchTerm_{{i}}" />
+                  placeholder="Ingrese el nombre de la enfermedad" name="diagnostico_dia_{{i}}" />
                 <ul class="autocomplete-list" *ngIf="showSuggestions[i] && filteredEnfermedades[i].length > 0">
                   <li *ngFor="let enfermedad of filteredEnfermedades[i]" (click)="selectEnfermedad(enfermedad, i)"
                     (mouseover)="onMouseOver(enfermedad)">
@@ -140,15 +143,15 @@
             </td>
 
             <td class="cie10-cell">
-              <select [(ngModel)]="diag.codigoEnfermedad" name="cie10_{{i}}" class="cie10-select">
+              <select [(ngModel)]="diag.codigo_dia" name="cie10_{{i}}" class="cie10-select">
                 <option *ngFor="let enf of enfermedades" [value]="enf.codigoEnf">{{ enf.codigoEnf }}</option>
               </select>
             </td>
             <td class="radio-cell">
-              <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'presuntivo'" name="tipo_{{i}}">
+              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'true'" name="estado_{{i}}">
             </td>
             <td class="radio-cell">
-              <input type="radio" [(ngModel)]="diag.estadoDia" [value]="'definitivo'" name="tipo_{{i}}">
+              <input type="radio" [(ngModel)]="diag.estado_dia" [value]="'false'" name="estado_{{i}}">
             </td>
             <td>
               <button type="button" class="btn btn-danger" (click)="eliminarDiagnostico(i)">Eliminar</button>
