@@ -3,14 +3,14 @@
   <div>
     <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/ficha-medica/form']">Registrar Paciente</button>
     <div class="input-container">
-      <input type="text" id="cedula" placeholder="Cedula" [(ngModel)]="cedulaBusqueda">
-      <input type="text" id="apellido" placeholder="Apellido">
-      <input type="text" id="carrera" placeholder="Carrera">
-      <button class="btn btn-rounded btn-primary mx-4" type="button" (click)="buscarCedu()">Buscar</button>
+      <input type="text" id="cedula" placeholder="Cédula" [(ngModel)]="cedulaBusqueda">
+      <input type="text" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoBusqueda">
+      <input type="text" id="carrera" placeholder="Carrera" [(ngModel)]="profesionBusqueda">
+      <button class="btn btn-rounded btn-primary mx-4" type="button" (click)="buscar()">Buscar</button>
       <button type="button" name="button" class="btn btn-secondary" (click)="recargarTabla()">Ver todo</button>
     </div>
     <div class="table-responsive">
-      <table class="table table-bordered table-striped" *ngIf="fichaMedicaEncontrada; else listaPacientes">
+      <table class="table table-bordered table-striped" *ngIf="fichaMedicaEncontrada.length > 0; else listaPacientes">
         <thead>
           <tr>
             <th>Id</th>
@@ -22,15 +22,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{fichaMedicaEncontrada.paciente.idPac}}</td>
-            <td>{{fichaMedicaEncontrada.paciente.cedulaPac}}</td>
-            <td>{{fichaMedicaEncontrada.paciente.nombrePac}}</td>
-            <td>{{fichaMedicaEncontrada.paciente.apellidoPac}}</td>
-            <td>{{fichaMedicaEncontrada.paciente.profesionPac}}</td>
+          <tr *ngFor="let ficha of fichaMedicaEncontrada">
+            <td>{{ ficha.paciente.idPac }}</td>
+            <td>{{ ficha.paciente.cedulaPac }}</td>
+            <td>{{ ficha.paciente.nombrePac }}</td>
+            <td>{{ ficha.paciente.apellidoPac }}</td>
+            <td>{{ ficha.paciente.profesionPac }}</td>
             <td>
-              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedicaEncontrada)">Ver</button>
-              <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', fichaMedicaEncontrada.idFic]">Editar</button>
+              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(ficha)">Ver</button>
+              <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', ficha.idFic]">Editar</button>
               <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
             </td>
           </tr>
@@ -49,15 +49,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let fichaMedica of fichaMedica">
-              <td>{{fichaMedica.paciente.idPac}}</td>
-              <td>{{fichaMedica.paciente.cedulaPac}}</td>
-              <td>{{fichaMedica.paciente.nombrePac}}</td>
-              <td>{{fichaMedica.paciente.apellidoPac}}</td>
-              <td>{{fichaMedica.paciente.profesionPac}}</td>
+            <tr *ngFor="let ficha of fichaMedica">
+              <td>{{ ficha.paciente.idPac }}</td>
+              <td>{{ ficha.paciente.cedulaPac }}</td>
+              <td>{{ ficha.paciente.nombrePac }}</td>
+              <td>{{ ficha.paciente.apellidoPac }}</td>
+              <td>{{ ficha.paciente.profesionPac }}</td>
               <td>
-                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedica)">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', fichaMedica.idFic]">Editar</button>
+                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(ficha)">Ver</button>
+                <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', ficha.idFic]">Editar</button>
                 <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
               </td>
             </tr>
