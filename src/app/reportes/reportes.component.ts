@@ -23,6 +23,7 @@ export class ReportesComponent implements OnInit {
   generoBusqueda: string = '';
   carreraBusqueda: string = '';
   fechaBusqueda: string = '';
+  i = 0;
 
   constructor(
     private pacienteService: PacienteService, 
@@ -152,9 +153,9 @@ export class ReportesComponent implements OnInit {
   }
 
   Imprimir(): void {
-    const encabezado = ["ID", "Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
-    const cuerpo = this.atenciones.map(atenciones => [
-      atenciones.fichaMedica.paciente.idPac,
+    const encabezado = ["#", "Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
+    const cuerpo = this.atenciones.map((atenciones, index) => [
+      index + 1,
       atenciones.fichaMedica.paciente.nombrePac + ' ' + atenciones.fichaMedica.paciente.apellidoPac,
       atenciones.fichaMedica.paciente.cedulaPac,
       atenciones.motivoAte,
