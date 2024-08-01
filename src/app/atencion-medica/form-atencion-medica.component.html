@@ -210,59 +210,59 @@
     <fieldset class="container-signos form-grid mx-4">
           <div class="input-container">
             <label for="pa">PA:</label>
-            <input type="number" id="pa" placeholder="PA:" [(ngModel)]="paSigno.valorAts" name="pa">
+            <input type="number" id="pa" placeholder="PA:" [(ngModel)]="this.atencionMedica.atencionesSignos[0].valorAts" name="pa">
           </div>
           <div class="input-container">
             <label for="peso">PESO</label>
-            <input type="number" id="peso" placeholder="PESO:" [(ngModel)]="pesoSigno.valorAts" name="peso">
+            <input type="number" id="peso" placeholder="PESO:" [(ngModel)]="this.atencionMedica.atencionesSignos[1].valorAts" name="peso">
           </div>
           <div class="input-container">
             <label for="talla">TALLA:</label>
-            <input type="number" id="talla" placeholder="TALLA:" [(ngModel)]="tallaSigno.valorAts" name="talla">
+            <input type="number" id="talla" placeholder="TALLA:" [(ngModel)]="this.atencionMedica.atencionesSignos[2].valorAts" name="talla">
           </div>
           <div class="input-container">
             <label for="imc">IMC:</label>
-            <input type="number" id="imc" placeholder="IMC:" [(ngModel)]="imcSigno.valorAts" name="imc">
+            <input type="number" id="imc" placeholder="IMC:" [(ngModel)]="this.atencionMedica.atencionesSignos[3].valorAts" name="imc">
           </div>
           <div class="input-container">
             <label for="fc">FC:</label>
-            <input type="number" id="fc" placeholder="FC:" [(ngModel)]="fcSigno.valorAts" name="fc">
+            <input type="number" id="fc" placeholder="FC:" [(ngModel)]="this.atencionMedica.atencionesSignos[4].valorAts" name="fc">
           </div>
           <div class="input-container">
             <label for="fr">FR:</label>
-            <input type="number" id="fr" placeholder="FR:" [(ngModel)]="frSigno.valorAts" name="fr">
+            <input type="number" id="fr" placeholder="FR:" [(ngModel)]="this.atencionMedica.atencionesSignos[5].valorAts" name="fr">
           </div>
           <div class="input-container">
             <label for="t">T°:</label>
-            <input type="number" id="t" placeholder="T°:" [(ngModel)]="tSigno.valorAts" name="t">
+            <input type="number" id="t" placeholder="T°:" [(ngModel)]="this.atencionMedica.atencionesSignos[6].valorAts" name="t">
           </div>
           <div class="input-container">
             <label for="sat">Sat.O2:</label>
-            <input type="number" id="sat" placeholder="SAT.O2°:" [(ngModel)]="satSigno.valorAts" name="sat">
+            <input type="number" id="sat" placeholder="SAT.O2°:" [(ngModel)]="this.atencionMedica.atencionesSignos[7].valorAts" name="sat">
           </div>
           <div class="input-container">
             <label for="ocular">OCULAR:</label>
-            <input type="number" id="ocular" placeholder="OCULAR:" [(ngModel)]="ocularSigno.valorAts" name="ocular" min="0" max="5" (ngModelChange)="validateValue($event, 'ocular')">
+            <input type="number" id="ocular" placeholder="OCULAR:" [(ngModel)]="this.atencionMedica.atencionesSignos[8].valorAts" name="ocular" min="0" max="5" (ngModelChange)="validateValue($event, 'ocular')">
           </div>
           <div class="input-container">
             <label for="verbal">VERBAL:</label>
-            <input type="number" id="verbal" placeholder="VERBAL:" [(ngModel)]="verbalSigno.valorAts" name="verbal" min="0" max="5" (ngModelChange)="validateValue($event, 'verbal')">
+            <input type="number" id="verbal" placeholder="VERBAL:" [(ngModel)]="this.atencionMedica.atencionesSignos[9].valorAts" name="verbal" min="0" max="5" (ngModelChange)="validateValue($event, 'verbal')">
           </div>
           <div class="input-container">
             <label for="motora">MOTORA:</label>
-            <input type="number" id="motora" placeholder="MOTORA:" [(ngModel)]="motoraSigno.valorAts" name="motora" min="0" max="5" (ngModelChange)="validateValue($event, 'motora')">
+            <input type="number" id="motora" placeholder="MOTORA:" [(ngModel)]="this.atencionMedica.atencionesSignos[10].valorAts" name="motora" min="0" max="5" (ngModelChange)="validateValue($event, 'motora')">
           </div>
           <div class="input-container">
             <label for="total">TOTAL:</label>
-            <input type="number" id="total" placeholder="TOTAL:" [value]="totalGlasgow()" disabled>
+            <input type="number" id="total" placeholder="TOTAL:" [value]="totalGlasgow()" disabled [(ngModel)]="this.atencionMedica.atencionesSignos[11].valorAts" name="total">
           </div>
           <div class="input-container">
             <label for="capilar">LLEN.CAPILAR:</label>
-            <input type="number" id="capilar" placeholder="LLEN. CAPILAR:" [(ngModel)]="capilarSigno.valorAts" name="capilar">
+            <input type="number" id="capilar" placeholder="LLEN. CAPILAR:" [(ngModel)]="this.atencionMedica.atencionesSignos[12].valorAts" name="capilar">
           </div>
           <div class="input-container">
             <label for="pupilar">R.PUPILAR:</label>
-            <input type="number" id="pupilar" placeholder="R.PUPILAR:" [(ngModel)]="pupilarSigno.valorAts" name="pupilar">
+            <input type="number" id="pupilar" placeholder="R.PUPILAR:" [(ngModel)]="this.atencionMedica.atencionesSignos[13].valorAts" name="pupilar">
           </div>
     </fieldset>
 
@@ -275,39 +275,39 @@
     <fieldset class="container-fisico form-grid-fisico mx-4">
         <div class="form-row">
         <label for="piel">PIEL Y FANERAS</label>
-        <input type="text" id="piel" name="piel" placeholder="Escribe aquí..." [(ngModel)]="pielExamen.descripcionExa">
+        <input type="text" id="piel" name="piel" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[0].descripcionExa">
         </div>
         <div class="form-row">
         <label for="cabeza">CABEZA</label>
-        <input type="text" id="cabeza" name="cabeza" placeholder="Escribe aquí..." [(ngModel)]="cabezaExamen.descripcionExa">
+        <input type="text" id="cabeza" name="cabeza" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[1].descripcionExa">
         </div>
         <div class="form-row">
         <label for="cuello">CUELLO</label>
-        <input type="text" id="cuello" name="cuello" placeholder="Escribe aquí..." [(ngModel)]="cuelloExamen.descripcionExa">
+        <input type="text" id="cuello" name="cuello" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[2].descripcionExa">
         </div>
         <div class="form-row">
         <label for="torax">TÓRAX</label>
-        <input type="text" id="torax" name="torax" placeholder="Escribe aquí..." [(ngModel)]="toraxExamen.descripcionExa">
+        <input type="text" id="torax" name="torax" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[3].descripcionExa">
         </div>
         <div class="form-row">
         <label for="corazon">CORAZÓN</label>
-        <input type="text" id="corazon" name="corazon" placeholder="Escribe aquí..." [(ngModel)]="corazonExamen.descripcionExa">
+        <input type="text" id="corazon" name="corazon" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[4].descripcionExa">
         </div>
         <div class="form-row">
         <label for="abdomen">ABDOMEN</label>
-        <input type="text" id="abdomen" name="abdomen" placeholder="Escribe aquí..." [(ngModel)]="abdomenExamen.descripcionExa">
+        <input type="text" id="abdomen" name="abdomen" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[5].descripcionExa">
         </div>
         <div class="form-row">
         <label for="inguinal">R. INGUINAL</label>
-        <input type="text" id="inguinal" name="inguinal" placeholder="Escribe aquí..." [(ngModel)]="inguinalExamen.descripcionExa">
+        <input type="text" id="inguinal" name="inguinal" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[6].descripcionExa">
         </div>
         <div class="form-row">
         <label for="superiores">M.SUPERIORES</label>
-        <input type="text" id="superiores" name="superiores" placeholder="Escribe aquí..." [(ngModel)]="superioresExamen.descripcionExa">
+        <input type="text" id="superiores" name="superiores" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[7].descripcionExa">
         </div>
         <div class="form-row">
         <label for="inferiores">M.INFERIORES</label>
-        <input type="text" id="inferiores" name="inferiores" placeholder="Escribe aquí..." [(ngModel)]="inferioresExamen.descripcionExa">
+        <input type="text" id="inferiores" name="inferiores" placeholder="Escribe aquí..." [(ngModel)]="this.atencionMedica.examenesFisicos[8].descripcionExa">
         </div>
     </fieldset>
       
@@ -326,10 +326,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of examenesComplementarios; let i = index">
+            <tr *ngFor="let item of atencionMedica.examenesComplementarios; let i = index">
               <td>
                 <textarea 
-                  [(ngModel)]="examenesComplementarios[i].tituloExa" 
+                  [(ngModel)]="atencionMedica.examenesComplementarios[i].tituloExa" 
                   name="tituloExa{{i}}"
                   placeholder="Ingrese el diagnóstico"
                 ></textarea>
@@ -339,7 +339,7 @@
                   type="checkbox" 
                   id="no_aplicable{{i}}" 
                   name="aplicaExa{{i}}" 
-                  [(ngModel)]="examenesComplementarios[i].aplicaExa"
+                  [(ngModel)]="atencionMedica.examenesComplementarios[i].aplicaExa"
                 >
               </td>
               <td>
@@ -370,7 +370,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of diagnosticos; let i = index">
+                <tr *ngFor="let item of atencionMedica.diagnosticos; let i = index">
                     <td class="w-50">
                         <textarea 
                             [(ngModel)]="item.inicialDia" 

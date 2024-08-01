@@ -94,10 +94,9 @@ export class FormAtencionMedicaComponent implements OnInit{
 }
 
   ngOnInit(): void {
-    this.inicializarExamenes();
     this.recuperarSignosVitales();
+    this.inicializadorListas();
     this.recuperarEnfermedades();
-    this.inicializarSignoAtencion();
     this.doctorService.buscarPorCedula("0102030405").subscribe(
       doctor => {
         this.doctor = doctor;
@@ -178,34 +177,9 @@ export class FormAtencionMedicaComponent implements OnInit{
     }
   }  
 
-  inicializarExamenes(): void {
-    this.pielExamen.nombreExa = 'PIEL Y FANERAS';
-    this.cabezaExamen.nombreExa = 'CABEZA';
-    this.cuelloExamen.nombreExa = 'CUELLO';
-    this.toraxExamen.nombreExa = 'TÓRAX';
-    this.corazonExamen.nombreExa = 'CORAZÓN';
-    this.abdomenExamen.nombreExa = 'ABDOMEN';
-    this.inguinalExamen.nombreExa = 'R. INGUINAL';
-    this.superioresExamen.nombreExa = 'M.SUPERIORES';
-    this.inferioresExamen.nombreExa = 'M.INFERIORES';
-  }
-
   inicializarSignoAtencion() {
     if (this.signosVitales.length > 0) {
-      this.paSigno.signoVital = this.signosVitales[0];
-      this.pesoSigno.signoVital = this.signosVitales[1];
-      this.tallaSigno.signoVital = this.signosVitales[2];
-      this.imcSigno.signoVital = this.signosVitales[3];
-      this.fcSigno.signoVital = this.signosVitales[4];
-      this.frSigno.signoVital = this.signosVitales[5];
-      this.tSigno.signoVital = this.signosVitales[6];
-      this.satSigno.signoVital = this.signosVitales[7];
-      this.ocularSigno.signoVital = this.signosVitales[9];
-      this.verbalSigno.signoVital = this.signosVitales[10];
-      this.motoraSigno.signoVital = this.signosVitales[11];
-      this.capilarSigno.signoVital = this.signosVitales[12];
-      this.pupilarSigno.signoVital = this.signosVitales[13];
-      this.totalSigno.signoVital = this.signosVitales[14];
+      
     }
 
   }
@@ -256,7 +230,7 @@ export class FormAtencionMedicaComponent implements OnInit{
   onFileChange(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
-      this.examenComplementarioService.uploadPdf(this.examenesComplementarios[index].idExa, file)
+      this.examenComplementarioService.uploadPdf(this.atencionMedica.examenesComplementarios[index].idExa, file)
         .subscribe(
           () => console.log('PDF subido exitosamente'),
           error => console.error('Error al subir PDF', error)
@@ -264,7 +238,7 @@ export class FormAtencionMedicaComponent implements OnInit{
   }}
 
   uploadAllFiles() {
-      this.examenesComplementarios.forEach(examen => {
+      this.atencionMedica.examenesComplementarios.forEach(examen => {
         if (examen.archivoPdf) {
           this.examenComplementarioService.uploadPdf(examen.idExa, examen.archivoPdf)
             .subscribe(
@@ -287,45 +261,14 @@ export class FormAtencionMedicaComponent implements OnInit{
   }
 
   selectEnfermedad(enfermedad: Enfermedades, index: number): void {
-    this.diagnosticos[index].enfermedad = enfermedad;
+    this.atencionMedica.diagnosticos[index].enfermedad = enfermedad;
     this.filteredEnfermedades[index] = [];
   }
 
 
   create(): void {    
 
-    const signosAtencion = [
-      this.paSigno,
-      this.pesoSigno,
-      this.tallaSigno,
-      this.imcSigno,
-      this.fcSigno,
-      this.frSigno,
-      this.tSigno,
-      this.satSigno,
-      this.ocularSigno,
-      this.verbalSigno,
-      this.motoraSigno,
-      this.capilarSigno,
-      this.pupilarSigno,
-      this.totalSigno
-    ];
-
-    const examenesFisicos = [
-      this.pielExamen,
-      this.cabezaExamen,
-      this.cuelloExamen,
-      this.toraxExamen,
-      this.corazonExamen,
-      this.abdomenExamen,
-      this.inguinalExamen,
-      this.superioresExamen,
-      this.inferioresExamen
-    ];
-
-    // this.atencionMedica.atencionesSignos = signosAtencion;
-    // this.atencionMedica.examenesFisicos = examenesFisicos;
-  
+    
 
     this.atencionMedica.fechaAtencionAte = new Date();
     this.atencionMedica.diagnosticos = this.diagnosticos;
@@ -358,20 +301,82 @@ export class FormAtencionMedicaComponent implements OnInit{
 
   addDiagnostico():void {
     const newDiagnostico = new Diagnostico();
-    this.diagnosticos.push(newDiagnostico);
+    this.atencionMedica.diagnosticos.push(newDiagnostico);
     
   }
 
   eliminarDiagnostico(index: number) {
-    this.diagnosticos.splice(index, 1);
+    this.atencionMedica.diagnosticos.splice(index, 1);
   }
 
   addExamenComplementario():void {
-    this.examenesComplementarios.push(new ExamenComplementario());
+    this.atencionMedica.examenesComplementarios.push(new ExamenComplementario());
   }
 
   eliminarExamenComplementario(index: number) {
-    this.examenesComplementarios.splice(index, 1);
+    this.atencionMedica.examenesComplementarios.splice(index, 1);
+  }
+
+  inicializadorListas(): void {
+    const signosAtencion = [
+      this.paSigno,
+      this.pesoSigno,
+      this.tallaSigno,
+      this.imcSigno,
+      this.fcSigno,
+      this.frSigno,
+      this.tSigno,
+      this.satSigno,
+      this.ocularSigno,
+      this.verbalSigno,
+      this.motoraSigno,
+      this.capilarSigno,
+      this.pupilarSigno,
+      this.totalSigno
+    ];
+
+    const examenesFisicos = [
+      this.pielExamen,
+      this.cabezaExamen,
+      this.cuelloExamen,
+      this.toraxExamen,
+      this.corazonExamen,
+      this.abdomenExamen,
+      this.inguinalExamen,
+      this.superioresExamen,
+      this.inferioresExamen
+    ];
+
+    this.atencionMedica.atencionesSignos = signosAtencion;
+    this.atencionMedica.examenesFisicos = examenesFisicos;
+
+    this.atencionMedica.examenesFisicos[0].nombreExa = 'PIEL Y FANERAS';
+    this.atencionMedica.examenesFisicos[1].nombreExa = 'CABEZA';
+    this.atencionMedica.examenesFisicos[2].nombreExa = 'CUELLO';
+    this.atencionMedica.examenesFisicos[3].nombreExa = 'TÓRAX';
+    this.atencionMedica.examenesFisicos[4].nombreExa = 'CORAZÓN';
+    this.atencionMedica.examenesFisicos[5].nombreExa = 'ABDOMEN';
+    this.atencionMedica.examenesFisicos[6].nombreExa = 'R. INGUINAL';
+    this.atencionMedica.examenesFisicos[7].nombreExa = 'M.SUPERIORES';
+    this.atencionMedica.examenesFisicos[8].nombreExa = 'M.INFERIORES';
+
+    this.atencionMedica.atencionesSignos[0].signoVital = this.signosVitales[0];
+    this.atencionMedica.atencionesSignos[1].signoVital = this.signosVitales[1];
+    this.atencionMedica.atencionesSignos[2].signoVital = this.signosVitales[2];
+    this.atencionMedica.atencionesSignos[3].signoVital = this.signosVitales[3];
+    this.atencionMedica.atencionesSignos[4].signoVital = this.signosVitales[4];
+    this.atencionMedica.atencionesSignos[5].signoVital = this.signosVitales[5];
+    this.atencionMedica.atencionesSignos[6].signoVital = this.signosVitales[6];
+    this.atencionMedica.atencionesSignos[7].signoVital = this.signosVitales[7];
+    this.atencionMedica.atencionesSignos[8].signoVital = this.signosVitales[9];
+    this.atencionMedica.atencionesSignos[9].signoVital = this.signosVitales[10];
+    this.atencionMedica.atencionesSignos[10].signoVital = this.signosVitales[11];
+    this.atencionMedica.atencionesSignos[11].signoVital = this.signosVitales[12];
+    this.atencionMedica.atencionesSignos[12].signoVital = this.signosVitales[13];
+    this.atencionMedica.atencionesSignos[13].signoVital = this.signosVitales[14];
+
+    
+  
   }
   
 
