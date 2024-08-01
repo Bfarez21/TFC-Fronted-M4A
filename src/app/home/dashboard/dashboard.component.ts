@@ -48,14 +48,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Visitas Del Mes', cols: 1, rows: 1, type: 'visits' },
+          { title: 'Visitas', cols: 1, rows: 1, type: 'visits' },
           { title: 'Enfermedades', cols: 1, rows: 1, type: 'diseases' },
           { title: 'Gráfico', cols: 1, rows: 1, type: 'lineChart' }
         ];
       }
 
       return [
-        { title: 'Visitas Del Mes' , cols: 2, rows: 1, type: 'visits' },
+        { title: 'Visitas' , cols: 2, rows: 1, type: 'visits' },
         { title: 'Enfermedades', cols: 1, rows: 2, type: 'diseases' },
         { title: 'Gráfico', cols: 1, rows: 2, type: 'lineChart' }
       ];
