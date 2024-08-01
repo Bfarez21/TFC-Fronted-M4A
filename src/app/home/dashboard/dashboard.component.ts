@@ -86,7 +86,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     datasets: [
       {
         data: [],
-        backgroundColor: ['#162778', '#4958A9', '#BAC3FF'],
+        backgroundColor: [], //'#162778', '#4958A9', '#BAC3FF'
       }
     ]
   };
@@ -94,14 +94,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   public pieChartType: 'pie' = 'pie';
 
   // Función para generar colores aleatorios
-  /*generateRandomColor(): string {
+  generateRandomColor(): string {
     const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  } */
+  } 
 
   loadPieChartData(): void {
     this.dataService.getEnfermedadesActuales().subscribe(data => {
@@ -109,11 +109,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       const values = Object.values(data);
 
       // Genera colores aleatorios para cada etiqueta
-      ///const backgroundColors = labels.map(() => this.generateRandomColor());
+      const backgroundColors = labels.map(() => this.generateRandomColor());
 
       this.pieChartData.labels = labels;
       this.pieChartData.datasets[0].data = values;
-      //this.pieChartData.datasets[0].backgroundColor = backgroundColors;  // Asigna los colores generados
+      this.pieChartData.datasets[0].backgroundColor = backgroundColors;  // Asigna los colores generados
 
     });
   }

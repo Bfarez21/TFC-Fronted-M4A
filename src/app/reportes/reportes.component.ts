@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PacienteService } from './paciente.service';
 import { Paciente } from '../ficha-medica/modelo/paciente';
 import { AtenMedService } from './atenmed.service';
 import { AtencMed } from './atenmed';
 import { ImpresionService } from './impresion.service';
 
+
+
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
-  styleUrl: './reportes.component.css'
+  styleUrls: ['./reportes.component.css']
 })
-export class ReportesComponent {
+export class ReportesComponent implements OnInit {
   patients: Paciente[] = [];
   atenciones: AtencMed[] = [];
   cedulaBusqueda: string = '';
@@ -23,21 +25,24 @@ export class ReportesComponent {
   ) {}
 
   ngOnInit(): void {
-    this.viewPatient(); // Llama a cargarPacientes()
-  } 
+    this.viewPatient();
+    this.viewAtenciones();
+  }
 
   viewPatient(): void {
     this.pacienteService.getPacientes().subscribe(pacientes => {
-       pacientes = this.patients=pacientes; // Asigna los pacientes obtenidos del servicio a la propiedad del componente
+      console.log('Pacientes:', pacientes);
+      this.patients = pacientes; 
+    });
+  } 
+
+  viewAtenciones(): void {
+    this.atenmedservice.getAten().subscribe(atenciones => {
+      console.log('Atenciones recibidas:', atenciones);
+      this.atenciones = atenciones;
     });
   }
 
-  viewAte(): void {
-    this.atenmedservice.getAten().subscribe(atencion => {
-      atencion = this.atenciones=atencion;
-    })
-  }
-  // BOTON BUSCAR 
   buscar(): void {
     if (this.cedulaBusqueda) {
       this.pacienteService.buscarPorCedula(this.cedulaBusqueda).subscribe(
@@ -53,34 +58,23 @@ export class ReportesComponent {
   }
 
   Imprimir(): void {
-    const encabezado = ["ID","Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
-    const cuerpo = this.patients.map(paciente => [
-      paciente.idPac,
-      paciente.nombrePac + ' '+ paciente.apellidoPac,
-      paciente.cedulaPac,
-      "MOTIVO",
-      paciente.fechaNacimientoPac,
-      paciente.carreraPac,
-      "FECHA",
-      "RECETA"
+    const encabezado = ["ID", "Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
+    const cuerpo = this.atenciones.map(atenciones => [
+      atenciones.fichaMedica.paciente.idPac,
+      atenciones.fichaMedica.paciente.nombrePac + ' ' + atenciones.fichaMedica.paciente.apellidoPac,
+      atenciones.fichaMedica.paciente.cedulaPac,
+      atenciones.motivoAte,
+      atenciones.fichaMedica.paciente.fechaNacimientoPac,
+      atenciones.fichaMedica.paciente.carreraPac,
+      atenciones.fechaAtencionAte,
+      atenciones.tratamientoAte
     ]);
     this.impresionservice.imprimir(encabezado, cuerpo, "Listado De Pacientes", true);
   }
 
-  ImprimirPac(paciente: any): void {
-    const encabezado = ["ID", "Nombre", "Cedula", "Motivo", "Fecha de Nacimiento", "Carrera", "Fecha de Visita", "Receta"];
-    
-    const cuerpo = [[
-        paciente.idPac,
-        paciente.nombrePac + ' ' + paciente.apellidoPac,
-        paciente.cedulaPac,
-        "MOTIVO",
-        paciente.fechaNacimientoPac,
-        paciente.carreraPac,
-        "FECHA",
-        "RECETA"
-    ]];
-    
-    this.impresionservice.imprimir(encabezado, cuerpo, "Información del Paciente", true);
+  refrescar(): void {
+    this.viewPatient(); 
+    this.cedulaBusqueda = ''; 
+    this.pacEncontrado = null; 
   }
 }

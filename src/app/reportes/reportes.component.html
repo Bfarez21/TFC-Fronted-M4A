@@ -25,13 +25,14 @@
   <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
   <button class="btn btn-ver" (click)="buscar()">Buscar</button>
   <button class="btn btn-ver" (click)="Imprimir()">Imprimir</button>
+  <button type="button" name="button" class="btn btn-secondary"(click)="refrescar()">Ver todo</button>
+
            
   <div class="table-responsive"> 
 
     <table class="table table-bordered table-striped" *ngIf="pacEncontrado; else listaPacientes">
       <thead class="thead">
         <tr>
-          <th>#</th>
           <th>Nombre</th>
           <th>Cédula</th>
           <th>Motivo</th>
@@ -39,12 +40,11 @@
           <th>Carrera</th>
           <th>Fecha de visita</th>
           <th>Receta</th>
-          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pacEncontrado; let i = index">
-          <td>{{ i + 1 }}</td>
+        
+          
           <td class="nombre-col">{{ pacEncontrado.nombrePac}}</td>
           <td>{{ pacEncontrado.cedulaPac }}</td>
           <td>{{ "........" }}</td>   <!--     <td>{{ patient.razon }}</td>     -->
@@ -52,10 +52,7 @@
           <td>{{ pacEncontrado.carreraPac }}</td>
           <td>{{ "..........." }}</td>   <!--          <td>{{ patient.fechaVisita }}</td>           -->
           <td>{{".........."}}</td>  <!--          <td>{{ patient.receta }}</td>           -->
-          <td>
-            <button class="btn btn-ver" (click)="Imprimir()">Ver</button>
-          </td>
-        </tr>
+        
       </tbody>
     </table>
 
@@ -74,16 +71,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let patient of patients; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td class="nombre-col">{{ patient.nombrePac }}</td>
-                <td>{{ patient.cedulaPac }}</td>
-                <td>{{ "........" }}</td> <!-- <td>{{ patient.razon }}</td> -->
-                <td>{{ patient.fechaNacimientoPac }}</td>
-                <td>{{ patient.carreraPac }}</td>
-                <td>{{ "..........." }}</td> <!-- <td>{{ patient.fechaVisita }}</td> -->
-                <td>{{ ".........." }}</td> <!-- <td>{{ patient.receta }}</td> -->
-            </tr>
+          <tr *ngFor="let atencion of atenciones; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td class="nombre-col">{{ atencion?.fichaMedica?.paciente?.nombrePac}}</td>
+            <td>{{ atencion?.fichaMedica?.paciente?.cedulaPac}}</td>
+            <td>{{ atencion?.motivoAte}}</td>
+            <td>{{ atencion?.fichaMedica?.paciente?.fechaNacimientoPac}}</td>
+            <td>{{ atencion?.fichaMedica?.paciente?.carreraPac}}</td>
+            <td>{{ atencion?.fechaAtencionAte}}</td>
+            <td>{{ atencion?.tratamientoAte}}</td>
+          </tr>
         </tbody>
     </table>
     
@@ -93,6 +90,6 @@
   </div>
 
   <div class="text-right">
-    <p>N° TOTAL: {{ patients.length }} </p>
+    <p>N° TOTAL: {{ atenciones.length }} </p>
   </div>
 </div>

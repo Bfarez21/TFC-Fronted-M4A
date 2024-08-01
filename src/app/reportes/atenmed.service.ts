@@ -8,7 +8,7 @@ import { AtencMed } from './atenmed';
   providedIn: 'root'
 })
 export class AtenMedService {
-  private urlEndPoint: string = "http://localhost:8080/api/atencion_medica";
+  private urlEndPoint: string = "http://localhost:8080/api/atenciones_medicas";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -17,7 +17,4 @@ export class AtenMedService {
     return this.http.get<AtencMed[]>(this.urlEndPoint);
   }
 
-  getEnfermedadesActuales(): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}/enfermedades_actuales`);
-  }
 }

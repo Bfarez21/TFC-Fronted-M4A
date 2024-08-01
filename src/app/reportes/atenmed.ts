@@ -1,6 +1,11 @@
+import { FichaMedica } from "../ficha-medica/modelo/ficha-medica";
+
 export class AtencMed {
-	motivo_ate:string="";
-    tartamiento_ate:string="";
-    fechaAtencion:string="";
+
+    idAte:number=0;
+	motivoAte:string="";
+    tratamientoAte:string="";
+    fechaAtencionAte:string="";
     enfermedadActualAte: string="";
+    fichaMedica: FichaMedica = new FichaMedica();
 }
