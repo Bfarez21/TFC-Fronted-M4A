@@ -96,4 +96,12 @@ input{
     overflow-y: auto; /* Habilita el scroll vertical */
     overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
   }
-  
+  .scroll-container {
+    height: 100vh; /* Ocupa el 100% de la altura del viewport */
+    width: 100vw;  /* Ocupa el 100% del ancho del viewport */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    overflow-x: auto; /* Habilita el desplazamiento horizontal si es necesario */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+    padding: 10px; /* Opcional: Añadir un relleno interno */
+    border: 1px solid #ccc; /* Opcional: Añadir un borde para visualizar mejor el contenedor */
+  } 
