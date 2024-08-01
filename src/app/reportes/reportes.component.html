@@ -1,27 +1,25 @@
 <div class="container">
-  <select class="op01" name="carrera" id="carrera" name="carrera">
-    <option value="seleccione">Carrera</option>
-    <option value="software">Desarrollo de software</option>
-    <option value="bigdata">Big Data</option>
-    <option value="ciberseguridad">Ciberseguridad</option>
+  <select class="op01" name="carrera" id="carrera" name="carrera" placeholder="carrera" [(ngModel)]="carreraBusqueda">
+    <option value="" disabled selected>Carrera</option>
+    <option value="Desarrollo de Software">Desarrollo de software</option>
+    <option value="Tecnología Superior en Big Data">Big Data</option>
+    <option value="Ciberseguridad">Ciberseguridad</option>
+    <option value="Entrenamiento Deportivo">Entrenamiento Deportivo</option>
+    <option value="Tributación">Tributacion</option>
   </select>
-  <select class="op01" name="paciente" id="paciente" name="paciente">
-    <option value="seleccione">Paciente</option>
-    <option value="estudiante">Estudiante</option>
+  <select class="op01" name="paciente" id="paciente" [(ngModel)]="profesionBusqueda" name="paciente" placeholder="paciente">
+    <option value="" disabled selected>Paciente</option>
+    <option value="Estudiante">Estudiante</option>
     <option value="Profesor">Profesor</option>
   </select>
-  <select class="op01" name="genero" id="genero" name="genero">
-    <option value="seleccione">Genero</option>
-    <option value="masculino">Masculino</option>
-    <option value="femenino">Femenino</option>
+  <select class="op01" name="genero" id="genero" [(ngModel)]="generoBusqueda" name="genero">
+    <option value="" disabled selected>Genero</option>
+    <option value="M">Masculino</option>
+    <option value="F">Femenino</option>
   </select>
-  <input class="op01" type="date" name="fecha" id="fecha" placeholder="Seleccione" name="fecha">
-  <select class="op01" name="año" id="año" name="año">
-    <option value="seleccione">Año</option>
-    <option value="2022">2022</option>
-    <option value="2023">2023</option>
-    <option value="2024">2024</option>
-  </select>
+
+  <input class="op01" type="date" name="fecha" id="fecha" placeholder="Seleccione" name="fecha" [(ngModel)]="fechaBusqueda">
+
   <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
   <button class="btn btn-ver" (click)="buscar()">Buscar</button>
   <button class="btn btn-ver" (click)="Imprimir()">Imprimir</button>
@@ -30,7 +28,7 @@
            
   <div class="table-responsive"> 
 
-    <table class="table table-bordered table-striped" *ngIf="pacEncontrado; else listaPacientes">
+    <table *ngIf="pacEncontrado; else listaPacientes">
       <thead class="thead">
         <tr>
           <th>Nombre</th>
@@ -44,15 +42,15 @@
       </thead>
       <tbody>
         
-          
-          <td class="nombre-col">{{ pacEncontrado.nombrePac}}</td>
-          <td>{{ pacEncontrado.cedulaPac }}</td>
-          <td>{{ "........" }}</td>   <!--     <td>{{ patient.razon }}</td>     -->
-          <td>{{ pacEncontrado.fechaNacimientoPac }}</td>
-          <td>{{ pacEncontrado.carreraPac }}</td>
-          <td>{{ "..........." }}</td>   <!--          <td>{{ patient.fechaVisita }}</td>           -->
-          <td>{{".........."}}</td>  <!--          <td>{{ patient.receta }}</td>           -->
-        
+        <tr *ngFor="let atencion of atenciones">
+          <td class="nombre-col">{{ atencion.fichaMedica.paciente.nombrePac}}</td>
+          <td>{{ atencion.fichaMedica.paciente.cedulaPac }}</td>
+          <td>{{ atencion.motivoAte }}</td>
+          <td>{{ atencion.fichaMedica.paciente.fechaNacimientoPac }}</td>
+          <td>{{ atencion.fichaMedica.paciente.carreraPac }}</td>
+          <td>{{ atencion.fechaAtencionAte }}</td>
+          <td>{{ atencion.tratamientoAte }}</td>
+          </tr>
       </tbody>
     </table>
 

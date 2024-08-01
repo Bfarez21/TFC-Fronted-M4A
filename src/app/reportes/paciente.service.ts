@@ -23,4 +23,9 @@ export class PacienteService {
     return this.http.get<Paciente>(url);
   }
 
+  buscarPorProfesion(profesion: string): Observable<Paciente> {
+    const url = `${this.urlEndPoint}/profesion/${profesion}`;
+    return this.http.get<Paciente>(url);
+  }
+
 }
