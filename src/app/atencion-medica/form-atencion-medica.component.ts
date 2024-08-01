@@ -271,8 +271,6 @@ export class FormAtencionMedicaComponent implements OnInit{
     
 
     this.atencionMedica.fechaAtencionAte = new Date();
-    this.atencionMedica.diagnosticos = this.diagnosticos;
-    this.atencionMedica.examenesComplementarios = this.examenesComplementarios;
 
     if (this.fichaMedica) {
     
