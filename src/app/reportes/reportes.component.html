@@ -46,7 +46,7 @@
       <tbody>
         
         <tr *ngFor="let atencion of atenciones">
-          <td class="nombre-col">{{ atencion.fichaMedica.paciente.nombrePac}}</td>
+          <td class="nombre-col">{{ atencion.fichaMedica.paciente.nombrePac+' '+ atencion?.fichaMedica?.paciente?.apellidoPac}}</td>
           <td>{{ atencion.fichaMedica.paciente.cedulaPac }}</td>
           <td>{{ atencion.motivoAte }}</td>
           <td>{{ atencion.fichaMedica.paciente.fechaNacimientoPac }}</td>
@@ -74,7 +74,7 @@
         <tbody>
           <tr *ngFor="let atencion of atenciones; let i = index">
             <td>{{ i + 1 }}</td>
-            <td class="nombre-col">{{ atencion?.fichaMedica?.paciente?.nombrePac}}</td>
+            <td class="nombre-col">{{ atencion?.fichaMedica?.paciente?.nombrePac+' '+ atencion?.fichaMedica?.paciente?.apellidoPac}}</td>
             <td>{{ atencion?.fichaMedica?.paciente?.cedulaPac}}</td>
             <td>{{ atencion?.motivoAte}}</td>
             <td>{{ atencion?.fichaMedica?.paciente?.fechaNacimientoPac}}</td>

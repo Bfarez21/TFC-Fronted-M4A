@@ -105,3 +105,6 @@ input{
     padding: 10px; /* Opcional: Añadir un relleno interno */
     border: 1px solid #ccc; /* Opcional: Añadir un borde para visualizar mejor el contenedor */
   } 
+  .tituloo {
+    size: 40px;
+  }
