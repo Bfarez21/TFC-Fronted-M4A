@@ -8,7 +8,7 @@
         <div class="column">
             <label for="profesion">Rol</label>
             <select name="profesion" id="profesion" placeholder="Seleccione" [(ngModel)]="fichaMedica.paciente.profesionPac" name="profesion" required>
-                <option value="Profesor">Profesor/option>
+                <option value="Profesor">Profesor</option>
                 <option value="Estudiante">Estudiante</option>
             </select>
             <label for="cedula">Cedula</label>
@@ -105,14 +105,14 @@
                 <option value="ab-">AB-</option>
             </select>
             <label for="carrera">Carrera</label>
-            <select name="carrera" id="carrera" [(ngModel)]="fichaMedica.paciente.carreraPac" name="carrera" [disabled]="fichaMedica.paciente.profesionPac === 'Docente'" required >
+            <select name="carrera" id="carrera" [(ngModel)]="fichaMedica.paciente.carreraPac" name="carrera" [disabled]="fichaMedica.paciente.profesionPac === 'Profesor'" required >
                 <option value="seleccione">Seleccione</option>
                 <option value="software">Desarrollo de software</option>
                 <option value="bigdata">Big Data</option>
                 <option value="ciberseguridad">Ciberseguridad</option>
             </select>
             <label for="ciclo">Ciclo</label>
-            <select name="ciclo" id="ciclo" [(ngModel)]="fichaMedica.paciente.cicloPac" name="ciclo" [disabled]="fichaMedica.paciente.profesionPac === 'Docente'" required>
+            <select name="ciclo" id="ciclo" [(ngModel)]="fichaMedica.paciente.cicloPac" name="ciclo" [disabled]="fichaMedica.paciente.profesionPac === 'Profesor'" required>
                 <option value="seleccione">Seleccione</option>
                 <option value="primero">Primero</option>
                 <option value="segundo">Segundo</option>

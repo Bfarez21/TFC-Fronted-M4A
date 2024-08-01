@@ -55,7 +55,7 @@ export class FormComponent implements OnInit {
 
   public create(): void {
     // En caso de ser docente
-    if (this.fichaMedica.paciente.profesionPac === 'Docente') {
+    if (this.fichaMedica.paciente.profesionPac === 'Profesor') {
       this.fichaMedica.paciente.carreraPac = 'NoAplica';
       this.fichaMedica.paciente.cicloPac = 'NoAplica';
     }
