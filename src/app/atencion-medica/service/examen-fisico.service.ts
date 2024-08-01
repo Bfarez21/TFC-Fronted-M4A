@@ -8,7 +8,7 @@ import { ExamenFisico } from '../modelo/examen-fisico';
 })
 export class ExamenFisicoService {
 
-  private urlEndPoint:string="http://localhost:8080/api/atenciones_signos";
+  private urlEndPoint:string="http://localhost:8080/api/examenes_fisicos";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http:HttpClient) { }

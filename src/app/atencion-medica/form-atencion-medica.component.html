@@ -72,14 +72,93 @@
         
     </fieldset>
 
+    
+    <div class="mx-4 mt-4" *ngIf="fichaMedica?.paciente?.generoPac === 'femenino'">
+        <label for="signos">Emergencias Obstetricas</label>
+    </div>
+
+    <fieldset *ngIf="fichaMedica?.paciente?.generoPac === 'femenino'" class="container-emergencia-obstetrica form-grid mx-4">
+
+        <div class="input-container-inline">
+            <label for="pa">Menarca:</label>
+            <input type="number" id="menarca_eme" placeholder="Menarca" name="menarca_eme" [value]="emergenciaObstetrica?.menarca_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="ritmo_mestrual_eme">Ritmo mestrual:</label>
+            <input type="text" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual" name="ritmo_mestrual_eme" [value]="emergenciaObstetrica?.ritmo_menstrual_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="talla">Ciclos</label>
+            <input type="number" id="ciclos_eme" placeholder="ciclos" name="ciclos_eme" [value]="emergenciaObstetrica?.ciclos_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="imc">FUM:</label>
+            <input type="date" id="fum_eme" placeholder="FUM" name="fum_eme" [value]="emergenciaObstetrica?.fum_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="ivsa_eme">IVSA:</label>
+            <input type="number" id="ivsa_eme" placeholder="IVSA" name="ivsa_eme" [value]="emergenciaObstetrica?.ivsa_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="numero_parejas_sexuales">N° de parejas sexuales:</label>
+            <input type="text" id="numero_parejas_sexuales" placeholder="parejas" name="numero_parejas_sexuales_eme" [value]="emergenciaObstetrica?.numero_parejas_sexuales_eme || ''" disabled>
+        </div>
+        <div class="input-container-multiple-inline">
+            <label for="g_eme">G:</label>
+            <input type="number" id="g_eme" placeholder="---" name="g_eme" [value]="emergenciaObstetrica?.g_eme || ''" disabled>
+            
+            <label for="a_eme">A:</label>
+            <input type="text" id="a_eme" placeholder="---" name="a_eme" [value]="emergenciaObstetrica?.a_eme || ''" disabled>
+            
+            <label for="p_eme">P:</label>
+            <input type="text" id="p_eme" placeholder="---" name="p_eme" [value]="emergenciaObstetrica?.p_eme || ''" disabled>
+            
+            <label for="c_eme">C:</label>
+            <input type="text" id="c_eme" placeholder="---" name="c_eme" [value]="emergenciaObstetrica?.c_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <div class="input-container-inline">
+                <label for="">Dismenorrea</label>
+                <input type="checkbox" id="dismenorrea_eme" name="dismenorrea_eme" [checked]="emergenciaObstetrica?.dismenorrea_eme || false" disabled>
+                
+            </div>  
+            <div class="input-container-inline">
+                <label for="">Mastodinia</label>
+                <input type="checkbox" id="mastodinia_eme" name="mastodinia_eme" [checked]="emergenciaObstetrica?.mastodinia_eme || false" disabled>
+            </div> 
+        </div>
+        <div class="input-container-inline">
+            <label for="fpp_eme">¿Está embarazada?</label>
+            <input type="checkbox" id="isEmbarazada" name="isEmbarazada" [checked]="emergenciaObstetrica?.isEmbarazada || false" disabled>
+        </div>
+        <div class="input-container-inline" *ngIf="emergenciaObstetrica?.isEmbarazada">
+            <label for="fpp_eme">FPP:</label>
+            <input type="date" id="fpp_eme" placeholder="FPP" name="fpp_eme" [value]="emergenciaObstetrica?.fpp_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline" *ngIf="emergenciaObstetrica?.isEmbarazada">
+            <label for="total">Controles</label>
+            <input type="text" id="controles_eme" placeholder="Controles" name="controles_eme" [value]="emergenciaObstetrica?.controles_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline" *ngIf="emergenciaObstetrica?.isEmbarazada">
+            <label for="capilar">Inmunizaciones</label>
+            <input type="text" id="Inmunizaciones_eme" placeholder="Inmunizaciones" name="inmunizaciones_eme" [value]="emergenciaObstetrica?.inmunizaciones_eme || ''" disabled>
+        </div>
+        <div class="input-container-inline">
+            <label for="pupilar">Descripción</label>
+            <input type="text" id="descripcion_eme" placeholder="Descripción" name="descripcion_eme" [value]="emergenciaObstetrica?.descripcion_eme || ''" disabled>
+        </div>
+    </fieldset>
+      
+
     <div class="mx-4 mt-4">
         <label for="motivo">Motivo Consulta:</label>
     </div>
-
+    
     <fieldset class="textarea-container mx-4">
         <textarea id="motivAteo" name="motivoAte" placeholder="Escribe tus observaciones aquí..." rows="4"
             cols="50" [(ngModel)]="atencionMedica.motivoAte"></textarea>
     </fieldset>
+
 
     <div class="mx-4 mt-4">
         <label for="motivo">Antecedentes familiares y personales</label>
@@ -100,12 +179,12 @@
                 </thead>
                 <tbody>
                     <tr class = "center-table">                
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.alergiaAnt ? fichaMedica?.antecedenteFamiliar?.descripcionAlergiaAnt : 'NO APLICA' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.clinicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionClinicoAnt : 'NO APLICA' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.ginecologoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionGinecologoAnt : 'NO APLICA' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.traumatologicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionTraumatologicoAnt : 'NO APLICA' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.quirurgicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionQuirurgicoAnt : 'NO APLICA' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.farmacologicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionFarmacologicoAnt : 'NO APLICA' }}</td>              
+                        <td>{{ fichaMedica.antecedenteFamiliar.alergiaAnt ? fichaMedica.antecedenteFamiliar.descripcionAlergiaAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica.antecedenteFamiliar.clinicoAnt ? fichaMedica.antecedenteFamiliar.descripcionClinicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica.antecedenteFamiliar.ginecologoAnt ? fichaMedica.antecedenteFamiliar.descripcionGinecologoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica.antecedenteFamiliar.traumatologicoAnt ? fichaMedica.antecedenteFamiliar.descripcionTraumatologicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica.antecedenteFamiliar.quirurgicoAnt ? fichaMedica.antecedenteFamiliar.descripcionQuirurgicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica.antecedenteFamiliar.farmacologicoAnt ? fichaMedica.antecedenteFamiliar.descripcionFarmacologicoAnt : 'NO APLICA' }}</td>              
                     </tr>
                 </tbody>
             </table>
@@ -126,141 +205,65 @@
     </div>
 
     <fieldset class="container-signos form-grid mx-4">
-            <div class="input-container">
-                <label for="pa" >PA:</label>
-                <input type="text" id="pa" placeholder="PA:">
-            </div>
-            <div class="input-container">
-                <label for="peso">PESO</label>
-                <input type="text" id="peso" placeholder="PESO:">
-            </div>
-            <div class="input-container">
-                <label for="talla">TALLA:</label>
-                <input type="text" id="talla" placeholder="TALLA:">
-            </div>
-            <div class="input-container">
-                <label for="imc">IMC:</label>
-                <input type="text" id="imc" placeholder="IMC:">
-            </div>
-            <div class="input-container">
-                <label for="fc">FC:</label>
-                <input type="text" id="fc" placeholder="FC:">
-            </div>
-            <div class="input-container">
-                <label for="fr">FR:</label>
-                <input type="text" id="fr" placeholder="FR:">
-            </div>
-            <div class="input-container">
-                <label for="t">T°:</label>
-                <input type="text" id="t" placeholder="T°:">
-            </div>
-            <div class="input-container">
-                <label for="sat">Sat.O2:</label>
-                <input type="text" id="sat" placeholder="SAT.O2°:">
-            </div>
-            <div class="input-container">
-                <label for="glasgow">GLASGOW</label>
-            </div>
-            <div class="input-container">
-                <label for="ocular">OCULAR:</label>
-                <input type="text" id="ocular" placeholder="OCULAR:">
-            </div>
-            <div class="input-container">
-                <label for="verbal">VERBAL:</label>
-                <input type="text" id="verbal" placeholder="VERBAL:">
-            </div>
-            <div class="input-container">
-                <label for="motora">MOTORA:</label>
-                <input type="text" id="motora" placeholder="MOTORA:">
-            </div>
-            <div class="input-container">
-                <label for="total">TOTAL:</label>
-                <input type="text" id="total" placeholder="TOTAL:" disabled>
-            </div>
-            <div class="input-container">
-                <label for="capilar">LLEN.CAPILAR:</label>
-                <input type="text" id="capilar" placeholder="LLEN. CAPILAR:">
-            </div>
-            <div class="input-container">
-                <label for="pupilar">R.PUPILAR:</label>
-                <input type="text" id="pupilar" placeholder="R.PUPILAR:">
-            </div>
+          <div class="input-container">
+            <label for="pa">PA:</label>
+            <input type="number" id="pa" placeholder="PA:" [(ngModel)]="paSigno.valorAts" name="pa">
+          </div>
+          <div class="input-container">
+            <label for="peso">PESO</label>
+            <input type="number" id="peso" placeholder="PESO:" [(ngModel)]="pesoSigno.valorAts" name="peso">
+          </div>
+          <div class="input-container">
+            <label for="talla">TALLA:</label>
+            <input type="number" id="talla" placeholder="TALLA:" [(ngModel)]="tallaSigno.valorAts" name="talla">
+          </div>
+          <div class="input-container">
+            <label for="imc">IMC:</label>
+            <input type="number" id="imc" placeholder="IMC:" [(ngModel)]="imcSigno.valorAts" name="imc">
+          </div>
+          <div class="input-container">
+            <label for="fc">FC:</label>
+            <input type="number" id="fc" placeholder="FC:" [(ngModel)]="fcSigno.valorAts" name="fc">
+          </div>
+          <div class="input-container">
+            <label for="fr">FR:</label>
+            <input type="number" id="fr" placeholder="FR:" [(ngModel)]="frSigno.valorAts" name="fr">
+          </div>
+          <div class="input-container">
+            <label for="t">T°:</label>
+            <input type="number" id="t" placeholder="T°:" [(ngModel)]="tSigno.valorAts" name="t">
+          </div>
+          <div class="input-container">
+            <label for="sat">Sat.O2:</label>
+            <input type="number" id="sat" placeholder="SAT.O2°:" [(ngModel)]="satSigno.valorAts" name="sat">
+          </div>
+          <div class="input-container">
+            <label for="ocular">OCULAR:</label>
+            <input type="number" id="ocular" placeholder="OCULAR:" [(ngModel)]="ocularSigno.valorAts" name="ocular" min="0" max="5" (ngModelChange)="validateValue($event, 'ocular')">
+          </div>
+          <div class="input-container">
+            <label for="verbal">VERBAL:</label>
+            <input type="number" id="verbal" placeholder="VERBAL:" [(ngModel)]="verbalSigno.valorAts" name="verbal" min="0" max="5" (ngModelChange)="validateValue($event, 'verbal')">
+          </div>
+          <div class="input-container">
+            <label for="motora">MOTORA:</label>
+            <input type="number" id="motora" placeholder="MOTORA:" [(ngModel)]="motoraSigno.valorAts" name="motora" min="0" max="5" (ngModelChange)="validateValue($event, 'motora')">
+          </div>
+          <div class="input-container">
+            <label for="total">TOTAL:</label>
+            <input type="number" id="total" placeholder="TOTAL:" [value]="totalGlasgow()" disabled>
+          </div>
+          <div class="input-container">
+            <label for="capilar">LLEN.CAPILAR:</label>
+            <input type="number" id="capilar" placeholder="LLEN. CAPILAR:" [(ngModel)]="capilarSigno.valorAts" name="capilar">
+          </div>
+          <div class="input-container">
+            <label for="pupilar">R.PUPILAR:</label>
+            <input type="number" id="pupilar" placeholder="R.PUPILAR:" [(ngModel)]="pupilarSigno.valorAts" name="pupilar">
+          </div>
     </fieldset>
 
-    <div class="mx-4 mt-4">
-        <label for="signos">Emergencias Obstetricas</label>
-    </div>
-
-    <fieldset class="container-emergencia-obstetrica form-grid mx-4">
-            <div class="input-container-inline">
-                <label for="pa" >Menarca:</label>
-                <input type="number" id="menarca_eme" placeholder="Menarca">
-            </div>
-            <div class="input-container-inline">
-                <label for="ritmo_mestrual_eme">Ritmo mestrual:</label>
-                <input type="text" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual">
-            </div>
-            <div class="input-container-inline">
-                <label for="talla">Ciclos</label>
-                <input type="number" id="ciclos_eme" placeholder="ciclos">
-            </div>
-            <div class="input-container-inline">
-                <label for="imc">FUM:</label>
-                <input type="date" id="fum_eme" placeholder="FUM">
-            </div>
-            <div class="input-container-inline">
-                <label for="ivsa_eme">IVSA:     </label>
-                <input type="number" id="ivsa_eme" placeholder="IVSA">
-            </div>
-            <div class="input-container-inline">
-                <label for="numero_parejas_sexuales">N° de parejas sexuales:</label>
-                <input type="text" id="numero_parejas_sexuales" placeholder="">
-            </div>
-            <div class="input-container-multiple-inline">
-                <label for="g_eme">G:</label>
-                <input type="number" id="g_eme" placeholder="---">
-                
-                <label for="a_eme">A:</label>
-                <input type="text" id="a_eme" placeholder="---">
-                
-                <label for="p_eme">P:</label>
-                <input type="text" id="p_eme" placeholder="---">
-                
-                <label for="c_eme">C:</label>
-                <input type="text" id="c_eme" placeholder="---">
-            </div>
-            <div class="input-container-inline">
-                <div class="input-container-inline">
-                    <label for="">Dismenorrea</label>
-                    <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual">
-                    
-                </div>  
-                <div class="input-container-inline">
-                    <label for="">Mastodinia </label>
-                    <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual">
-                </div> 
-            </div>
-            <div class="input-container-inline">
-                <label for="fpp_eme">¿Esta embarazada?</label>
-                <input type="checkbox" id="fpp_eme" placeholder="FPP">
-            </div>
-            <div class="input-container-inline">
-                <label for="fpp_eme">FPP:</label>
-                <input type="date" id="fpp_eme" placeholder="FPP">
-            </div>
-            <div class="input-container-inline">
-                <label for="total">Controles</label>
-                <input type="text" id="controles_eme" placeholder="Controles">
-            </div>
-            <div class="input-container-inline">
-                <label for="capilar">Inmunizaciones</label>
-                <input type="text" id="Inmunizaciones_eme" placeholder="Inmunizaciones">
-            </div>
-            <div class="input-container-inline">
-                <label for="pupilar">Descripción</label>
-                <input type="text" id="descripcion_eme" placeholder="Descripción">
-            </div>
-    </fieldset>
+ 
 
     <div class="mx-4 mt-4">
         <label for="examenfisico">Exámen Físico</label>
@@ -268,112 +271,153 @@
 
     <fieldset class="container-fisico form-grid-fisico mx-4">
         <div class="form-row">
-            <label for="piel">PIEL Y FANERAS</label>
-            <input type="text" id="piel" placeholder="Escribe aquí...">
+        <label for="piel">PIEL Y FANERAS</label>
+        <input type="text" id="piel" name="piel" placeholder="Escribe aquí..." [(ngModel)]="pielExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="cabeza">CABEZA</label>
-            <input type="text" id="cabeza" placeholder="Escribe aquí...">
+        <label for="cabeza">CABEZA</label>
+        <input type="text" id="cabeza" name="cabeza" placeholder="Escribe aquí..." [(ngModel)]="cabezaExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="cuello">CUELLO</label>
-            <input type="text" id="cuello" placeholder="Escribe aquí...">
+        <label for="cuello">CUELLO</label>
+        <input type="text" id="cuello" name="cuello" placeholder="Escribe aquí..." [(ngModel)]="cuelloExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="torax">TÓRAX</label>
-            <input type="text" id="torax" placeholder="Escribe aquí...">
+        <label for="torax">TÓRAX</label>
+        <input type="text" id="torax" name="torax" placeholder="Escribe aquí..." [(ngModel)]="toraxExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="corazon">CORAZÓN</label>
-            <input type="text" id="corazon" placeholder="Escribe aquí...">
+        <label for="corazon">CORAZÓN</label>
+        <input type="text" id="corazon" name="corazon" placeholder="Escribe aquí..." [(ngModel)]="corazonExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="abdomen">ABDOMEN</label>
-            <input type="text" id="abdomen" placeholder="Escribe aquí...">
+        <label for="abdomen">ABDOMEN</label>
+        <input type="text" id="abdomen" name="abdomen" placeholder="Escribe aquí..." [(ngModel)]="abdomenExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="inguinal">R. INGUINAL</label>
-            <input type="text" id="inguinal" placeholder="Escribe aquí...">
+        <label for="inguinal">R. INGUINAL</label>
+        <input type="text" id="inguinal" name="inguinal" placeholder="Escribe aquí..." [(ngModel)]="inguinalExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="superiores">M.SUPERIORES</label>
-            <input type="text" id="superiores" placeholder="Escribe aquí...">
+        <label for="superiores">M.SUPERIORES</label>
+        <input type="text" id="superiores" name="superiores" placeholder="Escribe aquí..." [(ngModel)]="superioresExamen.descripcionExa">
         </div>
         <div class="form-row">
-            <label for="inferiores">M.INFERIORES</label>
-            <input type="text" id="inferiores" placeholder="Escribe aquí...">
+        <label for="inferiores">M.INFERIORES</label>
+        <input type="text" id="inferiores" name="inferiores" placeholder="Escribe aquí..." [(ngModel)]="inferioresExamen.descripcionExa">
         </div>
     </fieldset>
+      
 
     <div class="mx-4 mt-4">
         <label for="examenes">Exámenes Complementarios</label>
     </div>
 
-    <fieldset class="diagnostico-container mx-4">
+    <div class="diagnostico-container mx-4">
         <table class="diagnostico-table">
-            <thead>
-                <tr>
-                    <th class="w-75" style="background-color:#63e77b;">Descripción</th>
-                    <th style="background-color:#63e77b;">Aplicable</th>
-                    <th style="background-color:#63e77b;">Documentos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of atencionMedica.examenescomplementarios; let i = index">
-                 
-                    <td>
-                        <textarea id="diagnostico{{i}}" name="diagnostico{{i}}" placeholder="Ingrese el diagnóstico"></textarea>
-                    </td>
-                    <td>
-                        <input type="radio" id="presuntivo{{i}}" name="diagnostico{{i}}" [value]="false">
-                    </td>
-                    <td>
-                        <input type="file" name="diagnostico{{i}}" id="">
-                    </td>
-                  </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th class="w-75" style="background-color:#63e77b;">Descripción</th>
+              <th style="background-color:#63e77b;">Aplicable</th>
+              <th style="background-color:#63e77b;">Documentos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of examenesComplementarios; let i = index">
+              <td>
+                <textarea 
+                  [(ngModel)]="examenesComplementarios[i].tituloExa" 
+                  name="tituloExa{{i}}"
+                  placeholder="Ingrese el diagnóstico"
+                ></textarea>
+              </td>
+              <td>
+                <input 
+                  type="checkbox" 
+                  id="no_aplicable{{i}}" 
+                  name="aplicaExa{{i}}" 
+                  [(ngModel)]="examenesComplementarios[i].aplicaExa"
+                >
+              </td>
+              <td>
+                <div class="custom-file-upload">
+                    <input type="file" id="documentoExa{{i}}"  name="documentoExa{{i}}" (change)="onFileChange($event, i)"class="file-input">
+
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
-        <button (click)="addExamenComplementario()" class="botonCrearFila">Agregar examen complementario</button>
-
-    </fieldset>
-
+        <button type="button" (click)="addExamenComplementario()" class="botonCrearFila">Agregar examen complementario</button>
+    </div>
+         
     <div class="mx-4">
         <label for="diagnostico">Diagnóstico:</label>
     </div>
 
     <div class="diagnostico-container">
         <table class="diagnostico-table">
-        <thead>
-            <tr>
-            <th class="w-50">DIAGNÓSTICO INICIAL</th>
-            <th class="w-25">Enfermedad</th>
-            <th>CIE-10</th>
-            <th>Presuntivo</th>
-            <th>Definitivo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of atencionMedica.diagnosticos; let i = index">
-                <td class="w-50">
-                  <textarea id="diagnostico{{i}}" name="diagnostico{{i}}" placeholder="Ingrese el diagnóstico"></textarea>
-                </td>
-                <td class="w-25">
-                  <input type="text" id="search{{i}}" placeholder="Escribe para buscar" class="input-search" name="search{{i}}">
-                </td>
-                <td>
-                  
-                </td>
-                <td>
-                  <input type="radio" id="presuntivo{{i}}" name="diagnostico{{i}}" [value]="false">
-                </td>
-                <td>
-                  <input type="radio" id="definitivo{{i}}" name="diagnostico{{i}}" [value]="true">
-                </td>
-              </tr>
-        </tbody>
+            <thead>
+                <tr>
+                    <th class="w-50">DIAGNÓSTICO INICIAL</th>
+                    <th class="w-25">Enfermedad</th>
+                    <th>CIE-10</th>
+                    <th>Presuntivo</th>
+                    <th>Definitivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of diagnosticos; let i = index">
+                    <td class="w-50">
+                        <textarea 
+                            [(ngModel)]="item.inicialDia" 
+                            placeholder="Ingrese el diagnóstico" 
+                            name="diagnostico{{i}}">
+                        </textarea>
+                    </td>
+                    <td class="w-25">
+                        <div class="autocomplete-container">
+                            <input 
+                                type="text" 
+                                [(ngModel)]="item.enfermedad.nombreEnf" 
+                                placeholder="Escribe para buscar" 
+                                (input)="filterEnfermedades($event, i)" 
+                                name="search{{i}}">
+                            <div class="autocomplete-items" *ngIf="filteredEnfermedades[i] && filteredEnfermedades[i].length > 0">
+                                <div 
+                                    *ngFor="let enfermedad of filteredEnfermedades[i]" 
+                                    (click)="selectEnfermedad(enfermedad, i)">
+                                    {{ enfermedad.nombreEnf }}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        {{ item.enfermedad.codigoEnf }}
+                    </td>
+                    <td>
+                        <input 
+                            type="radio" 
+                            id="presuntivo{{i}}" 
+                            name="diagnosticoTipo{{i}}" 
+                            [(ngModel)]="item.estadoDia" 
+                            [value]="false">
+                    </td>
+                    <td>
+                        <input 
+                            type="radio" 
+                            id="definitivo{{i}}" 
+                            name="diagnosticoTipo{{i}}" 
+                            [(ngModel)]="item.estadoDia" 
+                            [value]="true">
+                    </td>
+                </tr>
+            </tbody>
         </table>
-        <button (click)="addDiagnostico()" class="botonCrearFila">Agregar Diagnostico</button>
+        <button type="button" (click)="addDiagnostico()" class="botonCrearFila">Agregar Diagnóstico</button>
     </div>
+    
+          
 
     <div class="textarea-container mx-4">
         <label for="tratamiento">Tratamiento</label>

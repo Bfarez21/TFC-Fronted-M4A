@@ -20,4 +20,8 @@ export class EmergenciaObstetricaService {
   create(emergenciaObstetrica:EmergenciaObstetrica):Observable<EmergenciaObstetrica>{
     return this.http.post<EmergenciaObstetrica>(this.urlEndPoint, emergenciaObstetrica,{headers:this.httpHeaders})
   }
+
+  getfichaEmergencia(fichaMedica: number): Observable<EmergenciaObstetrica> {
+    return this.http.get<EmergenciaObstetrica>(`${this.urlEndPoint}/fichaMedica/${fichaMedica}`);
+  }
 }
