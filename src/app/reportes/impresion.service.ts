@@ -23,6 +23,11 @@ export class ImpresionService {
       doc.addImage(imagenSrc, imagenBase64.tipo.split('/')[1], 80, 10, 300, 100); // Ajusta las coordenadas y tamaño según sea necesario
     }
     
+    // Establecer estilo del título
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(25);
+    doc.setTextColor(0, 0, 250);  // Color azul
+
     doc.text(titulo, doc.internal.pageSize.width / 2, 25, { align: 'center' });
     autoTable(doc, {
       head: [encabezado],
