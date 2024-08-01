@@ -22,6 +22,7 @@ export class EnfermedadesComponent {
   }
    ver():void{
     this.cargarEnfermedad();
+    this.codigoEncontrado=null;
    }
   cargarEnfermedad(): void {
     this.enfermedadesService.getEnfermedades().subscribe(enfermedades => {

@@ -1,86 +1,104 @@
-<body>
-  <div class="Container">
-    <div class="scroll-container">
-      <div class="form-container">
-        <form class="formulario-blanco" (ngSubmit)="onSubmit()" #institutoForm="ngForm">
-          <h1 class="input-container mx-4">Ajustes</h1>
-        
-          <div class="input-edit-container">
-            <label for="nombre">Nombre Instituto</label>
-            <div class="input-edit-group">
-              <input type="text" id="nombre" placeholder="Ingrese el Instituto" [(ngModel)]="institutos.nombreIns" name="nombreIns" required #nombreIns="ngModel">
-              <button type="button" class="btn btn-edit"></button>
-            </div>
-            <div *ngIf="!nombreIns.valid && nombreIns.touched" class="error-message">Nombre es requerido</div>
-          </div>
-        
-          <div class="input-edit-container">
-            <label for="dir">Dirección</label>
-            <div class="input-edit-group">
-              <input type="text" id="dir" placeholder="Ingrese la dirección del instituto" [(ngModel)]="institutos.direccionIns" name="direccionIns" required #direccionIns="ngModel">
-              <button type="button" class="btn btn-edit"></button>
-            </div>
-            <div *ngIf="!direccionIns.valid && direccionIns.touched" class="error-message">Dirección es requerida</div>
-          </div>
-        
-          <div class="input-edit-container">
-            <label for="rec">Rector</label>
-            <div class="input-edit-group">
-              <input type="text" id="rec" placeholder="Ingrese el nombre de Rector de la institución" [(ngModel)]="institutos.rectorIns" name="rectorIns" required #rectorIns="ngModel">
-              <button type="button" class="btn btn-edit"></button>
-            </div>
-            <div *ngIf="!rectorIns.valid && rectorIns.touched" class="error-message">Rector es requerido</div>
-          </div>
-        
-          <div class="input-edit-container">
-            <label for="logo">Logo</label>
-            <div class="input-edit-group">
-              <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*" >
-              <button type="button" class="btn btn-edit"></button>
-            </div>
-            
-          </div>
-        
-          <div class="form-footer">
-            <button type="submit" class="btn btn-success" [disabled]="!institutoForm.form.valid">{{buttonLabel }}</button>
-            <button type="button" class="btn btn-danger"[routerLink]="['/setting/instituto']">Ver anteriores configuraciones</button>
-          </div>
-        </form>
+<div class="Container">
+  <div class="scroll-container">
+    <div class="form-container">
 
-        <form class="formulario-blanco">
-        <h1 class="institutoDetalle mx-4">Titulo</h1>
-          <div class="input-container mx-4">
-            <div class="input-edit-container">
-              <label for="contenido">Contenido</label>
-              <div class="input-edit-group">
-                <input type="text" id="contenido" placeholder="Ingrese el contenido del titulo">
-                <button type="button" class="btn btn-edit"></button>
-              </div>
-            </div>
-            <div class="input-edit-container">
-              <label for="leyenda">Leyenda</label>
-              <div class="input-edit-group">
-                <input type="text" id="leyenda" placeholder="Ingrese la Leyenda del titulo">
-                <button type="button" class="btn btn-edit"></button>
-              </div>
-            </div>
-            <div class="input-edit-container">
-            <label for="instituto">Instituto</label>
-            <div class="input-edit-group">
-              <select name="Instituto" id="Instituto" required>
-                <option value="Psicologica">1</option>
-                <option value="Fisica">2</option>
+      <!-- Formulario para Ajustes del Instituto -->
+      <form class="formulario-blanco" (ngSubmit)="onSubmit()" #institutoForm="ngForm">
+        <h1 class="input-container mx-4">Ajustes</h1>
+
+        <div class="input-edit-container">
+          <label for="nombre">Nombre Instituto</label>
+          <div class="input-edit-group">
+            <input type="text" id="nombre" placeholder="Ingrese el Instituto" [(ngModel)]="institutos.nombreIns" name="nombreIns" required #nombreIns="ngModel">
+            <button type="button" class="btn btn-edit" (click)="editNombre()"></button>
+          </div>
+          <div *ngIf="!nombreIns.valid && nombreIns.touched" class="error-message">Nombre es requerido</div>
+        </div>
+
+        <div class="input-edit-container">
+          <label for="dir">Dirección</label>
+          <div class="input-edit-group">
+            <input type="text" id="dir" placeholder="Ingrese la dirección del instituto" [(ngModel)]="institutos.direccionIns" name="direccionIns" required #direccionIns="ngModel">
+            <button type="button" class="btn btn-edit" (click)="editDireccion()"></button>
+          </div>
+          <div *ngIf="!direccionIns.valid && direccionIns.touched" class="error-message">Dirección es requerida</div>
+        </div>
+
+        <div class="input-edit-container">
+          <label for="rec">Rector</label>
+          <div class="input-edit-group">
+            <input type="text" id="rec" placeholder="Ingrese el nombre de Rector de la institución" [(ngModel)]="institutos.rectorIns" name="rectorIns" required #rectorIns="ngModel">
+            <button type="button" class="btn btn-edit" (click)="editRector()"></button>
+          </div>
+          <div *ngIf="!rectorIns.valid && rectorIns.touched" class="error-message">Rector es requerido</div>
+        </div>
+
+        <div class="input-edit-container">
+          <label for="logo">Logo</label>
+          <div class="input-edit-group">
+            <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*">
+            <button type="button" class="btn bt-ver" (click)="verImagenCargada()"></button>
+            <button type="button" class="btn btn-edit" (click)="editImage()"></button>
+          </div>
+          <div class="info-message">Solo se permite archivos png, jpg</div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-success" [disabled]="!institutoForm.form.valid">{{ buttonLabel }}</button>
+          <button type="button" class="btn btn-danger" [routerLink]="['/setting/instituto']">Ver anteriores configuraciones</button>
+        </div>
+      </form>
+
+      <!-- Formulario para Registro de Títulos -->
+      <form class="formulario-blanco" (ngSubmit)="createTitulo(tituloForm)" #tituloForm="ngForm">
+        <h1 class="institutoDetalle mx-4">Registro de títulos para reportes</h1>
+
+        <div class="input-edit-container mx-4">
+          <label for="contenido">Contenido</label>
+          <div class="input-edit-group">
+            <input type="text" id="contenido" placeholder="Ingrese el contenido del título" [(ngModel)]="titulo.contenidoTit" name="contenidoTit" required #contenido="ngModel">
+          </div>
+          <div *ngIf="!contenido.valid && contenido.touched" class="error-message">Contenido es requerido</div>
+        </div>
+
+        <div class="input-edit-container mx-4">
+          <label for="leyenda">Leyenda</label>
+          <div class="input-edit-group">
+            <input type="text" id="leyenda" placeholder="Ingrese la Leyenda del título" [(ngModel)]="titulo.leyendaTit" name="leyendaTit" required #leyenda="ngModel">
+          </div>
+          <div *ngIf="!leyenda.valid && leyenda.touched" class="error-message">Leyenda es requerida</div>
+        </div>
+
+        <div class="input-edit-container mx-4">
+          <label for="instituto">Instituto</label>
+          <div class="input-edit-group">
+            <select [(ngModel)]="titulo.instituto" name="institutoId" required #institutoId="ngModel">
+              <option *ngFor="let instituto of institutos2" [value]="instituto.idIns">{{ instituto.nombreIns }}</option>
             </select>
-            <button type="button" class="btn btn-edit"></button>
-            </div>
           </div>
-          </div>      
-          <div class="form-footer">
-            <button type="button" name="button" class="btn btn-success">Guardar</button>
-            <button type="button" name="button" class="btn btn-danger" [routerLink]="['/setting/titulo']">Ver anteriores configuraciones</button>
+          <div *ngIf="!institutoId.valid && institutoId.touched" class="error-message">Instituto es requerido</div>
+        </div>
+
+        <div class="input-edit-container borde-gris mx-4">
+          <label for="reporte">Reportes</label>
+          <div class="input-edit-group">
+            <select name="reporte" id="reporte">
+              <option value="Ficha medica">Ficha médica</option>
+              <option value="Atencion medica">Atención médica</option>
+              <option value="Referencia medica">Referencia médica</option>
+              <option value="Enfermedades">Enfermedades</option>
+              <option value="Doctor">Doctor</option>
+            </select>
           </div>
-        </form>
-      </div>
+          <div class="info-message">Seleccionar a qué reporte deseas enviar estos detalles de ajuste</div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-success" [disabled]="!tituloForm.form.valid">Guardar</button>
+          <button type="button" class="btn btn-danger" [routerLink]="['/setting/titulo']">Ver anteriores configuraciones</button>
+        </div>
+      </form>
+
     </div>
   </div>
-</body>
+</div>

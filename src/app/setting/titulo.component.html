@@ -1,86 +1,78 @@
+<!-- titulo.component.html -->
 <div class="container">
-    <h2 class="text-center mb-4">Titulos anteriores</h2>
+    <h2 class="text-center mb-4">Títulos Anteriores</h2>
     <div>
-        <button class="btn btn-rounded btn-success mx-2" type="button" (click)="cancelar()">Regresar</button>        
-        <div class="row justify-content-center mb-3">
-
-            <div class="col-md-3 d-flex align-items-center justify-content-center"> <!-- col-md-6 para ocupar 6 columnas en pantallas medianas y grandes -->
-                <input type="text" id="codigo" class="form-control text-center" 
-                style="width: 500px;" value="" [(ngModel)]="codigoBuscar" placeholder="Buscar por codigo">
-            </div>
-
-            <div class="col-md-3 d-flex align-items-center justify-content-start"> <!-- col-md-3 para ocupar 3 columnas en pantallas medianas y grandes -->
-                <div class="btn-group" role="group" aria-label="Botones de acción">
-                    
-                    <button class="btn btn-primary"(click)="buscar()">Buscar</button>
-                    <button class="btn btn-secondary"(click)="cargarTitulos()">Ver todo</button>
-                </div>
-            </div>
+      <button class="btn btn-rounded btn-success mx-2" type="button" (click)="cancelar()">Regresar</button>
+      <div class="row justify-content-center mb-3">
+        <div class="col-md-3 d-flex align-items-center justify-content-center">
+          <input type="text" id="codigo" class="form-control text-center" 
+          style="width: 500px;" [(ngModel)]="codigoBuscar" placeholder="Buscar por código">
         </div>
-        <div class="table-responsive">
+        <div class="col-md-3 d-flex align-items-center justify-content-start">
+          <div class="btn-group" role="group" aria-label="Botones de acción">
+            <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+            <button class="btn btn-secondary" (click)="cargarTitulos()">Ver Todo</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
         <table class="table table-bordered table-striped" *ngIf="tituloEncontrado; else listaTitulos">
-            <thead>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Contenido</th>
+              <th>Leyenda</th>
+              <th>Instituto</th>
+              <th>Creación</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{tituloEncontrado.idTit}}</td>
+              <td>{{tituloEncontrado.contenidoTit}}</td>
+              <td>{{tituloEncontrado.leyendaTit}}</td>
+              <td>{{tituloEncontrado.instituto || 'Instituto no encontrado'}}</td> 
+              <td>{{tituloEncontrado.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+              <td>
+                
+                <button type="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tituloEncontrado.idTit)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #listaTitulos>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-blue">
               <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>Contenido</th>
                 <th>Leyenda</th>
                 <th>Instituto</th>
-                <th>Creacion</th>
-
+                <th>Creación</th>
                 <th>Acción</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{{tituloEncontrado.idTit}}</td>
-                    <td>{{tituloEncontrado.contenidoTit}}</td>
-                    <td>{{tituloEncontrado.leyendaTit}}</td>
-                    <td>{{tituloEncontrado.instituto}}</td>
-                    <td>{{tituloEncontrado.fechaCreacion}}</td>
-                <td>
-
-                  <button type="button" name="button" class="btn btn-warning mx-4" >Aplicar</button>
-                  <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tituloEncontrado.idTit)">Eliminar</button>
+              <tr *ngFor="let tit of titulo">
+                <td>{{tit.idTit}}</td>
+                <td>{{tit.contenidoTit}}</td>
+                <td>{{tit.leyendaTit}}</td>
+                <td>{{tit.instituto || 'Instituto no encontrado'}}</td> 
+                <td>{{tit.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+                <td class="text-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tit.idTit)">Eliminar</button>
+                  </div>
                 </td>
-              </tr>
+              </tr>        
             </tbody>
           </table>
-
-     <ng-template #listaTitulos>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-blue">
-                <tr>
-                <th>id</th>
-                <th>Contenido</th>
-                <th>Leyenda</th>
-                <th>Instituto</th>
-                <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let tit of titulo">
-
-                    <td>{{tit.idTit}}</td>
-                    <td>{{tit.contenidoTit}}</td>
-                    <td>{{tit.leyendaTit}}</td>
-                    <td>{{tit.instituto}}</td>
-                    <td>{{tit.fechaCreacion}}</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            
-                            <button type="button" name="button" class="btn btn-warning mx-4">Aplicar</button>
-                            <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteTitulos(tit.idTit)">Eliminar</button>
-                        </div>
-                    </td>
-
-                </tr>        
-            </tbody>
-        </table>
-     </ng-template>
-     </div>
-        <div class="text-right">
-            <p> </p>
-            <p>Total registros:  <span>{{titulo.length}}</span></p>
-        </div>
+        </ng-template>
+      </div>
+      <div class="text-right">
+        <p>Total registros: <span>{{titulo.length}}</span></p>
+      </div>
     </div>
-</div>
+  </div>
