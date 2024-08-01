@@ -14,9 +14,11 @@ import { AntecedenteFamiliarService } from './servicio/antecedente-familiar.serv
 export class FichaMedicaComponent /*implements OnInit */ {
   fichaMedica: FichaMedica[] = []; // Asegúrate de inicializar pacientes como un arreglo vacío
   cedulaBusqueda: string = '';
-  fichaEncontrado: FichaMedica | null = null;
+  apellidoBusqueda: string='';
+  profesionBusqueda: string = '';
+  fichaMedicaEncontrada:FichaMedica | null=null;
 
-  constructor(private fichaMedicaService: FichaMedicaService) { }
+  constructor(private fichaMedicaService: FichaMedicaService,private pacienteService:PacienteService) { }
 
   ngOnInit(): void {
     this.cargarFichaMedica(); // Llama a cargarPacientes()
@@ -72,9 +74,41 @@ export class FichaMedicaComponent /*implements OnInit */ {
       `,
     });
   }
-  //BOTON BUSCAR
-  buscar(): void {
-
+  //BOTON BUSCAR CEDULA/APELLIDO/CARRERA
+  buscarCedu(): void {
+    if (this.cedulaBusqueda) {
+      this.pacienteService.buscarPorCedula(this.cedulaBusqueda).subscribe(
+        paciente => {
+          if (paciente) {
+            this.fichaMedicaService.getFichasMedicas().subscribe(fichaMedica => {
+              this.fichaMedicaEncontrada = fichaMedica.find(ficha => ficha.paciente.cedulaPac === paciente.cedulaPac) || null;
+            });
+          } else {
+            this.fichaMedicaEncontrada = null;
+          }
+        },
+        error => {
+          console.error('Error al buscar el paciente:', error);
+          this.fichaMedicaEncontrada = null;
+        }
+      );
+    } else if (this.apellidoBusqueda) {
+      // Implementar búsqueda por apellido
+      this.fichaMedicaService.getFichasMedicas().subscribe(fichaMedica => {
+        this.fichaMedicaEncontrada = fichaMedica.find(ficha => ficha.paciente.apellidoPac.toLowerCase().includes(this.apellidoBusqueda.toLowerCase())) || null;
+      });
+    } else if (this.profesionBusqueda) {
+      // Implementar búsqueda por rol
+      this.fichaMedicaService.getFichasMedicas().subscribe(fichaMedica => {
+        this.fichaMedicaEncontrada = fichaMedica.find(ficha => ficha.paciente.profesionPac.toLowerCase().includes(this.profesionBusqueda.toLowerCase())) || null;
+      });
+    }
+  }
+ 
+  recargarTabla(): void {
+    this.fichaMedicaEncontrada  = null;
+    this.cargarFichaMedica();
+    this.cedulaBusqueda = ''; // Limpia el campo 
   }
   /// BOTON ELIMINAR
   //eliminar datos de la base

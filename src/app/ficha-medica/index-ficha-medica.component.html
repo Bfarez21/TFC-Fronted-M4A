@@ -1,17 +1,42 @@
 <div class="container">
-    <h1>Ficha Medica de Pacientes</h1>
-    <div>
-      <button class="btn btn-rounded btn-success mx-2"type="button"[routerLink]="['/ficha-medica/form']">Registrar Paciente</button>
-      <div class="input-container">
-        <input type="text" id="cedula"placeholder="Cedula">
-        <input type="text" id="apellido"placeholder="Apellido">
-        <input type="text" id="carrera"placeholder="Carrera">
-       <button class="btn btn-rounded btn-primary mx-4"type="button">Buscar</button>
-       <button type="button" name="button" class="btn btn-secondary" >Ver todo</button>
-
-       <div>
-
-        <div class="table-responsive">
+  <h1>Ficha Medica de Pacientes</h1>
+  <div>
+    <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/ficha-medica/form']">Registrar Paciente</button>
+    <div class="input-container">
+      <input type="text" id="cedula" placeholder="Cedula" [(ngModel)]="cedulaBusqueda">
+      <input type="text" id="apellido" placeholder="Apellido">
+      <input type="text" id="carrera" placeholder="Carrera">
+      <button class="btn btn-rounded btn-primary mx-4" type="button" (click)="buscarCedu()">Buscar</button>
+      <button type="button" name="button" class="btn btn-secondary" (click)="recargarTabla()">Ver todo</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" *ngIf="fichaMedicaEncontrada; else listaPacientes">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>CI</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Rol</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{fichaMedicaEncontrada.paciente.idPac}}</td>
+            <td>{{fichaMedicaEncontrada.paciente.cedulaPac}}</td>
+            <td>{{fichaMedicaEncontrada.paciente.nombrePac}}</td>
+            <td>{{fichaMedicaEncontrada.paciente.apellidoPac}}</td>
+            <td>{{fichaMedicaEncontrada.paciente.profesionPac}}</td>
+            <td>
+              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedicaEncontrada)">Ver</button>
+              <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', fichaMedicaEncontrada.idFic]">Editar</button>
+              <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #listaPacientes>
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
@@ -19,7 +44,7 @@
               <th>CI</th>
               <th>Nombres</th>
               <th>Apellidos</th>
-              <th>Profesión</th>
+              <th>Rol</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -31,15 +56,14 @@
               <td>{{fichaMedica.paciente.apellidoPac}}</td>
               <td>{{fichaMedica.paciente.profesionPac}}</td>
               <td>
-                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedica)" >Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-2"[routerLink]="['/ficha-medica/form',fichaMedica.idFic]">Editar</button>
+                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(fichaMedica)">Ver</button>
+                <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', fichaMedica.idFic]">Editar</button>
                 <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-       </div>
-      </div>
+      </ng-template>
     </div>
   </div>
+</div>

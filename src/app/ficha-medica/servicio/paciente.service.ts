@@ -19,4 +19,19 @@ export class PacienteService {
   create(paciente:Paciente):Observable<Paciente>{
     return this.http.post<Paciente>(this.urlEndPoint, paciente,{headers:this.httpHeaders})
   }
+   // metodo buscar por cedula de paciente
+   buscarPorCedula(cedula: string): Observable<Paciente> {
+    const url = `${this.urlEndPoint}/cedula/${cedula}`;
+    return this.http.get<Paciente>(url);
+  }
+  // metodo buscar por apellido de paciente
+  buscarPorApellido(apellido: string): Observable<Paciente> {
+    const url = `${this.urlEndPoint}/apellido/${apellido}`;
+    return this.http.get<Paciente>(url);
+  }
+  // metodo buscar por profesion de paciente
+  buscarPorProfesion(profesion: string): Observable<Paciente> {
+    const url = `${this.urlEndPoint}/profesion/${profesion}`;
+    return this.http.get<Paciente>(url);
+  }
 }
