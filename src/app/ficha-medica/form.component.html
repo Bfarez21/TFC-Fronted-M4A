@@ -133,25 +133,99 @@
 
             </div>
 
-            <div >
+            <div>
                 <h3>Antecedentes:</h3>
                 <div class="checkbox-group" name="antecedentes"required>
                     <label><input type="checkbox" name="antecedentes" value="alergias" [(ngModel)]="fichaMedica.antecedenteFamiliar.alergiaAnt"> Alergias</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.alergiaAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.alergiaAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionAlergiaAnt" name="descripcionAlergiaAnt"></textarea>
                     <label><input type="checkbox" name="antecedentes" value="clinico" [(ngModel)]="fichaMedica.antecedenteFamiliar.clinicoAnt"> Clínico</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.clinicoAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.clinicoAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionClinicoAnt" name="descripcionClinicoAnt"></textarea>
                     <label><input type="checkbox" name="antecedentes" value="ginecologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.ginecologoAnt"> Ginecologico</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.ginecologoAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.ginecologoAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionGinecologoAnt" name="descripcionGinecologoAnt"  ></textarea>
                     <label><input type="checkbox" name="antecedentes" value="traumatologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.traumatologicoAnt"> Traumatologico</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.traumatologicoAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.traumatologicoAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionTraumatologicoAnt" name="descripcionTraumatologicoAnt"></textarea>
                     <label><input type="checkbox" name="antecedentes" value="quirurgico" [(ngModel)]="fichaMedica.antecedenteFamiliar.quirurgicoAnt"> Quirúrgico</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.quirurgicoAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.quirurgicoAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionQuirurgicoAnt" name="descripcionQuirurgicoAnt"></textarea>
                     <label><input type="checkbox" name="antecedentes" value="farmacologico" [(ngModel)]="fichaMedica.antecedenteFamiliar.farmacologicoAnt"> Farmacológico</label>
-                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.farmacologicoAnt" required></textarea>
+                    <textarea name="" id="" style="resize: none;" *ngIf="fichaMedica.antecedenteFamiliar.farmacologicoAnt" required [(ngModel)]="fichaMedica.antecedenteFamiliar.descripcionFarmacologicoAnt" name="descripcionFarmacologicoAnt"></textarea>
                 </div>
             </div>
         </div>
     </div>
+
+    <br>
+
+    <fieldset *ngIf="fichaMedica.paciente.generoPac === 'femenino'" class="container-emergencia-obstetrica form-grid mx-4">
+
+        <div class="input-container-inline">
+            <label for="pa" >Menarca:</label>
+            <input type="number" id="menarca_eme" placeholder="Menarca" name= "menarca_eme" [(ngModel)]="emergenciaObstetrica.menarca_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="ritmo_mestrual_eme">Ritmo mestrual:</label>
+            <input type="text" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual" name="ritmo_mestrual_eme" [(ngModel)]="emergenciaObstetrica.ritmo_menstrual_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="talla">Ciclos</label>
+            <input type="number" id="ciclos_eme" placeholder="ciclos" name="ciclos_eme" [(ngModel)]="emergenciaObstetrica.ciclos_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="imc">FUM:</label>
+            <input type="date" id="fum_eme" placeholder="FUM" name="fum_eme" [(ngModel)]="emergenciaObstetrica.fum_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="ivsa_eme">IVSA:     </label>
+            <input type="number" id="ivsa_eme" placeholder="IVSA" name="ivsa_eme" [(ngModel)]="emergenciaObstetrica.ivsa_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="numero_parejas_sexuales">N° de parejas sexuales:</label>
+            <input type="text" id="numero_parejas_sexuales" placeholder="parejas" name="numero_parejas_sexuales_eme" [(ngModel)]="emergenciaObstetrica.numero_parejas_sexuales_eme">
+        </div>
+        <div class="input-container-multiple-inline">
+            <label for="g_eme">G:</label>
+            <input type="number" id="g_eme" placeholder="---" name="g_eme" name="g_eme" [(ngModel)]="emergenciaObstetrica.g_eme">
+            
+            <label for="a_eme">A:</label>
+            <input type="text" id="a_eme" placeholder="---" name="a_eme" [(ngModel)]="emergenciaObstetrica.a_eme">
+            
+            <label for="p_eme">P:</label>
+            <input type="text" id="p_eme" placeholder="---" name="p_eme" [(ngModel)]="emergenciaObstetrica.p_eme">
+            
+            <label for="c_eme">C:</label>
+            <input type="text" id="c_eme" placeholder="---" name="c_eme" [(ngModel)]="emergenciaObstetrica.c_eme">
+        </div>
+        <div class="input-container-inline">
+            <div class="input-container-inline">
+                <label for="">Dismenorrea</label>
+                <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual" name="dismenorrea_eme" [(ngModel)]="emergenciaObstetrica.dismenorrea_eme">
+                
+            </div>  
+            <div class="input-container-inline">
+                <label for="">Mastodinia </label>
+                <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual" name="mastodinia_eme" [(ngModel)]="emergenciaObstetrica.mastodinia_eme">
+            </div> 
+        </div>
+        <div class="input-container-inline">
+            <label for="fpp_eme">¿Esta embarazada?</label>
+            <input type="checkbox" id="isEmbarazada" name = "isEmbarazada" [(ngModel)]="emergenciaObstetrica.isEmbarazada">
+        </div>
+        <div class="input-container-inline">
+            <label for="fpp_eme">FPP:</label>
+            <input type="date" id="fpp_eme" placeholder="FPP" *ngIf="emergenciaObstetrica.isEmbarazada" name="fpp_eme" [(ngModel)]="emergenciaObstetrica.fpp_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="total">Controles</label>
+            <input type="text" id="controles_eme" placeholder="Controles" *ngIf="emergenciaObstetrica.isEmbarazada" name="controles_eme" [(ngModel)]="emergenciaObstetrica.controles_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="capilar">Inmunizaciones</label>
+            <input type="text" id="Inmunizaciones_eme" placeholder="Inmunizaciones" *ngIf="emergenciaObstetrica.isEmbarazada" name="inmunizaciones_eme" [(ngModel)]="emergenciaObstetrica.inmunizaciones_eme">
+        </div>
+        <div class="input-container-inline">
+            <label for="pupilar">Descripción</label>
+            <input type="text" id="descripcion_eme" placeholder="Descripción" name="descripcion_eme" [(ngModel)]="emergenciaObstetrica.descripcion_eme">
+        </div>
+    </fieldset>
 
     <div class="form-footer">
         <button class="btn btn-success " role="button">Guardar</button>

@@ -10,5 +10,13 @@ export class AntecedenteFamiliar {
     traumatologicoAnt: Boolean = false;
     quirurgicoAnt: Boolean = false;
     farmacologicoAnt: Boolean = false;
+
+    descripcionAlergiaAnt: string = '';
+    descripcionClinicoAnt: string = '';
+    descripcionGinecologoAnt: string = '';
+    descripcionTraumatologicoAnt: string = '';
+    descripcionQuirurgicoAnt: string = '';
+    descripcionFarmacologicoAnt: string = '';
+    
     
 }

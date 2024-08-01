@@ -73,5 +73,71 @@
   accent-color: #007bff; /* Color del checkbox */
   cursor: pointer;
 }
+ 
+.container-emergencia-obstetrica {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.input-container-inline {
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-container-inline label {
+  grid-column: 1 / 2;
+}
+
+.input-container-inline input {
+    grid-column: 2 / 3;
+    border: none;
+    border-bottom: 2px solid #000; /* Línea inferior */
+    outline: none;
+    padding: 5px 0;
+    width: 100%; /* Asegura que el input ocupe todo el espacio de la columna */
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.input-container-inline input:focus {
+    border-bottom-color: #007BFF; /* Cambia el color de la línea al enfocar */
+}
+
+.input-container-multiple-inline {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr; /* Ajusta la cantidad de columnas */
+  gap: 10px; /* Ajusta el espacio entre los elementos según sea necesario */
+  align-items: center;
+}
+
+.input-container-multiple-inline label {
+  justify-self: end; /* Alinea el label al final de su columna */
+  padding-right: 5px; /* Espacio entre el label y el input */
+}
+
+.input-container-multiple-inline input {
+  border: none;
+  border-bottom: 2px solid #000; /* Línea inferior */
+  outline: none;
+  padding: 5px 0;
+  border-radius: 0; /* Quita el borde redondeado */
+}
+
+.input-container-multiple-inline input:focus {
+  border-bottom-color: #007BFF; /* Cambia el color de la línea al enfocar */
+}
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
 
 

@@ -87,9 +87,9 @@
 
     <fieldset class="textarea-container mx-4">
         <div class="table-responsive">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped ">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Alergias</th>
                         <th>Clinica</th>
                         <th>Ginecólogico</th>
@@ -99,13 +99,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>                
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.alergiaAnt ? 'Sí' : 'No' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.clinicoAnt ? 'Sí' : 'No' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.ginecologoAnt ? 'Sí' : 'No' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.traumatologicoAnt ? 'Sí' : 'No' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.quirurgicoAnt ? 'Sí' : 'No' }}</td>
-                        <td>{{ fichaMedica?.antecedenteFamiliar?.farmacologicoAnt ? 'Sí' : 'No' }}</td>              
+                    <tr class = "center-table">                
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.alergiaAnt ? fichaMedica?.antecedenteFamiliar?.descripcionAlergiaAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.clinicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionClinicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.ginecologoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionGinecologoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.traumatologicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionTraumatologicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.quirurgicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionQuirurgicoAnt : 'NO APLICA' }}</td>
+                        <td>{{ fichaMedica?.antecedenteFamiliar?.farmacologicoAnt ? fichaMedica?.antecedenteFamiliar?.descripcionFarmacologicoAnt : 'NO APLICA' }}</td>              
                     </tr>
                 </tbody>
             </table>
@@ -202,18 +202,18 @@
             </div>
             <div class="input-container-inline">
                 <label for="talla">Ciclos</label>
-                <input type="number" id="ciclos_eme" placeholder="TALLA:">
+                <input type="number" id="ciclos_eme" placeholder="ciclos">
             </div>
             <div class="input-container-inline">
                 <label for="imc">FUM:</label>
                 <input type="date" id="fum_eme" placeholder="FUM">
             </div>
             <div class="input-container-inline">
-                <label for="ivsa_eme">IVSA</label>
+                <label for="ivsa_eme">IVSA:     </label>
                 <input type="number" id="ivsa_eme" placeholder="IVSA">
             </div>
             <div class="input-container-inline">
-                <label for="numero_parejas_sexuales">Numero de parejas sexuales:</label>
+                <label for="numero_parejas_sexuales">N° de parejas sexuales:</label>
                 <input type="text" id="numero_parejas_sexuales" placeholder="">
             </div>
             <div class="input-container-multiple-inline">
@@ -228,6 +228,21 @@
                 
                 <label for="c_eme">C:</label>
                 <input type="text" id="c_eme" placeholder="---">
+            </div>
+            <div class="input-container-inline">
+                <div class="input-container-inline">
+                    <label for="">Dismenorrea</label>
+                    <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual">
+                    
+                </div>  
+                <div class="input-container-inline">
+                    <label for="">Mastodinia </label>
+                    <input type="checkbox" id="ritmo_mestrual_eme" placeholder="Ritmo mestrual">
+                </div> 
+            </div>
+            <div class="input-container-inline">
+                <label for="fpp_eme">¿Esta embarazada?</label>
+                <input type="checkbox" id="fpp_eme" placeholder="FPP">
             </div>
             <div class="input-container-inline">
                 <label for="fpp_eme">FPP:</label>

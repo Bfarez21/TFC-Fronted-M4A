@@ -59,7 +59,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    font-style: normal;
+    font-style: normal ;
   }
   
   button {
@@ -303,4 +303,10 @@ input[type="file"] {
 
 .input-container-multiple-inline input:focus {
   border-bottom-color: #007BFF; /* Cambia el color de la línea al enfocar */
+}
+
+
+.center-table th td{
+  text-align: center;
+  vertical-align: middle;
 }

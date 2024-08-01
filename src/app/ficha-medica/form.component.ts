@@ -6,6 +6,8 @@ import { DiscapacidadService } from "./servicio/discapacidad.service";
 import { PacienteService } from "./servicio/paciente.service";
 import { FichaMedicaService } from "./servicio/ficha-medica.service";
 import { AntecedenteFamiliarService } from "./servicio/antecedente-familiar.service";
+import { EmergenciaObstetrica } from "../atencion-medica/modelo/emergencia-obstetrica";
+import { EmergenciaObstetricaService } from "../atencion-medica/service/emergencia-obstetrica.service";
 
 @Component({
   selector: 'app-form',
@@ -17,12 +19,14 @@ export class FormComponent implements OnInit {
   fichaMedica: FichaMedica = new FichaMedica();
   editMode: boolean = false;
   showTextarea = false;
+  emergenciaObstetrica: EmergenciaObstetrica = new EmergenciaObstetrica();
 
   constructor(
     private fichaMedicaService: FichaMedicaService,
     private discapacidadService: DiscapacidadService,
     private antecedenteFamiliarService: AntecedenteFamiliarService,
     private pacienteService: PacienteService,
+    private emergenciaObstetricaService: EmergenciaObstetricaService,
     private router: Router,
     private activateRouter: ActivatedRoute
   ) { }
@@ -50,21 +54,35 @@ export class FormComponent implements OnInit {
  
 
   public create(): void {
-    // en caso de ser docente
+    // En caso de ser docente
     if (this.fichaMedica.paciente.profesionPac === 'Docente') {
       this.fichaMedica.paciente.carreraPac = 'NoAplica';
       this.fichaMedica.paciente.cicloPac = 'NoAplica';
     }
+  
     this.pacienteService.create(this.fichaMedica.paciente).subscribe(paciente => {
       this.discapacidadService.create(this.fichaMedica.discapacidad).subscribe(discapacidad => {
         this.antecedenteFamiliarService.create(this.fichaMedica.antecedenteFamiliar).subscribe(antecedente => {
           this.fichaMedica.paciente = paciente;
           this.fichaMedica.discapacidad = discapacidad;
           this.fichaMedica.antecedenteFamiliar = antecedente;
-
+  
           this.fichaMedicaService.create(this.fichaMedica).subscribe(fichaMedica => {
-            Swal.fire('Ficha médica guardada', `Ficha médica del paciente ${this.fichaMedica.paciente.nombrePac} guardada con éxito`, 'success');
-            this.router.navigate(['/ficha-medica']);
+            this.fichaMedica = fichaMedica;
+  
+            // Si el paciente es femenino, crear la emergencia obstétrica
+            if (this.fichaMedica.paciente.generoPac === 'femenino') {
+              this.emergenciaObstetrica.fichaMedica = fichaMedica;
+              this.emergenciaObstetricaService.create(this.emergenciaObstetrica).subscribe(emergencia => {
+                Swal.fire('Ficha médica guardada', `Ficha médica del paciente ${this.fichaMedica.paciente.nombrePac} guardada con éxito`, 'success');
+                this.router.navigate(['/ficha-medica']);
+              }, error => {
+                Swal.fire('Error', 'Hubo un problema al guardar la emergencia obstétrica', 'error');
+              });
+            } else {
+              Swal.fire('Ficha médica guardada', `Ficha médica del paciente ${this.fichaMedica.paciente.nombrePac} guardada con éxito`, 'success');
+              this.router.navigate(['/ficha-medica']);
+            }
           }, error => {
             Swal.fire('Error', 'Hubo un problema al guardar la ficha médica', 'error');
           });
@@ -78,6 +96,8 @@ export class FormComponent implements OnInit {
       Swal.fire('Error', 'Hubo un problema al guardar el paciente', 'error');
     });
   }
+  
+  
 
   toggleTextarea(state: boolean) {
     this.showTextarea = state;
