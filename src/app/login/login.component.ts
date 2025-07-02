@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+//import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -11,18 +11,24 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
  
-  constructor(public auth: AuthService, private router: Router){ }
+  //constructor(public auth: AuthService, private router: Router){ }
+  constructor( private router: Router){ }
+
 
   ngOnInit(): void{ 
-    this.auth.isAuthenticated$.subscribe(isAuthenticaed =>{
+    /*this.auth.isAuthenticated$.subscribe(isAuthenticaed =>{
       if(isAuthenticaed){
           this.router.navigate(['/side-bar'])
       }
-    })
+    })*/
   }
 
-  login(){
+  /*login(){
     this.auth.loginWithRedirect()
-  }
+  }*/
+ // Método modificado
+    login() {
+      alert('Funcionalidad de login deshabilitada.');
+    }
 
 }

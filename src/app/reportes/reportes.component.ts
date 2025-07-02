@@ -176,4 +176,25 @@ export class ReportesComponent implements OnInit {
     this.cedulaBusqueda = ''; 
     this.pacEncontrado = null; 
   }
+
+  getTotalPacientesUnicos(): number {
+  if (!this.atenciones) return 0;
+
+  const cedulasUnicas = new Set(
+    this.atenciones
+      .map(a => a?.fichaMedica?.paciente?.cedulaPac)
+      .filter(cedula => !!cedula) // Filtra valores null/undefined
+  );
+
+  return cedulasUnicas.size;
+}
+
+getTotalGenero(genero: string): number {
+  if (!this.atenciones) return 0;
+
+  return this.atenciones.filter(a => 
+    a?.fichaMedica?.paciente?.generoPac?.toLowerCase() === genero.toLowerCase()
+  ).length;
+}
+
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+//import { AuthService } from '@auth0/auth0-angular';
 import Swal from 'sweetalert2';
 
 
@@ -10,7 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class SideBarComponent implements AfterViewInit {
 
-    constructor(public auth: AuthService){}
+    //constructor(public auth: AuthService){}
+    constructor(){} // Sin AuthService
     
 
     ngAfterViewInit(): void {
@@ -35,7 +36,8 @@ export class SideBarComponent implements AfterViewInit {
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.auth.logout();
+          //this.auth.logout();
+           alert('Sesión cerrada');// emula sin auth
         }
       });
     }

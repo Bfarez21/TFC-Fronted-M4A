@@ -1,98 +1,118 @@
-<div class="scroll-container">
+<div class="container-fluid">
+  <div class="main-container">
+
+    <!-- Encabezado -->
+    <div class="page-header">
+      <h1>
+        <i class="fas fa-file-medical-alt"></i>
+        Reporte de Atenciones por Filtros
+      </h1>
+      <div class="subtitle">Filtro dinámico de pacientes atendidos</div>
+    </div>
+
+    <!-- Stats Cards para Reporte de Atenciones -->
+    <div class="stats-container">
+      <!-- Total Atenciones -->
+      <div class="stat-card">
+        <div class="stat-number text-success">{{ atenciones.length }}</div>
+        <div class="stat-label">
+          <i class="fas fa-file-medical me-2"></i>Total de Atenciones
+        </div>
+      </div>
+
+      <!-- Pacientes Únicos -->
+      <div class="stat-card">
+        <div class="stat-number text-primary">{{ getTotalPacientesUnicos() }}</div>
+        <div class="stat-label">
+          <i class="fas fa-users me-2"></i>Pacientes Únicos
+        </div>
+      </div>
+
+      <!-- Género femenino -->
+      <div class="stat-card">
+        <div class="stat-number text-info">{{ getTotalGenero('femenino') }}</div>
+        <div class="stat-label">
+          <i class="fas fa-venus me-2"></i>Femenino
+        </div>
+      </div>
+    </div>
 
 
-<div class="container">
-  <select class="op01" name="carrera" id="carrera" name="carrera" placeholder="carrera" [(ngModel)]="carreraBusqueda">
-    <option value="" disabled selected>Carrera</option>
-    <option value="Desarrollo de Software">Desarrollo de software</option>
-    <option value="Tecnología Superior en Big Data">Big Data</option>
-    <option value="Ciberseguridad">Ciberseguridad</option>
-    <option value="Entrenamiento Deportivo">Entrenamiento Deportivo</option>
-    <option value="Tributación">Tributacion</option>
-  </select>
-  <select class="op01" name="paciente" id="paciente" [(ngModel)]="profesionBusqueda" name="paciente" placeholder="paciente">
-    <option value="" disabled selected>Paciente</option>
-    <option value="Estudiante">Estudiante</option>
-    <option value="Profesor">Profesor</option>
-  </select>
-  <select class="op01" name="genero" id="genero" [(ngModel)]="generoBusqueda" name="genero">
-    <option value="" disabled selected>Genero</option>
-    <option value="masculino">Masculino</option>
-    <option value="femenino">Femenino</option>
-  </select>
 
-  <input class="op01" type="date" name="fecha" id="fecha" placeholder="Seleccione" name="fecha" [(ngModel)]="fechaBusqueda">
+    <!-- Filtros -->
+    <div class="action-bar mb-4">
+      <div class="search-container">
+        <select class="select-modern" [(ngModel)]="carreraBusqueda">
+          <option value="" disabled selected>Carrera</option>
+          <option value="Desarrollo de Software">Desarrollo de software</option>
+          <option value="Tecnología Superior en Big Data">Big Data</option>
+          <option value="Ciberseguridad">Ciberseguridad</option>
+          <option value="Entrenamiento Deportivo">Entrenamiento Deportivo</option>
+          <option value="Tributación">Tributación</option>
+        </select>
 
-  <input type="text" id="cedula" [(ngModel)]="cedulaBusqueda" placeholder="Cedula">
-  <button class="btn btn-ver" (click)="buscar()">Buscar</button>
-  <button class="btn btn-ver" (click)="Imprimir()">Imprimir</button>
-  <button type="button" name="button" class="btn btn-secondary"(click)="refrescar()">Ver todo</button>
+        <select class="select-modern" [(ngModel)]="profesionBusqueda">
+          <option value="" disabled selected>Paciente</option>
+          <option value="Estudiante">Estudiante</option>
+          <option value="Profesor">Profesor</option>
+        </select>
 
-           
-  <div class="table-responsive"> 
+        <select class="select-modern" [(ngModel)]="generoBusqueda">
+          <option value="" disabled selected>Género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+        </select>
 
-    <table *ngIf="pacEncontrado; else listaPacientes">
-      <thead class="thead">
-        <tr>
-          <th>Nombre</th>
-          <th>Cédula</th>
-          <th>Motivo</th>
-          <th>Fecha De Nacimiento</th>
-          <th>Carrera</th>
-          <th>Fecha de visita</th>
-          <th>Receta</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <tr *ngFor="let atencion of atenciones">
-          <td class="nombre-col">{{ atencion.fichaMedica.paciente.nombrePac+' '+ atencion?.fichaMedica?.paciente?.apellidoPac}}</td>
-          <td>{{ atencion.fichaMedica.paciente.cedulaPac }}</td>
-          <td>{{ atencion.motivoAte }}</td>
-          <td>{{ atencion.fichaMedica.paciente.fechaNacimientoPac }}</td>
-          <td>{{ atencion.fichaMedica.paciente.carreraPac }}</td>
-          <td>{{ atencion.fechaAtencionAte }}</td>
-          <td>{{ atencion.tratamientoAte }}</td>
-          </tr>
-      </tbody>
-    </table>
+        <input class="input-modern" type="date" [(ngModel)]="fechaBusqueda" placeholder="Fecha" />
+        <input class="input-modern" type="text" [(ngModel)]="cedulaBusqueda" placeholder="Cédula" />
 
-    <ng-template #listaPacientes>
-      <table>
-        <thead class="thead">
+        <button class="btn btn-success-modern btn-modern" (click)="buscar()">
+          <i class="fas fa-search me-2"></i>Buscar
+        </button>
+        <button class="btn btn-primary-modern btn-modern" (click)="Imprimir()">
+          <i class="fas fa-print me-2"></i>Imprimir
+        </button>
+        <button class="btn btn-secondary-modern btn-modern" (click)="refrescar()">
+          <i class="fas fa-sync me-2"></i>Ver todo
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+      <div class="table-scroll">
+        <table class="table table-modern table-hover">
+          <thead>
             <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Cédula</th>
-                <th>Motivo</th>
-                <th>Fecha De Nacimiento</th>
-                <th>Carrera</th>
-                <th>Fecha de visita</th>
-                <th>Receta</th>
+              <th><i class="fas fa-user me-2"></i>Nombre</th>
+              <th><i class="fas fa-id-card me-2"></i>Cédula</th>
+              <th><i class="fas fa-stethoscope me-2"></i>Motivo</th>
+              <th><i class="fas fa-birthday-cake me-2"></i>Fecha Nac.</th>
+              <th><i class="fas fa-graduation-cap me-2"></i>Carrera</th>
+              <th><i class="fas fa-calendar-check me-2"></i>Fecha Visita</th>
+              <th><i class="fas fa-prescription me-2"></i>Receta</th>
             </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let atencion of atenciones; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td class="nombre-col">{{ atencion?.fichaMedica?.paciente?.nombrePac+' '+ atencion?.fichaMedica?.paciente?.apellidoPac}}</td>
-            <td>{{ atencion?.fichaMedica?.paciente?.cedulaPac}}</td>
-            <td>{{ atencion?.motivoAte}}</td>
-            <td>{{ atencion?.fichaMedica?.paciente?.fechaNacimientoPac}}</td>
-            <td>{{ atencion?.fichaMedica?.paciente?.carreraPac}}</td>
-            <td>{{ atencion?.fechaAtencionAte}}</td>
-            <td>{{ atencion?.tratamientoAte}}</td>
-          </tr>
-        </tbody>
-    </table>
-    
-    </ng-template>
+          </thead>
+          <tbody>
+            <tr *ngFor="let atencion of atenciones">
+              <td>{{ atencion?.fichaMedica?.paciente?.nombrePac + ' ' + atencion?.fichaMedica?.paciente?.apellidoPac }}
+              </td>
+              <td>{{ atencion?.fichaMedica?.paciente?.cedulaPac }}</td>
+              <td>{{ atencion?.motivoAte }}</td>
+              <td>{{ atencion?.fichaMedica?.paciente?.fechaNacimientoPac }}</td>
+              <td>{{ atencion?.fichaMedica?.paciente?.carreraPac }}</td>
+              <td>{{ atencion?.fechaAtencionAte }}</td>
+              <td>{{ atencion?.tratamientoAte }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <!-- Total registros -->
+      <div class="text-end mt-3">
+        <p><strong>Total de registros:</strong> {{ atenciones.length }}</p>
+      </div>
+    </div>
 
   </div>
-
-  <div class="text-right">
-    <p>N° TOTAL: {{ atenciones.length }} </p>
-  </div>
-</div>
-
 </div>

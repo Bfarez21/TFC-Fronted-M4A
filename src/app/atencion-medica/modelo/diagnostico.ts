@@ -5,5 +5,6 @@ export class Diagnostico {
     enfermedad: Enfermedades = new Enfermedades();
     inicialDia: string = "";
     estadoDia: boolean = false;
+    estado: string = "";
   }
   

@@ -7,31 +7,31 @@ import Swal from 'sweetalert2'
 @Component({
   selector: 'app-enfermedades',
   templateUrl: './enfermedades.component.html',
-  styleUrls: ['./enfermedades.component.css']  
-  
+  styleUrls: ['./enfermedades.component.css']
+
 })
 export class EnfermedadesComponent {
 
-  enfermedades: Enfermedades[] =[] ;
-  codigoBuscar: string ='';
+  enfermedades: Enfermedades[] = [];
+  codigoBuscar: string = '';
   codigoEncontrado: Enfermedades | null = null;
-  constructor(private enfermedadesService: EnfermedadesService) {}
+  constructor(private enfermedadesService: EnfermedadesService) { }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.cargarEnfermedad();
   }
-   ver():void{
+  ver(): void {
     this.cargarEnfermedad();
-    this.codigoEncontrado=null;
-   }
+    this.codigoEncontrado = null;
+  }
   cargarEnfermedad(): void {
     this.enfermedadesService.getEnfermedades().subscribe(enfermedades => {
-      enfermedades = this.enfermedades=enfermedades; // Asigna los doctores obtenidos del servicio a la propiedad del componente
+      enfermedades = this.enfermedades = enfermedades; // Asigna los doctores obtenidos del servicio a la propiedad del componente
     });
   }
 
   //boton eliminar
-  deleteEnfermedades(id: number):void{
+  deleteEnfermedades(id: number): void {
     Swal.fire({
       title: 'Estas segur@?',
       text: '¡No podrás revertir esto!',
@@ -43,7 +43,7 @@ export class EnfermedadesComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.enfermedadesService.deleteEnfermedad(id).subscribe(response => {
-          this.enfermedades=this.enfermedades.filter(Enfermedades=>Enfermedades.idEnf !==id);
+          this.enfermedades = this.enfermedades.filter(Enfermedades => Enfermedades.idEnf !== id);
           Swal.fire({
             title: ' Eliminado!',
             text: 'Tu registro ha sido eliminado.',
@@ -115,6 +115,27 @@ export class EnfermedadesComponent {
         });
       }
     );
+  }
+  tipoFrecuente = this.getTipoFrecuente();
+
+  getTipoFrecuente(): string {
+    const conteo: { [tipo: string]: number } = {};
+    for (const enf of this.enfermedades) {
+      if (enf.tipoEnf) {
+        conteo[enf.tipoEnf] = (conteo[enf.tipoEnf] || 0) + 1;
+      }
+    }
+
+    let tipoMax = '';
+    let maxCount = 0;
+    for (const tipo in conteo) {
+      if (conteo[tipo] > maxCount) {
+        tipoMax = tipo;
+        maxCount = conteo[tipo];
+      }
+    }
+
+    return tipoMax;
   }
 }
 

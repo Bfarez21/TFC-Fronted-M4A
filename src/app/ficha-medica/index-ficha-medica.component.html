@@ -1,69 +1,114 @@
-<div class="container">
-  <h1>Ficha Médica de Pacientes</h1>
-  <div>
-    <button class="btn btn-rounded btn-success mx-2" type="button" [routerLink]="['/ficha-medica/form']">Registrar Paciente</button>
-    <div class="input-container">
-      <input type="text" id="cedula" placeholder="Cédula" [(ngModel)]="cedulaBusqueda">
-      <input type="text" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoBusqueda">
-      <input type="text" id="rol" placeholder="rol" [(ngModel)]="profesionBusqueda">
-      <button class="btn btn-rounded btn-primary mx-4" type="button" (click)="buscar()">Buscar</button>
-      <button type="button" name="button" class="btn btn-secondary" (click)="recargarTabla()">Ver todo</button>
+<div class="container-fluid">
+  <div class="main-container">
+    <!-- Header institucional dentro del card -->
+    <div class="page-header">
+      <h1>
+        <i class="fas fa-notes-medical"></i>
+        Ficha Médica de Pacientes
+      </h1>
     </div>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped" *ngIf="fichaMedicaEncontrada.length > 0; else listaPacientes">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>CI</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Rol</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ficha of fichaMedicaEncontrada">
-            <td>{{ ficha.paciente.idPac }}</td>
-            <td>{{ ficha.paciente.cedulaPac }}</td>
-            <td>{{ ficha.paciente.nombrePac }}</td>
-            <td>{{ ficha.paciente.apellidoPac }}</td>
-            <td>{{ ficha.paciente.profesionPac }}</td>
-            <td>
-              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(ficha)">Ver</button>
-              <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', ficha.idFic]">Editar</button>
-              <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <ng-template #listaPacientes>
-        <table class="table table-bordered table-striped">
+
+     <!-- Action Bar institucional -->
+    <div class="action-bar">
+      <button class="btn-success-modern btn-modern" type="button" [routerLink]="['/ficha-medica/form']">
+        <i class="fas fa-plus-circle me-2"></i> REGISTRAR PACIENTE
+      </button>
+      <div class="input-container">
+        <input type="text" id="cedula" placeholder="Cédula" [(ngModel)]="cedulaBusqueda">
+        <input type="text" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoBusqueda">
+        <div>
+          <select id="rol" [(ngModel)]="profesionBusqueda" class="form-select">
+            <option value="">-- Rol --</option>
+            <option value="Estudiante">Estudiante</option>
+            <option value="Profesor">Profesor</option>
+          </select>
+        </div>
+        <button class="btn-primary-modern btn-modern" type="button" (click)="buscar()">
+          <i class="fas fa-search me-2"></i> BUSCAR
+        </button>
+        <button type="button" class="btn-secondary-modern btn-modern" (click)="recargarTabla()">
+          <i class="fas fa-sync-alt me-2"></i> VER TODO
+        </button>
+      </div>
+    </div>
+
+     <!-- Tabla institucional -->
+    <div class="table-container">
+      <div class="table-scroll">
+        <table class="table-modern" *ngIf="fichaMedicaEncontrada.length > 0; else listaPacientes">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>CI</th>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Rol</th>
-              <th>Action</th>
+            <th><i class="fa-solid fa-hashtag me-2"></i>ID</th>
+              <th><i class="fa-regular fa-id-card me-2"></i>CI</th>
+              <th><i class="fa-solid fa-user me-2"></i>NOMBRES</th>
+              <th><i class="fa-solid fa-user me-2"></i>APELLIDOS</th>
+              <th><i class="fa-solid fa-user-graduate me-2"></i>ROL</th>
+              <th><i class="fa-solid fa-gears me-2"></i>ACCIÓN</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ficha of fichaMedica">
+            <tr *ngFor="let ficha of fichaMedicaEncontrada">
               <td>{{ ficha.paciente.idPac }}</td>
               <td>{{ ficha.paciente.cedulaPac }}</td>
               <td>{{ ficha.paciente.nombrePac }}</td>
               <td>{{ ficha.paciente.apellidoPac }}</td>
               <td>{{ ficha.paciente.profesionPac }}</td>
               <td>
-                <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalle(ficha)">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/ficha-medica/form', ficha.idFic]">Editar</button>
-                <button type="button" name="button" class="btn btn-danger mx-2">Eliminar</button>
+                <div class="action-buttons">
+                   <button class="btn-primary-modern btn-modern" (click)="verDetalle(ficha)" title="Ver">
+                    <i class="fas fa-eye">Ver</i>
+                  </button>
+                  <button class="btn-warning-modern btn-modern" [routerLink]="['/ficha-medica/form', ficha.idFic]"
+                    title="Editar">
+                    <i class="fas fa-edit">Editar</i>
+                  </button>
+                  <button class="btn-danger-modern btn-modern" title="Eliminar">
+                    <i class="fas fa-trash">Eliminar</i>
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
-      </ng-template>
+
+        <ng-template #listaPacientes>
+          <table class="table table-modern table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>CI</th>
+                <th>NOMBRES</th>
+                <th>APELLIDOS</th>
+                <th>ROL</th>
+                <th>ACCIÓN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ficha of fichaMedica">
+                <td>{{ ficha.paciente.idPac }}</td>
+                <td>{{ ficha.paciente.cedulaPac }}</td>
+                <td>{{ ficha.paciente.nombrePac }}</td>
+                <td>{{ ficha.paciente.apellidoPac }}</td>
+                <td>{{ ficha.paciente.profesionPac }}</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn-primary-modern btn-modern" (click)="verDetalle(ficha)" title="Ver detalles">
+                      <i class="fas fa-eye">Ver</i>
+                    </button>
+                    <button class="btn-warning-modern btn-modern" [routerLink]="['/ficha-medica/form', ficha.idFic]"
+                      title="Editar ficha">
+                      <i class="fas fa-edit">Editar</i>
+                    </button>
+                    <button class="btn-danger-modern btn-modern" title="Eliminar ficha">
+                      <i class="fas fa-trash">Eliminar</i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>

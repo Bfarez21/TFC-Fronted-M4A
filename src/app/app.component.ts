@@ -2,7 +2,6 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-root',
@@ -11,9 +10,21 @@ import Swal from 'sweetalert2';
 })
 export class AppComponent {
 
-  isAuthenticated: boolean = false;
+  //isAuthenticated: boolean = false;
+  isAuthenticated: boolean = true;
 
-  constructor(public auth: AuthService, private router: Router,
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    // Redirige en función del estado manual
+    if (this.isAuthenticated) {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  /*constructor(public auth: AuthService, private router: Router,
     @Inject(DOCUMENT) private document: Document
 
   ) { }
@@ -55,6 +66,6 @@ export class AppComponent {
         }
       }
     );
-  }
+  }*/
 
 }

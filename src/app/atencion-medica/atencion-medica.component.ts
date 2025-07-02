@@ -21,23 +21,23 @@ export class AtencionMedicaComponent {
 
 
   constructor(
-    private atencionMedicaService:AtencionMedicaService
-    
-  ){}
+    private atencionMedicaService: AtencionMedicaService
+
+  ) { }
 
   ngOnInit(): void {
-    this.cargarAtencionesMedicas(); 
+    this.cargarAtencionesMedicas();
   }
   // metodo carga los datos en la tabla
   cargarAtencionesMedicas(): void {
     this.atencionMedicaService.getAtencionesMedicas().subscribe(atencionesMedicas => {
-      atencionesMedicas = this.atencionesMedicas = atencionesMedicas; 
-      
+      atencionesMedicas = this.atencionesMedicas = atencionesMedicas;
+
     });
   }
 
-  
-  
+
+
 
   /// BOTON ELIMINAR
   //eliminar datos de la base
@@ -76,6 +76,24 @@ export class AtencionMedicaComponent {
     });
   }
 
+  contarExamenesAplicados(): number {
+    let total = 0;
+    for (let atencion of this.atencionesMedicas) {
+      if (Array.isArray(atencion.examenesComplementarios)) {
+        total += atencion.examenesComplementarios.filter(e => e.aplicaExa).length;
+      }
+    }
+    return total;
+  }
 
+  contarDiagnosticosConfirmados(): number {
+    let total = 0;
+    for (let atencion of this.atencionesMedicas) {
+      if (Array.isArray(atencion.diagnosticos)) {
+        total += atencion.diagnosticos.filter(d => d.estado === 'Confirmado').length;
+      }
+    }
+    return total;
+  }
 
 }

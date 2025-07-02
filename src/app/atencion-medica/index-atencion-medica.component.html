@@ -1,45 +1,91 @@
-<div class="container">
-  <h1>Atenciones Medicas</h1>
-  <div>
-    <button class="btn btn-rounded btn-success mx-2"type="button"[routerLink]="['/atencion-medica/form-atencion-medica']">Agregar</button>
-    <div class="input-container">
-      <input type="text" id="cedula"placeholder="Cedula">
-      <input type="date" id="fecha"placeholder="Fecha de la atención">
-     <button class="btn btn-rounded btn-primary mx-4"type="button">Buscar</button>
-     <div>
-
-      <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>CI</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Carrera</th>
-            <th>Fecha Atención</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let atencionMedica of atencionesMedicas">
-            <td>{{atencionMedica.idAte}}</td>  
-            <td>{{atencionMedica.fichaMedica.paciente.cedulaPac}}</td> 
-            <td>{{atencionMedica.fichaMedica.paciente.nombrePac}}</td>
-            <td>{{atencionMedica.fichaMedica.paciente.apellidoPac}}</td>
-            <td>{{atencionMedica.fichaMedica.paciente.carreraPac}}</td>
-            <td>{{atencionMedica.fechaAtencionAte}}</td>
-
-            <td>
-              <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(atencionMedica)">Ver</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      
+<div class="container-fluid">
+  <div class="main-container">
+    <!-- Header -->
+    <div class="page-header">
+      <h1>
+        <i class="fas fa-notes-medical"></i>
+        Atenciones Médicas
+      </h1>
+      <div class="subtitle">Registro y visualización de atenciones realizadas a pacientes</div>
     </div>
-     </div>
+    <!-- Stats Cards Reales -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number">{{ atencionesMedicas.length || 0 }}</div>
+        <div class="stat-label">Atenciones Totales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">
+          {{ contarExamenesAplicados() }}
+        </div>
+        <div class="stat-label">Exámenes Aplicados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">
+          {{ contarDiagnosticosConfirmados() }}
+        </div>
+        <div class="stat-label">Diagnósticos Confirmados</div>
+      </div>
+    </div>
+
+    <!-- Barra de acciones -->
+    <div class="action-bar">
+      <button class="btn btn-success-modern btn-modern" type="button"
+        [routerLink]="['/atencion-medica/form-atencion-medica']">
+        <i class="fas fa-plus-circle me-2"></i>
+        Agregar Atención
+      </button>
+
+      <div class="search-container">
+        <input type="text" id="cedula" class="form-control form-control-modern" placeholder="Buscar por cédula">
+        <input type="date" id="fecha" class="form-control form-control-modern" placeholder="Fecha de la atención">
+        <button class="btn btn-primary-modern btn-modern">
+          <i class="fas fa-search me-2"></i>
+          Buscar
+        </button>
+
+        <button class="btn btn-secondary-modern btn-modern">
+          <i class="fas fa-sync me-2"></i>
+          Ver Todo
+        </button>
+      </div>
+    </div>
+    <!-- Tabla -->
+    <div class="table-contaier">
+      <div class="table-scroll">
+        <table class="table table-moderm table-hover">
+          <thead>
+            <tr>
+              <th><i class="fas fa-hashtag me-2"></i>ID</th>
+              <th><i class="fas fa-hashtag me-2"></i>CI</th>
+              <th><i class="fas fa-hashtag me-2"></i>Nombre</th>
+              <th><i class="fas fa-hashtag me-2"></i>Apellido</th>
+              <th><i class="fas fa-hashtag me-2"></i>Carrera</th>
+              <th><i class="fas fa-hashtag me-2"></i>Fecha Atención</th>
+              <th><i class="fas fa-hashtag me-2"></i>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let atencionMedica of atencionesMedicas">
+              <td>{{atencionMedica.idAte}}</td>
+              <td>{{atencionMedica.fichaMedica.paciente.cedulaPac}}</td>
+              <td>{{atencionMedica.fichaMedica.paciente.nombrePac}}</td>
+              <td>{{atencionMedica.fichaMedica.paciente.apellidoPac}}</td>
+              <td>{{atencionMedica.fichaMedica.paciente.carreraPac}}</td>
+              <td>{{atencionMedica.fechaAtencionAte}}</td>
+
+              <td>
+                <div class="action-buttons">
+                  <button class="btn btn-primary-modern btn-sm" (click)="verDetalles(atencionMedica)"
+                    title="Ver Detalles">Ver
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

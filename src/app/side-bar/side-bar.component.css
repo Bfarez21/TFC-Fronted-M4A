@@ -1,202 +1,397 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Reset básico */
 ::after,
 ::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-}
-
-h1 {
-    font-weight: 600;
-    font-size: 1.5rem;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
 }
 
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Contenedor principal (sidebar + contenido) */
 .wrapper {
-    display: flex;
+  display: flex;
 }
-/* Estilos para el área principal donde se cargarán los componentes */
-.main {
-    min-height: 100vh;
-    flex: 1; /* Que tome todo el espacio restante */
-    min-height: 100vh; /* Ajusta la altura según tu diseño */
-    padding: 0; /* Eliminar cualquier relleno interno */
-    margin: 0; /* Eliminar cualquier margen */
-    transition: all 0.3s ease-in-out;  /*Transición suave para cambios */
-    
-}
-  
+
+/* Sidebar moderno con gradiente */
 #sidebar {
-    width: 70px;
-    min-width: 70px;
-    z-index: 1000;
-    transition: all .25s ease-in-out;
-    background-color: #709CCC;
-    flex-direction: column;
-    transition: all 0.3s ease-in-out; /* Transición suave para cambios */
-    /* hace que el menu se mantenga fijo*/
-    /*position: fixed;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 70px;
+  min-width: 70px;
+  background: linear-gradient(135deg, #0056A5 0%, #1D6DC4 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Cuando está expandido */
 #sidebar.expand {
-    width: 260px;
-    min-width: 260px;
-    /*position: fixed;*/
-    
+  width: 280px;
+  min-width: 280px;
 }
 
+/* Contenido de la app */
+.main {
+  margin-left: 70px;
+  padding: 20px;
+  width: calc(100% - 70px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+/* Si el sidebar está expandido */
+#sidebar.expand ~ .main {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+}
+
+/* Botón hamburguesa moderno */
 .toggle-btn {
-    background-color: transparent;
-    cursor: pointer;
-    border: 0;
-    padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  border: 0;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .toggle-btn i {
-    font-size: 1.5rem;
-    color: #0E1319;
+  font-size: 1.4rem;
+  color: #ffffff;
 }
 
-.sidebar-logo {
-    margin: auto 0;
+/* Contenedor del logo institucional */
+.sidebar-logo-box {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
 }
 
-.sidebar-logo a {
-    color: #FFF;
-    font-size: 1.15rem;
-    font-weight: 600;
+/* Logo imagen (logoInicio) */
+.logo-institucional {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 1rem auto;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+  padding: 8px;
+  transition: all 0.3s ease;
+  display: block;
 }
 
-#sidebar:not(.expand) .sidebar-logo,
-#sidebar:not(.expand) a.sidebar-link span {
-    display: none;
+#sidebar.expand .logo-institucional {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 1.2rem;
 }
 
+.logo-institucional:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Texto del logo */
+.sidebar-logo-text {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar.expand .sidebar-logo-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ocultar texto cuando está colapsado */
+#sidebar:not(.expand) .sidebar-logo-text {
+  display: none;
+}
+
+/* Navegación moderna */
 .sidebar-nav {
-    padding: 2rem 0;
-    flex: 1 1 auto;
+  padding: 1rem 0;
+  flex: 1 1 auto;
+  list-style: none;
 }
 
-a.sidebar-link {
-    padding: .625rem 1.625rem;
-    color: #FFF;
-    display: block;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    border-left: 3px solid transparent;
-}
-
-.sidebar-link i {
-    font-size: 1.1rem;
-    margin-right: .75rem;
-}
-
-a.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;
-}
-
+/* Estilo para cada ítem del menú */
 .sidebar-item {
-    position: relative;
+  margin-bottom: 0.5rem;
+  position: relative;
 }
 
-#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-    position: absolute;
-    top: 0;
-    left: 70px;
-    background-color: #0e2238;
-    padding: 0;
-    min-width: 15rem;
-    display: none;
+/* Enlaces del sidebar con diseño moderno */
+a.sidebar-link {
+  padding: 1rem 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 0 25px 25px 0;
+  margin-right: 1rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
-#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
-    display: block;
-    max-height: 15em;
-    width: 100%;
-    opacity: 1;
+/* Efecto hover moderno */
+a.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateX(8px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
-    border: solid;
-    border-width: 0 .075rem .075rem 0;
-    content: "";
-    display: inline-block;
-    padding: 2px;
-    position: absolute;
-    right: 1.5rem;
-    top: 1.4rem;
-    transform: rotate(-135deg);
-    transition: all .2s ease-out;
+/* Efecto activo */
+a.sidebar-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-    transform: rotate(45deg);
-    transition: all .2s ease-out;
+/* Efecto de brillo al hacer hover */
+a.sidebar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
 }
 
-.sidebar-nav {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-item {
-    margin-bottom: 1rem;
-  }
-  
-  .sidebar-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    text-align: left;
-  }
-  
-  .sidebar-link i {
-    margin-right: 0.5rem;
-  }
-  .user-info {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-  .user-info li {
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #666;
-  }
-  .hidden {
-    display: none;
+a.sidebar-link:hover::before {
+  left: 100%;
+}
+
+/* Iconos modernos */
+.sidebar-link i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  width: 20px;
+  text-align: center;
+}
+
+a.sidebar-link:hover i {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Texto de los enlaces */
+.sidebar-link span {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+#sidebar.expand .sidebar-link span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ocultar spans cuando está colapsado */
+#sidebar:not(.expand) .sidebar-link span {
+  display: none;
+}
+
+/* Footer moderno */
+.sidebar-footer {
+  margin: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-footer .sidebar-link {
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 0;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.sidebar-footer .sidebar-link:hover {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+  transform: translateX(0);
+}
+
+.sidebar-footer .sidebar-link i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar-footer .sidebar-link:hover i {
+  color: #ff6b6b;
+}
+
+/* Información del usuario */
+.user-info {
+  list-style-type: none;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  margin: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.user-info img {
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.user-info img:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.user-info li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+/* Clases de visibilidad */
+.hidden {
+  display: none;
 }
 
 #sidebar.expand .hidder {
-    display: block;
+  display: block;
 }
-.user-info img {
-    display: block;
-    margin: 0 auto; 
-    border-radius: 50%; 
-    width: 50px; 
-    height: 50px; 
+
+/* Animación de entrada suave */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
   }
-  .user-info li {
-    color:  #FFF;
-    text-align: center; 
+  to {
+    transform: translateX(0);
+  }
+}
+
+#sidebar {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+/* Tooltip para items cuando está colapsado */
+#sidebar:not(.expand) .sidebar-item {
+  position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 75px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  
+  #sidebar.expand {
+    transform: translateX(0);
+    width: 100%;
+    min-width: 100%;
+  }
+  
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  #sidebar.expand ~ .main {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Scrollbar personalizado */
+#sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }

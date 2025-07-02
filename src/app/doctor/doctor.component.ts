@@ -87,4 +87,17 @@ export class DoctorComponent {
     this.doctorEncontrado = null; // Reinicia la variable del doctor encontrado
   }
 
+      // Funciones adicionales que puedes agregar a tu componente
+getUniqueSpecialties(): number {
+  if (!this.doctores) return 0;
+  const specialties = [...new Set(this.doctores.map(d => d.especialidadDoc))];
+  return specialties.length;
+}
+
+trackByDoctorId(index: number, doctor: any): any {
+  return doctor.id;
+}
+
+isLoading = false; // Variable para manejar estados de cargaa
+
 }

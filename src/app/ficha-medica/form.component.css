@@ -1,143 +1,371 @@
-
-.form-footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center; /* Alineación a la derecha */
+/* Estilos generales del contenedor */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.form-footer button {
-  margin-left: 10px; /* Espacio entre los botones */
+.container h1 {
+  text-align: center;
+  color: #1e5aa8;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
-.btn-success {
-  background-color: #28a745;
-  border-radius: 10px;
+
+/* Contenedor principal del formulario */
+form {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(30, 90, 168, 0.1);
+  padding: 30px;
+  margin: 40px 40px; /* <-- agrega espacio a los lados */
 }
+
+/* Contenedor de inputs principal */
 .input-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 25px;
 }
 
 .column {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+/* Estilos para labels */
+.column label {
+  font-weight: 600;
+  color: #1e5aa8;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Estilos para inputs y selects */
 .column input,
 .column select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #E6E6E6;
-
+  padding: 12px 15px;
+  border: 2px solid #e1e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fafbfc;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-.column input[type="date"] {
-  /* Ajustes específicos para el tipo date */
-  padding: 8px;
-  font-size: 16px;
-}
-
-.column select:focus,
-.column input:focus {
+.column input:focus,
+.column select:focus {
   outline: none;
-  border-color: #007bff; /* Cambia el color al enfocar */
+  border-color: #1e5aa8;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(30, 90, 168, 0.1);
 }
 
-/* Estilos para los checkboxes */
-.antecedentes-container {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f7f7f7; /* Fondo suave para destacar el área */
-  border-radius: 10px;
-  border: 1px solid #ddd;
+.column input:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
 }
 
+/* Estilos específicos para inputs de fecha */
+.column input[type="date"] {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.antecedentes-container h3 {
+  color: #1e5aa8;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #1e5aa8;
+  padding-bottom: 8px;
+}
+
+/* Estilos para discapacidad */
+.antecedentes-container > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.antecedentes-container > div:first-child label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #1e5aa8;
+}
+
+.antecedentes-container > div:first-child input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #1e5aa8;
+  cursor: pointer;
+}
+
+.antecedentes-container > div:first-child input[type="text"],
+.antecedentes-container > div:first-child input[type="number"] {
+  padding: 8px 12px;
+  border: 1px solid #d1e7ff;
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin-top: 5px;
+}
+
+/* Estilos para checkboxes de antecedentes */
 .checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
 }
 
 .checkbox-group label {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  color: #1e5aa8;
+  cursor: pointer;
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-right: 5px;
-  width: 20px;
-  height: 20px;
-  accent-color: #007bff; /* Color del checkbox */
+  width: 18px;
+  height: 18px;
+  accent-color: #1e5aa8;
   cursor: pointer;
-}
- 
-.container-emergencia-obstetrica {
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
+  margin-top: 2px;
 }
 
+.checkbox-group textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border: 1px solid #d1e7ff;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+  margin-top: 8px;
+}
+
+.checkbox-group textarea:focus {
+  outline: none;
+  border-color: #1e5aa8;
+  box-shadow: 0 0 0 2px rgba(30, 90, 168, 0.1);
+}
+
+/* Contenedor de emergencia obstétrica */
+.container-emergencia-obstetrica {
+  margin: 30px 0;
+  padding: 25px;
+  border: 2px solid #d1e7ff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff8f0 0%, #ffefdf 100%);
+}
+
+.container-emergencia-obstetrica legend {
+  color: #1e5aa8;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0 15px;
+}
+
+/* Estilos para inputs inline */
 .input-container-inline {
   display: grid;
-  flex-direction: row;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .input-container-inline label {
-  grid-column: 1 / 2;
+  font-weight: 500;
+  color: #1e5aa8;
+  font-size: 14px;
 }
 
 .input-container-inline input {
-    grid-column: 2 / 3;
-    border: none;
-    border-bottom: 2px solid #000; /* Línea inferior */
-    outline: none;
-    padding: 5px 0;
-    width: 100%; /* Asegura que el input ocupe todo el espacio de la columna */
-    background-color: #fff;
-    border-radius: 0;
+  padding: 10px 15px;
+  border: 2px solid #e1e8f0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .input-container-inline input:focus {
-    border-bottom-color: #007BFF; /* Cambia el color de la línea al enfocar */
+  outline: none;
+  border-color: #1e5aa8;
+  box-shadow: 0 0 0 2px rgba(30, 90, 168, 0.1);
 }
 
+.input-container-inline input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #1e5aa8;
+  cursor: pointer;
+}
+
+/* Estilos para inputs múltiples inline */
 .input-container-multiple-inline {
   display: grid;
-  grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr; /* Ajusta la cantidad de columnas */
-  gap: 10px; /* Ajusta el espacio entre los elementos según sea necesario */
+  grid-template-columns: auto 80px auto 80px auto 80px auto 80px;
+  gap: 10px;
   align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f8fbff;
+  border-radius: 8px;
 }
 
 .input-container-multiple-inline label {
-  justify-self: end; /* Alinea el label al final de su columna */
-  padding-right: 5px; /* Espacio entre el label y el input */
+  font-weight: 500;
+  color: #1e5aa8;
+  font-size: 14px;
+  text-align: right;
 }
 
 .input-container-multiple-inline input {
-  border: none;
-  border-bottom: 2px solid #000; /* Línea inferior */
-  outline: none;
-  padding: 5px 0;
-  border-radius: 0; /* Quita el borde redondeado */
+  padding: 8px 10px;
+  border: 2px solid #e1e8f0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  text-align: center;
+  font-size: 14px;
 }
 
 .input-container-multiple-inline input:focus {
-  border-bottom-color: #007BFF; /* Cambia el color de la línea al enfocar */
+  outline: none;
+  border-color: #1e5aa8;
+  box-shadow: 0 0 0 2px rgba(30, 90, 168, 0.1);
 }
 
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+/* Estilos para el footer del formulario */
+.form-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 25px;
+  border-top: 2px solid #e1e8f0;
 }
 
+.form-footer button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
 
+.btn-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
 
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .input-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .antecedentes-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .container h1 {
+    font-size: 2rem;
+  }
+  
+  form {
+    padding: 20px;
+  }
+  
+  .input-container-multiple-inline {
+    grid-template-columns: repeat(2, auto 80px);
+    gap: 8px;
+  }
+  
+  .form-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-footer button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* 🟦 Contenedor Discapacidad + Antecedentes (horizontal) */
+.antecedentes-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin: 30px 0;
+  padding: 25px;
+  background: linear-gradient(135deg, #f8fbff 0%, #e8f2ff 100%);
+  border-radius: 12px;
+  border: 1px solid #d1e7ff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 🟦 Cada columna (Discapacidad / Antecedentes) */
+.antecedentes-container > div {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 🟦 Responsive (en celulares se apilan) */
+@media (max-width: 768px) {
+  .antecedentes-container {
+    flex-direction: column;
+  }
+
+  .antecedentes-container > div {
+    flex: 1 1 100%;
+  }
+}

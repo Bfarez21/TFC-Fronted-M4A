@@ -1,81 +1,136 @@
-<div class="container">
-    <h2 class="text-center mb-4">Lista de Enfermedades CIE-10</h2>
-    <div>
-        <button class="btn btn-rounded btn-success mx-2" type="button"[routerLink]="['/enfermedades/form.enfermedades']">Registrar Enfermedades</button>        
-        <div class="row justify-content-center mb-3">
+<div class="container-fluid">
+    <div class="main-container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1>
+                <i class="fas fa-virus"></i>
+                Lista de Enfermedades CIE-10
+            </h1>
+            <div class="subtitle">Gestión de enfermedades y codificación CIE-10</div>
+        </div>
 
-            <div class="col-md-3 d-flex align-items-center justify-content-center"> <!-- col-md-6 para ocupar 6 columnas en pantallas medianas y grandes -->
-                <input type="text" id="codigo" class="form-control text-center" 
-                style="width: 500px;" value="" [(ngModel)]="codigoBuscar" placeholder="Buscar por codigo">
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">{{ enfermedades.length || 0 }}</div>
+                <div class="stat-label">Enfermedades Registradas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ tipoFrecuente || '-' }}</div>
+                <div class="stat-label">Tipo más frecuente</div>
             </div>
 
-            <div class="col-md-3 d-flex align-items-center justify-content-start"> <!-- col-md-3 para ocupar 3 columnas en pantallas medianas y grandes -->
-                <div class="btn-group" role="group" aria-label="Botones de acción">
-                    
-                    <button class="btn btn-primary"(click)="buscar()">Buscar</button>
-                    <button class="btn btn-secondary"(click)="ver()">Ver todo</button>
-                </div>
+        </div>
+
+        <!-- Barra de acciones -->
+        <div class="action-bar">
+            <button class="btn btn-success-modern btn-modern" [routerLink]="['/enfermedades/form.enfermedades']">
+                <i class="fas fa-plus-circle me-2"></i>
+                Registrar Enfermedad
+            </button>
+
+            <div class="search-container">
+                <input type="text" class="form-control form-control-modern" [(ngModel)]="codigoBuscar"
+                    placeholder="Buscar por código CIE-10" (keyup.enter)="buscar()">
+
+                <button class="btn btn-primary-modern btn-modern" (click)="buscar()">
+                    <i class="fas fa-search me-2"></i>
+                    Buscar
+                </button>
+
+                <button class="btn btn-secondary-modern btn-modern" (click)="ver()">
+                    <i class="fas fa-sync me-2"></i>
+                    Ver Todo
+                </button>
             </div>
         </div>
-        <div class="table-responsive">
-        <table class="table table-bordered table-striped" *ngIf="codigoEncontrado; else listaEnfermedades">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Código Enfermedad</th>
-                <th>Nombre enfermedad</th>
-                <th>Tipo</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{codigoEncontrado.idEnf}}</td>
-                    <td>{{codigoEncontrado.codigoEnf}}</td>
-                    <td>{{codigoEncontrado.nombreEnf}}</td>
-                    <td>{{codigoEncontrado.tipoEnf}}</td>
-                <td>
-                  <button type="button" name="button" class="btn btn-primary mx-4" (click)="verDetalles(codigoEncontrado)">Ver</button>
-                  <button type="button" name="button" class="btn btn-warning mx-4" [routerLink]="['/enfermedades/form.enfermedades', codigoEncontrado.idEnf]">Editar</button>
-                  <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(codigoEncontrado.idEnf)">Eliminar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
 
-     <ng-template #listaEnfermedades>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-blue">
-                <tr>
-                    <th>id</th>
-                    <th>Código Enfermedad</th>
-                    <th>Nombre enf</th>
-                    <th>Tipo enf</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let enfermedad of enfermedades">
+        <!-- Tabla -->
+        <div class="table-container">
+            <div class="table-scroll">
+                <table class="table table-modern table-hover" *ngIf="codigoEncontrado; else listaEnfermedades">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-hashtag me-2"></i>ID</th>
+                            <th><i class="fas fa-code me-2"></i>Código</th>
+                            <th><i class="fas fa-notes-medical me-2"></i>Nombre</th>
+                            <th><i class="fas fa-layer-group me-2"></i>Tipo</th>
+                            <th><i class="fas fa-cogs me-2"></i>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{codigoEncontrado.idEnf}}</td>
+                            <td>{{codigoEncontrado.codigoEnf}}</td>
+                            <td>{{codigoEncontrado.nombreEnf}}</td>
+                            <td>{{codigoEncontrado.tipoEnf}}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary-modern btn-sm"
+                                        (click)="verDetalles(codigoEncontrado)" title="Ver">
+                                        <i class="fas fa-eye">Ver</i>
+                                    </button>
+                                    <button class="btn btn-warning-modern btn-sm"
+                                        [routerLink]="['/enfermedades/form.enfermedades', codigoEncontrado.idEnf]"
+                                        title="Editar">
+                                        <i class="fas fa-edit">Editar</i>
+                                    </button>
+                                    <button class="btn btn-danger-modern btn-sm"
+                                        (click)="deleteEnfermedades(codigoEncontrado.idEnf)" title="Eliminar">
+                                        <i class="fas fa-trash">Eliminar</i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <td>{{enfermedad.idEnf}}</td>
-                    <td>{{enfermedad.codigoEnf}}</td>
-                    <td>{{enfermedad.nombreEnf}}</td>
-                    <td>{{enfermedad.tipoEnf}}</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button type="button" name="button" class="btn btn-primary mx-4"(click)="verDetalles(enfermedad)">Ver</button>
-                <button type="button" name="button" class="btn btn-warning mx-4"[routerLink]="['/enfermedades/form.enfermedades',enfermedad.idEnf]">Editar</button>
-                <button type="button" name="button" class="btn btn-danger mx-2" (click)="deleteEnfermedades(enfermedad.idEnf)">Eliminar</button>
-                        </div>
-                    </td>
-                </tr>        
-            </tbody>
-        </table>
-     </ng-template>
-     </div>
-        <div class="text-right">
+                <!-- Lista completa -->
+                <ng-template #listaEnfermedades>
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-blue">
+                            <tr>
+                                <th><i class="fas fa-hashtag me-2"></i>ID</th>
+                                <th><i class="fas fa-code me-2"></i>Código</th>
+                                <th><i class="fas fa-notes-medical me-2"></i>Nombre</th>
+                                <th><i class="fas fa-layer-group me-2"></i>Tipo</th>
+                                <th><i class="fas fa-cogs me-2"></i>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let enfermedad of enfermedades">
+
+                                <td>{{enfermedad.idEnf}}</td>
+                                <td>{{enfermedad.codigoEnf}}</td>
+                                <td>{{enfermedad.nombreEnf}}</td>
+                                <td>{{enfermedad.tipoEnf}}</td>
+                                <td class="text-center">
+                                     <div class="action-buttons">
+                                        <button class="btn btn-primary-modern btn-sm" (click)="verDetalles(enfermedad)"
+                                            title="Ver">
+                                            <i class="fas fa-eye">Ver</i>
+                                        </button>
+                                        <button class="btn btn-warning-modern btn-sm"
+                                            [routerLink]="['/enfermedades/form.enfermedades', enfermedad.idEnf]"
+                                            title="Editar">
+                                            <i class="fas fa-edit">Editar</i>
+                                        </button>
+                                        <button class="btn btn-danger-modern btn-sm"
+                                            (click)="deleteEnfermedades(enfermedad.idEnf)" title="Eliminar">
+                                            <i class="fas fa-trash">Eliminar</i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="text-end mt-3">
             <p> </p>
-            <p>Total registros:  <span>{{ enfermedades.length }}</span></p>
+            <p>Total registros: <span>{{ enfermedades.length }}</span></p>
         </div>
     </div>
 </div>
