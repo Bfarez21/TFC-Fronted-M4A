@@ -1,78 +1,78 @@
 <div class="wrapper">
   <aside id="sidebar">
-      <div class="d-flex">
-          <button class="toggle-btn" type="button">
-              <i class="bi bi-list"></i>
-          </button>
-          <div class="sidebar-logo">
-              <a href="#">ISTA TEC AZUAY</a>
-          </div>
+    <div class="d-flex">
+      <button class="toggle-btn" type="button">
+        <i class="bi bi-list"></i>
+      </button>
+      <div class="sidebar-logo">
+        <a href="#">ISTA TEC AZUAY</a>
       </div>
-   
-      <ul class="sidebar-nav">
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/home" >
-              <i class="bi bi-house"></i>
-              <span class="sidebar-logo">Home</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/ficha-medica">
-              <i class="bi bi-heart"></i>
-              <span class="sidebar-logo">Ficha Medica</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/atencion-medica" >
-              <i class="bi bi-clipboard-heart"></i>
-              <span class="sidebar-logo">Atencion Medica</span>
-            </a>
-          </li>
-          
-           <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/enfermedades">
-              <i class="bi bi-card-list"></i>
-              <span class="sidebar-logo">Enfermedades</span>
-            </a>
-          </li>
-        
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/referencia-medica">
-              <i class="bi bi-file-earmark-person"></i>
-              <span class="sidebar-logo">Referencia Medica</span>
-            </a>
-          </li>
-        
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/doctor">
-              <i class="bi bi-person"></i>
-              <span class="sidebar-logo">Doctor</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/reportes">
-              <i class="bi bi-bar-chart"></i>
-              <span class="sidebar-logo">Reportes</span>
-            </a>
-          </li>
-           <!--
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/home">
+          <i class="bi bi-house"></i>
+          <span class="sidebar-logo">Home</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/ficha-medica">
+          <i class="bi bi-heart"></i>
+          <span class="sidebar-logo">Ficha Medica</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/atencion-medica">
+          <i class="bi bi-clipboard-heart"></i>
+          <span class="sidebar-logo">Atencion Medica</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/enfermedades">
+          <i class="bi bi-card-list"></i>
+          <span class="sidebar-logo">Enfermedades</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/referencia-medica">
+          <i class="bi bi-file-earmark-person"></i>
+          <span class="sidebar-logo">Referencia Medica</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/doctor">
+          <i class="bi bi-person"></i>
+          <span class="sidebar-logo">Doctor</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/reportes">
+          <i class="bi bi-bar-chart"></i>
+          <span class="sidebar-logo">Reportes</span>
+        </a>
+      </li>
+      <!--
           <li class="sidebar-item">
             <a class="sidebar-link" routerLink="/setting">
               <i class="bi bi-gear"></i>
               <span class="sidebar-logo">Setting</span>
             </a>
           </li>  -->
-        </ul>
-        
-        
-      <div class="sidebar-footer">
-          <a (click)="onLogout()" class="sidebar-link">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Cerrar sesión</span>
-          </a>
-          
-      </div>
-      <!-- <div class=" hidder hidden">
+    </ul>
+
+
+    <!-- Pie del menú -->
+    <div class="sidebar-footer">
+      <a (click)="onLogout()" class="sidebar-link">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Cerrar sesión</span>
+      </a>
+    </div>
+    <!-- <div class=" hidder hidden">
         <ul class="user-info" *ngIf="auth.user$ | async as user">
           <li>
             <img src="{{ user.picture }}">
@@ -83,10 +83,8 @@
       </div>   -->
 
   </aside>
+ <!-- Aquí se carga el contenido dinámico de las rutas -->
   <div class="main p-0">
-      <div class="text-center">
-          <h1>
-          </h1>
-      </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -37,4 +37,12 @@ export class DoctorService {
     const url = `${this.urlEndPoint}/cedula/${cedula}`;
     return this.http.get<Doctor>(url);
   }
+   login(cedula: string, password: string): Observable<Doctor | null> {
+    const url = `${this.urlEndPoint}/login`;
+    // ✅ Cambiar los nombres de las propiedades para coincidir con LoginRequest
+    return this.http.post<Doctor | null>(url, { 
+      cedulaDoc: cedula, 
+      passwordDoc: password 
+    }, { headers: this.httpHeaders });
+  }
 }
