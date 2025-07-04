@@ -18,4 +18,8 @@ export class DataService {
   getAtencionesPorAno(): Observable<Map<number, number>> {
     return this.http.get<Map<number, number>>(`${this.apiUrl}/atenciones_por_ano`);
   }
+  getPacientesPorCarrera(): Observable<Map<string, number>> {
+  return this.http.get<Map<string, number>>(`${this.apiUrl}/pacientes/carreras`);
+}
+
 }

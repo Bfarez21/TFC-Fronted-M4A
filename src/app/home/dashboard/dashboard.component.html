@@ -1,58 +1,125 @@
-<div class="scroll-container">
-<div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="350px">
-    <ng-container *ngFor="let card of cards | async">
-      <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              {{card.title}}
-            
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <ng-container [ngSwitch]="card.type">
-              <ng-template ngSwitchCase="visits">
-                <div class="container">
-                  <h1>Pacientes Totales: {{ totalPac }}</h1>
-                  <div class="card-container">
-                    <div class="card">
-                      <p>Pacientes Alumnos:</p>
-                      <p>{{ totalEst }}</p>
-                      <div class="percentage up">{{ (totalEst/totalPac)*100 | number:'1.2-2' }} &#8593;</div>
-                    </div>
-                    <div class="card">
-                      <p>Pacientes Profesores:</p>
-                      <p>{{ totalProf }}</p>
-                      <div class="percentage down">{{ (totalProf/totalPac)*100 | number:'1.2-2' }} &#8595;</div>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-              <ng-template ngSwitchCase="diseases">
-                <div class="container">
-                  <h1 style="font-size: 24px;">Distribución de Enfermedades</h1>
-                  <canvas baseChart
-                    [data]="pieChartData"
-                    [options]="pieChartOptions"
-                    [type]="pieChartType"
-                    style="max-height: 480px;">
-                  </canvas>
-                </div>
-              </ng-template>
-              <ng-template ngSwitchCase="lineChart">
-                <div class="container">
-                  <h1 tyle="font-size: 24px;">Cantidad de Pacientes</h1>
-                  <canvas #lineChart 
-                  style="max-height: 500px;">
-                </canvas>
-                </div>
-              </ng-template>
-            </ng-container>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </ng-container>
-  </mat-grid-list>
-</div>
+<div class="dashboard-container">
+  <div class="main-container">
+    <!-- Header institucional dentro del card -->
+    <div class="page-header">
+      <h1>
+        <i class="fas fa-notes-medical"></i>
+        Dashboard
+      </h1>
+    </div>
+
+    <!-- Header con métricas principales -->
+    <div class="metrics-header">
+      <div class="main-metric-card">
+        <div class="metric-icon earnings-icon">
+          <mat-icon>local_hospital</mat-icon>
+        </div>
+        <div class="metric-content">
+          <h3>Pacientes Totales</h3>
+          <h1>{{ totalPac | number }}</h1>
+          <button mat-raised-button color="primary" class="register-button" (click)="onRegister()">
+            <mat-icon>person_add</mat-icon>
+            Registrar Paciente
+          </button>
+        </div>
+        <div class="metric-decoration">
+          <div class="decoration-shape"></div>
+        </div>
+      </div>
+
+      <div class="secondary-metrics">
+        <div class="metric-card">
+          <div class="metric-icon customers-icon">
+            <mat-icon>school</mat-icon>
+          </div>
+          <div class="metric-info">
+            <h2>{{ totalEst | number }}</h2>
+            <p>Estudiantes</p>
+            <span class="metric-change positive">+{{ (totalEst/totalPac)*100 | number:'1.1-1' }}%</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon products-icon">
+            <mat-icon>medical_services</mat-icon>
+          </div>
+          <div class="metric-info">
+            <h2>{{ totalProf | number }}</h2>
+            <p>Profesores</p>
+            <span class="metric-change negative">-{{ (totalProf/totalPac)*100 | number:'1.1-1' }}%</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon sales-icon">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+          <div class="metric-info">
+            <h2>{{ ((totalEst + totalProf) / totalPac * 100) | number:'1.0-0' }}</h2>
+            <p>Consultas</p>
+            <span class="metric-change positive">+38%</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon refunds-icon">
+            <mat-icon>healing</mat-icon>
+          </div>
+          <div class="metric-info">
+            <h2>{{ (totalPac * 0.85) | number:'1.0-0' }}</h2>
+            <p>Tratamientos</p>
+            <span class="metric-change positive">+12%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráficos principales -->
+    <div class="charts-container">
+      <!-- Gráfico de barras para atenciones por año -->
+      <div class="chart-card performance-chart">
+        <div class="chart-header">
+          <h3>Atenciones por Año</h3>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-color expense"></div>
+              <span>Atenciones</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-content">
+          <div class="chart-sidebar">
+            <div class="budget-info">
+              <h4>{{ totalAtenciones }}</h4>
+              <p>Total Atenciones</p>
+            </div>
+
+            <button mat-raised-button color="accent" class="download-report-btn" (click)="onDownloadReport()">
+              <mat-icon>cloud_download</mat-icon>
+              Descargar Reporte
+            </button>
+          </div>
+          <div class="chart-area">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"
+              style="max-height: 300px;">
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de ingresos -->
+      <!-- <div class="earnings-card">
+      <div class="earnings-header">
+        <h3>Ingresos</h3>
+        <div class="earnings-icon-bg">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+      </div>
+      <div class="earnings-amount">
+        <h1>${{ (totalPac * 150) | number }}</h1>
+        <p>Ingresos Mensuales</p>
+      </div>
+    </div>  -->
+    </div>
+  </div>
 </div>

@@ -1,89 +1,421 @@
-.grid-container {
-  margin: 20px;
+
+:host {
+  --primary-blue: #1e4d8b;
+  --secondary-blue: #2c5aa0;
+  --accent-gold: #f4b942;
+  --light-blue: #e8f1fa;
+  --success-green: #28a745;
+  --warning-orange: #fd7e14;
+  --danger-red: #dc3545;
+  --light-gray: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-dark: #2c3e50;
+  --shadow: 0 2px 15px rgba(30, 77, 139, 0.1);
+  --shadow-hover: 0 4px 25px rgba(30, 77, 139, 0.15);
+}
+.dashboard-container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+/* Header dentro del card */
+.page-header {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  color: white;
+  padding: 2rem 2rem 1.5rem 2rem;
+  border-radius: 15px;
+  margin: 2rem 2rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.main-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 0 0 2.5rem 0;
+  margin: 2.3rem auto 0 auto;
+  max-width: 1400px;
+  position: relative;
+  overflow: hidden;
 }
 
-.dashboard-card {
+.main-container::before {
+  content: '';
   position: absolute;
-  background-color: #e7edf3;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-gold) 50%, var(--primary-blue) 100%);
+  z-index: 2;
+}
+.metrics-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-canvas {
-  max-width: 100%; /* Asegurarse de que el gráfico no se extienda más allá del contenedor */
-  max-height: 200; /* Ajustar el tamaño máximo del gráfico */
+.main-metric-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 }
 
+.metric-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
 
-.more-button {
+.earnings-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.metric-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.metric-content h1 {
+  margin: 0 0 24px 0;
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.download-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.download-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.metric-decoration {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
 }
 
-.dashboard-card-content {
+.decoration-shape {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.secondary-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.customers-icon {
+  background: #e1f5fe;
+  color: #0288d1;
+}
+
+.products-icon {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.sales-icon {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.refunds-icon {
+  background: #e8f5e8;
+  color: #388e3c;
+}
+
+.metric-info h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #1a202c;
+}
+
+.metric-info p {
+  margin: 0 0 8px 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.metric-change {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.metric-change.positive {
+  color: #38a169;
+  background: #f0fff4;
+}
+
+.metric-change.negative {
+  color: #e53e3e;
+  background: #fff5f5;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.performance-chart {
+  grid-row: span 2;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.chart-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1a202c;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #718096;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legend-color.expense {
+  background: #ff6b6b;
+}
+
+.legend-color.budget {
+  background: #4ecdc4;
+}
+
+.chart-content {
+  display: flex;
+  gap: 24px;
+}
+
+.chart-sidebar {
+  min-width: 120px;
+}
+
+.budget-info, .expense-info {
+  margin-bottom: 24px;
+}
+
+.budget-info h4, .expense-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  color: #1a202c;
+}
+
+.budget-info p, .expense-info p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.download-report-btn {
+  border: 1px solid #4ecdc4;
+  color: #4ecdc4;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.chart-area {
+  flex: 1;
+}
+
+.earnings-card {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.earnings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.earnings-header h3 {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.earnings-icon-bg {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earnings-amount h1 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.earnings-amount p {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.donut-chart h3 {
+  margin: 0 0 24px 0;
+  font-size: 18px;
+  color: #1a202c;
+}
+
+.donut-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.container {
-  text-align: center;
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.donut-center h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  color: #1a202c;
 }
 
-.card-container {
+.donut-center p {
+  margin: 0;
+  font-size: 12px;
+  color: #718096;
+}
+
+.donut-legend {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
 }
 
-.card {
-  background-color: #8dc0f3;
-  padding: 10px;
-  border-radius: 10px;
+.legend-years {
+  display: flex;
+  gap: 16px;
 }
 
-.card p {
-  margin: 0;
-  font-size: 24px;
+.year-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #718096;
 }
 
-.percentage {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 5px 10px;
-  border-radius: 5px;
+.year-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
 }
 
-.percentage.up {
-  background-color: #d4edda;
-  color: #155724;
+.color-2021 { background: #4ecdc4; }
+.color-2020 { background: #45b7d1; }
+.color-2019 { background: #f39c12; }
+.color-2018 { background: #e74c3c; }
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .metrics-header {
+    grid-template-columns: 1fr;
+  }
+  
+  .secondary-metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
 }
 
-.percentage.down {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.disease-container {
-  margin-top: 30px;
-}
-
-.disease {
-  margin-bottom: 15px;
-}
-
-.scroll-container {
-  height: 100vh; /* Ocupa el 100% de la altura del viewport */
-  width: 100vw;  /* Ocupa el 100% del ancho del viewport */
-  overflow-y: auto; /* Habilita el desplazamiento vertical */
-  overflow-x: auto; /* Habilita el desplazamiento horizontal si es necesario */
-  box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
-  padding: 10px; /* Opcional: Añadir un relleno interno */
-  border: 1px solid #ccc; /* Opcional: Añadir un borde para visualizar mejor el contenedor */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+  
+  .secondary-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .chart-content {
+    flex-direction: column;
+  }
 }
