@@ -27,7 +27,7 @@ import { Doctor } from '../doctor/doctor';
   templateUrl: './form-atencion-medica.component.html',
   styleUrl: './form-atencion-medica.component.css'
 })
-export class FormAtencionMedicaComponent implements OnInit{
+export class FormAtencionMedicaComponent implements OnInit {
 
   signosVitales: SignoVital[] = [];
   enfermedades: Enfermedades[] = [];
@@ -60,7 +60,7 @@ export class FormAtencionMedicaComponent implements OnInit{
   pupilarSigno: AtencionSigno = new AtencionSigno();
   totalSigno: AtencionSigno = new AtencionSigno();
 
-  editMode: boolean = false; 
+  editMode: boolean = false;
   cedulaBusqueda: string = '';
   atencionMedicaEncontrado: AtencionMedica | null = null;
   pacienteEncontrado: Paciente | null = null;
@@ -73,25 +73,25 @@ export class FormAtencionMedicaComponent implements OnInit{
 
 
   constructor(
-    private router:Router,
+    private router: Router,
     private atencionMedicaService: AtencionMedicaService,
     private fichaMedicaService: FichaMedicaService,
     private pacienteService: PacienteService,
-    private activateRouter:ActivatedRoute,
+    private activateRouter: ActivatedRoute,
     private examenComplementarioService: ExamenComplementarioService,
     private emergenciaObstetricaService: EmergenciaObstetricaService,
     private enfermedadesService: EnfermedadesService,
     private diagnosticoService: DiagnosticoService,
     private signoVitalService: SignoVitalService,
     private doctorService: DoctorService
-    
-    
-  ){}
+
+
+  ) { }
 
   // metodo regresar ventana anterior
-  cancelar(){
+  cancelar() {
     this.router.navigate(['/atencion-medica'])
-}
+  }
 
   ngOnInit(): void {
     this.recuperarSignosVitales();
@@ -105,17 +105,17 @@ export class FormAtencionMedicaComponent implements OnInit{
         console.error('Error al buscar el doctor:', error);
 
       }
-      
+
     );
   }
 
-  cargarFichaMedica():void{
-    this.activateRouter.params.subscribe(params=>{
-        let id=params['id']
-        if(id){
-            this.fichaMedicaService.getFichas(id).subscribe((fichaMedica)=>this.fichaMedica=fichaMedica)
-            this.editMode = true; // Deshabilitar el modo de edición
-        }
+  cargarFichaMedica(): void {
+    this.activateRouter.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.fichaMedicaService.getFichas(id).subscribe((fichaMedica) => this.fichaMedica = fichaMedica)
+        this.editMode = true; // Deshabilitar el modo de edición
+      }
     })
   }
 
@@ -123,7 +123,7 @@ export class FormAtencionMedicaComponent implements OnInit{
     if (this.cedulaBusqueda) {
       this.pacienteService.buscarPorCedula(this.cedulaBusqueda).subscribe(
         paciente => {
-          console.log('Paciente encontrado:', paciente); 
+          console.log('Paciente encontrado:', paciente);
           this.pacienteEncontrado = paciente;
 
           this.buscarFicha();
@@ -146,7 +146,7 @@ export class FormAtencionMedicaComponent implements OnInit{
           console.log('Ficha encontrado:', fichaMedica);
           this.fichaMedica = fichaMedica;
 
-          if(fichaMedica.paciente.generoPac == 'femenino' || fichaMedica.paciente.generoPac === 'F') {
+          if (fichaMedica.paciente.generoPac == 'femenino' || fichaMedica.paciente.generoPac === 'F') {
             this.buscarEmergenciObstetrica();
           }
         },
@@ -158,7 +158,7 @@ export class FormAtencionMedicaComponent implements OnInit{
     } else {
       console.error('No se puede buscar ficha: paciente no encontrado.');
     }
-  }  
+  }
 
   buscarEmergenciObstetrica(): void {
     if (this.fichaMedica) {
@@ -175,28 +175,28 @@ export class FormAtencionMedicaComponent implements OnInit{
     } else {
       console.error('No se puede buscar ficha: paciente no encontrado.');
     }
-  }  
+  }
 
   inicializarSignoAtencion() {
     if (this.signosVitales.length > 0) {
-      
+
     }
 
   }
 
   recuperarSignosVitales(): void {
     this.signoVitalService.getSignosVitales().subscribe(signosVitales => {
-      signosVitales = this.signosVitales = signosVitales; 
+      signosVitales = this.signosVitales = signosVitales;
       console.log("Se ha recuperado " + this.signosVitales.length + " signos vitales.")
-      
+
     });
   }
 
   recuperarEnfermedades(): void {
     this.enfermedadesService.getEnfermedades().subscribe(enfermedades => {
-      enfermedades = this.enfermedades = enfermedades; 
+      enfermedades = this.enfermedades = enfermedades;
       console.log("Se ha recuperado " + this.enfermedades.length + " enfermedades.")
-      
+
     });
   }
 
@@ -227,32 +227,69 @@ export class FormAtencionMedicaComponent implements OnInit{
     }
   }
 
+  convertToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  /**
+ * Maneja la selección de archivos PDF
+ */
   onFileChange(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
-      this.examenComplementarioService.uploadPdf(this.atencionMedica.examenesComplementarios[index].idExa, file)
-        .subscribe(
-          () => console.log('PDF subido exitosamente'),
-          error => console.error('Error al subir PDF', error)
-        );
-  }}
+      // Validar que sea PDF
+      if (file.type !== 'application/pdf') {
+        Swal.fire({
+          title: 'Archivo inválido',
+          text: 'Solo se permiten archivos PDF',
+          icon: 'error',
+          confirmButtonColor: '#dc2626'
+        });
+        return;
+      }
 
-  uploadAllFiles() {
-      this.atencionMedica.examenesComplementarios.forEach(examen => {
-        if (examen.archivoPdf) {
-          this.examenComplementarioService.uploadPdf(examen.idExa, examen.archivoPdf)
-            .subscribe(
-              () => console.log(`PDF subido exitosamente para el examen con id ${examen.idExa}`),
-              error => console.error(`Error al subir PDF para el examen con id ${examen.idExa}`, error)
-            );
-        }
-      });
+      // Validar tamaño (máximo 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        Swal.fire({
+          title: 'Archivo muy grande',
+          text: 'El archivo no puede ser mayor a 10MB',
+          icon: 'error',
+          confirmButtonColor: '#dc2626'
+        });
+        return;
+      }
+
+      // Asignar el archivo al examen
+      this.atencionMedica.examenesComplementarios[index].archivoPdfFile = file;
+      this.atencionMedica.examenesComplementarios[index].nombreArchivo = file.name;
+      this.atencionMedica.examenesComplementarios[index].tipoContenido = file.type;
+      this.atencionMedica.examenesComplementarios[index].tamañoArchivo = file.size;
+
+      console.log(`Archivo seleccionado para examen ${index}:`, file.name);
+    }
   }
+  /** 
+  uploadAllFiles() {
+    this.atencionMedica.examenesComplementarios.forEach(examen => {
+      if (examen.archivoPdf) {
+        this.examenComplementarioService.uploadPdf(examen.idExa, examen.archivoPdf)
+          .subscribe(
+            () => console.log(`PDF subido exitosamente para el examen con id ${examen.idExa}`),
+            error => console.error(`Error al subir PDF para el examen con id ${examen.idExa}`, error)
+          );
+      }
+    });
+  }*/
 
   filterEnfermedades(event: any, index: number): void {
     const query = event.target.value.toLowerCase();
     if (query.length > 0) {
-      this.filteredEnfermedades[index] = this.enfermedades.filter(enfermedad => 
+      this.filteredEnfermedades[index] = this.enfermedades.filter(enfermedad =>
         enfermedad.nombreEnf.toLowerCase().includes(query)
       );
     } else {
@@ -266,48 +303,119 @@ export class FormAtencionMedicaComponent implements OnInit{
   }
 
 
-  create(): void {    
-
-    
-
+  /**
+ * Método create() mejorado - SIN conversión a base64
+ */
+  async create(): Promise<void> {
     this.atencionMedica.fechaAtencionAte = new Date();
 
-    if (this.fichaMedica) {
-    
-
-      if(this.doctor) {
-        this.atencionMedica.doctor = this.doctor;
-        this.atencionMedica.fichaMedica = this.fichaMedica;
-
-      this.atencionMedicaService.create(this.atencionMedica)
-        .subscribe(
-           atencionMedica=> {this.router.navigate(['/'])
-           Swal.fire('ATENCION MEDICA GUARDADA')
-
-           }
-          );
-      }
-    } else {
-      console.error('FichaMedica no está definido.');
+    if (!this.fichaMedica || !this.doctor) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Faltan datos del doctor o ficha médica',
+        icon: 'error',
+        confirmButtonColor: '#dc2626'
+      });
+      return;
     }
-    
-    
+
+    // Asignar datos del doctor
+    this.atencionMedica.doctor.idDoctor = this.doctor.idDoctor;
+    this.atencionMedica.doctor.cedulaDoc = this.doctor.cedulaDoc;
+    this.atencionMedica.doctor.nombreDoc = this.doctor.nombreDoc + " " + this.doctor.apellidoDoc;
+
+    // ✅ CORRECCIÓN PRINCIPAL: Asignar la ficha médica completa con su ID
+    this.atencionMedica.fichaMedica = {
+      idFic: this.fichaMedica.idFic,
+      // Puedes incluir otros campos si los necesitas, pero el ID es lo esencial
+      paciente: this.fichaMedica.paciente,
+      fechaElaboracionFic: this.fichaMedica.fechaElaboracionFic,
+      discapacidad: this.fichaMedica.discapacidad,
+      antecedenteFamiliar: this.fichaMedica.antecedenteFamiliar
+    };
+
+    console.log("Paciente asignado:", this.atencionMedica.fichaMedica.paciente);
+
+    try {
+      // 1. Crear la atención médica SIN los PDFs
+      const atencionCreada = await this.atencionMedicaService.create(this.atencionMedica).toPromise();
+
+      if (!atencionCreada || !atencionCreada.idAte) {
+        throw new Error('No se pudo crear la atención médica');
+      }
+
+      console.log('Atención médica creada con ID:', atencionCreada.idAte);
+
+      // 2. Subir los PDFs uno por uno
+      const uploadPromises = this.atencionMedica.examenesComplementarios
+        .map(async (examen, index) => {
+          if (examen.archivoPdfFile) {
+            try {
+              console.log(`Subiendo PDF para examen ${index}: ${examen.tituloExa}`);
+              const response = await this.atencionMedicaService.subirPdfExamen(
+                atencionCreada.idAte!,
+                index,
+                examen.archivoPdfFile
+              ).toPromise();
+              console.log(`✅ PDF ${index} subido:`, response);
+              return { index, success: true, response };
+            } catch (error) {
+              console.error(`❌ Error subiendo PDF ${index}:`, error);
+              return { index, success: false, error };
+            }
+          }
+          return { index, success: true, response: 'No hay archivo' };
+        });
+
+      // Esperar a que se suban todos los PDFs
+      const uploadResults = await Promise.all(uploadPromises);
+
+      // Verificar resultados
+      const errores = uploadResults.filter(result => !result.success);
+      if (errores.length > 0) {
+        console.warn('Algunos PDFs no se pudieron subir:', errores);
+        Swal.fire({
+          title: 'Atención guardada con advertencias',
+          text: `La atención médica se guardó, pero ${errores.length} archivo(s) PDF no se pudieron subir.`,
+          icon: 'warning',
+          confirmButtonColor: '#f59e0b'
+        });
+      } else {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'Atención médica y archivos PDF guardados correctamente',
+          icon: 'success',
+          confirmButtonColor: '#16a34a'
+        });
+      }
+
+      this.router.navigate(['/atencion-medica']);
+
+    } catch (error) {
+      console.error('Error al guardar atención médica:', error);
+      Swal.fire({
+        title: 'Error al guardar',
+        text: 'Revisa los datos ingresados y conexión a internet',
+        icon: 'error',
+        confirmButtonColor: '#dc2626'
+      });
+    }
   }
 
 
 
 
-  addDiagnostico():void {
+  addDiagnostico(): void {
     const newDiagnostico = new Diagnostico();
     this.atencionMedica.diagnosticos.push(newDiagnostico);
-    
+
   }
 
   eliminarDiagnostico(index: number) {
     this.atencionMedica.diagnosticos.splice(index, 1);
   }
 
-  addExamenComplementario():void {
+  addExamenComplementario(): void {
     this.atencionMedica.examenesComplementarios.push(new ExamenComplementario());
   }
 
@@ -373,9 +481,9 @@ export class FormAtencionMedicaComponent implements OnInit{
     this.atencionMedica.atencionesSignos[12].signoVital = this.signosVitales[13];
     this.atencionMedica.atencionesSignos[13].signoVital = this.signosVitales[14];
 
-    
-  
+
+
   }
-  
+
 
 }

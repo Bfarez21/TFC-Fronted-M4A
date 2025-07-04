@@ -5,5 +5,14 @@ export class ExamenComplementario {
     tituloExa: string = "";
     aplicaExa: boolean = false;
     atencionMedica: AtencionMedica = new AtencionMedica();
-    archivoPdf: File | null = null;  // Añadido para manejar el archivo PDF
+     // Para el archivo binario (no se serializa)
+    archivoPdf?: any; // byte[] en backend
+    
+    // Campos adicionales para manejo de archivos
+    nombreArchivo?: string;
+    tipoContenido?: string;
+    tamañoArchivo?: number;
+    
+    // Campo temporal para el archivo seleccionado (solo frontend)
+    archivoPdfFile?: File;
 }

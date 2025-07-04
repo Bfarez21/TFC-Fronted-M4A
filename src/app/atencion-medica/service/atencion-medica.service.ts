@@ -35,4 +35,24 @@ export class AtencionMedicaService {
     const url = `${this.urlEndPoint}/cedula/${cedula}`;
     return this.http.get<AtencionMedica>(url);
   }
+  // ✅ NUEVO: Subir PDF a un examen específico
+  subirPdfExamen(atencionId: number, examenIndex: number, archivo: File): Observable<string> {
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+    
+    return this.http.post(
+      `${this.urlEndPoint}/${atencionId}/examenes/${examenIndex}/pdf`, 
+      formData,
+      { responseType: 'text' }
+    );
+  }
+
+   // ✅ NUEVO: Eliminar PDF de un examen específico
+  eliminarPdfExamen(atencionId: number, examenIndex: number): Observable<string> {
+    return this.http.delete(
+      `${this.urlEndPoint}/${atencionId}/examenes/${examenIndex}/pdf`,
+      { responseType: 'text' }
+    );
+  }
+
 }
