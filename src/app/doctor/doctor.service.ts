@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Doctor } from './doctor';
 import { Observable, of } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
 
-  private urlEndPoint:string="http://localhost:8080/api/doctores"; // uso localmente
-  //private urlEndPoint:string="http://192.168.18.158:8381/api/doctores";
+  private urlEndPoint:string=`${environment.apiBaseUrl}/doctores`;
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http:HttpClient) { }

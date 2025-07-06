@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { ReferenciaMedica } from './referencia-medica';
+import { environment } from '../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReferenciaMedicaService {
 
-  private urlEndPoint: string = "http://localhost:8080/api/referencias_medicas";
+  private urlEndPoint: string = `${environment.apiBaseUrl}/referencias_medicas`;
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

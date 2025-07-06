@@ -3,13 +3,14 @@ import { FichaMedica } from '../modelo/ficha-medica';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Paciente } from '../modelo/paciente';
+import { environment } from '../../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FichaMedicaService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/fichas_medicas';
+  private urlEndPoint: string = `${environment.apiBaseUrl}/fichas_medicas`;
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

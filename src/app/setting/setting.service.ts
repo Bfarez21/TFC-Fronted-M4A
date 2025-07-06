@@ -5,14 +5,15 @@
   import { Titulo } from './Titulo';
   import { Observable } from 'rxjs';
   import { HttpClient, HttpHeaders } from '@angular/common/http';
-  
+  import { environment } from '../../environment/environment.prod';
+
   @Injectable({
     providedIn: 'root'
   })
   export class SettingService {
   
-    private urlEndPoint: string = "http://localhost:8080/api/institutos";
-    private urlEndPoint2: string = "http://localhost:8080/api/titulos";
+    private urlEndPoint: string = `${environment.apiBaseUrl}/institutos`;
+    private urlEndPoint2: string = `${environment.apiBaseUrl}/titulos`;
   
     private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   

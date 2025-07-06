@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Diagnostico } from '../modelo/diagnostico';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environment/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiagnosticoService {
 
-  private urlEndPoint:string="http://localhost:8080/api/diagnosticos";
+  private urlEndPoint:string=`${environment.apiBaseUrl}/diagnosticos`;
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http:HttpClient) { }
