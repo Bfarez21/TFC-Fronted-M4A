@@ -37,7 +37,21 @@ Aplicación Web cliente para el **Sistema Integrado de Administración de Regist
 * **Pruebas Funcionales (QA):** Ejecución de pruebas integrales para garantizar la usabilidad y correcta validación de datos.
 
 ---
+## 📸 Capturas de la Interfaz Web
 
+| Autenticación de Usuarios | Panel Principal (Dashboard) |
+| :---: | :---: |
+| ![Login](./screenshots/01-login.png) | ![Dashboard](./screenshots/02-dashboard.png) |
+
+| Ficha de Afiliación | Atención Médica / Historial |
+| :---: | :---: |
+| ![Ficha Afiliación](./screenshots/03-ficha-afiliacion.png) | ![Atención Médica](./screenshots/04-atencion-cie10.png) |
+
+| Diagnóstico y Registro CIE-10 | Módulo de Reportes |
+| :---: | :---: |
+| ![Registro CIE10](./screenshots/05-atencion-cie10.png) | ![Reportes](./screenshots/06-reportes.png) |
+
+---
 ## 🔗 Repositorios del Sistema Integrado
 
 * ⚙️ **Backend API:** [HistorialClinico](https://github.com/Bfarez21/HistorialClinico)
