@@ -1,32 +1,45 @@
-# 💻📱 TECAZUAY Registros Médicos - Frontend
+# 💻 TECAZUAY Registros Médicos - Frontend Web
 
-[![UI/UX](https://img.shields.io/badge/Interface-Web%20%26%20Mobile-brightgreen?style=for-the-badge)](#)
-[![Backend Repo](https://img.shields.io/badge/Backend-HistorialClinico-blue?style=for-the-badge)](https://github.com/Bfarez21/HistorialClinico)
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](#)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
 
 ## 📌 Descripción del Proyecto
 
-Cliente Frontend (Web/Móvil) del **Sistema Integrado de Administración de Registros Médicos del TECAZUAY**. Esta aplicación interfaz conecta a los profesionales de la salud con el sistema central mediante el consumo de la API REST.
+Aplicación Web cliente para el **Sistema Integrado de Administración de Registros Médicos del TECAZUAY**. Esta plataforma permite al personal médico administrar historias clínicas, gestionar fichas de pacientes y consultar reportes mediante el consumo de la API REST central.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+* **Framework Web:** Angular
+* **Lenguaje:** TypeScript
+* **Estilos & UI:** CSS3 / HTML5 / Bootstrap
+* **Consumo de Servicios:** RxJS / HttpClient
+* **Herramientas & Entorno:** Node.js, npm, Angular CLI, Git / GitHub
 
 ---
 
 ## 🎨 Módulos e Interfaz de Usuario
 
-* **📋 Ficha de Afiliación & Antecedentes:** Vistas interactivas para el registro y consulta de la información general del paciente y sus antecedentes de salud familiares.
-* **🩺 Módulo de Atención Médica:** Formularios para la captura de signos vitales, diagnósticos y prescripciones.
-* **🔍 Buscador CIE-10:** Interfaz de búsqueda rápida para la codificación diagnóstica.
-* **📄 Formulario de Referencias:** Generación y visualización de derivaciones médicas institucionales.
-* **📈 Panel de Analítica:** Tableros visuales con filtros por carrera, género y periodos de tiempo.
+* **📋 Ficha de Afiliación & Antecedentes:** Formularios reactivos para el registro y consulta de información del paciente y sus antecedentes familiares.
+* **🩺 Módulo de Atención Médica:** Captura e historial de signos vitales, diagnósticos y prescripciones.
+* **🔍 Buscador CIE-10:** Interfaz de búsqueda para la codificación diagnóstica.
+* **📄 Formulario de Referencias:** Generación y visualización de derivaciones médicas.
+* **📈 Panel de Analítica:** Reportes dinámicos con filtros por carrera, género y periodos.
 
 ---
 
 ## 👨‍💻 Mis Contribuciones en el Frontend (Bryan Farez)
 
-* **Vistas de Ficha Médica:** Construcción de formularios y pantallas para la gestión de Datos de Afiliación y Antecedentes Familiares.
-* **Integración API:** Conexión de los módulos frontend con los servicios web expuestos por el Backend.
-* **Pruebas Funcionales (QA):** Verificación de flujos de navegación, validaciones de formularios e interfaz responsiva.
+* **Vistas de Ficha Médica:** Construcción de los componentes y formularios para Datos de Afiliación y Antecedentes Familiares.
+* **Integración API:** Consumo de los servicios RESTful provenientes del Backend en Spring Boot.
+* **Pruebas Funcionales (QA):** Ejecución de pruebas integrales para garantizar la usabilidad y correcta validación de datos.
 
 ---
 
-## 🔗 Repositorio Relacionado
+## 🔗 Repositorios del Sistema Integrado
 
-* **Backend API:** [HistorialClinico](https://github.com/Bfarez21/HistorialClinico)
+* ⚙️ **Backend API:** [HistorialClinico](https://github.com/Bfarez21/HistorialClinico)
+* 💻 **Frontend Web:** [TFC-Fronted-M4A](https://github.com/Bfarez21/TFC-Fronted-M4A)
+* 📱 **App Móvil:** [HistorialClinicoTFC4](https://github.com/Bfarez21/HistorialClinicoTFC4)
